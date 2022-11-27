@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://bi25mspjevc8o"]
+
+[ext_resource type="PackedScene" uid="uid://db4jma40urykn" path="res://scenes/player.tscn" id="1_ced2p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2igsc"]
+albedo_color = Color(0.172549, 0.172549, 0.172549, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wveud"]
+size = Vector2(20000, 20000)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_sb0q3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_asbt1"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7k70d"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="Environment" id="Environment_mtvcb"]
+background_mode = 1
+
+[node name="World" type="Node3D"]
+
+[node name="Floor" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+material_override = SubResource("StandardMaterial3D_2igsc")
+mesh = SubResource("PlaneMesh_wveud")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_sb0q3")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.593044, -1.7482)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("BoxMesh_asbt1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_7k70d")
+
+[node name="Player" parent="." instance=ExtResource("1_ced2p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.936209, 1.53892)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mtvcb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.112633, -0.952486, 0.282991, 0.352225, 0.304582, 0.884968, -0.929113, -3.64222e-08, 0.369795, 0, 4.64617, 4.68244)
+light_energy = 2.778
+shadow_enabled = true
