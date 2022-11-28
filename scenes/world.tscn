@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bi25mspjevc8o"]
+[gd_scene load_steps=9 format=3 uid="uid://nilmwfpuqx4p"]
 
-[ext_resource type="PackedScene" uid="uid://db4jma40urykn" path="res://scenes/player.tscn" id="1_ced2p"]
+[ext_resource type="PackedScene" uid="uid://bj4nv2cqvh2wi" path="res://scenes/player/player.tscn" id="1_ced2p"]
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_j6jdc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2igsc"]
 albedo_color = Color(0.172549, 0.172549, 0.172549, 1)
@@ -19,6 +20,7 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 background_mode = 1
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_j6jdc")
 
 [node name="Floor" type="Node3D" parent="."]
 
@@ -44,7 +46,7 @@ mesh = SubResource("BoxMesh_asbt1")
 shape = SubResource("ConcavePolygonShape3D_7k70d")
 
 [node name="Player" parent="." instance=ExtResource("1_ced2p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.936209, 1.53892)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15726, 1.53892)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mtvcb")
