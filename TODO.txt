@@ -1,4 +1,6 @@
-# fix jump mechanic
 # add spring jump mechanic
-# remove basic movement
 
+[Spring jump mechanic]
+Вращать только head;
+Получить вращение для прыжка из вращения head;
+Применить для character3d прыжок с вращением ( vector.rotated );

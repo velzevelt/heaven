@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bj4nv2cqvh2wi"]
+[gd_scene load_steps=7 format=3 uid="uid://bj4nv2cqvh2wi"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_gwrkw"]
 [ext_resource type="Script" path="res://scenes/player/camera_controller.gd" id="2_8xvxh"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y1312"]
 height = 1.7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37kd4"]
+albedo_color = Color(0.909804, 0.717647, 0.356863, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_720by"]
 height = 1.7
@@ -25,5 +28,6 @@ current = true
 fov = 80.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_37kd4")
 mesh = SubResource("CapsuleMesh_720by")
 script = ExtResource("3_rbpt3")
