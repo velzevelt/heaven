@@ -24,6 +24,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.391836, 0)
 script = ExtResource("2_8xvxh")
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 0.801619, -0.597835, 0, 0.597835, 0.801619, 0, 0, 0)
 current = true
 fov = 80.0
 

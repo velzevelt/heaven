@@ -1,6 +1,7 @@
 # add spring jump mechanic
 
 [Spring jump mechanic]
-Вращать только head;
-Получить вращение для прыжка из вращения head;
-Применить для character3d прыжок с вращением ( vector.rotated );
+
+
+
+player.rotation = head.local_rotation

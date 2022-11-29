@@ -16,8 +16,13 @@ func _physics_process(delta):
 	# Handle Jump. Holding jump key longer make jump higher
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		self.velocity.y = JUMP_VELOCITY
+		
+		# rotate player here
+		
 	if Input.is_action_just_released("jump") and not is_on_floor() and velocity.y > 0:
 		self.velocity.y /= JUMP_RELEASE
+	
+	
 	
 	
 	move_and_slide()
