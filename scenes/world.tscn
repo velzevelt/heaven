@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://nilmwfpuqx4p"]
+[gd_scene load_steps=10 format=3 uid="uid://nilmwfpuqx4p"]
 
 [ext_resource type="PackedScene" uid="uid://bj4nv2cqvh2wi" path="res://scenes/player/player.tscn" id="1_ced2p"]
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_j6jdc"]
+[ext_resource type="PackedScene" uid="uid://cwj7kvocjcslm" path="res://debug_tools/debug_layer.tscn" id="3_axxhg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2igsc"]
 albedo_color = Color(0.172549, 0.172549, 0.172549, 1)
@@ -34,19 +35,19 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
 shape = SubResource("WorldBoundaryShape3D_sb0q3")
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="Cube" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.593044, -1.7482)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cube"]
 mesh = SubResource("BoxMesh_asbt1")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube/MeshInstance3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_7k70d")
 
 [node name="Player" parent="." instance=ExtResource("1_ced2p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15726, 1.53892)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.2336, -1.45723)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mtvcb")
@@ -55,3 +56,5 @@ environment = SubResource("Environment_mtvcb")
 transform = Transform3D(0.112633, -0.952486, 0.282991, 0.352225, 0.304582, 0.884968, -0.929113, -3.64222e-08, 0.369795, 0, 4.64617, 4.68244)
 light_energy = 2.778
 shadow_enabled = true
+
+[node name="DebugLayer" parent="." instance=ExtResource("3_axxhg")]

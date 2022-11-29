@@ -16,10 +16,3 @@ func _process(delta):
 	if Input.is_action_just_pressed("test"):
 		captured = !captured
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if captured else Input.MOUSE_MODE_VISIBLE
-
-
-func get_jump_direction() -> Vector2:
-	var r = Vector2()
-	r.x = owner.global_rotation.y
-	r.y = self.global_rotation.x
-	return r

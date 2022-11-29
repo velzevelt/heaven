@@ -17,7 +17,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		self.velocity.y = JUMP_VELOCITY
 		
-		# rotate player here
+		# Применить ускорение вперед head direction
+		
 		
 	if Input.is_action_just_released("jump") and not is_on_floor() and velocity.y > 0:
 		self.velocity.y /= JUMP_RELEASE
