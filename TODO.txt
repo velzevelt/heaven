@@ -4,4 +4,4 @@
 
 
 
-player.rotation = head.local_rotation
+https://pechenek.net/programming/c-sharp/unity-dvizhenie-personazha-po-vektoru-kameryi-3d/

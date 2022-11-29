@@ -24,6 +24,7 @@ background_mode = 1
 script = ExtResource("1_j6jdc")
 
 [node name="Floor" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 material_override = SubResource("StandardMaterial3D_2igsc")
