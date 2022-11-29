@@ -12,5 +12,4 @@ func _input(event):
 func _process(delta):
 	if Input.is_action_just_pressed("test"):
 		captured = !captured
-		if captured: Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		else: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE 
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if captured else Input.MOUSE_MODE_VISIBLE
