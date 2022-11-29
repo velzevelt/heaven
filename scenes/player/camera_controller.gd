@@ -1,6 +1,6 @@
 extends Node3D
 
-
+var captured = false
 var mouse_sensitivity := 0.3
 
 func _input(event):
@@ -11,4 +11,6 @@ func _input(event):
 
 func _process(delta):
 	if Input.is_action_just_pressed("test"):
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		captured = !captured
+		if captured: Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		else: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE 
