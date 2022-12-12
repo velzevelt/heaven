@@ -7,7 +7,7 @@ const JUMP_RELEASE = 2.0
 const MASS = 1.0
 const FRICTION = 10.0
 
-@onready var head = $Head as Head
+@onready var head = $%Head as Head
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
