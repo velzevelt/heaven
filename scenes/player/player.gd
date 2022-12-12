@@ -24,7 +24,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		jump(JUMP_VELOCITY)
 		
-	if Input.is_action_just_released("jump") and not is_on_floor() and velocity.y > 0:
+	if Input.is_action_just_released("jump") and not is_on_floor():
 		self.velocity.y /= JUMP_RELEASE
 	
 	
