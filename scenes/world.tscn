@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://nilmwfpuqx4p"]
+[gd_scene load_steps=15 format=3 uid="uid://nilmwfpuqx4p"]
 
 [ext_resource type="PackedScene" uid="uid://bj4nv2cqvh2wi" path="res://scenes/player/player.tscn" id="1_ced2p"]
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_j6jdc"]
 [ext_resource type="PackedScene" uid="uid://cwj7kvocjcslm" path="res://debug_tools/debug_layer.tscn" id="3_axxhg"]
+[ext_resource type="PackedScene" uid="uid://bw18nq2w124ot" path="res://scenes/objects/jump_elevator/jump_elevator.tscn" id="4_mc3uf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2igsc"]
 albedo_color = Color(0.172549, 0.172549, 0.172549, 1)
@@ -88,3 +89,9 @@ light_energy = 2.778
 shadow_enabled = true
 
 [node name="DebugLayer" parent="." instance=ExtResource("3_axxhg")]
+
+[node name="JumpElevator" parent="." instance=ExtResource("4_mc3uf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.415074, 1.91038)
+
+[node name="JumpElevator2" parent="." instance=ExtResource("4_mc3uf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55307, 0.415074, -0.934008)

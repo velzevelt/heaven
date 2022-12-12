@@ -13,9 +13,15 @@ _global_script_classes=[{
 "class": &"Head",
 "language": &"GDScript",
 "path": "res://scenes/player/camera_controller.gd"
+}, {
+"base": "CharacterBody3D",
+"class": &"Player",
+"language": &"GDScript",
+"path": "res://scenes/player/player.gd"
 }]
 _global_script_class_icons={
-"Head": ""
+"Head": "",
+"Player": ""
 }
 
 [application]
