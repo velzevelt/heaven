@@ -8,6 +8,16 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Node3D",
+"class": &"Head",
+"language": &"GDScript",
+"path": "res://scenes/player/camera_controller.gd"
+}]
+_global_script_class_icons={
+"Head": ""
+}
+
 [application]
 
 config/name="Heaven"

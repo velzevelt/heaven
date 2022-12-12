@@ -6,8 +6,11 @@ const JUMP_RELEASE = 2.0
 const MASS = 1.0
 const FRICTION = 10
 
+@onready var head = $Head as Head
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -21,11 +24,11 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		self.velocity.y = JUMP_VELOCITY
 		
-		var test = $Head.global_position.direction_to($Head/JumpPoint.global_position)
-		test *= SPEED
+		var jump_dir = head.get_jump_direction()
+		jump_dir *= SPEED
 		
-		self.velocity.x = test.x
-		self.velocity.z = test.z
+		self.velocity.x = jump_dir.x
+		self.velocity.z = jump_dir.z
 			
 		
 	if Input.is_action_just_released("jump") and not is_on_floor() and velocity.y > 0:
