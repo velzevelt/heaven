@@ -1,7 +1,0 @@
-# add spring jump mechanic
-
-[Spring jump mechanic]
-
-
-
-https://pechenek.net/programming/c-sharp/unity-dvizhenie-personazha-po-vektoru-kameryi-3d/
