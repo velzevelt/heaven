@@ -3,7 +3,6 @@ extends LineEdit
 signal command_entered(command, arguments)
 
 @export var command_color := Color(0.378984, 0.657019, 0.902344)
-@export var greeting_text := "Input Commands..."
 
 @onready var _command_list = owner.command_list
 

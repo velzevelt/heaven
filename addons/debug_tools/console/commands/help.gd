@@ -2,9 +2,9 @@ extends ConsoleCommand
 
 
 var command_list : Dictionary
-var general_help_message : String = "type [color=aqua]show_commands[/color] to see available commands " \
-+ "type [color=aqua]help [command_name][/color] to see details about command e.g. " \
-+ "[color=aqua]help add_money[/color]"
+var general_help_message : String = "type show_commands to see available commands " \
++ "type help [command_name] to see details about command e.g. " \
++ "help add_money"
 
 
 func _init() -> void:

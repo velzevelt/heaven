@@ -1,9 +1,10 @@
 extends VBoxContainer
 
 
-@export var commands_directory_path : String = "res://"
+@export var commands_directory_path : String = "res://addons/debug_tools/commands"
+@onready var _init_position = position
 
-@export var command_list = {
+var command_list = {
 	
 	"q": "quit",
 	"exit": "quit",
@@ -16,16 +17,13 @@ extends VBoxContainer
 	"show_commands": "show_commands",
 	
 	
-} :
-	set(value):
-	
-	get = get_command_list() 
-	
-#	setget , get_command_list
+} : 
+	get: 
+		return command_list
 
 
 func get_command_list() -> Dictionary:
-	return command_list
+	return self.command_list
 
 
 func _on_InputLabel_command_entered(command, arguments) -> void:
@@ -34,7 +32,7 @@ func _on_InputLabel_command_entered(command, arguments) -> void:
 
 
 
-func execute_command(command : ConsoleCommand, arguments : PoolStringArray) -> void:
+func execute_command(command : ConsoleCommand, arguments : Array[String]) -> void:
 	command.initialize(self, arguments)
 	command.execute()
 	command.call_deferred("free")
@@ -44,8 +42,7 @@ func create_command_object(command : String) -> ConsoleCommand:
 	var path_to_command = commands_directory_path + "/" + command + ".gd"
 	
 	if not ResourceLoader.exists(path_to_command):
-		Logger.debug_log("[color=aqua]" + command + "[/color]" + " command not found at path " + "[color=aqua]" + path_to_command + "[/color]", 
-		MESSAGE_TYPE.ERROR)
+		Logger.debug_log(command + " command not found at path " + path_to_command, MESSAGE_TYPE.ERROR)
 		return ConsoleCommand.new() # NULL
 	
 	var command_class = load(path_to_command)
@@ -53,3 +50,8 @@ func create_command_object(command : String) -> ConsoleCommand:
 	return command_class
 
 
+
+
+func _on_visibility_changed():
+	if _init_position:
+		position = _init_position

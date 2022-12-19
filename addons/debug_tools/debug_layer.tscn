@@ -1,10 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dch70obt1efrf"]
+[gd_scene load_steps=4 format=3 uid="uid://dch70obt1efrf"]
 
 [ext_resource type="PackedScene" uid="uid://dw75qaapyyxif" path="res://addons/debug_tools/fps_counter/fps_counter.tscn" id="1_8yair"]
 [ext_resource type="Script" path="res://addons/debug_tools/debug_layer.gd" id="1_h2jx2"]
+[ext_resource type="PackedScene" uid="uid://bw7chorft18wj" path="res://addons/debug_tools/console/console.tscn" id="3_nsixq"]
 
 [node name="DebugLayer" type="CanvasLayer"]
 script = ExtResource("1_h2jx2")
 
 [node name="FPSCounter" parent="." instance=ExtResource("1_8yair")]
-text = "[color=#00ff00ff]143"
+text = "[color=#00ff00ff]145"
+
+[node name="Console" parent="." instance=ExtResource("3_nsixq")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -299.0
+offset_right = 0.0
+grow_horizontal = 0
