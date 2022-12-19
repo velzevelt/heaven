@@ -7,15 +7,6 @@ signal command_entered(command, arguments)
 @onready var _command_list = owner.command_list
 
 
-#func _ready() -> void:
-#	_initialize()
-#
-#
-#func _initialize() -> void:
-#	for command in _command_list.keys():
-#		add_keyword_color(command, command_color)
-#
-#
 #func _on_InputLabel_text_changed() -> void:
 #	if "\n" in text:
 #		var clear_text = text.strip_escapes()
@@ -49,3 +40,21 @@ signal command_entered(command, arguments)
 #
 #func show_greeting_text() -> void:
 #	text = greeting_text
+
+
+func _on_text_submitted(new_text):
+	text = ''
+	var line = new_text.split(' ')
+	var command = line[0]
+	
+	if _command_list.has(command):
+		command = _command_list.get(command)
+	else:
+		Logger.debug_log(command + " command not found", MESSAGE_TYPE.ERROR)
+		return
+	
+	var arguments = []
+	for i in range(1, line.size()):
+		arguments.append(line[i])
+	
+	emit_signal("command_entered", command, arguments)

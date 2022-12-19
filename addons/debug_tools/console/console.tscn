@@ -33,8 +33,10 @@ offset_top = 34.0
 offset_right = 299.0
 offset_bottom = 117.0
 size_flags_vertical = 3
-text = "Ttet"
+focus_mode = 2
+bbcode_enabled = true
 scroll_following = true
+selection_enabled = true
 script = ExtResource("2_aduai")
 
 [node name="Separator2" type="Panel" parent="."]
@@ -51,3 +53,4 @@ placeholder_text = "Command..."
 script = ExtResource("3_3l3wc")
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="text_submitted" from="Input" to="Input" method="_on_text_submitted"]

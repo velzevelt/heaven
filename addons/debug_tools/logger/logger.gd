@@ -15,7 +15,9 @@ func _format_output(value : String, color : String = '') -> String:
 	var message = str(_string_id) + ": "
 	
 	if not color.is_empty():
-		message += '[color=%s]' + value + '[/color]' % color
+		message = '[color=%s]' + message
+		message += value + '[/color]'
+		message = message % color
 	else:
 		message += value
 	
