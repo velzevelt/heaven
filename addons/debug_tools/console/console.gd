@@ -26,12 +26,6 @@ func get_command_list() -> Dictionary:
 	return self.command_list
 
 
-func _on_InputLabel_command_entered(command, arguments) -> void:
-	var command_instance = create_command_object(command)
-	execute_command(command_instance, arguments)
-
-
-
 func execute_command(command : ConsoleCommand, arguments : Array[String]) -> void:
 	command.initialize(self, arguments)
 	command.execute()
@@ -55,3 +49,8 @@ func create_command_object(command : String) -> ConsoleCommand:
 func _on_visibility_changed():
 	if _init_position:
 		position = _init_position
+
+
+func _on_input_command_entered(command, arguments):
+	var command_instance = create_command_object(command)
+	execute_command(command_instance, arguments)

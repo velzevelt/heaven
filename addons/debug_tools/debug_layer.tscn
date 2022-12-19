@@ -8,7 +8,7 @@
 script = ExtResource("1_h2jx2")
 
 [node name="FPSCounter" parent="." instance=ExtResource("1_8yair")]
-text = "[color=#00ff00ff]135"
+text = "[color=#00ff00ff]145"
 
 [node name="Console" parent="." instance=ExtResource("3_nsixq")]
 anchors_preset = 1
