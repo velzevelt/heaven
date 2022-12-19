@@ -2,22 +2,22 @@ extends Node
 
 signal message_entered(message)
 
+const HISTORY_LENGTH = 256
 
 @onready var _duplicate_output_to_godot = ProjectSettings.get("application/config/duplicate_logger_output_to_debugger")
-@onready var _history : History
+var _history : Array[String]
 var _string_id := 1
 
 # Use in your console output
-# color (html)
+# color (html) e.g. '#FF0000'
 func _format_output(value : String, color : String = '') -> String:
 	var message = str(_string_id) + ": "
 	message = '[color=%s]' + value + '[/color]'
 	message = message % color
-#	_history.put_line(value)
 	return message
 
 
-# Use in godot debugger output
+# Use in godot debugger
 func _raw_output(value : String) -> String:
 	return str(_string_id) + ": " + value
 
@@ -33,6 +33,8 @@ func _format_error(value : String) -> String:
 	return r
 
 
+# Use everywhere for debug
+# override_color (html) e.g. '#FF0000'
 func debug_log(value, message_type = MESSAGE_TYPE.REGULAR, override_color : String = '') -> void:
 	if not typeof(value) == TYPE_STRING:
 		value = str(value)
@@ -45,11 +47,16 @@ func debug_log(value, message_type = MESSAGE_TYPE.REGULAR, override_color : Stri
 		MESSAGE_TYPE.ERROR:
 			console_output = _format_error(value)
 		MESSAGE_TYPE.REGULAR:
-#			console_output = _format_output(value)
-			console_output = _format_output(value)
+			console_output = _format_output(value) if override_color.is_empty() else _format_output(value, override_color)
 	
 	if _duplicate_output_to_godot:
 		_print_to_godot(value, message_type)
+	
+	# Keep history
+	if _history.size() > HISTORY_LENGTH:
+		_history.pop_back()
+	_history.append(console_output)
+	
 	
 	emit_signal("message_entered", console_output)
 	_string_id += 1

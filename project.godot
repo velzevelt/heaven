@@ -9,15 +9,15 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "Object",
+"class": &"ConsoleCommand",
+"language": &"GDScript",
+"path": "res://addons/debug_tools/console/command.gd"
+}, {
 "base": "Node3D",
 "class": &"Head",
 "language": &"GDScript",
 "path": "res://scenes/player/camera_controller.gd"
-}, {
-"base": "Node",
-"class": &"History",
-"language": &"GDScript",
-"path": "res://addons/debug_tools/logger/history.gd"
 }, {
 "base": "RefCounted",
 "class": &"MESSAGE_TYPE",
@@ -30,8 +30,8 @@ _global_script_classes=[{
 "path": "res://scenes/player/player.gd"
 }]
 _global_script_class_icons={
+"ConsoleCommand": "",
 "Head": "",
-"History": "",
 "MESSAGE_TYPE": "",
 "Player": ""
 }
@@ -46,6 +46,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 DebugLayer="*res://addons/debug_tools/debug_layer.tscn"
+Logger="*res://addons/debug_tools/logger/logger.gd"
 
 [editor_plugins]
 
