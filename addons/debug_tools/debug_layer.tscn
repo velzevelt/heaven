@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dch70obt1efrf"]
+
+[ext_resource type="PackedScene" uid="uid://dw75qaapyyxif" path="res://addons/debug_tools/fps_counter/fps_counter.tscn" id="1_8yair"]
+[ext_resource type="Script" path="res://addons/debug_tools/debug_layer.gd" id="1_h2jx2"]
+
+[node name="DebugLayer" type="CanvasLayer"]
+script = ExtResource("1_h2jx2")
+
+[node name="FPSCounter" parent="." instance=ExtResource("1_8yair")]
+text = "[color=#00ff00ff]143"
