@@ -14,6 +14,16 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scenes/player/camera_controller.gd"
 }, {
+"base": "Node",
+"class": &"History",
+"language": &"GDScript",
+"path": "res://addons/debug_tools/logger/history.gd"
+}, {
+"base": "RefCounted",
+"class": &"MESSAGE_TYPE",
+"language": &"GDScript",
+"path": "res://addons/debug_tools/logger/message_types.gd"
+}, {
 "base": "CharacterBody3D",
 "class": &"Player",
 "language": &"GDScript",
@@ -21,6 +31,8 @@ _global_script_classes=[{
 }]
 _global_script_class_icons={
 "Head": "",
+"History": "",
+"MESSAGE_TYPE": "",
 "Player": ""
 }
 

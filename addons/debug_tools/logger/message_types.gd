@@ -1,0 +1,3 @@
+class_name MESSAGE_TYPE
+
+enum {REGULAR, WARNING, ERROR}
