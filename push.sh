@@ -2,9 +2,14 @@
 
 STANDART_MESSAGE="upd"
 
+if ! [ -x "$(command -v git)" ]; then
+  echo 'Error: git is not installed.' >&2
+  exit 1
+fi
 
-if [ -n "$1" ]
-then
+
+
+if [ -n "$1" ]; then
     git add .
     git commit -m $1
     git push
