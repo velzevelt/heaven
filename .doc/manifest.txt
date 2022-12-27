@@ -1,0 +1,7 @@
+Entity types:
+ – Jump
+ – Shop save
+ – Moving
+ – Add jump
+ – Killing floor
+ – Coin
