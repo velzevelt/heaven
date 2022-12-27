@@ -29,6 +29,7 @@ current = true
 fov = 80.0
 
 [node name="JumpPoint" type="Node3D" parent="Head"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.732067)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

@@ -1,7 +1,7 @@
 extends Node3D
 class_name Head
 
-@onready var jump_point = $JumpPoint
+@onready var jump_point = $%JumpPoint
 
 var captured = false
 var mouse_sensitivity := 0.3
