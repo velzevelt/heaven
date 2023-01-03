@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dw75qaapyyxif" path="res://addons/debug_tools/fps_counter/fps_counter.tscn" id="1_8yair"]
 [ext_resource type="Script" path="res://addons/debug_tools/debug_layer.gd" id="1_h2jx2"]
-[ext_resource type="PackedScene" uid="uid://bw7chorft18wj" path="res://addons/debug_tools/console/console.tscn" id="3_nsixq"]
+[ext_resource type="PackedScene" uid="uid://bmxgr57m6lgu2" path="res://addons/debug_tools/console/console_window.tscn" id="3_pc2c0"]
 
 [node name="DebugLayer" type="CanvasLayer"]
 script = ExtResource("1_h2jx2")
@@ -10,12 +10,6 @@ script = ExtResource("1_h2jx2")
 [node name="FPSCounter" parent="." instance=ExtResource("1_8yair")]
 text = "[color=#00ff00ff]145"
 
-[node name="Console" parent="." instance=ExtResource("3_nsixq")]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -309.0
-offset_top = 6.0
-offset_right = -10.0
-offset_bottom = 162.0
-grow_horizontal = 0
+[node name="ConsoleWindow" parent="." instance=ExtResource("3_pc2c0")]
+position = Vector2i(622, 47)
+min_size = Vector2i(50, 25)

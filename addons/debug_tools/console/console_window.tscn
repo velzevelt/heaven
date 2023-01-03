@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmxgr57m6lgu2"]
+
+[ext_resource type="Script" path="res://addons/debug_tools/console/console_window.gd" id="1_j1kpn"]
+[ext_resource type="PackedScene" uid="uid://bw7chorft18wj" path="res://addons/debug_tools/console/console.tscn" id="1_jgubi"]
+
+[node name="ConsoleWindow" type="Window"]
+title = "Console"
+size = Vector2i(500, 250)
+script = ExtResource("1_j1kpn")
+
+[node name="Console" parent="." instance=ExtResource("1_jgubi")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
