@@ -1,5 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr8dyql37qlyu"]
+[gd_scene load_steps=7 format=3 uid="uid://dr8dyql37qlyu"]
 
-[ext_resource type="PackedScene" uid="uid://cv2ouxpch6ixv" path="res://scenes/objects/temp_platform/temp_platform.tscn" id="1_ve55w"]
+[ext_resource type="Script" path="res://scenes/objects/moving_platform/moving_platform.gd" id="1_2ec6a"]
+[ext_resource type="Texture2D" uid="uid://l8fqklj10278" path="res://addons/debug_tools/kenney_prototypetextures/Purple/texture_01.png" id="1_wj6mp"]
 
-[node name="TempPlatform" instance=ExtResource("1_ve55w")]
+[sub_resource type="Curve3D" id="Curve3D_6fh5q"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.86645, 1.35095, -0.161281),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_fjode"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yiyfp"]
+albedo_texture = ExtResource("1_wj6mp")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pxphh"]
+
+[node name="MovingPlatform" type="Path3D"]
+curve = SubResource("Curve3D_6fh5q")
+script = ExtResource("1_2ec6a")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.0860891, -0.582732, 0.808091, -2.98021e-08, 0.811101, 0.584904, -0.996279, 0.0503542, -0.0698276, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PathFollow3D"]
+transform = Transform3D(-0.0860898, -2.98024e-08, -0.996288, -0.582733, 0.811103, 0.0503543, 0.808091, 0.584904, -0.0698276, 0, 0, 0)
+mesh = SubResource("BoxMesh_fjode")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_yiyfp")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="PathFollow3D"]
+transform = Transform3D(-0.0860899, -2.60771e-08, -0.996289, -0.582733, 0.811103, 0.0503543, 0.808091, 0.584904, -0.0698276, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D/AnimatableBody3D"]
+shape = SubResource("BoxShape3D_pxphh")
