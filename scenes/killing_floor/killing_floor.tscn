@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bykx72g8inbmg"]
+
+[ext_resource type="Texture2D" uid="uid://bg0wrkes71ra2" path="res://addons/debug_tools/kenney_prototypetextures/Dark/texture_01.png" id="1_hc7hh"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8fj81"]
+size = Vector2(2048, 2048)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_641ot"]
+albedo_texture = ExtResource("1_hc7hh")
+uv1_scale = Vector3(100, 100, 100)
+
+[node name="KillingFloor" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_8fj81")
+surface_material_override/0 = SubResource("StandardMaterial3D_641ot")
