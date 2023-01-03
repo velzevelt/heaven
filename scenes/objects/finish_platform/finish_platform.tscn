@@ -8,7 +8,7 @@
 albedo_texture = ExtResource("2_jtfiv")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rkjou"]
-size = Vector3(1, 0.23137, 1)
+size = Vector3(0.864353, 0.188393, 0.874101)
 
 [node name="FinishPlatform" instance=ExtResource("1_kjyn2")]
 script = ExtResource("2_kqes5")
