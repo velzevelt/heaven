@@ -2,7 +2,7 @@ extends Node
 
 
 func _on_player_entered():
-	pass
+	Logger.debug_log("Player finished level!")
 
 
 func _on_area_3d_body_entered(body):

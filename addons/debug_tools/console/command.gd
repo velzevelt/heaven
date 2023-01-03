@@ -6,7 +6,7 @@ var arguments : Array[String]
 var command_description : String = "help_message"
 
 
-func initialize(_creator : Object, _arguments : Array[String]) -> void:
+func initialize(_creator : Object, _arguments : Array) -> void:
 	creator = _creator
 	arguments = _arguments
 

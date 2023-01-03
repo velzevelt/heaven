@@ -1,7 +1,7 @@
 extends VBoxContainer
 
 
-@export var commands_directory_path : String = "res://addons/debug_tools/commands"
+@export var commands_directory_path : String = "res://addons/debug_tools/console/commands"
 @onready var _init_position = position
 
 var command_list = {
@@ -26,7 +26,7 @@ func get_command_list() -> Dictionary:
 	return self.command_list
 
 
-func execute_command(command : ConsoleCommand, arguments : Array[String]) -> void:
+func execute_command(command : ConsoleCommand, arguments : Array) -> void:
 	command.initialize(self, arguments)
 	command.execute()
 	command.call_deferred("free")
