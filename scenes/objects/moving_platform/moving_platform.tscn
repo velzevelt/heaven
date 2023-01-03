@@ -1,38 +1,89 @@
-[gd_scene load_steps=7 format=3 uid="uid://dr8dyql37qlyu"]
+[gd_scene load_steps=10 format=3 uid="uid://dr8dyql37qlyu"]
 
 [ext_resource type="Script" path="res://scenes/objects/moving_platform/moving_platform.gd" id="1_2ec6a"]
 [ext_resource type="Texture2D" uid="uid://l8fqklj10278" path="res://addons/debug_tools/kenney_prototypetextures/Purple/texture_01.png" id="1_wj6mp"]
 
-[sub_resource type="Curve3D" id="Curve3D_6fh5q"]
+[sub_resource type="Curve3D" id="Curve3D_5tdyh"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.86645, 1.35095, -0.161281),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.59042, 0.766346, 1.11034),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pxphh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fjode"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yiyfp"]
 albedo_texture = ExtResource("1_wj6mp")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_pxphh"]
+[sub_resource type="Animation" id="Animation_lqvj2"]
+resource_name = "move_platform"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
 
-[node name="MovingPlatform" type="Path3D"]
-curve = SubResource("Curve3D_6fh5q")
+[sub_resource type="Animation" id="Animation_jyuh0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ue0o0"]
+_data = {
+"RESET": SubResource("Animation_jyuh0"),
+"move_platform": SubResource("Animation_lqvj2")
+}
+
+[node name="MovingPlatform" type="Node3D"]
 script = ExtResource("1_2ec6a")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="."]
-transform = Transform3D(-0.0860891, -0.582731, 0.808092, -2.98021e-08, 0.811102, 0.584903, -0.996279, 0.0503541, -0.0698278, 0, 0, 0)
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_5tdyh")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.572381, -0.301394, 0.762584, 0.000166832, 0.930041, 0.367453, -0.819977, -0.210197, 0.532393, 0.476325, 0.229518, 0.332543)
+progress = 0.625668
 loop = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PathFollow3D"]
-transform = Transform3D(-0.0860898, -2.98024e-08, -0.996288, -0.582733, 0.811103, 0.0503543, 0.808091, 0.584904, -0.0698276, 0, 0, 0)
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Path3D/PathFollow3D"]
+transform = Transform3D(0.572445, -1.49013e-08, -0.819953, -0.301292, 0.930043, -0.210345, 0.762585, 0.367453, 0.532394, 0, 0, 0)
+remote_path = NodePath("../../../Platform")
+
+[node name="Platform" type="AnimatableBody3D" parent="."]
+transform = Transform3D(1, -9.56357e-05, 6.59227e-05, 9.53972e-05, 1, -0.000136912, -6.61612e-05, 0.000136718, 1, 0.476325, 0.229518, 0.332543)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform"]
+shape = SubResource("BoxShape3D_pxphh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platform"]
+transform = Transform3D(1, 5.09032e-14, -8.94074e-08, -1.23484e-13, 1, 1.42109e-14, -1.04309e-07, 3.72532e-09, 0.999999, 0, 0, 0)
 mesh = SubResource("BoxMesh_fjode")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_yiyfp")
 
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="PathFollow3D"]
-transform = Transform3D(-0.0860899, -2.60771e-08, -0.996289, -0.582733, 0.811103, 0.0503543, 0.808091, 0.584904, -0.0698276, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D/AnimatableBody3D"]
-shape = SubResource("BoxShape3D_pxphh")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_process_mode = 0
+libraries = {
+"": SubResource("AnimationLibrary_ue0o0")
+}

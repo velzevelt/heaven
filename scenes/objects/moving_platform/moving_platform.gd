@@ -1,15 +1,6 @@
-extends Path3D
+extends Node3D
 
-@onready var path = $PathFollow3D as PathFollow3D
-var reached_end = false
+@onready var anim_player = $AnimationPlayer as AnimationPlayer
 
-func _physics_process(delta):
-	if not reached_end:
-		path.progress += delta
-	else:
-		path.progress -= delta
-	
-	if path.progress >= 0.99:
-		reached_end = true
-	elif path.progress <= 0.01 and reached_end:
-		reached_end = false
+func _ready():
+	anim_player.play('move_platform')

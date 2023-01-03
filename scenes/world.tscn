@@ -37,4 +37,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.40862, 0.625832, -2.93058)
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.744038, 0)
 
 [node name="MovingPlatform" parent="." instance=ExtResource("9_8sbeb")]
-transform = Transform3D(0.965195, 0, 0.261532, 0, 1, 0, -0.261532, 0, 0.965195, -1.32838, 0, -1.28319)
+transform = Transform3D(0.584887, 0, 0.811115, 0, 1, 0, -0.811115, 0, 0.584887, -2.136, 0, -1.28319)
