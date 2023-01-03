@@ -17,7 +17,7 @@ func _input(event):
 func _process(delta):
 	if Input.is_action_just_pressed("test"):
 		captured = !captured
-#		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if captured else Input.MOUSE_MODE_VISIBLE
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if captured else Input.MOUSE_MODE_VISIBLE
 
 func get_jump_direction() -> Vector3:
 	return self.global_position.direction_to(jump_point.global_position)
