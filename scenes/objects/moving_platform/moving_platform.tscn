@@ -20,7 +20,6 @@ albedo_texture = ExtResource("1_wj6mp")
 [sub_resource type="Animation" id="Animation_lqvj2"]
 resource_name = "move_platform"
 length = 2.0
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -62,8 +61,7 @@ script = ExtResource("1_2ec6a")
 curve = SubResource("Curve3D_5tdyh")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.572381, -0.301394, 0.762584, 0.000166832, 0.930041, 0.367453, -0.819977, -0.210197, 0.532393, 0.476325, 0.229518, 0.332543)
-progress = 0.625668
+transform = Transform3D(0.572435, -0.301291, 0.762584, -2.98021e-08, 0.930041, 0.367453, -0.81994, -0.210345, 0.532393, 0, 0, 0)
 loop = false
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Path3D/PathFollow3D"]
@@ -87,3 +85,5 @@ playback_process_mode = 0
 libraries = {
 "": SubResource("AnimationLibrary_ue0o0")
 }
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
