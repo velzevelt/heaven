@@ -1,5 +1,4 @@
-extends Node3D
-class_name Head
+class_name Head extends Node3D
 
 @onready var jump_point = $%JumpPoint
 
