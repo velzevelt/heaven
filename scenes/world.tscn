@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cphly35nnvtss"]
+[gd_scene load_steps=9 format=3 uid="uid://c6f6b16mcpyds"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_j6jdc"]
 [ext_resource type="PackedScene" uid="uid://cxiks5q73atjs" path="res://scenes/objects/start_platform/start_platform.tscn" id="2_nt8te"]
 [ext_resource type="PackedScene" uid="uid://bxj7t8v411wmj" path="res://scenes/objects/finish_platform/finish_platform.tscn" id="3_r7a5l"]
 [ext_resource type="PackedScene" uid="uid://bj4nv2cqvh2wi" path="res://scenes/player/player.tscn" id="4_3kdap"]
-[ext_resource type="PackedScene" uid="uid://bykx72g8inbmg" path="res://scenes/killing_floor/killing_floor.tscn" id="5_soid6"]
+[ext_resource type="PackedScene" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="5_soid6"]
+[ext_resource type="PackedScene" uid="uid://deaa8isrf48o5" path="res://scenes/objects/platform/platform.tscn" id="6_ff8xs"]
+[ext_resource type="PackedScene" path="res://scenes/objects/coin/coin.tscn" id="7_6vemf"]
+[ext_resource type="PackedScene" uid="uid://dxyvccbblq6py" path="res://scenes/objects/thorn/thorn.tscn" id="8_b6n5n"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_j6jdc")
@@ -19,3 +22,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.94901, 0)
 
 [node name="KillingFloor" parent="." instance=ExtResource("5_soid6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.37236, 0)
+
+[node name="Platform" parent="." instance=ExtResource("6_ff8xs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79605, 1.48577, -2.93058)
+
+[node name="Coin" parent="Platform" instance=ExtResource("7_6vemf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89384, 0)
+
+[node name="Platform2" parent="." instance=ExtResource("6_ff8xs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.40862, 0.625832, -2.93058)
+
+[node name="Thorn" parent="Platform2" instance=ExtResource("8_b6n5n")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.744038, 0)

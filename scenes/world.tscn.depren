@@ -1,6 +1,0 @@
-[gd_scene load_steps=15 format=3]
-
-[ext_resource type="PackedScene" uid="uid://bj4nv2cqvh2wi" path="res://scenes/player/player.tscn" id="1_ced2p"]
-[ext_resource type="Script" path="res://scenes/world.gd" id="1_j6jdc"]
-[ext_resource type="PackedScene" path="res://debug_tools/debug_layer.tscn" id="3_axxhg"]
-[ext_resource type="PackedScene" uid="uid://bw18nq2w124ot" path="res://scenes/objects/jump_elevator/jump_elevator.tscn" id="4_mc3uf"]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bykx72g8inbmg"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scenes/killing_floor/killing_floor.gd" id="1_8yrux"]
+[ext_resource type="Script" path="res://scenes/objects/killing_floor/killing_floor.gd" id="1_8yrux"]
 [ext_resource type="Texture2D" uid="uid://bg0wrkes71ra2" path="res://addons/debug_tools/kenney_prototypetextures/Dark/texture_01.png" id="1_hc7hh"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8fj81"]
