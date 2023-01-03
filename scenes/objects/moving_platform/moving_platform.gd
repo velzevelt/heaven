@@ -9,5 +9,7 @@ func _physics_process(delta):
 	else:
 		path.progress -= delta
 	
-	if path.progress == 1:
+	if path.progress >= 0.99:
 		reached_end = true
+	elif path.progress <= 0.01 and reached_end:
+		reached_end = false
