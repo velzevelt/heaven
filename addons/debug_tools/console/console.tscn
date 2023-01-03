@@ -7,17 +7,20 @@
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_k7d5k"]
 
 [node name="Console" type="VBoxContainer"]
+modulate = Color(1, 1, 1, 0.894118)
 offset_right = 299.0
 offset_bottom = 156.0
 mouse_filter = 2
 script = ExtResource("1_kwa2v")
 
 [node name="Separator" type="Panel" parent="."]
-layout_mode = 2
+offset_right = 299.0
 theme_override_styles/panel = SubResource("StyleBoxLine_k7d5k")
 
 [node name="Output" type="RichTextLabel" parent="."]
-layout_mode = 2
+offset_top = 4.0
+offset_right = 299.0
+offset_bottom = 117.0
 size_flags_vertical = 3
 focus_mode = 2
 bbcode_enabled = true
@@ -26,11 +29,15 @@ selection_enabled = true
 script = ExtResource("2_aduai")
 
 [node name="Separator2" type="Panel" parent="."]
-layout_mode = 2
+offset_top = 121.0
+offset_right = 299.0
+offset_bottom = 121.0
 theme_override_styles/panel = SubResource("StyleBoxLine_k7d5k")
 
 [node name="Input" type="LineEdit" parent="."]
-layout_mode = 2
+offset_top = 125.0
+offset_right = 299.0
+offset_bottom = 156.0
 placeholder_text = "Command..."
 script = ExtResource("3_3l3wc")
 

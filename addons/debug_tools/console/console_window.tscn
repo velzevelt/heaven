@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmxgr57m6lgu2"]
+[gd_scene load_steps=4 format=3 uid="uid://bmxgr57m6lgu2"]
 
 [ext_resource type="Script" path="res://addons/debug_tools/console/console_window.gd" id="1_j1kpn"]
 [ext_resource type="PackedScene" uid="uid://bw7chorft18wj" path="res://addons/debug_tools/console/console.tscn" id="1_jgubi"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ybvvy"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 0.572549)
+expand_margin_top = 30.0
+
 [node name="ConsoleWindow" type="Window"]
+transparent_bg = true
 title = "Console"
 size = Vector2i(500, 250)
+theme_override_styles/embedded_border = SubResource("StyleBoxFlat_ybvvy")
 script = ExtResource("1_j1kpn")
 
 [node name="Console" parent="." instance=ExtResource("1_jgubi")]
