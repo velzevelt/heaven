@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://cv2ouxpch6ixv"]
+[gd_scene load_steps=2 format=3 uid="uid://cv2ouxpch6ixv"]
+
+[ext_resource type="Script" path="res://scenes/objects/temp_platform/temp_platform.gd" id="1_ffs4u"]
 
 [node name="TempPlatform" type="Node3D"]
+script = ExtResource("1_ffs4u")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
