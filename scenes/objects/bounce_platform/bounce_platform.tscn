@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bw18nq2w124ot"]
+[gd_scene load_steps=5 format=3 uid="uid://cgaiwsluglv8r"]
 
-[ext_resource type="Script" path="res://scenes/objects/jump_elevator/jump_elevator.gd" id="1_a8eqn"]
+[ext_resource type="Script" path="res://scenes/objects/bounce_platform/bounce_platform.gd" id="1_a8eqn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2k3b3"]
 
@@ -9,7 +9,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84uwm"]
 albedo_color = Color(1, 1, 0.180392, 1)
 
-[node name="JumpElevator" type="Node3D"]
+[node name="BouncePlatform" type="Node3D"]
 script = ExtResource("1_a8eqn")
 
 [node name="Area3D" type="Area3D" parent="."]

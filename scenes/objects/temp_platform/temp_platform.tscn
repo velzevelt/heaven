@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cv2ouxpch6ixv"]
+
+[node name="TempPlatform" type="Node3D"]
