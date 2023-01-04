@@ -61,6 +61,6 @@ rotation_mode = 0
 update_rotation = false
 
 [node name="Platform" parent="MovingPlatform2" index="1"]
-transform = Transform3D(1, -9.53882e-05, 6.61742e-05, 9.53972e-05, 1, -0.000136712, -6.61612e-05, 0.000136718, 1, 0, 0, 0)
+transform = Transform3D(1, -9.53881e-05, 6.61742e-05, 9.53972e-05, 1, -0.000136712, -6.61612e-05, 0.000136718, 1, 0, 0, 0)
 
 [editable path="MovingPlatform2"]

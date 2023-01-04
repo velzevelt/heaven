@@ -17,6 +17,21 @@ point_count = 2
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yiyfp"]
 albedo_texture = ExtResource("1_wj6mp")
 
+[sub_resource type="Animation" id="Animation_jyuh0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_lqvj2"]
 resource_name = "move_platform"
 length = 2.0
@@ -33,21 +48,6 @@ tracks/0/keys = {
 "values": [0.0, 1.0, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_jyuh0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ue0o0"]
 _data = {
 "RESET": SubResource("Animation_jyuh0"),
@@ -61,7 +61,7 @@ script = ExtResource("1_2ec6a")
 curve = SubResource("Curve3D_5tdyh")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.572435, -0.301291, 0.762584, -2.98021e-08, 0.930041, 0.367453, -0.81994, -0.210345, 0.532393, 0, 0, 0)
+transform = Transform3D(0.572435, -0.301291, 0.762584, -2.98021e-08, 0.930041, 0.367452, -0.81994, -0.210344, 0.532393, 0, 0, 0)
 loop = false
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Path3D/PathFollow3D"]
@@ -69,7 +69,7 @@ transform = Transform3D(0.572445, -1.49013e-08, -0.819953, -0.301292, 0.930043, 
 remote_path = NodePath("../../../Platform")
 
 [node name="Platform" type="AnimatableBody3D" parent="."]
-transform = Transform3D(1, -9.56357e-05, 6.59227e-05, 9.53972e-05, 1, -0.000136912, -6.61612e-05, 0.000136718, 1, 0.476325, 0.229518, 0.332543)
+transform = Transform3D(1, 1.49012e-07, 6.55651e-07, -2.68221e-07, 1, 0, -7.15256e-07, 1.04308e-07, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform"]
 shape = SubResource("BoxShape3D_pxphh")

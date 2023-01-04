@@ -1,4 +1,4 @@
-extends Node3D
+class_name MovingPlatform extends Node3D
 
 @onready var anim_player = $AnimationPlayer as AnimationPlayer
 @export var autoplay := true
@@ -8,6 +8,7 @@ extends Node3D
 func _ready():
 	if autoplay:
 		anim_player.play('move_platform')
+	
 
 
 func _on_animation_player_animation_finished(anim_name):

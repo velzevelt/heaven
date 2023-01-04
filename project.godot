@@ -24,6 +24,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://addons/debug_tools/logger/message_types.gd"
 }, {
+"base": "Node3D",
+"class": &"MovingPlatform",
+"language": &"GDScript",
+"path": "res://scenes/objects/moving_platform/moving_platform.gd"
+}, {
 "base": "CharacterBody3D",
 "class": &"Player",
 "language": &"GDScript",
@@ -33,6 +38,7 @@ _global_script_class_icons={
 "ConsoleCommand": "",
 "Head": "",
 "MESSAGE_TYPE": "",
+"MovingPlatform": "",
 "Player": ""
 }
 
