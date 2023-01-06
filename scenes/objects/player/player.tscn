@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://htivn1hrnopu"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_gwrkw"]
 [ext_resource type="Script" path="res://scenes/objects/player/camera_controller.gd" id="2_8xvxh"]
@@ -6,6 +6,10 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y1312"]
 height = 1.7
+
+[sub_resource type="TorusMesh" id="TorusMesh_jjy5b"]
+inner_radius = 0.01
+outer_radius = 0.032
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37kd4"]
 albedo_color = Color(0.909804, 0.717647, 0.356863, 1)
@@ -31,6 +35,12 @@ fov = 80.0
 [node name="JumpPoint" type="Node3D" parent="Head"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.732067)
+
+[node name="Node3D" type="Node3D" parent="Head/JumpPoint"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/JumpPoint"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("TorusMesh_jjy5b")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_37kd4")

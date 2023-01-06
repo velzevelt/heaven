@@ -41,6 +41,5 @@ offset_bottom = 156.0
 placeholder_text = "Command..."
 script = ExtResource("3_3l3wc")
 
-[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="command_entered" from="Input" to="." method="_on_input_command_entered"]
 [connection signal="text_submitted" from="Input" to="Input" method="_on_text_submitted"]

@@ -10,7 +10,7 @@ const FRICTION = 10.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
+var first_jump = true
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -21,10 +21,12 @@ func _physics_process(delta):
 
 	# Handle Jump. Holding jump key longer make jump higher
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		first_jump = true
 		jump(JUMP_VELOCITY)
 		
-	if Input.is_action_just_released("jump") and not is_on_floor():
+	if Input.is_action_just_released("jump") and not is_on_floor() and first_jump:
 		self.velocity.y /= JUMP_RELEASE
+		first_jump = false
 	
 	
 	
