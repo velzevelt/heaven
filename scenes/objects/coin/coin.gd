@@ -11,4 +11,4 @@ func _on_area_3d_body_entered(body):
 
 func _on_pickup():
 	Logger.debug_log("I'm a happy coin")
-	call_deferred('free')
+	queue_free()

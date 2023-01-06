@@ -5,13 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://bmxgr57m6lgu2" path="res://addons/debug_tools/console/console_window.tscn" id="3_pc2c0"]
 
 [node name="DebugLayer" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_h2jx2")
 
 [node name="FPSCounter" parent="." instance=ExtResource("1_8yair")]
-text = "[color=#00ff00ff]134"
+text = "[color=#00ff00ff]145"
 
 [node name="ConsoleWindow" parent="." instance=ExtResource("3_pc2c0")]
 position = Vector2i(622, 47)
-transient = true
 transparent = true
 min_size = Vector2i(50, 25)

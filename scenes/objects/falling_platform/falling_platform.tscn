@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo52q4ykamgje"]
+
+[ext_resource type="PackedScene" uid="uid://dr8dyql37qlyu" path="res://scenes/objects/moving_platform/moving_platform.tscn" id="1_upfu8"]
+[ext_resource type="Script" path="res://scenes/objects/falling_platform/falling_platform.gd" id="2_o36f3"]
+
+[node name="FallingPlatform" instance=ExtResource("1_upfu8")]
+script = ExtResource("2_o36f3")
+live_time = 10.0
+autofall = true
+
+[node name="Platform" parent="." index="1"]
+transform = Transform3D(0.999999, 3.57628e-07, 8.94071e-07, -3.57628e-07, 0.999999, -2.98024e-08, -8.9407e-07, 2.98021e-08, 1, 0, 0, 0)
+
+[node name="Timer" type="Timer" parent="." index="3"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

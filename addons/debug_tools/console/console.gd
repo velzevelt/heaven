@@ -2,7 +2,6 @@ extends VBoxContainer
 
 
 @export var commands_directory_path : String = "res://addons/debug_tools/console/commands"
-@onready var _init_position = position
 
 var command_list = {
 	
@@ -44,11 +43,6 @@ func create_command_object(command : String) -> ConsoleCommand:
 	return command_class
 
 
-
-
-func _on_visibility_changed():
-	if _init_position:
-		position = _init_position
 
 
 func _on_input_command_entered(command, arguments):

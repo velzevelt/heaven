@@ -23,5 +23,5 @@ func _on_area_3d_body_entered(body):
 
 func _on_timer_timeout():
 	fell.emit()
-	
+	Logger.debug_log('Platform has fallen')
 	call_deferred('free')
