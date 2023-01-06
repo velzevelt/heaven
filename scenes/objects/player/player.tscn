@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bj4nv2cqvh2wi"]
+[gd_scene load_steps=7 format=3]
 
-[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_gwrkw"]
-[ext_resource type="Script" path="res://scenes/player/camera_controller.gd" id="2_8xvxh"]
-[ext_resource type="Script" path="res://scenes/player/player_debug_mesh.gd" id="3_rbpt3"]
+[ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_gwrkw"]
+[ext_resource type="Script" path="res://scenes/objects/player/camera_controller.gd" id="2_8xvxh"]
+[ext_resource type="Script" path="res://scenes/objects/player/player_debug_mesh.gd" id="3_rbpt3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y1312"]
 height = 1.7

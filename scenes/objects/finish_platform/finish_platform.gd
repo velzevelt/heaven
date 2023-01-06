@@ -1,5 +1,7 @@
 extends Node
 
+signal finished
+
 @onready var timer = $Timer as Timer
 @onready var area = $Area3D as Area3D
 
@@ -11,11 +13,12 @@ func _on_area_3d_body_entered(body):
 	if body is Player:
 		# Player can fall from this platform, we must be sure he stands still
 		if body.velocity == Vector3.ZERO:
+			finished.emit()
 			finish()
 		else:
 			timer.start(1)
 			await timer.timeout
-			# This needs for better accurancy
+			# Refreshing area. This needs for a better accurancy
 			if area.overlaps_body(body):
 				_on_area_3d_body_entered(body)
 

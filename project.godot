@@ -9,6 +9,11 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "Node3D",
+"class": &"Coin",
+"language": &"GDScript",
+"path": "res://scenes/objects/coin/coin.gd"
+}, {
 "base": "Object",
 "class": &"ConsoleCommand",
 "language": &"GDScript",
@@ -17,7 +22,7 @@ _global_script_classes=[{
 "base": "Node3D",
 "class": &"Head",
 "language": &"GDScript",
-"path": "res://scenes/player/camera_controller.gd"
+"path": "res://scenes/objects/player/camera_controller.gd"
 }, {
 "base": "RefCounted",
 "class": &"MESSAGE_TYPE",
@@ -32,9 +37,10 @@ _global_script_classes=[{
 "base": "CharacterBody3D",
 "class": &"Player",
 "language": &"GDScript",
-"path": "res://scenes/player/player.gd"
+"path": "res://scenes/objects/player/player.gd"
 }]
 _global_script_class_icons={
+"Coin": "",
 "ConsoleCommand": "",
 "Head": "",
 "MESSAGE_TYPE": "",

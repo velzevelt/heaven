@@ -37,3 +37,5 @@ func jump(jump_velocity : float):
 	var jump_direction = head.get_jump_direction()
 	self.velocity.x = jump_direction.x * SPEED
 	self.velocity.z = jump_direction.z * SPEED
+
+

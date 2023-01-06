@@ -1,21 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6f6b16mcpyds"]
+[gd_scene load_steps=10 format=3 uid="uid://cg2gatbwypom3"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_j6jdc"]
 [ext_resource type="PackedScene" uid="uid://cxiks5q73atjs" path="res://scenes/objects/start_platform/start_platform.tscn" id="2_nt8te"]
 [ext_resource type="PackedScene" uid="uid://bxj7t8v411wmj" path="res://scenes/objects/finish_platform/finish_platform.tscn" id="3_r7a5l"]
-[ext_resource type="PackedScene" uid="uid://bj4nv2cqvh2wi" path="res://scenes/player/player.tscn" id="4_3kdap"]
+[ext_resource type="PackedScene" path="res://scenes/objects/player/player.tscn" id="4_3kdap"]
 [ext_resource type="PackedScene" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="5_soid6"]
 [ext_resource type="PackedScene" uid="uid://deaa8isrf48o5" path="res://scenes/objects/platform/platform.tscn" id="6_ff8xs"]
-[ext_resource type="PackedScene" path="res://scenes/objects/coin/coin.tscn" id="7_6vemf"]
+[ext_resource type="PackedScene" uid="uid://ca44olq010ifc" path="res://scenes/objects/coin/coin.tscn" id="7_6vemf"]
 [ext_resource type="PackedScene" uid="uid://dxyvccbblq6py" path="res://scenes/objects/thorn/thorn.tscn" id="8_b6n5n"]
 [ext_resource type="PackedScene" uid="uid://dr8dyql37qlyu" path="res://scenes/objects/moving_platform/moving_platform.tscn" id="9_8sbeb"]
-
-[sub_resource type="Curve3D" id="Curve3D_tlggi"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1.55315, 3.06616, -0.192904),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_j6jdc")
@@ -44,23 +37,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.40862, 0.625832, -2.93058)
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.744038, 0)
 
 [node name="MovingPlatform" parent="." instance=ExtResource("9_8sbeb")]
-transform = Transform3D(0.584887, 0, 0.811115, 0, 1, 0, -0.811115, 0, 0.584887, -2.136, 0, -1.28319)
-
-[node name="MovingPlatform2" parent="." instance=ExtResource("9_8sbeb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.1179)
-loop = false
-
-[node name="Path3D" parent="MovingPlatform2" index="0"]
-curve = SubResource("Curve3D_tlggi")
-
-[node name="PathFollow3D" parent="MovingPlatform2/Path3D" index="0"]
-transform = Transform3D(0.999992, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, 0, 0)
-rotation_mode = 0
-
-[node name="RemoteTransform3D" parent="MovingPlatform2/Path3D/PathFollow3D" index="0"]
-update_rotation = false
-
-[node name="Platform" parent="MovingPlatform2" index="1"]
-transform = Transform3D(1, -9.53881e-05, 6.61742e-05, 9.53972e-05, 1, -0.000136712, -6.61612e-05, 0.000136718, 1, 0, 0, 0)
-
-[editable path="MovingPlatform2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.136, 0, -1.28319)

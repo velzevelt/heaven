@@ -7,3 +7,7 @@ func _process(delta):
 
 
 
+
+
+func _on_moving_platform_visibility_changed():
+	pass # Replace with function body.
