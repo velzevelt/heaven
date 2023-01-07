@@ -10,6 +10,7 @@ signal fell
 
 func _ready():
 	super()
+	
 	if autofall:
 		player_entered.emit()
 
@@ -23,4 +24,5 @@ func _on_player_entered():
 func _on_timer_timeout():
 	fell.emit()
 	Logger.debug_log('Platform has fallen')
-	visible = false
+	
+	call_deferred('free')

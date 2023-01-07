@@ -9,16 +9,21 @@ signal move_ended
 
 @onready var path_follow : PathFollow3D = $Path3D/PathFollow3D
 
+var moving := false
 
 func _ready():
 	super()
+	
+	move_started.connect(func(): moving = true)
+	move_ended.connect(func(): moving = false)
 	
 	if autoplay:
 		move_platform()
 
 
 func _on_player_entered():
-	move_platform()
+	if not moving:
+		move_platform()
 
 
 func move_platform():

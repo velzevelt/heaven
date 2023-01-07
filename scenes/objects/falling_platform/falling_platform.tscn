@@ -8,6 +8,9 @@ script = ExtResource("2_o36f3")
 live_time = 10.0
 autofall = true
 
+[node name="Platform" parent="." index="1"]
+platform_on_leave = 2
+
 [node name="Timer" type="Timer" parent="." index="3"]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

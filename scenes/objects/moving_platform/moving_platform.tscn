@@ -25,8 +25,9 @@ transform = Transform3D(0.572445, -1.49013e-08, -0.819953, -0.301292, 0.930043, 
 remote_path = NodePath("../../../Platform")
 update_rotation = false
 
-[node name="Platform" type="AnimatableBody3D" parent="."]
+[node name="Platform" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.999999, 3.57628e-07, 8.94071e-07, -3.57628e-07, 0.999999, -2.98024e-08, -8.9407e-07, 2.98021e-08, 1, 0, 0, 0)
+motion_mode = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform"]
 shape = SubResource("BoxShape3D_pxphh")

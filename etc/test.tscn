@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://y3fn3k68spc5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xoi0j"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_1e5ha"]
+
+[sub_resource type="Animation" id="Animation_xfgb2"]
+resource_name = "Test"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.828286, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_657vx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_el138"]
+_data = {
+"RESET": SubResource("Animation_657vx"),
+"Test": SubResource("Animation_xfgb2")
+}
+
+[node name="Test" type="Node3D"]
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+shape = SubResource("SphereShape3D_xoi0j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D"]
+mesh = SubResource("SphereMesh_1e5ha")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_el138")
+}
