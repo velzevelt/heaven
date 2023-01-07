@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5xt72yli6vxi"]
+
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_266bn"]
+[ext_resource type="PackedScene" uid="uid://cxiks5q73atjs" path="res://scenes/objects/start_platform/start_platform.tscn" id="2_n6gct"]
+[ext_resource type="PackedScene" uid="uid://htivn1hrnopu" path="res://scenes/objects/player/player.tscn" id="3_8bt7t"]
+[ext_resource type="PackedScene" uid="uid://bxj7t8v411wmj" path="res://scenes/objects/finish_platform/finish_platform.tscn" id="4_75jj4"]
+[ext_resource type="PackedScene" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="5_kuic8"]
+
+[node name="Level1" type="Node3D"]
+script = ExtResource("1_266bn")
+
+[node name="StartPlatform" parent="." instance=ExtResource("2_n6gct")]
+
+[node name="Player" parent="." instance=ExtResource("3_8bt7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.06947, 0)
+
+[node name="FinishPlatform" parent="." instance=ExtResource("4_75jj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.00178)
+
+[node name="KillingFloor" parent="." instance=ExtResource("5_kuic8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00046, 0)

@@ -1,7 +1,7 @@
 class_name Platform extends Node3D
 
-signal player_entered(player)
-signal player_exited(player)
+signal player_entered()
+signal player_exited()
 
 @onready var area = $Area3D
 

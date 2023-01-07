@@ -17,6 +17,8 @@ func _ready():
 
 
 func _on_player_entered():
+	super()
+	
 	timer.start(live_time)
 	fall_started.emit(timer)
 
