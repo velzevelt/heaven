@@ -9,12 +9,19 @@
 [ext_resource type="PackedScene" uid="uid://ca44olq010ifc" path="res://scenes/objects/coin/coin.tscn" id="7_6vemf"]
 [ext_resource type="PackedScene" uid="uid://dxyvccbblq6py" path="res://scenes/objects/thorn/thorn.tscn" id="8_b6n5n"]
 [ext_resource type="PackedScene" uid="uid://dr8dyql37qlyu" path="res://scenes/objects/moving_platform/moving_platform.tscn" id="9_8sbeb"]
-[ext_resource type="PackedScene" uid="uid://bo52q4ykamgje" path="res://scenes/objects/falling_platform/falling_platform.tscn" id="10_0bayv"]
+
+[sub_resource type="Curve3D" id="Curve3D_vhad1"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2.7022, 1.19535, 0.040206, 0, 0, 0, 0, 0, 0, -0.755656, 2.66082, -0.237372),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_j6jdc")
 
 [node name="StartPlatform" parent="." instance=ExtResource("2_nt8te")]
+script = null
 
 [node name="FinishPlatform" parent="." instance=ExtResource("3_r7a5l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.33532)
@@ -40,5 +47,13 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.744038, 0)
 [node name="MovingPlatform" parent="." instance=ExtResource("9_8sbeb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.136, 0, -1.28319)
 
-[node name="FallingPlatform" parent="." instance=ExtResource("10_0bayv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.48019)
+[node name="Path3D" parent="MovingPlatform" index="0"]
+curve = SubResource("Curve3D_vhad1")
+
+[node name="PathFollow3D" parent="MovingPlatform/Path3D" index="0"]
+transform = Transform3D(0.014877, 0.404466, -0.914431, 2.98021e-08, 0.914532, 0.40451, 0.999881, -0.00601797, 0.0136056, 0, 0, 0)
+
+[node name="Platform" parent="MovingPlatform" index="1"]
+transform = Transform3D(0.999999, 3.57628e-07, 8.9407e-07, -3.57628e-07, 0.999999, -2.98024e-08, -8.9407e-07, 2.98021e-08, 1, 0, 0, 0)
+
+[editable path="MovingPlatform"]

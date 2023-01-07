@@ -1,5 +1,6 @@
 extends MovingPlatform
 
+signal fall_started(timer)
 signal fell
 
 @export var live_time := 10.0
@@ -8,20 +9,18 @@ signal fell
 
 
 func _ready():
+	super()
 	if autofall:
-		_on_player_entered()
+		player_entered.emit()
+
 
 
 func _on_player_entered():
 	timer.start(live_time)
-
-
-func _on_area_3d_body_entered(body):
-	if body is Player:
-		_on_player_entered()
+	fall_started.emit(timer)
 
 
 func _on_timer_timeout():
 	fell.emit()
 	Logger.debug_log('Platform has fallen')
-	call_deferred('free')
+	visible = false

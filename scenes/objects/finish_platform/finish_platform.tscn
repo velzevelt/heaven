@@ -16,12 +16,10 @@ script = ExtResource("2_kqes5")
 [node name="MeshInstance3D" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_hunlt")
 
-[node name="Area3D" type="Area3D" parent="." index="2"]
+[node name="Area3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.605707, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 shape = SubResource("BoxShape3D_rkjou")
 
 [node name="Timer" type="Timer" parent="." index="3"]
-
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

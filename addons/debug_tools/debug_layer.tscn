@@ -14,4 +14,5 @@ text = "[color=#00ff00ff]145"
 [node name="ConsoleWindow" parent="." instance=ExtResource("3_pc2c0")]
 position = Vector2i(622, 47)
 transparent = true
-min_size = Vector2i(50, 25)
+min_size = Vector2i(100, 50)
+max_size = Vector2i(1920, 1080)
