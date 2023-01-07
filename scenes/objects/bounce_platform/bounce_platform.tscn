@@ -1,15 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0wbrey1drq6p"]
+[gd_scene load_steps=6 format=3 uid="uid://c0wbrey1drq6p"]
 
-[ext_resource type="Texture2D" uid="uid://bo81moji5c2u4" path="res://addons/debug_tools/kenney_prototypetextures/Light/texture_01.png" id="2_7bxbj"]
+[ext_resource type="Script" path="res://scenes/objects/bounce_platform/bounce_platform.gd" id="1_kcjy0"]
+[ext_resource type="PackedScene" uid="uid://dob7y3xd5n8in" path="res://scenes/objects/platform_area/platform_area.tscn" id="1_xfn1r"]
+[ext_resource type="Texture2D" uid="uid://c2rpvnx5aenl2" path="res://addons/debug_tools/kenney_prototypetextures/Orange/texture_01.png" id="2_8ea1p"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_fjode"]
+[sub_resource type="BoxMesh" id="BoxMesh_nb74u"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6sck6"]
-albedo_texture = ExtResource("2_7bxbj")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8igv4"]
+albedo_texture = ExtResource("2_8ea1p")
 
 [node name="BouncePlatform" type="Node3D"]
+script = ExtResource("1_kcjy0")
+
+[node name="Area3D" parent="." instance=ExtResource("1_xfn1r")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_fjode")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_6sck6")
+mesh = SubResource("BoxMesh_nb74u")
+surface_material_override/0 = SubResource("StandardMaterial3D_8igv4")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cg2gatbwypom3"]
+[gd_scene load_steps=13 format=3 uid="uid://cg2gatbwypom3"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_j6jdc"]
 [ext_resource type="PackedScene" uid="uid://cxiks5q73atjs" path="res://scenes/objects/start_platform/start_platform.tscn" id="2_nt8te"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dxyvccbblq6py" path="res://scenes/objects/thorn/thorn.tscn" id="8_b6n5n"]
 [ext_resource type="PackedScene" uid="uid://dr8dyql37qlyu" path="res://scenes/objects/moving_platform/moving_platform.tscn" id="9_8sbeb"]
 [ext_resource type="PackedScene" uid="uid://bo52q4ykamgje" path="res://scenes/objects/falling_platform/falling_platform.tscn" id="10_0bayv"]
+[ext_resource type="PackedScene" uid="uid://c0wbrey1drq6p" path="res://scenes/objects/bounce_platform/bounce_platform.tscn" id="11_ostu5"]
 
 [sub_resource type="Curve3D" id="Curve3D_vhad1"]
 _data = {
@@ -22,13 +23,14 @@ point_count = 3
 script = ExtResource("1_j6jdc")
 
 [node name="StartPlatform" parent="." instance=ExtResource("2_nt8te")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.72989)
 script = null
 
 [node name="FinishPlatform" parent="." instance=ExtResource("3_r7a5l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.33532)
 
 [node name="Player" parent="." instance=ExtResource("4_3kdap")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.94901, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.94901, 1.70828)
 
 [node name="KillingFloor" parent="." instance=ExtResource("5_soid6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.37236, 0)
@@ -52,7 +54,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.136, 0, -1.28319)
 curve = SubResource("Curve3D_vhad1")
 
 [node name="PathFollow3D" parent="MovingPlatform/Path3D" index="0"]
-transform = Transform3D(0.0148772, 0.404465, -0.914431, 0, 0.914533, 0.404509, 0.999881, -0.00601802, 0.0136058, 0, 0, 0)
+transform = Transform3D(0.0148772, 0.404465, -0.914431, 0, 0.914533, 0.404509, 0.99988, -0.00601802, 0.0136058, 0, 0, 0)
 
 [node name="Platform" parent="MovingPlatform" index="1"]
 transform = Transform3D(0.999999, 3.57628e-07, 8.9407e-07, -3.57628e-07, 1, -2.98024e-08, -8.9407e-07, 2.98021e-08, 0.999999, 0, 0, 0)
@@ -72,6 +74,9 @@ transform = Transform3D(0.999999, 3.57628e-07, 8.9407e-07, -3.57628e-07, 1, -2.9
 [node name="FallingPlatform" parent="." instance=ExtResource("10_0bayv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.53115)
 live_time = 3.0
+
+[node name="BouncePlatform" parent="." instance=ExtResource("11_ostu5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.98326)
 
 [editable path="MovingPlatform"]
 [editable path="MovingPlatform2"]
