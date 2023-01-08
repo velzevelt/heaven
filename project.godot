@@ -44,11 +44,6 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://addons/debug_tools/logger/message_types.gd"
 }, {
-"base": "PlatformComponent",
-"class": &"MovingPlatformComponent",
-"language": &"GDScript",
-"path": "res://scenes/components/moving_platform_component.gd"
-}, {
 "base": "Node3D",
 "class": &"PlatformComponent",
 "language": &"GDScript",
@@ -58,6 +53,11 @@ _global_script_classes=[{
 "class": &"Player",
 "language": &"GDScript",
 "path": "res://scenes/objects/player/player.gd"
+}, {
+"base": "PlatformComponent",
+"class": &"_movingPlatformComponent",
+"language": &"GDScript",
+"path": "res://scenes/components/moving_platform_component.gd"
 }]
 _global_script_class_icons={
 "BouncePlatformComponent": "",
@@ -67,9 +67,9 @@ _global_script_class_icons={
 "FinishPlatformComponent": "",
 "Head": "",
 "MESSAGE_TYPE": "",
-"MovingPlatformComponent": "",
 "PlatformComponent": "",
-"Player": ""
+"Player": "",
+"_movingPlatformComponent": ""
 }
 
 [application]

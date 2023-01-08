@@ -1,4 +1,4 @@
-class_name MovingPlatformComponent 
+class_name _movingPlatformComponent 
 extends PlatformComponent
 @tool
 
@@ -15,7 +15,8 @@ signal _path_follow_changed
 		path_follow = value
 		_path_follow_changed.emit()
 
-var moving := false
+
+var _moving := false
 
 
 func _ready():
@@ -27,8 +28,8 @@ func _initialize():
 	super()
 	path_follow = get_node(path_follow)
 	
-	move_started.connect(func(): moving = true)
-	move_ended.connect(func(): moving = false)
+	move_started.connect(func(): _moving = true)
+	move_ended.connect(func(): _moving = false)
 	
 	if autoplay:
 		move_platform()
@@ -43,7 +44,7 @@ func _get_configuration_warnings():
 
 
 func _on_player_entered():
-	if not moving:
+	if not _moving:
 		move_platform()
 
 

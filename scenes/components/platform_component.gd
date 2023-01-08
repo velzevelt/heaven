@@ -31,7 +31,6 @@ func _initialize():
 
 func _get_configuration_warnings():
 	var warnings = []
-	print(area)
 	if not area is NodePath:
 		warnings.append('Require Area3D')
 	

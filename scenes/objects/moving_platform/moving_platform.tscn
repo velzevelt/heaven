@@ -15,10 +15,6 @@ path_follow = NodePath("../Path3D/PathFollow3D")
 area = NodePath("../MovingPlatformBody/Area3D")
 
 [node name="Path3D" parent="." instance=ExtResource("3_ubrgq")]
-curve = null
-
-[node name="PathFollow3D" parent="Path3D" index="0"]
-transform = Transform3D(-0.711383, -0.358817, 0.604304, 0, 0.859848, 0.51055, -0.702804, 0.363197, -0.611681, 0, 0, 0)
 
 [node name="RemoteTransform3D" parent="Path3D/PathFollow3D" index="0"]
 remote_path = NodePath("../../../MovingPlatformBody")
