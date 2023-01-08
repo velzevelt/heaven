@@ -14,7 +14,7 @@ signal _area_changed
 
 
 func _ready():
-	_area_changed.connect(func(): print(111))
+	_area_changed.connect(func(): update_configuration_warnings())
 	update_configuration_warnings()
 	
 	if not Engine.is_editor_hint():
