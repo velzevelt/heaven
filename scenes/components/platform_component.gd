@@ -15,7 +15,6 @@ signal _area_changed
 
 func _ready():
 	_area_changed.connect(func(): update_configuration_warnings())
-	update_configuration_warnings()
 	
 	if not Engine.is_editor_hint():
 		_initialize()
@@ -31,10 +30,11 @@ func _initialize():
 
 
 func _get_configuration_warnings():
-	if is_instance_valid(area):
-		return []
+	var warnings = []
+	if not area is NodePath:
+		warnings.append('This node require Area3D')
 	
-	return ['This node require Area3D']
+	return warnings
 
 
 func _on_area_3d_body_entered(body):
