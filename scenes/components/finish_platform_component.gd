@@ -12,8 +12,6 @@ func _ready():
 
 
 
-
-
 func _on_area_3d_body_entered(body):
 	super(body)
 	
