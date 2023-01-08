@@ -1,4 +1,5 @@
-extends Platform
+class_name BouncePlatformComponent
+extends PlatformComponent
 
 @export var jump_force = 10.0
 

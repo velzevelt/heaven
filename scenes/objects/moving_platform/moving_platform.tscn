@@ -1,41 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://dr8dyql37qlyu"]
+[gd_scene load_steps=4 format=3 uid="uid://ckemuy5whwa3e"]
 
-[ext_resource type="Script" path="res://scenes/objects/moving_platform/moving_platform.gd" id="1_2ec6a"]
-[ext_resource type="Texture2D" uid="uid://l8fqklj10278" path="res://addons/debug_tools/kenney_prototypetextures/Purple/texture_01.png" id="1_wj6mp"]
-[ext_resource type="PackedScene" uid="uid://dob7y3xd5n8in" path="res://scenes/objects/platform_area/platform_area.tscn" id="3_kd7tf"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_pxphh"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_fjode"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yiyfp"]
-albedo_texture = ExtResource("1_wj6mp")
+[ext_resource type="PackedScene" path="res://scenes/components/subcomponents/moving_platform_body.tscn" id="1_y0mgq"]
+[ext_resource type="Script" path="res://scenes/components/moving_platform_component.gd" id="3_chyvh"]
+[ext_resource type="PackedScene" uid="uid://droywgubrul4i" path="res://scenes/components/subcomponents/path.tscn" id="3_ubrgq"]
 
 [node name="MovingPlatform" type="Node3D"]
-script = ExtResource("1_2ec6a")
 
-[node name="Path3D" type="Path3D" parent="."]
+[node name="MovingPlatformBody" parent="." instance=ExtResource("1_y0mgq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.572435, -0.301291, 0.762584, -2.98021e-08, 0.930041, 0.367452, -0.81994, -0.210344, 0.532393, 0, 0, 0)
-loop = false
+[node name="MovingPlatformComponent" type="Node3D" parent="."]
+script = ExtResource("3_chyvh")
+path_follow = NodePath("../Path3D/PathFollow3D")
+area = NodePath("../MovingPlatformBody/Area3D")
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Path3D/PathFollow3D"]
-transform = Transform3D(0.572445, -1.49013e-08, -0.819953, -0.301292, 0.930043, -0.210345, 0.762585, 0.367453, 0.532394, 0, 0, 0)
-remote_path = NodePath("../../../Platform")
-update_rotation = false
+[node name="Path3D" parent="." instance=ExtResource("3_ubrgq")]
 
-[node name="Platform" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.999999, 3.57628e-07, 8.94071e-07, -3.57628e-07, 0.999999, -2.98024e-08, -8.9407e-07, 2.98021e-08, 1, 0, 0, 0)
-motion_mode = 1
+[node name="PathFollow3D" parent="Path3D" index="0"]
+transform = Transform3D(-0.711383, -0.358817, 0.604304, 0, 0.859848, 0.51055, -0.702804, 0.363197, -0.611681, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform"]
-shape = SubResource("BoxShape3D_pxphh")
+[node name="RemoteTransform3D" parent="Path3D/PathFollow3D" index="0"]
+remote_path = NodePath("../../../MovingPlatformBody")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Platform"]
-transform = Transform3D(1, 5.09032e-14, -8.94074e-08, -1.23484e-13, 1, 1.42109e-14, -1.04309e-07, 3.72532e-09, 0.999999, 0, 0, 0)
-mesh = SubResource("BoxMesh_fjode")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_yiyfp")
-
-[node name="Area3D" parent="." instance=ExtResource("3_kd7tf")]
+[editable path="Path3D"]

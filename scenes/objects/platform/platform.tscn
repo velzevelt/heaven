@@ -1,27 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://deaa8isrf48o5"]
+[gd_scene load_steps=3 format=3 uid="uid://byyvo5cy7ir30"]
 
-[ext_resource type="Script" path="res://scenes/objects/platform/platform.gd" id="1_iacoc"]
-[ext_resource type="Texture2D" uid="uid://l8fqklj10278" path="res://addons/debug_tools/kenney_prototypetextures/Purple/texture_01.png" id="1_kv41x"]
-[ext_resource type="PackedScene" uid="uid://dob7y3xd5n8in" path="res://scenes/objects/platform_area/platform_area.tscn" id="3_8hhnl"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_fjode"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3wox"]
-albedo_texture = ExtResource("1_kv41x")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_pxphh"]
+[ext_resource type="PackedScene" uid="uid://b0t52t1urnyvs" path="res://scenes/components/subcomponents/platform_body.tscn" id="1_4mv1u"]
+[ext_resource type="PackedScene" uid="uid://dob7y3xd5n8in" path="res://scenes/components/subcomponents/platform_area.tscn" id="3_8hhnl"]
 
 [node name="Platform" type="Node3D"]
-script = ExtResource("1_iacoc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_fjode")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_w3wox")
+[node name="PlatformBody" parent="." instance=ExtResource("1_4mv1u")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_pxphh")
-
-[node name="Area3D" parent="." instance=ExtResource("3_8hhnl")]
+[node name="Area3D" parent="PlatformBody" instance=ExtResource("3_8hhnl")]

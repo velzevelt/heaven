@@ -9,6 +9,11 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "PlatformComponent",
+"class": &"BouncePlatformComponent",
+"language": &"GDScript",
+"path": "res://scenes/components/bounce_platform_component.gd"
+}, {
 "base": "Node3D",
 "class": &"Coin",
 "language": &"GDScript",
@@ -18,6 +23,16 @@ _global_script_classes=[{
 "class": &"ConsoleCommand",
 "language": &"GDScript",
 "path": "res://addons/debug_tools/console/command.gd"
+}, {
+"base": "PlatformComponent",
+"class": &"FallingPlatformComponent",
+"language": &"GDScript",
+"path": "res://scenes/components/falling_platform_component.gd"
+}, {
+"base": "PlatformComponent",
+"class": &"FinishPlatformComponent",
+"language": &"GDScript",
+"path": "res://scenes/components/finish_platform_component.gd"
 }, {
 "base": "Node3D",
 "class": &"Head",
@@ -29,15 +44,15 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://addons/debug_tools/logger/message_types.gd"
 }, {
-"base": "Platform",
-"class": &"MovingPlatform",
+"base": "PlatformComponent",
+"class": &"MovingPlatformComponent",
 "language": &"GDScript",
-"path": "res://scenes/objects/moving_platform/moving_platform.gd"
+"path": "res://scenes/components/moving_platform_component.gd"
 }, {
 "base": "Node3D",
-"class": &"Platform",
+"class": &"PlatformComponent",
 "language": &"GDScript",
-"path": "res://scenes/objects/platform/platform.gd"
+"path": "res://scenes/components/platform_component.gd"
 }, {
 "base": "CharacterBody3D",
 "class": &"Player",
@@ -45,19 +60,22 @@ _global_script_classes=[{
 "path": "res://scenes/objects/player/player.gd"
 }]
 _global_script_class_icons={
+"BouncePlatformComponent": "",
 "Coin": "",
 "ConsoleCommand": "",
+"FallingPlatformComponent": "",
+"FinishPlatformComponent": "",
 "Head": "",
 "MESSAGE_TYPE": "",
-"MovingPlatform": "",
-"Platform": "",
+"MovingPlatformComponent": "",
+"PlatformComponent": "",
 "Player": ""
 }
 
 [application]
 
 config/name="Heaven"
-run/main_scene="res://scenes/world.tscn"
+run/main_scene="res://scenes/levels/level_1.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 config/duplicate_logger_output_to_debugger=true

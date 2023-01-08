@@ -1,16 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bo52q4ykamgje"]
+[gd_scene load_steps=3 format=3 uid="uid://d1ng2ed33brbo"]
 
-[ext_resource type="PackedScene" uid="uid://dr8dyql37qlyu" path="res://scenes/objects/moving_platform/moving_platform.tscn" id="1_upfu8"]
-[ext_resource type="Script" path="res://scenes/objects/falling_platform/falling_platform.gd" id="2_o36f3"]
+[ext_resource type="PackedScene" path="res://scenes/components/subcomponents/moving_platform_body.tscn" id="2_lx7j1"]
+[ext_resource type="Script" path="res://scenes/components/falling_platform_component.gd" id="3_t1h54"]
 
-[node name="FallingPlatform" instance=ExtResource("1_upfu8")]
-script = ExtResource("2_o36f3")
-live_time = 10.0
+[node name="FallingPlatform" type="Node3D"]
+
+[node name="FallingPlatformComponent" type="Node3D" parent="."]
+script = ExtResource("3_t1h54")
+live_time = 5.0
 autofall = true
+area = NodePath("../MovingPlatformBody/Area3D")
 
-[node name="Platform" parent="." index="1"]
-platform_on_leave = 2
+[node name="MovingPlatformBody" parent="." instance=ExtResource("2_lx7j1")]
 
-[node name="Timer" type="Timer" parent="." index="3"]
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[editable path="MovingPlatformBody"]

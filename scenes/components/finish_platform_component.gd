@@ -1,8 +1,16 @@
-extends Platform
+class_name FinishPlatformComponent
+extends PlatformComponent
 
 signal finished
 
-@onready var timer = $Timer as Timer
+@onready var timer = Timer.new()
+
+
+func _ready():
+	super()
+	add_child(timer)
+
+
 
 
 

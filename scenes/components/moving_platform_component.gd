@@ -1,18 +1,20 @@
-class_name MovingPlatform extends Platform
+class_name MovingPlatformComponent 
+extends PlatformComponent
 
 signal move_started
 signal move_ended
 
 @export var autoplay := true
 @export var loop := true
-@export var anim_duration := 3.0
+@export_range(1.0, 15.0, 1.0) var anim_duration := 3.0
 
-@onready var path_follow : PathFollow3D = $Path3D/PathFollow3D
+@export_node_path(PathFollow3D) var path_follow
 
 var moving := false
 
 func _ready():
 	super()
+	path_follow = get_node(path_follow)
 	
 	move_started.connect(func(): moving = true)
 	move_ended.connect(func(): moving = false)
