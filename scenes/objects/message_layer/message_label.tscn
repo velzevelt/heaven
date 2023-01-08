@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c1tssgakfh1ad"]
+
+[node name="MessageLabel" type="RichTextLabel"]
+offset_right = 157.0
+offset_bottom = 62.0
+bbcode_enabled = true
+text = "'Space' jump
+'Mouse' looking"
