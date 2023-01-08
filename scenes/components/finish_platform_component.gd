@@ -1,15 +1,15 @@
 class_name FinishPlatformComponent
 extends PlatformComponent
+@tool
 
 signal finished
 
 @onready var timer = Timer.new()
 
 
-func _ready():
+func _initialize():
 	super()
 	add_child(timer)
-
 
 
 func _on_area_3d_body_entered(body):

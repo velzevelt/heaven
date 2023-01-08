@@ -37,7 +37,7 @@ func _initialize():
 func _get_configuration_warnings():
 	var warnings = super()
 	if not path_follow is NodePath:
-		warnings.append('This node require PathFollow')
+		warnings.append('Require PathFollow')
 	
 	return warnings
 

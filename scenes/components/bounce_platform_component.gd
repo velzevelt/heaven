@@ -1,6 +1,6 @@
 class_name BouncePlatformComponent
 extends PlatformComponent
-
+@tool
 
 @export var jump_force = 10.0
 

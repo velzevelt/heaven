@@ -1,5 +1,6 @@
 class_name FallingPlatformComponent 
 extends PlatformComponent
+@tool
 
 signal fall_started(timer)
 signal fell

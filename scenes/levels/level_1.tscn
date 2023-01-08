@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://byyvo5cy7ir30" path="res://scenes/objects/platform/platform.tscn" id="4_tnpxx"]
 [ext_resource type="Script" path="res://scenes/components/finish_platform_component.gd" id="5_eo1cd"]
 [ext_resource type="PackedScene" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="5_kuic8"]
-[ext_resource type="Script" path="res://scenes/components/platform_component.gd" id="6_c3iad"]
+[ext_resource type="Script" path="res://scenes/components/bounce_platform_component.gd" id="6_34j6j"]
 [ext_resource type="PackedScene" uid="uid://d1ng2ed33brbo" path="res://scenes/objects/falling_platform/falling_platform.tscn" id="6_uss38"]
 [ext_resource type="PackedScene" uid="uid://ckemuy5whwa3e" path="res://scenes/objects/moving_platform/moving_platform.tscn" id="7_o8gx8"]
 
@@ -25,13 +25,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.20279)
 
 [node name="FinishPlatformComponent" type="Node3D" parent="Platform2"]
 script = ExtResource("5_eo1cd")
+area = NodePath("../PlatformBody/Area3D")
 
 [node name="Platform3" parent="." instance=ExtResource("4_tnpxx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.47035, 0, -3.0688)
 
-[node name="PlatformComponent" type="Node3D" parent="Platform3"]
-script = ExtResource("6_c3iad")
-area = NodePath("../../Platform2/PlatformBody/Area3D")
+[node name="BouncePlatformComponent" type="Node3D" parent="Platform3"]
+script = ExtResource("6_34j6j")
+area = NodePath("../PlatformBody/Area3D")
 
 [node name="MovingPlatform" parent="." instance=ExtResource("7_o8gx8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.71653)
@@ -43,3 +44,4 @@ transform = Transform3D(1, 0, 0, 0, 0.300906, 0.953654, 0, -0.953654, 0.300906, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70553, 0, -2.89287)
 
 [editable path="Platform2"]
+[editable path="Platform3"]
