@@ -11,6 +11,7 @@ expand_margin_top = 30.0
 transparent_bg = true
 title = "Console"
 size = Vector2i(500, 250)
+content_scale_mode = 1
 theme_override_styles/embedded_border = SubResource("StyleBoxFlat_ybvvy")
 script = ExtResource("1_j1kpn")
 
@@ -24,6 +25,3 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
-[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
-[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="window_input" from="." to="." method="_on_window_input"]
