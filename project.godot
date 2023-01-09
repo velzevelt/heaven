@@ -75,7 +75,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Heaven"
-run/main_scene="res://scenes/levels/level_1.tscn"
+run/main_scene="res://scenes/levels/level_1/level_1.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 config/duplicate_logger_output_to_debugger=true

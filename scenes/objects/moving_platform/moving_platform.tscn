@@ -7,7 +7,6 @@
 [node name="MovingPlatform" type="Node3D"]
 
 [node name="MovingPlatformBody" parent="." instance=ExtResource("1_y0mgq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
 
 [node name="MovingPlatformComponent" type="Node3D" parent="."]
 script = ExtResource("3_chyvh")
