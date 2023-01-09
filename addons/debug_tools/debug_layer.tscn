@@ -9,12 +9,7 @@ process_mode = 3
 script = ExtResource("1_h2jx2")
 
 [node name="FPSCounter" parent="." instance=ExtResource("1_8yair")]
-text = "[color=#00ff00ff]130"
+text = "[color=#00ff00ff]145"
 
 [node name="ConsoleWindow" parent="." instance=ExtResource("3_pc2c0")]
-position = Vector2i(622, 47)
-transparent = true
-min_size = Vector2i(100, 50)
-max_size = Vector2i(1920, 1080)
-
-[connection signal="visibility_changed" from="." to="ConsoleWindow" method="_on_debug_layer_visibility_changed"]
+mode = 3
