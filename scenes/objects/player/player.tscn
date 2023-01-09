@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://htivn1hrnopu"]
+[gd_scene load_steps=9 format=3 uid="uid://htivn1hrnopu"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_gwrkw"]
 [ext_resource type="Script" path="res://scenes/objects/player/camera_controller.gd" id="2_8xvxh"]
+[ext_resource type="Texture2D" uid="uid://dnksh2ylbm1r8" path="res://sprites/crosshairs.svg" id="3_e0drv"]
 [ext_resource type="Script" path="res://scenes/objects/player/player_debug_mesh.gd" id="3_rbpt3"]
+[ext_resource type="Script" path="res://scenes/objects/player/crosshair.gd" id="4_0wg0i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y1312"]
 height = 1.7
@@ -31,6 +33,15 @@ fov = 80.0
 [node name="JumpPoint" type="Node3D" parent="Head"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.732067)
+
+[node name="CrosshairRaycast" type="RayCast3D" parent="Head"]
+target_position = Vector3(0, 0, -25)
+
+[node name="Crosshair" type="Sprite3D" parent="Head/CrosshairRaycast"]
+transform = Transform3D(0.047, 0, 0, 0, 0.047, 0, 0, 0, 0.047, 0, 0, 0)
+no_depth_test = true
+texture = ExtResource("3_e0drv")
+script = ExtResource("4_0wg0i")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_37kd4")

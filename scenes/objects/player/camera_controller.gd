@@ -2,8 +2,7 @@ class_name Head extends Node3D
 
 @onready var jump_point = $%JumpPoint
 
-var captured = false
-var mouse_sensitivity := 0.3
+@export var mouse_sensitivity := 0.3
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -12,11 +11,6 @@ func _input(event):
 		self.rotation.x = clamp( self.rotation.x, deg_to_rad(-90), deg_to_rad(90) )
 		
 
-
-func _process(delta):
-	if Input.is_action_just_pressed("left_click"):
-		captured = !captured
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if captured else Input.MOUSE_MODE_VISIBLE
 
 func get_jump_direction() -> Vector3:
 	return self.global_position.direction_to(jump_point.global_position)

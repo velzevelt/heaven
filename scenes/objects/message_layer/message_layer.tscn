@@ -1,9 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://bv1l2ovjce1ja"]
+[gd_scene load_steps=2 format=3 uid="uid://bv1l2ovjce1ja"]
 
-[ext_resource type="Script" path="res://scenes/objects/message_layer/message_layer.gd" id="1_f3r2w"]
-[ext_resource type="PackedScene" uid="uid://c1tssgakfh1ad" path="res://scenes/objects/message_layer/message_label.tscn" id="2_vd8kh"]
+[sub_resource type="GDScript" id="GDScript_buvn4"]
+script/source = "extends CanvasLayer
+
+var _message_queue : Array
+
+
+# Вызывая сообщение, добавляем в очередь
+# Показываем сообщение из очереди, удаляем его
+# Показываем другие сообщения из очереди, пока она не опустеет
+
+func message(control : Control):
+	pass
+
+"
 
 [node name="MessageLayer" type="CanvasLayer"]
-script = ExtResource("1_f3r2w")
-
-[node name="MessageLabel" parent="." instance=ExtResource("2_vd8kh")]
+script = SubResource("GDScript_buvn4")
