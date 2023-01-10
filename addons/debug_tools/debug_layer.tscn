@@ -9,14 +9,13 @@ process_mode = 3
 script = ExtResource("1_h2jx2")
 
 [node name="FPSCounter" parent="." instance=ExtResource("1_8yair")]
-text = "[color=#00ff00ff]142"
+text = "[color=#00ff00ff]145"
 
 [node name="Console" parent="." instance=ExtResource("3_f5ymr")]
 modulate = Color(1, 1, 1, 0.756863)
-anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -722.0
-offset_right = -10.0
+offset_left = -392.0
+offset_right = 0.0
 offset_bottom = 202.0
 grow_horizontal = 0

@@ -1,10 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bw7chorft18wj"]
+[gd_scene load_steps=6 format=3 uid="uid://bw7chorft18wj"]
 
 [ext_resource type="Script" path="res://addons/debug_tools/console/console.gd" id="1_kwa2v"]
 [ext_resource type="Script" path="res://addons/debug_tools/console/console_output.gd" id="2_aduai"]
 [ext_resource type="Script" path="res://addons/debug_tools/console/console_input.gd" id="3_3l3wc"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_k7d5k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eqqbx"]
 
 [node name="Console" type="VBoxContainer"]
 modulate = Color(1, 1, 1, 0.894118)
@@ -14,6 +16,7 @@ mouse_filter = 2
 script = ExtResource("1_kwa2v")
 
 [node name="Separator" type="Panel" parent="."]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_k7d5k")
 
@@ -35,7 +38,7 @@ script = ExtResource("2_aduai")
 
 [node name="Separator2" type="Panel" parent="."]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxLine_k7d5k")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_eqqbx")
 
 [node name="Input" type="LineEdit" parent="."]
 layout_mode = 2

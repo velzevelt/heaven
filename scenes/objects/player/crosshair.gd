@@ -1,16 +1,16 @@
 class_name CrosshairComponent extends Node
 @tool
 
-## Description
 @export_node_path(RayCast3D) var player_raycast:
 	set(value):
 		player_raycast = value
 		update_configuration_warnings()
 
-@export_node_path(Node, Sprite3D) var crosshair_sprite:
+@export_node_path(CanvasItem) var crosshair_sprite:
 	set(value):
 		crosshair_sprite = value
 		update_configuration_warnings()
+
 
 
 func _ready():
@@ -36,6 +36,18 @@ func _initialize():
 func _physics_process(_delta):
 	if not Engine.is_editor_hint():
 		if player_raycast.is_colliding():
-			crosshair_sprite.visible = true
+			var tween = create_tween()
+			tween.tween_property(crosshair_sprite, 'modulate', Color(1,1,1,0.5), 1)
+			tween.parallel()
+			tween.tween_property(crosshair_sprite, 'scale', Vector2(0.5, 0.5), 1)
 		else:
-			crosshair_sprite.visible = false
+			var tween = create_tween()
+			tween.tween_property(crosshair_sprite, 'modulate', Color.WHITE, 1)
+			tween.parallel()
+			tween.tween_property(crosshair_sprite, 'scale', Vector2.ONE, 1)
+
+func _animate(new_modulate : Color, new_scale : Vector2, duration := 1.0):
+	var tween = create_tween()
+	tween.tween_property(crosshair_sprite, 'modulate', new_modulate, duration)
+	tween.parallel()
+	tween.tween_property(crosshair_sprite, 'scale', new_scale, duration)
