@@ -13,7 +13,6 @@ text = "[color=#00ff00ff]144"
 
 [node name="Console" parent="." instance=ExtResource("3_f5ymr")]
 modulate = Color(1, 1, 1, 0.756863)
-anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 0.0
