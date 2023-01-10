@@ -2,4 +2,6 @@ extends ConsoleCommand
 
 
 func execute():
-	creator.get_tree().quit()
+	super()
+	if not has_arguments():
+		creator.get_tree().quit()
