@@ -5,16 +5,15 @@ extends Node3D
 signal player_entered
 signal player_exited
 
-signal _area_changed
 
 @export_node_path(Area3D) var area:
 	set(value):
 		area = value
-		_area_changed.emit()
+		update_configuration_warnings()
 
 
 func _ready():
-	_area_changed.connect(func(): update_configuration_warnings())
+	update_configuration_warnings()
 	
 	if not Engine.is_editor_hint():
 		_initialize()

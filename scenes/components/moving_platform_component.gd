@@ -4,7 +4,6 @@ extends PlatformComponent
 
 signal move_started
 signal move_ended
-signal _path_follow_changed
 
 @export var autoplay := true
 @export var loop := true
@@ -13,15 +12,10 @@ signal _path_follow_changed
 @export_node_path(PathFollow3D) var path_follow:
 	set(value):
 		path_follow = value
-		_path_follow_changed.emit()
+		update_configuration_warnings()
 
 
 var _moving := false
-
-
-func _ready():
-	_path_follow_changed.connect(func(): update_configuration_warnings())
-	super()
 
 
 func _initialize():

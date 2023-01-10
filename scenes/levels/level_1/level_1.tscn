@@ -34,4 +34,9 @@ visible = false
 
 [node name="HUDLayer" parent="." instance=ExtResource("7_kstwg")]
 
+[node name="CrosshairComponent" parent="HUDLayer/Crosshair" index="0"]
+player_raycast = NodePath("../../../Player/Head/CrosshairRaycast")
+
+[editable path="Player"]
 [editable path="Platform2"]
+[editable path="HUDLayer"]

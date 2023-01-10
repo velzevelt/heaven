@@ -12,4 +12,7 @@ script = ExtResource("1_h2jx2")
 text = "[color=#00ff00ff]145"
 
 [node name="ConsoleWindow" parent="." instance=ExtResource("3_pc2c0")]
-mode = 3
+initial_position = 1
+current_screen = -2
+
+[connection signal="visibility_changed" from="." to="ConsoleWindow" method="_on_debug_layer_visibility_changed"]
