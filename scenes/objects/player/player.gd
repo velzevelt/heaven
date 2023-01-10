@@ -4,7 +4,7 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 6.0
 const JUMP_RELEASE = 2.0
 const MASS = 1.0
-const FRICTION = 10.0
+const FRICTION = 0.25
 
 @onready var head = $%Head as Head
 
@@ -16,8 +16,8 @@ func _physics_process(delta):
 	if not is_on_floor():
 		self.velocity.y -= gravity * MASS *  delta
 	else:
-		self.velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
-		self.velocity.z = move_toward(velocity.z, 0, FRICTION * delta)
+		self.velocity.x = move_toward(velocity.x, 0, FRICTION)
+		self.velocity.z = move_toward(velocity.z, 0, FRICTION)
 
 	# Handle Jump. Holding jump key longer make jump higher
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -25,10 +25,8 @@ func _physics_process(delta):
 		jump(JUMP_VELOCITY)
 		
 	if Input.is_action_just_released("jump") and not is_on_floor() and first_jump:
-#		if self.velocity.y > 0:
-#			self.velocity.y /= JUMP_RELEASE
-		self.velocity.y /= JUMP_RELEASE
-		Logger.debug_log('test')
+		if self.velocity.y > 0:
+			self.velocity.y /= JUMP_RELEASE
 		first_jump = false
 	
 	

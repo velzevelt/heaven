@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5xt72yli6vxi"]
+[gd_scene load_steps=7 format=3 uid="uid://b5xt72yli6vxi"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_b5u8x"]
 [ext_resource type="PackedScene" uid="uid://htivn1hrnopu" path="res://scenes/objects/player/player.tscn" id="2_tqmo8"]
 [ext_resource type="PackedScene" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="3_7l5lh"]
 [ext_resource type="PackedScene" uid="uid://byyvo5cy7ir30" path="res://scenes/objects/platform/platform.tscn" id="4_nan6r"]
 [ext_resource type="Script" path="res://scenes/components/finish_platform_component.gd" id="5_07qfu"]
-[ext_resource type="PackedScene" uid="uid://bv1l2ovjce1ja" path="res://scenes/objects/message_layer/message_layer.tscn" id="6_7wcyb"]
 [ext_resource type="PackedScene" uid="uid://cw5np13s7sqtb" path="res://scenes/objects/hud/hud_layer.tscn" id="7_kstwg"]
 
 [node name="Level1" type="Node3D"]
@@ -28,9 +27,6 @@ area = NodePath("../PlatformBody/Area3D")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.300906, 0.953654, 0, -0.953654, 0.300906, -12.9122, 8.22106, 9.95039)
-
-[node name="MessageLayer" parent="." instance=ExtResource("6_7wcyb")]
-visible = false
 
 [node name="HUDLayer" parent="." instance=ExtResource("7_kstwg")]
 
