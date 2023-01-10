@@ -56,3 +56,11 @@ func _on_input_command_entered(command, arguments):
 
 func _on_debug_layer_visibility_changed():
 	visible = owner.visible
+
+
+func _on_focus_entered():
+	get_tree().root.set_input_as_handled()
+
+
+func _on_focus_exited():
+	pass # Replace with function body.

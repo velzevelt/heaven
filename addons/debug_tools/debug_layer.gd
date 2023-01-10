@@ -13,3 +13,7 @@ func _input(event):
 func _ready():
 	if not OS.is_debug_build():
 		self.visible = false
+
+
+func _on_console_focus_entered():
+	pass # Replace with function body.

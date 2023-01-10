@@ -13,8 +13,8 @@ func execute() -> void:
 		var command_list = creator.get_command_list()
 		if less:
 			var temp = []
-			for command in command_list.keys():
-				if not command_list.get(command) in temp:
+			for command in command_list.values():
+				if not command in temp:
 					temp.append(command)
 			
 			for command in temp:

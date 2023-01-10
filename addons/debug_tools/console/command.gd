@@ -29,7 +29,6 @@ func show_help() -> void:
 
 func show_usage() -> void:
 	Logger.debug_log(get_supported_params().keys())
-	Logger.debug_log("This commands doesn't have usage message")
 
 func has_arguments() -> bool:
 	return not arguments.is_empty()
