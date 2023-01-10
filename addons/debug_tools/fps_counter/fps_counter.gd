@@ -1,7 +1,7 @@
 @tool
 extends RichTextLabel
 
-@export var fps_palette : Dictionary = {
+@export var fps_palette: Dictionary = {
 	GOOD: Color.GREEN,
 	NOT_BAD: Color.ORANGE,
 	POOR: Color.RED 
@@ -25,6 +25,6 @@ func _process(delta):
 		color = fps_palette.get(GOOD)
 
 	text = text % color.to_html()
-	text += str( fps ) 
+	text += str(fps) 
 	
 	self.text = text

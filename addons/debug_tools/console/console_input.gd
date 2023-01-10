@@ -2,9 +2,6 @@ extends LineEdit
 
 signal command_entered(command, arguments)
 
-@onready var _command_list = owner.command_list
-
-
 func _on_text_submitted(submitted_text: String):
 	text = ''
 	submitted_text = submitted_text.trim_prefix(" ")
@@ -12,7 +9,7 @@ func _on_text_submitted(submitted_text: String):
 	var line = submitted_text.split(" ")
 	var command = line[0]
 	
-	var arguments : Array[String] = []
+	var arguments: Array[String] = []
 	for i in range(1, line.size()):
 		arguments.append(line[i])
 	
