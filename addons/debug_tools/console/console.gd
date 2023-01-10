@@ -59,12 +59,11 @@ func _on_debug_layer_visibility_changed():
 
 
 func _on_focus_entered():
-	Logger.debug_log('111')
-	get_tree().root.set_input_as_handled()
+	get_tree().paused = true
 
 
 func _on_focus_exited():
-	pass # Replace with function body.
+	get_tree().paused = false
 
 
 func _on_input_focus_entered():
@@ -73,3 +72,7 @@ func _on_input_focus_entered():
 
 func _on_input_mouse_entered():
 	focus_entered.emit()
+
+
+func _on_input_mouse_exited():
+	focus_exited.emit()

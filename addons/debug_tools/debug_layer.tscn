@@ -9,7 +9,7 @@ process_mode = 3
 script = ExtResource("1_h2jx2")
 
 [node name="FPSCounter" parent="." instance=ExtResource("1_8yair")]
-text = "[color=#00ff00ff]144"
+text = "[color=#00ff00ff]129"
 
 [node name="Console" parent="." instance=ExtResource("3_f5ymr")]
 modulate = Color(1, 1, 1, 0.756863)

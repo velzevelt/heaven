@@ -56,5 +56,5 @@ script = ExtResource("3_3l3wc")
 [connection signal="command_entered" from="Input" to="." method="_on_input_command_entered"]
 [connection signal="focus_entered" from="Input" to="." method="_on_input_focus_entered"]
 [connection signal="mouse_entered" from="Input" to="." method="_on_input_mouse_entered"]
-[connection signal="mouse_entered" from="Input" to="Input" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Input" to="." method="_on_input_mouse_exited"]
 [connection signal="text_submitted" from="Input" to="Input" method="_on_text_submitted"]
