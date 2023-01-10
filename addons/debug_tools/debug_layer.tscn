@@ -15,7 +15,7 @@ text = "[color=#00ff00ff]145"
 modulate = Color(1, 1, 1, 0.756863)
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -392.0
+offset_left = -309.0
 offset_right = 0.0
 offset_bottom = 202.0
 grow_horizontal = 0

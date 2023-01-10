@@ -36,7 +36,7 @@ visible = false
 
 [node name="CrosshairComponent" parent="HUDLayer/Crosshair" index="0"]
 player_raycast = NodePath("../../../Player/Head/CrosshairRaycast")
-crosshair_sprite = NodePath("..")
+anim_duration = 0.2
 
 [editable path="Player"]
 [editable path="Platform2"]

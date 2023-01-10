@@ -27,3 +27,4 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_bbhwn")
 [node name="CrosshairComponent" type="Node" parent="Crosshair"]
 script = ExtResource("1_j8pao")
 crosshair_sprite = NodePath("..")
+anim_duration = null

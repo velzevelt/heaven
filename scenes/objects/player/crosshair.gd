@@ -11,6 +11,7 @@ class_name CrosshairComponent extends Node
 		crosshair_sprite = value
 		update_configuration_warnings()
 
+@export_range(0.08, 1.0, 0.01) var anim_duration = 1.0
 
 
 func _ready():
@@ -36,18 +37,12 @@ func _initialize():
 func _physics_process(_delta):
 	if not Engine.is_editor_hint():
 		if player_raycast.is_colliding():
-			var tween = create_tween()
-			tween.tween_property(crosshair_sprite, 'modulate', Color(1,1,1,0.5), 1)
-			tween.parallel()
-			tween.tween_property(crosshair_sprite, 'scale', Vector2(0.5, 0.5), 1)
+			_animate(Color.WHITE, Vector2.ONE)
 		else:
-			var tween = create_tween()
-			tween.tween_property(crosshair_sprite, 'modulate', Color.WHITE, 1)
-			tween.parallel()
-			tween.tween_property(crosshair_sprite, 'scale', Vector2.ONE, 1)
+			_animate(Color(1, 1, 1, 0.5), Vector2(0.5, 0.5))
 
-func _animate(new_modulate : Color, new_scale : Vector2, duration := 1.0):
+func _animate(new_modulate : Color, new_scale : Vector2):
 	var tween = create_tween()
-	tween.tween_property(crosshair_sprite, 'modulate', new_modulate, duration)
+	tween.tween_property(crosshair_sprite, 'modulate', new_modulate, anim_duration)
 	tween.parallel()
-	tween.tween_property(crosshair_sprite, 'scale', new_scale, duration)
+	tween.tween_property(crosshair_sprite, 'scale', new_scale, anim_duration)

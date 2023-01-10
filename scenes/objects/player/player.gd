@@ -25,7 +25,10 @@ func _physics_process(delta):
 		jump(JUMP_VELOCITY)
 		
 	if Input.is_action_just_released("jump") and not is_on_floor() and first_jump:
+#		if self.velocity.y > 0:
+#			self.velocity.y /= JUMP_RELEASE
 		self.velocity.y /= JUMP_RELEASE
+		Logger.debug_log('test')
 		first_jump = false
 	
 	
