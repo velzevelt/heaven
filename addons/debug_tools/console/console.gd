@@ -1,19 +1,19 @@
 class_name Console
 extends VBoxContainer
 
-@export var commands_directory_path : String = "res://addons/debug_tools/console/commands"
+@export var commands_directory_path: String = "res://addons/debug_tools/console/commands"
 
 var command_list = {
 	
 	"q": "quit",
-	"exit": "quit",
 	"quit": "quit",
-	"close": "quit",
+	"exit": "quit",
 	
 	"h": "help",
 	"help": "help",
 	
 	"show_commands": "show_commands",
+	"ls": "show_commands",
 	
 	
 }
@@ -22,13 +22,13 @@ func get_command_list() -> Dictionary:
 	return command_list
 
 
-func execute_command(command : ConsoleCommand, arguments : Array) -> void:
+func execute_command(command: ConsoleCommand, arguments: Array[String]) -> void:
 	command._initialize(self, arguments)
 	command.execute()
 	command.call_deferred('free')
 
 
-func create_command_object(command : String) -> ConsoleCommand:
+func create_command_object(command: String) -> ConsoleCommand:
 	var path_to_command = commands_directory_path + "/" + command + ".gd"
 	
 	if not ResourceLoader.exists(path_to_command):
@@ -40,10 +40,10 @@ func create_command_object(command : String) -> ConsoleCommand:
 	return command_class
 
 
-func has_command(command):
+func has_command(command: String):
 	return command_list.has(command)
 
-func get_command(command):
+func get_command(command: String):
 	return command_list.get(command)
 
 func _on_input_command_entered(command, arguments):

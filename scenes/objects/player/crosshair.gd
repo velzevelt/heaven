@@ -41,7 +41,7 @@ func _physics_process(_delta):
 		else:
 			_animate(Color(1, 1, 1, 0.5), Vector2(0.5, 0.5))
 
-func _animate(new_modulate : Color, new_scale : Vector2):
+func _animate(new_modulate: Color, new_scale: Vector2):
 	var tween = create_tween()
 	tween.tween_property(crosshair_sprite, 'modulate', new_modulate, anim_duration)
 	tween.parallel()

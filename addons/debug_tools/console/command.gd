@@ -1,21 +1,27 @@
 class_name ConsoleCommand
 extends Object
 
-var creator : Console
-var arguments : Array[String]
+var creator: Console
+var arguments: Array[String]
 
-func _initialize(creator : Object, arguments : Array[String]) -> void:
-	creator = creator
-	arguments = arguments
+
+func _initialize(creator: Console, arguments: Array[String]) -> void:
+	self.creator = creator
+	self.arguments = arguments
 
 func execute() -> void:
-	pass
+	if has_arguments():
+		var argument = arguments[0]
+		
 
 func show_help() -> void:
 	Logger.debug_log("This command doesn't have help message")
 
-func show_usage() -> void:
-	Logger.debug_log("This command doesn't have usage message")
-
 func has_arguments() -> bool:
 	return (arguments.size() > 0)
+
+func get_supported_params() -> Array[String]:
+	return [
+		'--help',
+		'-h'
+	]
