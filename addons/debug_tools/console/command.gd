@@ -13,28 +13,33 @@ func execute() -> void:
 	apply_params()
 
 
-func apply_params() -> void:
+func apply_params():
 	if has_arguments():
 		var supported_params = get_supported_params()
 		for argument in arguments:
 			if is_param(argument):
-				for param in supported_params:
-					if argument is param[0]:
-						param[1].call()
-
+				if supported_params.has(argument):
+					supported_params.get(argument).call()
+				else:
+					show_help()
+					break
 
 func show_help() -> void:
 	Logger.debug_log("This command doesn't have help message")
+
+func show_usage() -> void:
+	Logger.debug_log("This commands doesn't have usage message")
 
 func has_arguments() -> bool:
 	return not arguments.is_empty()
 
 
-func get_supported_params() -> Array: #[id][0] -> name [id][1] -> callable
-	return [
-		["--help", show_help],
-		['-h', show_help]
-	]
+func get_supported_params() -> Dictionary: #[id][0] -> name [id][1] -> callable
+	return {
+		"--help": show_help,
+		"-h": show_help
+	}
+
 
 func is_param(value: String) -> bool:
 	return value.begins_with("-")

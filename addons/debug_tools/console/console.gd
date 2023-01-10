@@ -52,3 +52,7 @@ func _on_input_command_entered(command, arguments):
 		execute_command(command_instance, arguments)
 	else:
 		Logger.debug_log(command + " invalid command", MESSAGE_TYPE.ERROR)
+
+
+func _on_debug_layer_visibility_changed():
+	visible = owner.visible

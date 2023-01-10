@@ -14,7 +14,8 @@ func execute():
 
 
 func show_help():
-	var message = 'Type help [command_name] to see help message' \
+	var message = 'Type help [command_name] or [command_name] --help to see help message ' \
+	+ 'Type [command_name] --usage to see see command usage ' \
 	+ 'Type ls to see available commands'
 	
 	Logger.debug_log(message)
