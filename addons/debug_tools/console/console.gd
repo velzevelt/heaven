@@ -25,6 +25,7 @@ func get_command_list() -> Dictionary:
 func execute_command(command : ConsoleCommand, arguments : Array) -> void:
 	command._initialize(self, arguments)
 	command.execute()
+	command.call_deferred('free')
 
 
 func create_command_object(command : String) -> ConsoleCommand:
@@ -47,7 +48,7 @@ func get_command(command):
 
 func _on_input_command_entered(command, arguments):
 	if has_command(command):
-		var command_instance = create_command_object(command_list.get(command))
+		var command_instance = create_command_object(get_command(command))
 		execute_command(command_instance, arguments)
 	else:
 		Logger.debug_log(command + " invalid command", MESSAGE_TYPE.ERROR)
