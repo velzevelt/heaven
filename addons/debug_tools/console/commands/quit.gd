@@ -4,12 +4,18 @@ extends ConsoleCommand
 func execute():
 	super()
 	if not has_arguments():
-		creator.hide()
+		console()
 
 func get_supported_params() -> Dictionary:
 	var params = super()
+	var new_params = {
+		'--game': game
+	}
+	params.merge(new_params)
 	return params
 
+func game():
+	creator.get_tree().quit()
 
-func show_help():
-	Logger.debug_log("Close this window")
+func console():
+	creator.hide()

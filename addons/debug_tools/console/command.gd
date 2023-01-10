@@ -28,6 +28,7 @@ func show_help() -> void:
 	Logger.debug_log("This command doesn't have help message")
 
 func show_usage() -> void:
+	Logger.debug_log(get_supported_params().keys())
 	Logger.debug_log("This commands doesn't have usage message")
 
 func has_arguments() -> bool:
@@ -37,7 +38,10 @@ func has_arguments() -> bool:
 func get_supported_params() -> Dictionary: #[id][0] -> name [id][1] -> callable
 	return {
 		"--help": show_help,
-		"-h": show_help
+		"-h": show_help,
+		
+		"--usage": show_usage,
+		"-u": show_usage,
 	}
 
 
