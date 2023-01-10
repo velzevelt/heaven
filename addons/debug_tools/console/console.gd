@@ -1,5 +1,5 @@
+class_name Console
 extends VBoxContainer
-
 
 @export var commands_directory_path : String = "res://addons/debug_tools/console/commands"
 
@@ -16,19 +16,15 @@ var command_list = {
 	"show_commands": "show_commands",
 	
 	
-} : 
-	get: 
-		return command_list
-
+}
 
 func get_command_list() -> Dictionary:
-	return self.command_list
+	return command_list
 
 
 func execute_command(command : ConsoleCommand, arguments : Array) -> void:
-	command.initialize(self, arguments)
+	command._initialize(self, arguments)
 	command.execute()
-	command.call_deferred("free")
 
 
 func create_command_object(command : String) -> ConsoleCommand:
@@ -43,8 +39,15 @@ func create_command_object(command : String) -> ConsoleCommand:
 	return command_class
 
 
+func has_command(command):
+	return command_list.has(command)
 
+func get_command(command):
+	return command_list.get(command)
 
 func _on_input_command_entered(command, arguments):
-	var command_instance = create_command_object(command)
-	execute_command(command_instance, arguments)
+	if has_command(command):
+		var command_instance = create_command_object(command_list.get(command))
+		execute_command(command_instance, arguments)
+	else:
+		Logger.debug_log(command + " invalid command", MESSAGE_TYPE.ERROR)

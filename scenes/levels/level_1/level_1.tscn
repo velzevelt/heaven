@@ -37,3 +37,4 @@ anim_duration = 0.2
 [editable path="Player"]
 [editable path="Platform2"]
 [editable path="HUDLayer"]
+[editable path="HUDLayer/Crosshair"]
