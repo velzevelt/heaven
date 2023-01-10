@@ -34,6 +34,8 @@ transform = Transform3D(1, 0, 0, 0, 0.300906, 0.953654, 0, -0.953654, 0.300906, 
 player_raycast = NodePath("../../../Player/Head/CrosshairRaycast")
 anim_duration = 0.2
 
+[node name="TutorialLayer" type="CanvasLayer" parent="."]
+
 [editable path="Player"]
 [editable path="Platform2"]
 [editable path="HUDLayer"]
