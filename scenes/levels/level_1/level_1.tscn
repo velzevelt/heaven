@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5xt72yli6vxi"]
+[gd_scene load_steps=11 format=3 uid="uid://b5xt72yli6vxi"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_b5u8x"]
 [ext_resource type="PackedScene" uid="uid://htivn1hrnopu" path="res://scenes/objects/player/player.tscn" id="2_tqmo8"]
@@ -7,6 +7,21 @@
 [ext_resource type="Script" path="res://scenes/components/finish_platform_component.gd" id="5_07qfu"]
 [ext_resource type="PackedScene" uid="uid://cw5np13s7sqtb" path="res://scenes/objects/hud/hud_layer.tscn" id="7_kstwg"]
 [ext_resource type="PackedScene" uid="uid://bt5jfl5gautos" path="res://scenes/levels/level_1/look_around_guide.tscn" id="7_l76lt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qlafk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k6lr5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48wcy"]
+bg_color = Color(0, 0, 0, 0.52549)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_b5u8x")
@@ -37,17 +52,41 @@ in_scale = Vector2(1, 1)
 
 [node name="TutorialLayer" type="CanvasLayer" parent="."]
 
-[node name="LookAround" parent="TutorialLayer" instance=ExtResource("7_l76lt")]
+[node name="HBoxContainer" type="HBoxContainer" parent="TutorialLayer"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -122.0
-offset_top = -54.0
-offset_right = -16.0
-offset_bottom = 54.0
+offset_left = -162.0
+offset_top = -70.0
+offset_bottom = 70.0
 grow_horizontal = 0
 grow_vertical = 2
+
+[node name="LookAround" parent="TutorialLayer/HBoxContainer" instance=ExtResource("7_l76lt")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qlafk")
+metadata/_edit_lock_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="TutorialLayer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_k6lr5")
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="TutorialLayer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="TutorialLayer/HBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901961, 0.729412, 0.223529, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_48wcy")
+text = "View"
+uppercase = true
 
 [connection signal="target_losted" from="Player/Head/CrosshairRaycast" to="HUDLayer/Crosshair/CrosshairComponent" method="on_target_losted"]
 [connection signal="target_spotted" from="Player/Head/CrosshairRaycast" to="HUDLayer/Crosshair/CrosshairComponent" method="on_target_spotted"]
