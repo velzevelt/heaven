@@ -1,37 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://dch70obt1efrf"]
+[gd_scene load_steps=4 format=3 uid="uid://dch70obt1efrf"]
 
 [ext_resource type="PackedScene" uid="uid://dw75qaapyyxif" path="res://addons/debug_tools/fps_counter/fps_counter.tscn" id="1_8yair"]
 [ext_resource type="Script" path="res://addons/debug_tools/debug_layer.gd" id="1_h2jx2"]
-[ext_resource type="PackedScene" uid="uid://bw7chorft18wj" path="res://addons/debug_tools/console/console.tscn" id="3_f5ymr"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7clqx"]
-bg_color = Color(0.372549, 0.372549, 0.372549, 0.713726)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-expand_margin_top = 30.0
+[ext_resource type="PackedScene" uid="uid://dyls36lf6cd4t" path="res://addons/debug_tools/console/console_window.tscn" id="3_s4ltx"]
 
 [node name="DebugLayer" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_h2jx2")
 
 [node name="FPSCounter" parent="." instance=ExtResource("1_8yair")]
-text = "[color=#00ff00ff]139"
+offset_bottom = 26.0
+text = "117"
+horizontal_alignment = 2
+clip_text = true
 
-[node name="Window" type="Window" parent="."]
-disable_3d = true
-transparent_bg = true
-initial_position = 1
-size = Vector2i(500, 250)
-current_screen = -2
-wrap_controls = true
-transient = true
-exclusive = true
-transparent = true
-min_size = Vector2i(500, 250)
-content_scale_mode = 1
-theme_override_styles/embedded_border = SubResource("StyleBoxFlat_7clqx")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Window"]
-
-[node name="Console" parent="Window/CanvasLayer" instance=ExtResource("3_f5ymr")]
-anchors_preset = 0
+[node name="ConsoleWindow" parent="." instance=ExtResource("3_s4ltx")]
+initial_position = 0

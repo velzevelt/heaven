@@ -1,62 +1,77 @@
 class_name Console
-extends VBoxContainer
+extends Node
+@tool
 
-@export var commands_directory_path: String = "res://addons/debug_tools/console/commands"
 
-var command_list = {
-	
-	"q": "quit",
-	"quit": "quit",
-	"exit": "quit",
-	
-	"h": "help",
-	"help": "help",
-	
-	"show_commands": "show_commands",
-	"ls": "show_commands",
-	
-	"unpause": "unpause"
-	
-}
+@export_dir var commands_directory_path: String:
+	set(value):
+		commands_directory_path = value
+		update_configuration_warnings()
 
-func get_command_list() -> Dictionary:
+func _ready():
+	update_configuration_warnings()
+	if not Engine.is_editor_hint():
+		command_list = load_commands()
+		print(command_list)
+
+func _get_configuration_warnings():
+	if commands_directory_path.is_empty():
+		return ["Select commands dir"]
+	return []
+
+var command_list: PackedStringArray
+
+
+func load_commands():
+	var commands: PackedStringArray = []
+	
+	if DirAccess.dir_exists_absolute(commands_directory_path):
+		commands = DirAccess.get_files_at(commands_directory_path)
+	else:
+		Logger.debug_log('Commands directory missing', MESSAGE_TYPE.ERROR)
+	
+	return commands
+
+func get_command_list():
 	return command_list
 
 
-func execute_command(command: ConsoleCommand, arguments: Array[String]) -> void:
-	command._initialize(self, arguments)
-	command.execute()
-	command.call_deferred('free')
+func execute_command(command: String, arguments: Array[String]) -> void:
+	var command_instance = get_command(command)
+	command_instance._initialize(self, arguments)
+	command_instance.execute()
+	command_instance.call_deferred('free')
 
-
-func create_command_object(command: String) -> ConsoleCommand:
-	var path_to_command = commands_directory_path + "/" + command + ".gd"
+func _format_command(command: String) -> String:
+	var result = command
+	if not result.ends_with(".gd"):
+		result += ".gd"
 	
-	if not ResourceLoader.exists(path_to_command):
-		Logger.debug_log(command + " command not found at path " + path_to_command, MESSAGE_TYPE.ERROR)
-		return ConsoleCommand.new() # NULL
+	return result
+
+func has_command(command: String) -> bool:
+	return command_list.has(_format_command(command))
+
+
+func get_command(command: String) -> ConsoleCommand:
+	command = _format_command(command)
+	var result = ConsoleCommand.new()
+	var command_path = commands_directory_path + '/' + command
 	
-	var command_class = load(path_to_command)
-	command_class = command_class.new()
-	return command_class
-
-
-func has_command(command: String):
-	return command_list.has(command)
-
-func get_command(command: String):
-	return command_list.get(command)
-
-func _on_input_command_entered(command, arguments):
 	if has_command(command):
-		var command_instance = create_command_object(get_command(command))
-		execute_command(command_instance, arguments)
+		if ResourceLoader.exists(command_path):
+			result = load(command_path)
+			result = result.new()
+		else:
+			Logger.debug_log(command_path, MESSAGE_TYPE.ERROR)
 	else:
 		Logger.debug_log(command + " invalid command", MESSAGE_TYPE.ERROR)
+	
+	return result
 
 
-func _on_debug_layer_visibility_changed():
-	visible = owner.visible
+func _on_input_command_entered(command, arguments):
+	execute_command(command, arguments)
 
-
-
+func hide():
+	owner.owner.hide()

@@ -5,7 +5,7 @@ func execute():
 	super()
 	if has_arguments() and creator.has_command(arguments[0]):
 		var command = creator.get_command(arguments[0])
-		var command_instance = creator.create_command_object(command)
+		var command_instance = command.new()
 		
 		if command_instance.has_method('show_help'):
 			command_instance.show_help()

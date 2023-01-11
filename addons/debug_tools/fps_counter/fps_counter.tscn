@@ -2,14 +2,11 @@
 
 [ext_resource type="Script" path="res://addons/debug_tools/fps_counter/fps_counter.gd" id="1_k01rw"]
 
-[node name="FPSCounter" type="RichTextLabel"]
-offset_right = 71.0
+[node name="FPSCounter" type="Label"]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -45.0
 offset_bottom = 25.0
-bbcode_enabled = true
-text = "[color=#00ff00ff]127"
+grow_horizontal = 0
+text = "145"
 script = ExtResource("1_k01rw")
-fps_palette = {
-30: Color(1, 0, 0, 1),
-45: Color(1, 0.647059, 0, 1),
-55: Color(0, 1, 0, 1)
-}

@@ -8,10 +8,9 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eqqbx"]
 
-[node name="Console" type="VBoxContainer"]
+[node name="ConsoleContainer" type="VBoxContainer"]
 process_mode = 3
 modulate = Color(1, 1, 1, 0.894118)
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -20,7 +19,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
 alignment = 1
+
+[node name="Console" type="Node" parent="."]
 script = ExtResource("1_kwa2v")
+commands_directory_path = "res://addons/debug_tools/console/commands"
 
 [node name="Separator" type="Panel" parent="."]
 visible = false
@@ -55,5 +57,5 @@ mouse_filter = 1
 placeholder_text = "Command..."
 script = ExtResource("3_3l3wc")
 
-[connection signal="command_entered" from="Input" to="." method="_on_input_command_entered"]
+[connection signal="command_entered" from="Input" to="Console" method="_on_input_command_entered"]
 [connection signal="text_submitted" from="Input" to="Input" method="_on_text_submitted"]
