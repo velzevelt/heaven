@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://byyvo5cy7ir30" path="res://scenes/objects/platform/platform.tscn" id="4_nan6r"]
 [ext_resource type="Script" path="res://scenes/components/finish_platform_component.gd" id="5_07qfu"]
 [ext_resource type="PackedScene" uid="uid://cw5np13s7sqtb" path="res://scenes/objects/hud/hud_layer.tscn" id="7_kstwg"]
-[ext_resource type="PackedScene" uid="uid://ppyofsgd810y" path="res://scenes/levels/level_1/look_around_guide.tscn" id="7_l76lt"]
+[ext_resource type="PackedScene" uid="uid://bt5jfl5gautos" path="res://scenes/levels/level_1/look_around_guide.tscn" id="7_l76lt"]
 
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_b5u8x")
@@ -37,19 +37,17 @@ in_scale = Vector2(1, 1)
 
 [node name="TutorialLayer" type="CanvasLayer" parent="."]
 
-[node name="Container" parent="TutorialLayer" instance=ExtResource("7_l76lt")]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -151.0
-offset_top = -191.0
-offset_right = 151.0
-offset_bottom = -93.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 4
+[node name="LookAround" parent="TutorialLayer" instance=ExtResource("7_l76lt")]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = -54.0
+offset_right = -16.0
+offset_bottom = 54.0
+grow_horizontal = 0
+grow_vertical = 2
 
 [connection signal="target_losted" from="Player/Head/CrosshairRaycast" to="HUDLayer/Crosshair/CrosshairComponent" method="on_target_losted"]
 [connection signal="target_spotted" from="Player/Head/CrosshairRaycast" to="HUDLayer/Crosshair/CrosshairComponent" method="on_target_spotted"]
