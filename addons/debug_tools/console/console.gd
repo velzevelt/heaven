@@ -8,11 +8,12 @@ extends Node
 		commands_directory_path = value
 		update_configuration_warnings()
 
+
 func _ready():
 	update_configuration_warnings()
 	if not Engine.is_editor_hint():
 		command_list = load_commands()
-		print(command_list)
+
 
 func _get_configuration_warnings():
 	if commands_directory_path.is_empty():
@@ -42,12 +43,14 @@ func execute_command(command: String, arguments: Array[String]) -> void:
 	command_instance.execute()
 	command_instance.call_deferred('free')
 
+
 func _format_command(command: String) -> String:
 	var result = command
 	if not result.ends_with(".gd"):
 		result += ".gd"
 	
 	return result
+
 
 func has_command(command: String) -> bool:
 	return command_list.has(_format_command(command))
@@ -72,6 +75,7 @@ func get_command(command: String) -> ConsoleCommand:
 
 func _on_input_command_entered(command, arguments):
 	execute_command(command, arguments)
+
 
 func hide():
 	owner.owner.hide()
