@@ -5,4 +5,3 @@
 [node name="HUDLayer" type="CanvasLayer"]
 
 [node name="Crosshair" parent="." instance=ExtResource("1_uxja7")]
-anchors_preset = 0

@@ -9,15 +9,18 @@ process_mode = 3
 script = ExtResource("1_h2jx2")
 
 [node name="FPSCounter" parent="." instance=ExtResource("1_8yair")]
-text = "[color=#00ff00ff]129"
+text = "[color=#00ff00ff]136"
 
-[node name="Console" parent="." instance=ExtResource("3_f5ymr")]
-modulate = Color(1, 1, 1, 0.756863)
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 0.0
-offset_left = -471.0
-offset_bottom = 212.0
-grow_horizontal = 0
+[node name="Window" type="Window" parent="."]
+disable_3d = true
+initial_position = 1
+size = Vector2i(500, 250)
+current_screen = -2
+wrap_controls = true
+min_size = Vector2i(500, 250)
+content_scale_mode = 1
 
-[connection signal="visibility_changed" from="." to="Console" method="_on_debug_layer_visibility_changed"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Window"]
+
+[node name="Console" parent="Window/CanvasLayer" instance=ExtResource("3_f5ymr")]
+anchors_preset = 0

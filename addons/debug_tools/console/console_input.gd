@@ -15,3 +15,5 @@ func _on_text_submitted(submitted_text: String):
 	
 	command_entered.emit(command, arguments)
 
+
+

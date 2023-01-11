@@ -15,6 +15,7 @@ var command_list = {
 	"show_commands": "show_commands",
 	"ls": "show_commands",
 	
+	"unpause": "unpause"
 	
 }
 
@@ -58,21 +59,4 @@ func _on_debug_layer_visibility_changed():
 	visible = owner.visible
 
 
-func _on_focus_entered():
-	get_tree().paused = true
 
-
-func _on_focus_exited():
-	get_tree().paused = false
-
-
-func _on_input_focus_entered():
-	focus_entered.emit()
-
-
-func _on_input_mouse_entered():
-	focus_entered.emit()
-
-
-func _on_input_mouse_exited():
-	focus_exited.emit()

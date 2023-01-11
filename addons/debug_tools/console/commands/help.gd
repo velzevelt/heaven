@@ -9,6 +9,8 @@ func execute():
 		
 		if command_instance.has_method('show_help'):
 			command_instance.show_help()
+		
+		command_instance.call_deferred('free')
 	else:
 		show_help()
 

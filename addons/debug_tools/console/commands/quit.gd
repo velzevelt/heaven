@@ -9,7 +9,7 @@ func execute():
 func get_supported_params() -> Dictionary:
 	var params = super()
 	var new_params = {
-		'--game': game
+		'--game': game,
 	}
 	params.merge(new_params)
 	return params
