@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt5jfl5gautos"]
+
+[ext_resource type="Texture2D" uid="uid://bgcmd8hokqnoa" path="res://sprites/arrow-up.svg" id="1_44q41"]
+[ext_resource type="Texture2D" uid="uid://dw573872dhn0d" path="res://sprites/computer-mouse.svg" id="1_hx0i7"]
+[ext_resource type="Texture2D" uid="uid://cxxhmf3sqirej" path="res://sprites/arrow-right.svg" id="2_ix44r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibsso"]
+bg_color = Color(0, 0, 0, 0.52549)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="LookAround" type="PanelContainer"]
+offset_right = 156.0
+offset_bottom = 156.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ibsso")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ArrowUp" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_44q41")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ArrowLeft" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_ix44r")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="MouseIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_hx0i7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ArrowRight" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_ix44r")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ArrowDown" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_44q41")
+expand_mode = 1
+stretch_mode = 5
+flip_v = true

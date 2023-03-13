@@ -1,0 +1,92 @@
+[gd_scene load_steps=15 format=3 uid="uid://3gx2fd0lc5ql"]
+
+[ext_resource type="Script" path="res://scenes/map.gd" id="1_i88nr"]
+[ext_resource type="PackedScene" uid="uid://db5xremcmjtg3" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_kmd12"]
+[ext_resource type="PackedScene" uid="uid://j02pgpny1wvs" path="res://scenes/objects/player/player.tscn" id="3_tg8ae"]
+[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/look/look_raycast.gd" id="4_h61jh"]
+[ext_resource type="Script" path="res://addons/debug_tools/info_label/info_label.gd" id="5_d35bj"]
+[ext_resource type="PackedScene" path="res://scenes/maps/heaven/tutorial/tutorial_layer.tscn" id="6_8usiu"]
+[ext_resource type="Script" path="res://scenes/objects/player/crosshair_style.gd" id="6_sf15l"]
+[ext_resource type="PackedScene" uid="uid://bcdqwr7wudsse" path="res://scenes/maps/heaven/tutorial/message_container.tscn" id="7_dyghv"]
+[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/look/tutorial_layer.gd" id="7_u10v7"]
+[ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="8_d20ya"]
+[ext_resource type="PackedScene" uid="uid://ex464073xs62" path="res://scenes/maps/heaven/tutorial/look/look_target.tscn" id="11_3w7f1"]
+[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/look/look_target_container.gd" id="11_le02a"]
+[ext_resource type="Script" path="res://scenes/objects/player/override_player_crosshair.gd" id="12_s2jc0"]
+
+[sub_resource type="Resource" id="Resource_mnk3b"]
+script = ExtResource("6_sf15l")
+out_modulate = Color(0.745098, 0.745098, 0.745098, 1)
+out_size = Vector2(10, 10)
+in_modulate = Color(1, 0.282353, 1, 1)
+in_size = Vector2(15, 15)
+
+[node name="LookTutorial" type="Node3D"]
+script = ExtResource("1_i88nr")
+
+[node name="KillingFloor" parent="." instance=ExtResource("2_kmd12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.391168, 0)
+
+[node name="Player" parent="." instance=ExtResource("3_tg8ae")]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.516, 0)
+
+[node name="Head" parent="Player" index="1"]
+process_mode = 3
+
+[node name="CrosshairRaycast" parent="Player/Head" index="2"]
+process_mode = 3
+
+[node name="LookRaycast" type="Node" parent="Player/Head/CrosshairRaycast" index="0"]
+script = ExtResource("4_h61jh")
+
+[node name="InfoLabel" type="Label" parent="Player/Head/CrosshairRaycast" index="1"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "target: "
+script = ExtResource("5_d35bj")
+target_path = NodePath("../LookRaycast")
+desired_property = "target"
+
+[node name="TutorialLayer" parent="." node_paths=PackedStringArray("arrow_up", "arrow_left", "arrow_right", "arrow_down") instance=ExtResource("6_8usiu")]
+script = ExtResource("7_u10v7")
+arrow_up = NodePath("VBoxContainer/LookAround/MarginContainer/VBoxContainer/ArrowUp")
+arrow_left = NodePath("VBoxContainer/LookAround/MarginContainer/VBoxContainer/HBoxContainer/ArrowLeft")
+arrow_right = NodePath("VBoxContainer/LookAround/MarginContainer/VBoxContainer/HBoxContainer/ArrowRight")
+arrow_down = NodePath("VBoxContainer/LookAround/MarginContainer/VBoxContainer/ArrowDown")
+highlight_modulate = Color(0.870588, 0.780392, 0.337255, 1)
+
+[node name="Label" parent="TutorialLayer/VBoxContainer" index="1" instance=ExtResource("7_dyghv")]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901961, 0.729412, 0.223529, 1)
+theme_override_font_sizes/font_size = 27
+
+[node name="HBoxContainer" parent="TutorialLayer/VBoxContainer" index="2"]
+visible = false
+
+[node name="DirectionalLight3D" parent="." instance=ExtResource("8_d20ya")]
+
+[node name="LookTargets" type="Node3D" parent="."]
+script = ExtResource("11_le02a")
+
+[node name="Platform" parent="LookTargets" instance=ExtResource("11_3w7f1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38211, 2.84969, -6.27967)
+
+[node name="Platform2" parent="LookTargets" instance=ExtResource("11_3w7f1")]
+transform = Transform3D(0.681756, 0, -0.73158, 0, 1, 0, 0.73158, 0, 0.681756, 5.3815, 2.84969, -6.27967)
+
+[node name="Platform3" parent="LookTargets" instance=ExtResource("11_3w7f1")]
+transform = Transform3D(-0.0122344, 0, -0.999925, 0, 1, 0, 0.999925, 0, -0.0122344, 5.3815, 2.84969, -3.17181)
+
+[node name="OverridePlayerCrosshair" type="Node" parent="LookTargets/Platform3"]
+script = ExtResource("12_s2jc0")
+style = SubResource("Resource_mnk3b")
+
+[node name="Platform4" parent="LookTargets" instance=ExtResource("11_3w7f1")]
+transform = Transform3D(-0.0104158, -0.524595, -0.851288, -0.00641813, 0.851352, -0.524556, 0.999925, 0, -0.0122345, 5.3815, 6.12235, -1.98781)
+
+[connection signal="finished" from="LookTargets" to="." method="_on_player_finished"]
+
+[editable path="Player"]
+[editable path="TutorialLayer"]
+[editable path="TutorialLayer/VBoxContainer/LookAround"]

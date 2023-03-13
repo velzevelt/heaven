@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://ca44olq010ifc"]
+
+[ext_resource type="Script" path="res://scenes/objects/coin/coin.gd" id="1_jrmyy"]
+[ext_resource type="Texture2D" uid="uid://c2rpvnx5aenl2" path="res://addons/debug_tools/kenney_prototypetextures/Orange/texture_01.png" id="1_n0rmg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6eqw3"]
+albedo_texture = ExtResource("1_n0rmg")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_crl44"]
+material = SubResource("StandardMaterial3D_6eqw3")
+top_radius = 0.25
+bottom_radius = 0.25
+height = 0.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_f4k75"]
+height = 0.5
+radius = 0.25
+
+[node name="Coin" type="Node3D" groups=["coin"]]
+script = ExtResource("1_jrmyy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_crl44")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_f4k75")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

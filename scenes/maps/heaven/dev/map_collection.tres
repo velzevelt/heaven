@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MapCollection" load_steps=3 format=3 uid="uid://bhvglshagp8i5"]
+
+[ext_resource type="Script" path="res://scenes/map_collection.gd" id="1_u1wgg"]
+[ext_resource type="Resource" uid="uid://cx4fdr2jyn1ru" path="res://scenes/maps/heaven/dev/map_1/map_data.tres" id="1_wvy42"]
+
+[resource]
+script = ExtResource("1_u1wgg")
+visible_name = "Development"
+show_order = 10
+update_maps = false
+maps = [ExtResource("1_wvy42")]
+hidden = false

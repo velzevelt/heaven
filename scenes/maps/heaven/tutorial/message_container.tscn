@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcdqwr7wudsse"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48wcy"]
+bg_color = Color(0, 0, 0, 0.52549)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="Label" type="Label"]
+offset_right = 40.0
+offset_bottom = 26.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 98
+theme_override_styles/normal = SubResource("StyleBoxFlat_48wcy")
+text = "View"
+horizontal_alignment = 1
+uppercase = true

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://droywgubrul4i"]
+
+[node name="Path3D" type="Path3D"]
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.711383, -0.358817, 0.604304, 0, 0.859848, 0.51055, -0.702804, 0.363197, -0.611681, 0, 0, 0)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="PathFollow3D"]
+update_rotation = false

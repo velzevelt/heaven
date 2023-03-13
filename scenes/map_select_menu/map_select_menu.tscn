@@ -1,0 +1,115 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwej4bndf0fpi"]
+
+[ext_resource type="Script" path="res://scenes/map_select_menu/map_select_menu.gd" id="1_nmaak"]
+[ext_resource type="Script" path="res://scenes/map_select_menu/map_info.gd" id="2_25dl4"]
+[ext_resource type="Script" path="res://scenes/map_select_menu/maps.gd" id="2_wojaa"]
+
+[sub_resource type="GDScript" id="GDScript_4rxgb"]
+script/source = "extends Label
+
+var prefix := 'DIR: '
+
+func _on_maps_map_container_selected(map_collection):
+	text = prefix + map_collection.visible_name
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2nof"]
+
+[node name="MapSelectMenuLayer" type="CanvasLayer"]
+script = ExtResource("1_nmaak")
+
+[node name="MapSelector" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MapSelector"]
+layout_mode = 2
+
+[node name="Top" type="HBoxContainer" parent="MapSelector/HBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="MapSelector/HBoxContainer/Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 42
+text = "Back"
+
+[node name="Header" type="Label" parent="MapSelector/HBoxContainer/Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 7.45
+theme_override_font_sizes/font_size = 75
+text = "Select Level"
+vertical_alignment = 1
+clip_text = true
+uppercase = true
+
+[node name="LevelDir" type="Label" parent="MapSelector/HBoxContainer/Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 7.45
+theme_override_font_sizes/font_size = 75
+text = "DIR: "
+vertical_alignment = 1
+clip_text = true
+uppercase = true
+script = SubResource("GDScript_4rxgb")
+
+[node name="Main" type="PanelContainer" parent="MapSelector/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MapSelector/HBoxContainer/Main"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.85
+
+[node name="LeftSide" type="VBoxContainer" parent="MapSelector/HBoxContainer/Main/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TopSeparator" type="HSeparator" parent="MapSelector/HBoxContainer/Main/HBoxContainer/LeftSide"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxFlat_g2nof")
+
+[node name="LevelScrollArea" type="ScrollContainer" parent="MapSelector/HBoxContainer/Main/HBoxContainer/LeftSide"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="Maps" type="VBoxContainer" parent="MapSelector/HBoxContainer/Main/HBoxContainer/LeftSide/LevelScrollArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+script = ExtResource("2_wojaa")
+
+[node name="RightSide" type="VBoxContainer" parent="MapSelector/HBoxContainer/Main/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MapInfo" type="VBoxContainer" parent="MapSelector/HBoxContainer/Main/HBoxContainer/RightSide"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_25dl4")
+show_properties = PackedStringArray("author", "thumbnail", "game_version", "engine_version", "map_version", "map_difficulty", "map_description", "map_collection", "map_name", "map_path")
+
+[node name="PlayButton" type="Button" parent="MapSelector/HBoxContainer/Main/HBoxContainer/RightSide"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 78
+text = "Play"
+
+[connection signal="pressed" from="MapSelector/HBoxContainer/Top/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="map_container_selected" from="MapSelector/HBoxContainer/Main/HBoxContainer/LeftSide/LevelScrollArea/Maps" to="MapSelector/HBoxContainer/Top/LevelDir" method="_on_maps_map_container_selected"]
+[connection signal="map_selected" from="MapSelector/HBoxContainer/Main/HBoxContainer/LeftSide/LevelScrollArea/Maps" to="." method="_on_map_container_map_selected"]
+[connection signal="map_selected" from="MapSelector/HBoxContainer/Main/HBoxContainer/LeftSide/LevelScrollArea/Maps" to="MapSelector/HBoxContainer/Main/HBoxContainer/RightSide/MapInfo" method="_on_map_container_map_selected"]
+[connection signal="pressed" from="MapSelector/HBoxContainer/Main/HBoxContainer/RightSide/PlayButton" to="." method="_on_play_button_pressed"]

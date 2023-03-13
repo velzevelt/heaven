@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca6v8ti1uxcda"]
+
+[ext_resource type="Script" path="res://addons/debug_tools/console/console_window/console_window.gd" id="1_sy3na"]
+[ext_resource type="PackedScene" uid="uid://bw7chorft18wj" path="res://addons/debug_tools/console/console.tscn" id="2_dlknq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5836u"]
+
+[node name="ConsoleWindow" type="Window"]
+process_mode = 3
+disable_3d = true
+transparent_bg = true
+gui_embed_subwindows = true
+initial_position = 1
+size = Vector2i(500, 250)
+current_screen = -2
+transient = true
+popup_window = true
+min_size = Vector2i(500, 250)
+content_scale_mode = 1
+theme_override_styles/embedded_border = SubResource("StyleBoxEmpty_5836u")
+script = ExtResource("1_sy3na")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Console" parent="CanvasLayer" instance=ExtResource("2_dlknq")]
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

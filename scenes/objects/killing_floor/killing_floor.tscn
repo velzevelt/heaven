@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://db5xremcmjtg3"]
+
+[ext_resource type="Script" path="res://scenes/objects/killing_floor/killing_floor.gd" id="1_8yrux"]
+[ext_resource type="Texture2D" uid="uid://bg0wrkes71ra2" path="res://addons/debug_tools/kenney_prototypetextures/Dark/texture_01.png" id="1_hc7hh"]
+[ext_resource type="Script" path="res://scenes/objects/killing_floor/reload_on_touch.gd" id="3_ejwrn"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8fj81"]
+size = Vector2(2048, 2048)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_641ot"]
+albedo_texture = ExtResource("1_hc7hh")
+uv1_triplanar = true
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_7n1o2"]
+
+[node name="KillingFloor" type="Node3D"]
+script = ExtResource("1_8yrux")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_8fj81")
+surface_material_override/0 = SubResource("StandardMaterial3D_641ot")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("WorldBoundaryShape3D_7n1o2")
+
+[node name="OnTouch" type="Node" parent="."]
+script = ExtResource("3_ejwrn")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

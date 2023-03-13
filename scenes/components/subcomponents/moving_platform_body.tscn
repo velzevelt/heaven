@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dr2kdx3xlpchd"]
+
+[ext_resource type="Texture2D" uid="uid://bg0wrkes71ra2" path="res://addons/debug_tools/kenney_prototypetextures/Dark/texture_01.png" id="1_2kb87"]
+[ext_resource type="PackedScene" uid="uid://dob7y3xd5n8in" path="res://scenes/components/subcomponents/platform_area.tscn" id="2_k1c2q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ull6i"]
+albedo_texture = ExtResource("1_2kb87")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_33va2"]
+material = SubResource("StandardMaterial3D_ull6i")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eny5g"]
+
+[node name="MovingPlatformBody" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+motion_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_33va2")
+
+[node name="Area3D" parent="." instance=ExtResource("2_k1c2q")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_eny5g")

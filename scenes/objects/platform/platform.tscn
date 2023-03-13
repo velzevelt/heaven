@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://db3hveqp4cjry"]
+
+[ext_resource type="PackedScene" uid="uid://dh3wdrs8i84jk" path="res://scenes/components/subcomponents/platform_body.tscn" id="1_4mv1u"]
+
+[node name="Platform" type="Node3D"]
+
+[node name="PlatformBody" parent="." instance=ExtResource("1_4mv1u")]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://fhqe5v3yswi8"]
+
+[ext_resource type="PackedScene" uid="uid://bw7chorft18wj" path="res://addons/debug_tools/console/console.tscn" id="1_3fl4y"]
+
+[node name="ConsoleLayer" type="CanvasLayer"]
+layer = 3
+
+[node name="ConsoleContainer" parent="." instance=ExtResource("1_3fl4y")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -575.0
+offset_right = 821.0
+grow_horizontal = 1
+grow_vertical = 0

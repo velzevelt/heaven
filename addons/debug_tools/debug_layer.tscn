@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dch70obt1efrf"]
+
+[ext_resource type="PackedScene" uid="uid://dw75qaapyyxif" path="res://addons/debug_tools/fps_counter/fps_counter.tscn" id="1_8yair"]
+[ext_resource type="Script" path="res://addons/debug_tools/debug_layer.gd" id="1_h2jx2"]
+
+[node name="DebugLayer" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_h2jx2")
+
+[node name="FPSCounter" parent="." instance=ExtResource("1_8yair")]
+anchors_preset = 1
+offset_bottom = 26.0
+horizontal_alignment = 2
+clip_text = true
+
+[node name="InfoContainer" type="VBoxContainer" parent="."]
+offset_right = 464.0
+offset_bottom = 187.0

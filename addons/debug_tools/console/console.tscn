@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://bw7chorft18wj"]
+
+[ext_resource type="Script" path="res://addons/debug_tools/console/console_ui.gd" id="1_5bj2g"]
+[ext_resource type="Script" path="res://addons/debug_tools/console/console.gd" id="1_kwa2v"]
+[ext_resource type="PackedScene" uid="uid://defae4j72kfoa" path="res://addons/debug_tools/console/output_panel.tscn" id="2_tb43d"]
+[ext_resource type="Script" path="res://addons/debug_tools/console/console_input.gd" id="3_3l3wc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eqqbx"]
+
+[node name="ConsoleContainer" type="VBoxContainer"]
+process_mode = 3
+visible = false
+modulate = Color(1, 1, 1, 0.894118)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+alignment = 1
+script = ExtResource("1_5bj2g")
+
+[node name="Console" type="Node" parent="."]
+script = ExtResource("1_kwa2v")
+commands_directory_path = "res://addons/debug_tools/console/commands"
+
+[node name="Separator" type="Panel" parent="."]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_eqqbx")
+
+[node name="OutputPanel" parent="." instance=ExtResource("2_tb43d")]
+layout_mode = 2
+
+[node name="Separator2" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_eqqbx")
+
+[node name="Input" type="LineEdit" parent="."]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Command..."
+clear_button_enabled = true
+script = ExtResource("3_3l3wc")
+
+[connection signal="command_entered" from="Input" to="Console" method="_on_input_command_entered"]
+[connection signal="text_submitted" from="Input" to="Input" method="_on_text_submitted"]

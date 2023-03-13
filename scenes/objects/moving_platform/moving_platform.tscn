@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckemuy5whwa3e"]
+
+[ext_resource type="PackedScene" uid="uid://dr2kdx3xlpchd" path="res://scenes/components/subcomponents/moving_platform_body.tscn" id="1_y0mgq"]
+[ext_resource type="Script" path="res://scenes/components/moving_platform_component.gd" id="3_chyvh"]
+[ext_resource type="PackedScene" uid="uid://droywgubrul4i" path="res://scenes/components/subcomponents/path.tscn" id="3_ubrgq"]
+
+[node name="MovingPlatform" type="Node3D"]
+
+[node name="MovingPlatformBody" parent="." instance=ExtResource("1_y0mgq")]
+
+[node name="MovingPlatformComponent" type="Node3D" parent="."]
+script = ExtResource("3_chyvh")
+path_follow = NodePath("../Path3D/PathFollow3D")
+
+[node name="Path3D" parent="." instance=ExtResource("3_ubrgq")]
+
+[node name="RemoteTransform3D" parent="Path3D/PathFollow3D" index="0"]
+remote_path = NodePath("../../../MovingPlatformBody")
+
+[editable path="MovingPlatformBody"]
+[editable path="Path3D"]

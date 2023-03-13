@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CrosshairStyle" load_steps=2 format=3 uid="uid://cyeamk4lrqu56"]
+
+[ext_resource type="Script" path="res://scenes/objects/player/crosshair_style.gd" id="1_3yrtd"]
+
+[resource]
+script = ExtResource("1_3yrtd")
+out_modulate = Color(0.745098, 0.745098, 0.745098, 1)
+out_scale = Vector2(0.5, 0.5)
+in_modulate = Color(0.45098, 1, 0.513726, 1)
+in_scale = Vector2(0.7, 0.7)

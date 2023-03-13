@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1ng2ed33brbo"]
+
+[ext_resource type="PackedScene" path="res://scenes/components/subcomponents/moving_platform_body.tscn" id="2_lx7j1"]
+[ext_resource type="Script" path="res://scenes/components/falling_platform_component.gd" id="3_t1h54"]
+
+[node name="FallingPlatform" type="Node3D"]
+
+[node name="FallingPlatformComponent" type="Node3D" parent="."]
+script = ExtResource("3_t1h54")
+live_time = 5.0
+autofall = true
+area = NodePath("../MovingPlatformBody/Area3D")
+
+[node name="MovingPlatformBody" parent="." instance=ExtResource("2_lx7j1")]
+
+[editable path="MovingPlatformBody"]

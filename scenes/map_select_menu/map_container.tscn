@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cubfgxorfqd3g"]
+
+[ext_resource type="Script" path="res://scenes/map_select_menu/map_container.gd" id="1_vnfa7"]
+
+[node name="MapContainer" type="VBoxContainer"]
+custom_minimum_size = Vector2(0, 65)
+script = ExtResource("1_vnfa7")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "Test"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://can5eycxc1pa4"]
+
+[ext_resource type="Script" path="res://scenes/map_select_menu/map_item.gd" id="1_i0rcv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujyef"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.0470588, 0.0470588, 0.0470588, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="LevelItem" type="Button"]
+offset_right = 60.0
+offset_bottom = 32.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_ujyef")
+text = "Level 1"
+script = ExtResource("1_i0rcv")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

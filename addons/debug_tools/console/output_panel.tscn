@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://defae4j72kfoa"]
+
+[ext_resource type="Script" path="res://addons/debug_tools/console/console_output.gd" id="1_4pybw"]
+
+[node name="OutputPanel" type="Panel"]
+size_flags_vertical = 3
+
+[node name="Output" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 42
+bbcode_enabled = true
+scroll_following = true
+selection_enabled = true
+script = ExtResource("1_4pybw")
