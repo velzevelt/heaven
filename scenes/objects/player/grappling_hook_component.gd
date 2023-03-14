@@ -27,6 +27,7 @@ var grappling := false
 func _physics_process(delta):
 	if hook_raycast.is_colliding() and Input.is_action_just_pressed("forward"):
 		hit_point = hook_raycast.get_collision_point()
+		var hit_collider = hook_raycast.get_collider()
 		var hit_direction = body.global_position.direction_to(hit_point)
 		
 		# YOU CANNOT ADD JOINTS IN RUNTIME
@@ -53,5 +54,17 @@ func _physics_process(delta):
 		rb.apply_central_impulse(hit_direction * base_pull_force)
 		
 		await get_tree().create_timer(free_fly_time).timeout
+		sb.reparent(hit_collider)
 		joint.node_a = rb.get_path()
 		joint.node_b = sb.get_path()
+		
+		var remote = RemoteTransform3D.new()
+		remote.update_rotation = false
+		remote.update_scale = false
+		remote.update_position = true
+
+		rb.call_deferred('add_child', remote)
+		await remote.tree_entered
+		remote.remote_path = body.get_path()
+		
+		
