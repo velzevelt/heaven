@@ -20,7 +20,7 @@ func _on_object_entered_strict(obj):
 		var tween_rotation = create_tween()
 		tween_rotation.tween_property(_player, 'rotation', Vector3(0, _player.rotation.y, 0), 0.1)
 		
-		# After reparent FloorActivationComponent immediately calls object_exited. Need wait 2 frames
+		# After reparent FloorActivationComponent immediately calls object_exited. Need wait 2 frames to avoid this
 		_add_delay()
 
 
@@ -29,6 +29,7 @@ func _on_object_exited(obj):
 		_player.reparent(_prev_parent)
 		var tween_rotation = create_tween()
 		tween_rotation.tween_property(_player, 'global_rotation', Vector3(0, _player.rotation.y, 0), 0.1)
+		# After reparent FloorActivationComponent may call object_entered. Need wait 2 frames to avoid this
 		_add_delay()
 
 

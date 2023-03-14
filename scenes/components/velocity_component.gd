@@ -8,12 +8,13 @@ extends Node
 @export var friction := 0.3
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
 var last_speed: float = 1.0:
 	get:
 		return last_speed
 	set(value):
-		if value > max_speed:
-			value = max_speed
-		else:
-			last_speed = value
+		last_speed = value
+		if last_speed > max_speed:
+			last_speed = max_speed
+
 var last_velocity: Vector3 = Vector3()

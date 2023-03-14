@@ -9,7 +9,7 @@ extends PlatformComponent
 		create_immediately = value
 		notify_property_list_changed()
 		
-var create_delay := 0.0
+var create_delay := 0.1
 var _init_parent
 
 func _get_property_list():
