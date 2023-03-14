@@ -8,6 +8,7 @@ script = ExtResource("1_vnfa7")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "Test"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

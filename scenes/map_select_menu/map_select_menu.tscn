@@ -96,8 +96,13 @@ script = ExtResource("2_wojaa")
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MapInfo" type="VBoxContainer" parent="MapSelector/HBoxContainer/Main/HBoxContainer/RightSide"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MapSelector/HBoxContainer/Main/HBoxContainer/RightSide"]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MapInfo" type="VBoxContainer" parent="MapSelector/HBoxContainer/Main/HBoxContainer/RightSide/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_25dl4")
 show_properties = PackedStringArray("author", "thumbnail", "game_version", "engine_version", "map_version", "map_difficulty", "map_description", "map_collection", "map_name", "map_path")
@@ -111,5 +116,5 @@ text = "Play"
 [connection signal="pressed" from="MapSelector/HBoxContainer/Top/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="map_container_selected" from="MapSelector/HBoxContainer/Main/HBoxContainer/LeftSide/LevelScrollArea/Maps" to="MapSelector/HBoxContainer/Top/LevelDir" method="_on_maps_map_container_selected"]
 [connection signal="map_selected" from="MapSelector/HBoxContainer/Main/HBoxContainer/LeftSide/LevelScrollArea/Maps" to="." method="_on_map_container_map_selected"]
-[connection signal="map_selected" from="MapSelector/HBoxContainer/Main/HBoxContainer/LeftSide/LevelScrollArea/Maps" to="MapSelector/HBoxContainer/Main/HBoxContainer/RightSide/MapInfo" method="_on_map_container_map_selected"]
+[connection signal="map_selected" from="MapSelector/HBoxContainer/Main/HBoxContainer/LeftSide/LevelScrollArea/Maps" to="MapSelector/HBoxContainer/Main/HBoxContainer/RightSide/ScrollContainer/MapInfo" method="_on_map_container_map_selected"]
 [connection signal="pressed" from="MapSelector/HBoxContainer/Main/HBoxContainer/RightSide/PlayButton" to="." method="_on_play_button_pressed"]
