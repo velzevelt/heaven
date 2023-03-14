@@ -35,7 +35,10 @@ static func load_resources(path: String, resource_name: String):
 						var data = load(file_path)
 						result.append(data)
 					else:
-						Logger.debug_log('Cant load at ' + file_path, MESSAGE_TYPE.ERROR)
+						if Engine.is_editor_hint():
+							push_error('Cant load at ' + file_path)
+						else:
+							Logger.debug_log('Cant load at ' + file_path, MESSAGE_TYPE.ERROR)
 			
 			file_name = dir.get_next()
 	else:
@@ -49,8 +52,12 @@ static func load_resources(path: String, resource_name: String):
 
 
 func change_scene(scene: MapData):
-	get_tree().change_scene_to_packed(scene.map_packed)
-	
+	var map = scene.map_packed
+	if map != null:
+		get_tree().change_scene_to_packed(scene.map_packed)
+	else:
+		Logger.debug_log("Missing map_packed " + scene.resource_path, MESSAGE_TYPE.ERROR)
+
 
 func reload_scene():
 	get_tree().reload_current_scene()

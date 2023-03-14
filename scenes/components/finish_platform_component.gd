@@ -22,7 +22,7 @@ func _physics_process(delta):
 			var last_collision = body.get_last_slide_collision()
 			if is_instance_valid(last_collision):
 				if last_collision.get_collider() == platform_body:
-					self.body = null # Oneshot coroutine, break physics loop
+					self.body = null # Break physics loop to register player_finished only once
 					await get_tree().create_timer(0.4).timeout # Little delay before finish registration
 					finished.emit()
 					Events.player_finished.emit()

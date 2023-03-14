@@ -8,9 +8,13 @@ extends PlatformComponent
 
 func _on_object_entered(body):
 	if body.has_node('PlayerMoveComponent'):
-		if trampoline_mode and body.has_node('VelocityComponent'):
-			var new_force = clampf(body.get_node('VelocityComponent').last_velocity.y / 2 + jump_force, 0.0, max_height)
-			body.get_node('PlayerMoveComponent').jump(new_force)
+		if trampoline_mode:
+			if body.has_node('VelocityComponent'):
+				var new_force = clampf(body.get_node('VelocityComponent').last_velocity.y / 2 + jump_force, 0.0, max_height)
+				body.get_node('PlayerMoveComponent').jump(new_force)
+			else:
+				Logger.debug_log('No VelocityComponent found, trampoline does not work!', MESSAGE_TYPE.WARNING)
+				body.get_node('PlayerMoveComponent').jump(jump_force)
 		else:
 			body.get_node('PlayerMoveComponent').jump(jump_force)
 	else:

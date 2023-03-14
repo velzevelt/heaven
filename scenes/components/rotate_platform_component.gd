@@ -5,26 +5,31 @@ extends PlatformComponent
 @export var rotate_direction: Vector3 = Vector3():
 	set(value):
 		rotate_direction = value
-		if is_instance_valid(platform_body):
+		if is_instance_valid(platform_body): # Reset rotation
 			platform_body.rotation = Vector3()
 		update_configuration_warnings()
 	get:
 		return rotate_direction
+
 @export var angle: float = 0.01
+
 @export var preview_rotation := true:
 	set(value):
 		preview_rotation = value
 		if is_instance_valid(platform_body):
 			platform_body.rotation = Vector3()
 
+
 func _get_configuration_warnings():
 	if self.rotate_direction == Vector3.ZERO:
 		return ["Need rotate direction"]
 
+
 func _ready():
-	if is_instance_valid(platform_body):
+	if not Engine.is_editor_hint() and is_instance_valid(platform_body):
 		platform_body.rotation = Vector3()
 		preview_rotation = true
+
 
 func _physics_process(delta):
 	if is_instance_valid(platform_body) and rotate_direction != Vector3.ZERO and preview_rotation:

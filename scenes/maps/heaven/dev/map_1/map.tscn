@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_dsnnr"]
 [ext_resource type="PackedScene" uid="uid://db5xremcmjtg3" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_g6p6m"]
-[ext_resource type="PackedScene" uid="uid://bl4fv7s6u33pr" path="res://scenes/objects/player/player.tscn" id="3_7t806"]
+[ext_resource type="PackedScene" path="res://scenes/objects/player/player.tscn" id="3_7t806"]
 [ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_u1wqf"]
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="5_8a4gq"]
 [ext_resource type="Script" path="res://scenes/components/bounce_platform_component.gd" id="5_rdpkx"]
@@ -112,7 +112,7 @@ script = ExtResource("9_pqq2b")
 style = SubResource("Resource_bha7d")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(0.240191, 0.076287, -0.959872, 0.0762126, 0.996519, 0.0959871, 0.960008, -0.0964488, 0.232525, -5.67212, 1.40138, -2.73088)
+transform = Transform3D(0.0965098, 0.090722, 0.983506, 0.0905817, 0.995087, -0.0983508, -0.983647, 0.0988243, 0.0874517, -5.67212, 1.40138, -2.73088)
 use_collision = true
 size = Vector3(1.84565, 0.1, 1.963)
 script = ExtResource("8_d3cr6")
@@ -133,7 +133,7 @@ rotate_direction = Vector3(0.1, 1, 0)
 platform_body = NodePath("..")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="."]
-transform = Transform3D(0.999437, 0, 0, 0, 0.999537, 0, 0, 0, 0.999871, 7.81207, 15.5998, -1.57992)
+transform = Transform3D(0.999436, 0, 0, 0, 0.999535, 0, 0, 0, 0.999871, 7.81207, 15.5998, -1.57992)
 use_collision = true
 size = Vector3(4.92878, 0.1, 6.37029)
 script = ExtResource("8_d3cr6")
@@ -155,7 +155,7 @@ preview_rotation = false
 platform_body = NodePath("..")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(0.314921, 0, -0.944784, 0, 1, 0, 0.944784, 0, 0.314921, -5.12869, 2.18077, -6.39635)
+transform = Transform3D(0.00302162, 0, 0.995875, 0, 1, 0, -0.995875, 0, 0.00302162, -5.12869, 2.18077, -6.39635)
 use_collision = true
 size = Vector3(1.84565, 0.1, 1.963)
 script = ExtResource("8_d3cr6")
