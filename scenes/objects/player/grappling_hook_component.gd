@@ -10,7 +10,7 @@ extends Node
 
 @export var velocity_component: VelocityComponent
 
-## Determine force of attachment to hit_point
+## Determine force of engagement to hit_point
 @export var base_pull_force: float = 15.0
 
 ## Determine how long body be free untill it attached to joint
@@ -49,9 +49,10 @@ func _physics_process(_delta):
 		
 		sb.add_collision_exception_with(body)
 		rb.add_collision_exception_with(body)
+		
 		sb.position = hit_point
 		joint.position = hit_point
-		rb.position = body.global_position + Vector3.UP # Need to add offset to not stuck in floor after spawn
+		rb.position = body.global_position + Vector3.UP # Need add offset to not stuck in floor after spawn
 		
 		body.get_parent().call_deferred('add_child', instance)
 		await rb.tree_entered
@@ -73,7 +74,6 @@ func _physics_process(_delta):
 		# Activate joint
 		joint.node_a = rb.get_path()
 		joint.node_b = sb.get_path()
-		
 	
 	if grappling and Input.is_action_just_pressed("forward"):
 		print(1)
