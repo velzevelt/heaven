@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_dsnnr"]
 [ext_resource type="PackedScene" uid="uid://db5xremcmjtg3" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_g6p6m"]
-[ext_resource type="PackedScene" path="res://scenes/objects/player/player.tscn" id="3_7t806"]
+[ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="3_7t806"]
 [ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_u1wqf"]
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="5_8a4gq"]
 [ext_resource type="Script" path="res://scenes/components/bounce_platform_component.gd" id="5_rdpkx"]
@@ -101,6 +101,12 @@ platform_body = NodePath("..")
 script = ExtResource("9_pqq2b")
 style = SubResource("Resource_bha7d")
 
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.88907, 0.104712, -9.30826)
+use_collision = true
+size = Vector3(5.17033, 1, 1.96279)
+script = ExtResource("8_d3cr6")
+
 [node name="CSGBox3D4" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.84839, 14.7507)
 use_collision = true
@@ -112,7 +118,7 @@ script = ExtResource("9_pqq2b")
 style = SubResource("Resource_bha7d")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(0.795841, 0.0204869, 0.592119, 0.0206845, 1.00232, -0.059212, -0.592212, 0.059495, 0.793669, -5.67212, 1.40138, -2.73088)
+transform = Transform3D(0.966175, 0.00337876, 0.225609, 0.00365647, 1.00406, -0.0225608, -0.225651, 0.0226691, 0.965676, -5.67212, 1.40138, -2.73088)
 use_collision = true
 size = Vector3(1.84565, 0.1, 1.963)
 script = ExtResource("8_d3cr6")
@@ -155,7 +161,7 @@ preview_rotation = false
 platform_body = NodePath("..")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(0.742948, 0, 0.662967, 0, 1, 0, -0.662967, 0, 0.742948, -5.12869, 2.18077, -6.39635)
+transform = Transform3D(0.94647, 0, 0.309275, 0, 1, 0, -0.309275, 0, 0.94647, -5.12869, 2.18077, -6.39635)
 use_collision = true
 size = Vector3(1.84565, 0.1, 1.963)
 script = ExtResource("8_d3cr6")

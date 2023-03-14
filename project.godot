@@ -35,6 +35,10 @@ window/size/window_height_override=540
 window/stretch/mode="canvas_items"
 mouse_cursor/sensitivity=0.08
 
+[editor]
+
+movie_writer/movie_file="C:/Users/Class_Student/Desktop/temp/video/footage.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/debug_tools/plugin.cfg")
