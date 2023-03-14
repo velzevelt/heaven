@@ -23,11 +23,13 @@ func _ready():
 	target_losted.connect(_on_target_losted)
 	
 
+@warning_ignore("shadowed_variable")
 func _on_target_captured(target):
 	if target.is_in_group(target_group):
 		if target.has_method('on_focus'):
 			target.on_focus()
 
+@warning_ignore("shadowed_variable")
 func _on_target_losted(target):
 	if target.is_in_group(target_group):
 		if target.has_method('focus_losted'):

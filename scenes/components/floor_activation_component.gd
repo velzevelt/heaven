@@ -9,6 +9,7 @@ var _prev_floor = null
 func _physics_process(_delta):
 	if not Engine.is_editor_hint():
 		if body.is_on_floor_only():
+			@warning_ignore("shadowed_global_identifier")
 			var floor = body.get_last_slide_collision()
 			if is_instance_valid(floor):
 				floor = floor.get_collider()
@@ -20,6 +21,7 @@ func _physics_process(_delta):
 						floor.emit_signal('object_entered', body)
 				_prev_floor = floor
 		elif body.is_on_floor():
+			@warning_ignore("shadowed_global_identifier")
 			var floor = body.get_last_slide_collision()
 			if is_instance_valid(floor):
 				floor = floor.get_collider()

@@ -13,7 +13,7 @@ extends Node
 @onready var min_fov = camera.fov
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var new_fov = clampf(min_fov + velocity_component.last_speed, min_fov, max_fov)
 	var tween = create_tween()
 	tween.tween_property(camera, 'fov', new_fov, 0.1)

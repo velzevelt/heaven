@@ -11,7 +11,6 @@ signal activated(object)
 var _init_color: Color
 var _tween
 var _activated := false
-var _active_target := false
 
 func _ready():
 	if mesh != null:

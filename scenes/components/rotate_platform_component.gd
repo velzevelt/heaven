@@ -31,7 +31,7 @@ func _ready():
 		preview_rotation = true
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_instance_valid(platform_body) and rotate_direction != Vector3.ZERO and preview_rotation:
 		platform_body.rotate(rotate_direction.normalized(), angle)
 	elif Engine.is_editor_hint(): # Set platform body to export meta value

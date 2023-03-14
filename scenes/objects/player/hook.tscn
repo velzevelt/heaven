@@ -24,9 +24,6 @@ shape = SubResource("BoxShape3D_pinle")
 mesh = SubResource("BoxMesh_o04yh")
 skeleton = NodePath("../../RigidBody3D")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.54005)
-
 [node name="PinJoint3D" type="PinJoint3D" parent="."]
 node_a = NodePath("../StaticBody3D")
 node_b = NodePath("../RigidBody3D")

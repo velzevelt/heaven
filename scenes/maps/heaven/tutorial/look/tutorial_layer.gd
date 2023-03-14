@@ -15,7 +15,7 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		relative = event.relative
 
-func _process(delta):
+func _process(_delta):
 	if relative.x > 0:
 		arrow_right.modulate = highlight_modulate
 		arrow_left.modulate = _init_modulate

@@ -23,6 +23,7 @@ func _on_settings_button_pressed():
 	
 
 
+@warning_ignore("unused_parameter")
 func create_settings_menu(bind_parent):
 	if settings_menu != null:
 		print(self)

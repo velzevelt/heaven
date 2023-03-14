@@ -6,7 +6,6 @@ extends PlatformComponent
 
 var _player
 var _prev_parent
-var _prev_rotation
 
 func _ready():
 	super()

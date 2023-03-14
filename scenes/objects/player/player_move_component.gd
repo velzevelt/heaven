@@ -14,7 +14,7 @@ func _ready():
 	input_component.jump_pressed.connect(_on_jump_pressed)
 	input_component.jump_released.connect(_on_jump_released)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if not player_body.is_on_floor():
 #		player_body.velocity.y -= velocity_component.gravity * velocity_component.mass * delta
 		player_body.velocity.y = move_toward(player_body.velocity.y, -velocity_component.gravity * velocity_component.mass * velocity_component.last_speed, 0.25)

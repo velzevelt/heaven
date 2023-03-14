@@ -35,7 +35,7 @@ func _ready():
 		create_node.queue_free()
 		create_node = temp
 
-func _on_object_exited(player):
+func _on_object_exited(_player):
 	if not create_immediately:
 		await get_tree().create_timer(create_delay).timeout
 	
