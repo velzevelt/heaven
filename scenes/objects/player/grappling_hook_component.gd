@@ -2,7 +2,7 @@ extends Node
 
 @export var hook_raycast: RayCast3D
 
-## RigidBody3D, StaticBody3D and PinJoint3D connected between them
+## Scene with RigidBody3D, StaticBody3D and PinJoint3D connected between them
 @export var hook: PackedScene = preload("res://scenes/objects/player/hook.tscn")
 
 ## Player body
@@ -29,9 +29,9 @@ func _physics_process(delta):
 		hit_point = hook_raycast.get_collision_point()
 		var hit_direction = body.global_position.direction_to(hit_point)
 		
-		# YOU CAN'T ADD JOINTS IN RUNTIME
-		# That's have to use PackedScene with Objects and Joint
-		# You can delete joints in runtime
+		# YOU CANNOT ADD JOINTS IN RUNTIME
+		# That's why have to use PackedScene with Objects and Joint
+		# You can delete joints in runtime and modify them
 		
 		var instance = hook.instantiate() as Node3D
 		var rb = instance.get_node('RigidBody3D') as RigidBody3D
