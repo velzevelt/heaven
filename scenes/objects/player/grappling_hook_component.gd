@@ -1,11 +1,22 @@
 extends Node
 
 @export var hook_raycast: RayCast3D
-@export var hook: PackedScene
+
+## RigidBody3D, StaticBody3D and PinJoint3D connected between them
+@export var hook: PackedScene = preload("res://scenes/objects/player/hook.tscn")
+
+## Player body
 @export var body: CharacterBody3D
+
 @export var velocity_component: VelocityComponent
+
+## Determine force of attachment to hit_point
 @export var base_pull_force: float = 15.0
+
+## Determine how long body be free untill it attached to joint
 @export var free_fly_time := 0.4
+
+## Specific Input
 #@export var input_component: GrapplingHookInputComponent
 
 
@@ -41,6 +52,6 @@ func _physics_process(delta):
 		await rb.tree_entered and sb.tree_entered
 		rb.apply_central_impulse(hit_direction * base_pull_force)
 		
-		await get_tree().create_timer(0.4).timeout
+		await get_tree().create_timer(free_fly_time).timeout
 		joint.node_a = rb.get_path()
 		joint.node_b = sb.get_path()

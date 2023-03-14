@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bl4fv7s6u33pr"]
+[gd_scene load_steps=18 format=3]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_gwrkw"]
 [ext_resource type="Script" path="res://scenes/objects/player/camera_controller.gd" id="2_8xvxh"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scenes/objects/player/player_debug_mesh.gd" id="3_rbpt3"]
 [ext_resource type="Script" path="res://scenes/objects/player/crosshair.gd" id="4_gifrp"]
 [ext_resource type="Script" path="res://scenes/objects/player/grappling_hook_component.gd" id="6_5cnao"]
-[ext_resource type="PackedScene" uid="uid://y75ny8014etd" path="res://joint_test.tscn" id="7_bnobg"]
+[ext_resource type="PackedScene" uid="uid://y75ny8014etd" path="res://scenes/objects/player/hook.tscn" id="7_bnobg"]
 [ext_resource type="Script" path="res://scenes/components/floor_activation_component.gd" id="7_mjju6"]
 [ext_resource type="Script" path="res://addons/debug_tools/info_label/info_label.gd" id="7_tu7pf"]
 [ext_resource type="Script" path="res://scenes/objects/player/jump_input_component.gd" id="8_xuxdu"]
