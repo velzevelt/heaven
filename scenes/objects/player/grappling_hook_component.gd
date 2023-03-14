@@ -23,9 +23,12 @@ extends Node
 var hit_point: Vector3 = Vector3()
 var grappling := false
 
+var _remote: RemoteTransform3D
 
 func _physics_process(delta):
-	if hook_raycast.is_colliding() and Input.is_action_just_pressed("forward"):
+	if hook_raycast.is_colliding() and Input.is_action_just_pressed("forward") and not grappling:
+		grappling = true
+		
 		hit_point = hook_raycast.get_collision_point()
 		var hit_collider = hook_raycast.get_collider()
 		var hit_direction = body.global_position.direction_to(hit_point)
@@ -39,7 +42,7 @@ func _physics_process(delta):
 		var sb = instance.get_node('StaticBody3D') as StaticBody3D
 		var joint = instance.get_node('PinJoint3D') as PinJoint3D
 		
-		# Clear nodepath to attach bodies it later
+		# Clear nodepath to attach bodies later
 		joint.node_a = ''
 		joint.node_b = ''
 		
@@ -47,24 +50,27 @@ func _physics_process(delta):
 		rb.add_collision_exception_with(body)
 		sb.position = hit_point
 		joint.position = hit_point
-		rb.position = body.global_position + Vector3.UP # Need to add offset to not stuck on floor after spawn
+		rb.position = body.global_position + Vector3.UP # Need to add offset to not stuck in floor after spawn
 		
 		body.get_parent().call_deferred('add_child', instance)
 		await rb.tree_entered and sb.tree_entered
-		rb.apply_central_impulse(hit_direction * base_pull_force)
+		rb.apply_central_impulse(hit_direction * base_pull_force) # Move to hitpoint
+		
+		_remote = RemoteTransform3D.new()
+		_remote.update_rotation = false
+		_remote.update_scale = false
+		_remote.update_position = true
+		rb.call_deferred('add_child', _remote)
+		await _remote.tree_entered
+		_remote.remote_path = body.get_path() # Attach player body to rb
+		
 		
 		await get_tree().create_timer(free_fly_time).timeout
-		sb.reparent(hit_collider)
+		sb.reparent(hit_collider) # Need for non static objects
+		
+		# Activate joint
 		joint.node_a = rb.get_path()
 		joint.node_b = sb.get_path()
-		
-		var remote = RemoteTransform3D.new()
-		remote.update_rotation = false
-		remote.update_scale = false
-		remote.update_position = true
-
-		rb.call_deferred('add_child', remote)
-		await remote.tree_entered
-		remote.remote_path = body.get_path()
-		
-		
+	
+	if grappling and Input.is_action_just_pressed("forward"):
+		print(1)
