@@ -27,10 +27,11 @@ func _on_map_container_map_selected(map_data):
 	for property in properties:
 		if property['name'] in show_properties:
 			if property['type'] == TYPE_STRING or property['type'] == TYPE_STRING_NAME:
-				var key = property['name'] + ": "
 				var value = map_data.get(property['name']) as String
 				if not value.is_empty():
 					var label = Label.new()
 					label.add_theme_font_size_override('font_size', 45)
+					
+					var key = property['name'] + ": "
 					label.text = key + value
 					call_deferred('add_child', label)
