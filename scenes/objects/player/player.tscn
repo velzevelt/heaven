@@ -72,10 +72,11 @@ material_override = SubResource("StandardMaterial3D_37kd4")
 mesh = SubResource("CapsuleMesh_720by")
 script = ExtResource("3_rbpt3")
 
-[node name="GrapplingHookComponent" type="Node" parent="." node_paths=PackedStringArray("hook_raycast", "body")]
+[node name="GrapplingHookComponent" type="Node" parent="." node_paths=PackedStringArray("hook_raycast", "body", "velocity_component")]
 script = ExtResource("6_5cnao")
 hook_raycast = NodePath("../Head/CrosshairRaycast")
 body = NodePath("..")
+velocity_component = NodePath("../VelocityComponent")
 
 [node name="FloorActivationComponent" type="Node" parent="." node_paths=PackedStringArray("body")]
 script = ExtResource("7_mjju6")
@@ -101,7 +102,6 @@ velocity_component = NodePath("../VelocityComponent")
 player_body = NodePath("..")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
