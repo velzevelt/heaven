@@ -82,18 +82,18 @@ velocity_component = NodePath("../VelocityComponent")
 script = ExtResource("7_mjju6")
 body = NodePath("..")
 
-[node name="JumpInputComponent" type="Node" parent="."]
-script = ExtResource("8_xuxdu")
-
 [node name="VelocityComponent" type="Node" parent="."]
 script = ExtResource("9_ytpbk")
 
 [node name="PlayerMoveComponent" type="Node" parent="." node_paths=PackedStringArray("velocity_component", "input_component", "head", "player_body")]
 script = ExtResource("9_7a22w")
 velocity_component = NodePath("../VelocityComponent")
-input_component = NodePath("../JumpInputComponent")
+input_component = NodePath("JumpInputComponent")
 head = NodePath("../Head")
 player_body = NodePath("..")
+
+[node name="JumpInputComponent" type="Node" parent="PlayerMoveComponent"]
+script = ExtResource("8_xuxdu")
 
 [node name="DynamicFOVChange" type="Node" parent="." node_paths=PackedStringArray("camera", "velocity_component", "player_body")]
 script = ExtResource("10_y34ym")
