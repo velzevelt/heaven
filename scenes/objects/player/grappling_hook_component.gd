@@ -8,7 +8,7 @@ extends Node
 ## Player body
 @export var body: CharacterBody3D
 
-#@export var velocity_component: VelocityComponent
+@export var velocity_component: VelocityComponent
 
 ## Determine force of engagement to hit_point
 @export var base_pull_force: float = 15.0
@@ -22,10 +22,10 @@ extends Node
 var hit_point: Vector3 = Vector3()
 var grappling := false
 
+var _hook_instance
+
 func _physics_process(_delta):
-	if hook_raycast.is_colliding() and Input.is_action_just_pressed("forward") and not grappling:
-		grappling = true
-		
+	if not is_instance_valid(_hook_instance) and hook_raycast.is_colliding() and Input.is_action_just_pressed("forward") and not grappling:
 		hit_point = hook_raycast.get_collision_point()
 		var hit_collider = hook_raycast.get_collider()
 		var hit_direction = body.global_position.direction_to(hit_point)
@@ -34,10 +34,10 @@ func _physics_process(_delta):
 		# That's why have to use PackedScene with Objects and Joint
 		# You can delete joints in runtime and modify them
 		
-		var instance = hook.instantiate() as Node3D
-		var rb = instance.get_node('RigidBody3D') as RigidBody3D
-		var sb = instance.get_node('StaticBody3D') as StaticBody3D
-		var joint = instance.get_node('PinJoint3D') as PinJoint3D
+		_hook_instance = hook.instantiate() as Node3D
+		var rb = _hook_instance.get_node('RigidBody3D') as RigidBody3D
+		var sb = _hook_instance.get_node('StaticBody3D') as StaticBody3D
+		var joint = _hook_instance.get_node('PinJoint3D') as PinJoint3D
 		
 		# Clear nodepath to attach bodies later
 		joint.node_a = ''
@@ -50,7 +50,7 @@ func _physics_process(_delta):
 		joint.position = hit_point
 		rb.position = body.global_position + Vector3.UP # Need add offset to not stuck in floor after spawn
 		
-		body.get_parent().call_deferred('add_child', instance)
+		body.get_parent().call_deferred('add_child', _hook_instance) # WARN: Add hook to body parent instead of root!
 		await rb.tree_entered
 		rb.apply_central_impulse(hit_direction * base_pull_force) # Move to hitpoint
 		
@@ -87,6 +87,10 @@ func _physics_process(_delta):
 		# Activate joint
 		joint.node_a = rb.get_path()
 		joint.node_b = sb.get_path()
+		
+		grappling = true
 	
 	if grappling and Input.is_action_just_pressed("forward"):
-		print(1)
+		_hook_instance.call_deferred('queue_free')
+		await _hook_instance.tree_exited
+		grappling = false
