@@ -34,6 +34,11 @@ func _physics_process(_delta):
 		if body.has_node("PlayerMoveComponent"):
 			body.get_node("PlayerMoveComponent").set_physics_process(false)
 		
+		# Character body not register is_on_floor while being updated via RemoteTransform,
+		# so need to exit floor manually
+		if body.has_node("FloorActivationComponent"):
+			body.get_node("FloorActivationComponent").exit_floor()
+		
 		
 		hit_point = hook_raycast.get_collision_point()
 		var hit_collider = hook_raycast.get_collider()

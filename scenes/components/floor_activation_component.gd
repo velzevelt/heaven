@@ -31,9 +31,11 @@ func _physics_process(_delta):
 						floor.emit_signal('object_entered', body)
 				_prev_floor = floor
 		else:
-			if is_instance_valid(_prev_floor):
-#				print("OUT")
-				if _prev_floor.has_signal('object_entered') or _prev_floor.has_user_signal('object_entered'):
-					_prev_floor.emit_signal('object_exited', body)
-				_prev_floor = null
+			exit_floor()
 
+
+func exit_floor():
+	if is_instance_valid(_prev_floor):
+		if _prev_floor.has_signal('object_exited') or _prev_floor.has_user_signal('object_exited'):
+			_prev_floor.emit_signal('object_exited', body)
+		_prev_floor = null
