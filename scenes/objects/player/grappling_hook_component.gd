@@ -19,11 +19,8 @@ extends Node
 ## Specific Input
 #@export var input_component: GrapplingHookInputComponent
 
-
 var hit_point: Vector3 = Vector3()
 var grappling := false
-
-var _remote: RemoteTransform3D
 
 func _physics_process(_delta):
 	if hook_raycast.is_colliding() and Input.is_action_just_pressed("forward") and not grappling:
@@ -32,7 +29,6 @@ func _physics_process(_delta):
 		hit_point = hook_raycast.get_collision_point()
 		var hit_collider = hook_raycast.get_collider()
 		var hit_direction = body.global_position.direction_to(hit_point)
-		
 		
 		# YOU CANNOT ADD JOINTS IN RUNTIME
 		# That's why have to use PackedScene with Objects and Joint
@@ -58,32 +54,35 @@ func _physics_process(_delta):
 		await rb.tree_entered
 		rb.apply_central_impulse(hit_direction * base_pull_force) # Move to hitpoint
 		
-		_remote = RemoteTransform3D.new()
-		_remote.update_rotation = false
-		_remote.update_scale = false
-		_remote.update_position = true
-		rb.call_deferred('add_child', _remote)
-		await _remote.tree_entered
-		_remote.remote_path = body.get_path() # Attach player body to rb
+		
+		# Remote to pin player to rb position
+		var remote = RemoteTransform3D.new()
+		remote.update_rotation = false
+		remote.update_scale = false
+		remote.update_position = true
+		rb.call_deferred('add_child', remote)
+		await remote.tree_entered
+		remote.remote_path = body.get_path() # Attach player body to rb
 		
 		
+		# Temp point position
 		var hit_point_node = Node3D.new()
 		hit_collider.call_deferred('add_child', hit_point_node)
 		await hit_point_node.tree_entered
 		hit_point_node.global_position = hit_point
 		
-		var _rem = RemoteTransform3D.new()
-		_rem.update_position = true
-		_rem.update_rotation = true
-		_rem.update_scale = false
-		hit_point_node.call_deferred('add_child', _rem)
+		var remote_2 = RemoteTransform3D.new()
+		remote_2.update_position = true
+		remote_2.update_rotation = true
+		remote_2.update_scale = false
+		hit_point_node.call_deferred('add_child', remote_2)
 		
 		await get_tree().create_timer(free_fly_time).timeout
 		# It throws error but works, I don't know why... help
 		#sb.reparent(hit_collider) # Need for non static objects, updates transform of sb
 		
 		# UPD fixed with RemoteTransform
-		_rem.remote_path = sb.get_path() # Need for non static objects, updates transform of sb
+		remote_2.remote_path = sb.get_path() # Need for non static objects, updates transform of sb
 		
 		# Activate joint
 		joint.node_a = rb.get_path()
