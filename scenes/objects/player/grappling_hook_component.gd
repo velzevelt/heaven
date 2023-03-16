@@ -8,7 +8,7 @@ extends Node
 ## Player body
 @export var body: CharacterBody3D
 
-@export var velocity_component: VelocityComponent
+#@export var velocity_component: VelocityComponent
 
 ## Determine force of engagement to hit_point
 @export var base_pull_force: float = 15.0
@@ -67,9 +67,23 @@ func _physics_process(_delta):
 		_remote.remote_path = body.get_path() # Attach player body to rb
 		
 		
+		var hit_point_node = Node3D.new()
+		hit_collider.call_deferred('add_child', hit_point_node)
+		await hit_point_node.tree_entered
+		hit_point_node.global_position = hit_point
+		
+		var _rem = RemoteTransform3D.new()
+		_rem.update_position = true
+		_rem.update_rotation = true
+		_rem.update_scale = false
+		hit_point_node.call_deferred('add_child', _rem)
+		
 		await get_tree().create_timer(free_fly_time).timeout
 		# It throws error but works, I don't know why... help
-		sb.reparent(hit_collider) # Need for non static objects, updates transform of sb
+		#sb.reparent(hit_collider) # Need for non static objects, updates transform of sb
+		
+		# UPD fixed with RemoteTransform
+		_rem.remote_path = sb.get_path() # Need for non static objects, updates transform of sb
 		
 		# Activate joint
 		joint.node_a = rb.get_path()
