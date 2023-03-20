@@ -19,14 +19,16 @@ var MAP_SCENE_FILE_NAME = SceneLoader.MAP_SCENE_FILE_NAME # unified name 'map.ts
 
 @export var thumbnail: Texture = preload("res://icon.svg")
 
-@export var game_version: StringName:
+@export var game_version: StringName = '':
 	get:
-		game_version = ProjectSettings.get_setting('application/config/version')
+		if game_version == null or game_version.is_empty():
+			game_version = ProjectSettings.get_setting('application/config/version')
 		return game_version
 
-@export var engine_version: StringName:
+@export var engine_version: StringName = '':
 	get:
-		engine_version = Engine.get_version_info().get('string')
+		if engine_version == null or engine_version.is_empty():
+			engine_version = Engine.get_version_info().get('string')
 		return engine_version
 
 @export var map_version: StringName = "0.1.0"
