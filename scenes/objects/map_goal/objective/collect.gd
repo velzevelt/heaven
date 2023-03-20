@@ -36,7 +36,7 @@ func _on_object_picked_up(obj):
 	if obj.is_in_group(target_group):
 		target_count += 1
 		map_goal_data.progress = "%d/%d" % [target_count, max_target_count]
-		Logger.debug_log(map_goal_data.progress)
+		
 		
 		if target_count == max_target_count:
 			Logger.debug_log('All collected!')

@@ -45,7 +45,7 @@ func _ready():
 			else:
 				label.text = "%s: %s. Progress: %s" % [goal.visible_name, goal.goal_description, goal.progress]
 			
-			label.add_theme_font_size_override('font_size', 20)
+			label.add_theme_font_size_override('font_size', 26)
 			goals_container.call_deferred('add_child', label)
 	else:
 		goals_panel.visible = false
