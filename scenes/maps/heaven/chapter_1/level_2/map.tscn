@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://scenes/objects/map_goal_storage/map_goal_storage.gd" id="13_hagam"]
 [ext_resource type="PackedScene" uid="uid://dch70obt1efrf" path="res://addons/debug_tools/debug_layer.tscn" id="13_ko3s4"]
 [ext_resource type="Script" path="res://scenes/objects/map_goal/objective/collect.gd" id="14_yc1mm"]
-[ext_resource type="Resource" path="res://scenes/objects/map_goal/collect_all_coins.tres" id="15_bf2cl"]
+[ext_resource type="Resource" uid="uid://d3sett5fwbgyy" path="res://scenes/objects/map_goal/collect_all_coins.tres" id="15_bf2cl"]
 
 [node name="Level2" type="Node3D" node_paths=PackedStringArray("goal_storage")]
 script = ExtResource("1_2nmk6")

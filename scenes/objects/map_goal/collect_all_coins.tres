@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_qxuan")
-visible_name = "Collect coins"
+visible_name = "Collect all coins"
 goal_description = "You need to collect all coins"
 completed = false
