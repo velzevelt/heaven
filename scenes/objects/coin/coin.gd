@@ -10,6 +10,7 @@ func _ready():
 
 func _on_area_3d_body_entered(_body):
 	picked_up.emit()
+	Events.object_picked_up.emit(self)
 
 
 func _on_pickup():

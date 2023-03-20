@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MapGoal" load_steps=2 format=3 uid="uid://d1thrqum35o3u"]
+
+[ext_resource type="Script" path="res://scenes/objects/map_goal/map_goal.gd" id="1_qxuan"]
+
+[resource]
+script = ExtResource("1_qxuan")
+visible_name = "Collect all coins"
+goal_description = "You need to collect all coins"
+completed = false
