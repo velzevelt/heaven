@@ -1,4 +1,4 @@
-class_name MapGoal
+class_name MapGoalData
 extends Resource
 
 @export var visible_name: String = '' # e.g. Collect all coins

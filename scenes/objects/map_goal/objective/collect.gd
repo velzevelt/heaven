@@ -1,9 +1,13 @@
 class_name CollectNodeGoal
 extends Node
 
+@export var map_goal_data: MapGoalData
+
 @export var target_group: String
 var target_count := 0
 var max_target_count := 0
+
+
 
 func _ready():
 	get_tree().node_added.connect(_on_node_added)
