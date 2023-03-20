@@ -38,7 +38,13 @@ func _ready():
 	if map_goals.size() != 0:
 		for goal in map_goals:
 			var label = Label.new()
-			label.text = "%s: %s" % [goal.visible_name, goal.goal_description]
+			label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			
+			if goal.completed:
+				label.text = "%s: %s %s" % [goal.visible_name, goal.goal_description, "Completed"]
+			else:
+				label.text = "%s: %s %s" % [goal.visible_name, goal.goal_description, goal.progress]
+			
 			label.add_theme_font_size_override('font_size', 20)
 			goals_container.call_deferred('add_child', label)
 	else:

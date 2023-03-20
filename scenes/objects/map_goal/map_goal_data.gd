@@ -14,3 +14,4 @@ signal goal_completed(goal_data)
 	get:
 		return completed
 
+var progress: String = '' # Formatted string
