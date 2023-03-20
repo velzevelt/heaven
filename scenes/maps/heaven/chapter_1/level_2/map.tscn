@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bjtur4t1jufy"]
+[gd_scene load_steps=15 format=3 uid="uid://bjtur4t1jufy"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_2nmk6"]
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="2_mcedb"]
@@ -14,12 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://dch70obt1efrf" path="res://addons/debug_tools/debug_layer.tscn" id="13_ko3s4"]
 [ext_resource type="Script" path="res://scenes/objects/map_goal_storage/map_goal_storage.gd" id="13_s68gj"]
 [ext_resource type="Script" path="res://scenes/objects/map_goal/map_goal.gd" id="14_d1omt"]
-
-[sub_resource type="Resource" id="Resource_13acp"]
-script = ExtResource("14_d1omt")
-visible_name = ""
-goal_description = ""
-completed = false
 
 [node name="Level2" type="Node3D"]
 script = ExtResource("1_2nmk6")
@@ -78,6 +72,9 @@ platform_body = NodePath("../PlatformRigidBody")
 
 [node name="MapGoalStorage" type="Node" parent="."]
 script = ExtResource("13_s68gj")
-goals = Array[ExtResource("14_d1omt")]([SubResource("Resource_13acp")])
+
+[node name="MapGoal" type="Node" parent="MapGoalStorage"]
+script = ExtResource("14_d1omt")
+visible_name = "Collect all coins"
 
 [editable path="Platform7"]
