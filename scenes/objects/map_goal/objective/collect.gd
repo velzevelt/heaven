@@ -1,6 +1,8 @@
 class_name CollectNodeGoal
 extends Node
 
+signal goal_completed(goal_data, goal_node)
+
 @export var map_goal_data: MapGoalData
 
 @export var target_group: String
@@ -35,4 +37,4 @@ func _on_object_picked_up(obj):
 		if target_count == max_target_count:
 			Logger.debug_log('All collected!')
 			map_goal_data.completed = true
-
+			goal_completed.emit(map_goal_data, self)
