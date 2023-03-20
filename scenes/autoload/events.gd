@@ -8,3 +8,5 @@ signal player_finished
 
 
 signal object_picked_up(object)
+
+signal goal_completed(goal_data)

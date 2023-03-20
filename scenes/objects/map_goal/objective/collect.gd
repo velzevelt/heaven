@@ -10,6 +10,8 @@ var max_target_count := 0
 
 
 func _ready():
+	map_goal_data = map_goal_data.duplicate()
+	
 	get_tree().node_added.connect(_on_node_added)
 	get_tree().node_removed.connect(_on_node_removed)
 	Events.object_picked_up.connect(_on_object_picked_up)
@@ -32,4 +34,5 @@ func _on_object_picked_up(obj):
 		
 		if target_count == max_target_count:
 			Logger.debug_log('All collected!')
+			map_goal_data.completed = true
 
