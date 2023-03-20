@@ -40,6 +40,12 @@ func _get_map_data() -> MapData:
 func _on_player_finished():
 	_map_finish_menu_instance = MenuComponent.create_menu(map_finish_menu)
 	
+	var map_goals = []
+	if is_instance_valid(goal_storage):
+		map_goals = goal_storage.goals
+	
+	_map_finish_menu_instance.map_goals = map_goals
+	
 	var map_data = _get_map_data()
 	if map_data != null:
 		if not map_data.next_map_path.is_empty():
