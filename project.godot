@@ -120,3 +120,4 @@ pause={
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/default_filters/anisotropic_filtering_level=4
