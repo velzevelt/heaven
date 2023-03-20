@@ -7,13 +7,24 @@ process_mode = 3
 script = ExtResource("1_dno8b")
 on_back = 4
 
-[node name="Panel" type="Panel" parent="."]
-offset_left = 553.0
-offset_top = 362.0
-offset_right = 1191.0
-offset_bottom = 610.0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -726.5
+offset_top = -203.0
+offset_right = 726.5
+offset_bottom = 203.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="MainPanel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MainPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,16 +32,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/MainPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 31
 text = "Level completed"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/MainPanel/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MainPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 15
@@ -38,31 +49,69 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 16
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MainPanel/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 22
 
-[node name="BackButton" type="Button" parent="Panel/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="BackButton" type="Button" parent="HBoxContainer/MainPanel/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 60
 text = "Back"
 
-[node name="ReplayButton" type="Button" parent="Panel/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="ReplayButton" type="Button" parent="HBoxContainer/MainPanel/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 60
 text = "Replay"
 
-[node name="NextButton" type="Button" parent="Panel/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="NextButton" type="Button" parent="HBoxContainer/MainPanel/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 60
 text = "Next"
 
-[node name="HSeparator2" type="HSeparator" parent="Panel/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/MainPanel/VBoxContainer"]
 layout_mode = 2
 
-[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/HBoxContainer/ReplayButton" to="." method="_on_replay_button_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/HBoxContainer/NextButton" to="." method="_on_next_button_pressed"]
+[node name="GoalInfoPanel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/GoalInfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/GoalInfoPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Goals Completed"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/GoalInfoPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/GoalInfoPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/GoalInfoPanel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/GoalInfoPanel/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="HBoxContainer/MainPanel/VBoxContainer/MarginContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/MainPanel/VBoxContainer/MarginContainer/HBoxContainer/ReplayButton" to="." method="_on_replay_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/MainPanel/VBoxContainer/MarginContainer/HBoxContainer/NextButton" to="." method="_on_next_button_pressed"]
