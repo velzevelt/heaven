@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="6_mcpiw"]
 [ext_resource type="PackedScene" path="res://scenes/maps/heaven/tutorial/tutorial_layer.tscn" id="7_1j02i"]
 [ext_resource type="PackedScene" uid="uid://bcdqwr7wudsse" path="res://scenes/maps/heaven/tutorial/message_container.tscn" id="8_rxtur"]
-[ext_resource type="PackedScene" uid="uid://j02pgpny1wvs" path="res://scenes/objects/player/player.tscn" id="9_4rg3p"]
+[ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="9_4rg3p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xajhp"]
 
@@ -73,8 +73,6 @@ visible = false
 [node name="Label" parent="TutorialLayer/VBoxContainer/HBoxContainer" index="0"]
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxFlat_ckwxc")
-
-[connection signal="finished" from="Platform2/FinishPlatformComponent" to="." method="_on_player_finished"]
 
 [editable path="KillingFloor"]
 [editable path="Player"]

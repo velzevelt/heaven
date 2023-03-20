@@ -2,7 +2,8 @@ extends MenuComponent
 
 
 @onready var next_map_button = $%NextButton as Button
-@onready var goals_container = $%GoalsContainer as HBoxContainer
+@onready var goals_panel = $%GoalsPanel as Panel
+@onready var goals_container = $%GoalsContainer as Container
 
 var map_goals: Array[MapGoalData]
 var next_map: MapData
@@ -34,8 +35,11 @@ func _ready():
 	if next_map == null:
 		next_map_button.hide()
 	
-	for goal in map_goals:
-		var label = Label.new()
-		label.text = "%s: %s" % [goal.visible_name, goal.goal_description]
-		label.add_theme_font_size_override('font_size', 20)
-		call_deferred('add_child', label)
+	if map_goals.size() != 0:
+		for goal in map_goals:
+			var label = Label.new()
+			label.text = "%s: %s" % [goal.visible_name, goal.goal_description]
+			label.add_theme_font_size_override('font_size', 20)
+			goals_container.call_deferred('add_child', label)
+	else:
+		goals_panel.visible = false

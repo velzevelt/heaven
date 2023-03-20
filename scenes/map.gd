@@ -41,10 +41,11 @@ func _on_player_finished():
 	_map_finish_menu_instance = MenuComponent.create_menu(map_finish_menu)
 	
 	# Setting Map goals info
-	var map_goals = []
 	if is_instance_valid(goal_storage):
-		map_goals = goal_storage.goals
+		var map_goals = goal_storage.goals
 		_map_finish_menu_instance.map_goals = map_goals
+	else:
+		Logger.debug_log("Missing goal_storage", MESSAGE_TYPE.WARNING)
 	
 	
 	# Setting next map

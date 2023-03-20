@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dahjfd6jmc0wy"]
+[gd_scene load_steps=18 format=3 uid="uid://dahjfd6jmc0wy"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_vigc5"]
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="2_kouom"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dch70obt1efrf" path="res://addons/debug_tools/debug_layer.tscn" id="7_p4edq"]
 [ext_resource type="Script" path="res://scenes/components/bounce_platform_component.gd" id="8_b41i8"]
 [ext_resource type="PackedScene" uid="uid://ca44olq010ifc" path="res://scenes/objects/coin/coin.tscn" id="9_8568k"]
+[ext_resource type="Script" path="res://scenes/objects/map_goal_storage/map_goal_storage.gd" id="14_0a0ad"]
 [ext_resource type="Script" path="res://scenes/objects/map_goal/objective/collect.gd" id="14_asoeh"]
 [ext_resource type="Resource" path="res://scenes/objects/map_goal/collect_all_coins.tres" id="15_77d6a"]
 
@@ -23,8 +24,9 @@ out_size = Vector2(10, 10)
 in_modulate = Color(1, 1, 0.541176, 1)
 in_size = Vector2(15, 15)
 
-[node name="Level1" type="Node3D"]
+[node name="Level1" type="Node3D" node_paths=PackedStringArray("goal_storage")]
 script = ExtResource("1_vigc5")
+goal_storage = NodePath("MapGoalStorage")
 
 [node name="Player" parent="." instance=ExtResource("2_kouom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
@@ -92,7 +94,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0518, 2.80705, -21.094)
 
 [node name="DebugLayer" parent="." instance=ExtResource("7_p4edq")]
 
-[node name="CollectNodeGoal" type="Node" parent="."]
+[node name="MapGoalStorage" type="Node" parent="."]
+script = ExtResource("14_0a0ad")
+
+[node name="CollectNodeGoal" type="Node" parent="MapGoalStorage"]
 script = ExtResource("14_asoeh")
 map_goal_data = ExtResource("15_77d6a")
 target_group = "coin"
