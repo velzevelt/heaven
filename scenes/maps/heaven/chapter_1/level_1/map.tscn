@@ -21,7 +21,7 @@ out_size = Vector2(10, 10)
 in_modulate = Color(1, 1, 0.541176, 1)
 in_size = Vector2(15, 15)
 
-[node name="FinalTutorial" type="Node3D"]
+[node name="Level1" type="Node3D"]
 script = ExtResource("1_vigc5")
 
 [node name="Player" parent="." instance=ExtResource("2_kouom")]
