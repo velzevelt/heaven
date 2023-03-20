@@ -118,7 +118,7 @@ script = ExtResource("9_pqq2b")
 style = SubResource("Resource_bha7d")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(0.55438, 0.044923, -0.817086, 0.0451917, 1.00197, 0.0817079, 0.817201, -0.0821468, 0.54975, -5.67212, 1.40138, -2.73088)
+transform = Transform3D(-0.301013, 0.130909, -0.932309, 0.130731, 0.993368, 0.0932302, 0.932467, -0.093734, -0.314062, -5.67212, 1.40138, -2.73088)
 use_collision = true
 size = Vector3(1.84565, 0.1, 1.963)
 script = ExtResource("8_d3cr6")
@@ -162,7 +162,7 @@ preview_rotation = false
 platform_body = NodePath("..")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(0.993867, 0, -0.0125438, 0, 1, 0, 0.0125438, 0, 0.993867, -5.12869, 2.18077, -6.39635)
+transform = Transform3D(0.90862, 0, 0.402912, 0, 1, 0, -0.402912, 0, 0.90862, -5.12869, 2.18077, -6.39635)
 use_collision = true
 size = Vector3(1.84565, 0.1, 1.963)
 script = ExtResource("8_d3cr6")

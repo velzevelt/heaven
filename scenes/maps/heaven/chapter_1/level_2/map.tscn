@@ -16,8 +16,9 @@
 [ext_resource type="Script" path="res://scenes/objects/map_goal/objective/collect.gd" id="14_yc1mm"]
 [ext_resource type="Resource" path="res://scenes/objects/map_goal/collect_all_coins.tres" id="15_bf2cl"]
 
-[node name="Level2" type="Node3D"]
+[node name="Level2" type="Node3D" node_paths=PackedStringArray("goal_storage")]
 script = ExtResource("1_2nmk6")
+goal_storage = NodePath("MapGoalStorage")
 
 [node name="Player" parent="." instance=ExtResource("2_mcedb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)

@@ -39,4 +39,3 @@ func _on_object_picked_up(obj):
 			map_goal_data.completed = true
 			goal_completed.emit(map_goal_data, self)
 			
-			call_deferred('queue_free')
