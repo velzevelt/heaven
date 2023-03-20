@@ -18,6 +18,8 @@ func _ready():
 	get_tree().node_removed.connect(_on_node_removed)
 	Events.object_picked_up.connect(_on_object_picked_up)
 	max_target_count = get_tree().get_nodes_in_group(target_group).size()
+	
+	map_goal_data.progress = "%d/%d" % [target_count, max_target_count]
 
 
 func _on_node_added(node):
@@ -33,7 +35,7 @@ func _on_node_removed(node):
 func _on_object_picked_up(obj):
 	if obj.is_in_group(target_group):
 		target_count += 1
-		map_goal_data.progress = "%s/%s" % [target_count, max_target_count]
+		map_goal_data.progress = "%d/%d" % [target_count, max_target_count]
 		Logger.debug_log(map_goal_data.progress)
 		
 		if target_count == max_target_count:
