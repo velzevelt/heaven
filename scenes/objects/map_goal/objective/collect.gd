@@ -38,3 +38,5 @@ func _on_object_picked_up(obj):
 			Logger.debug_log('All collected!')
 			map_goal_data.completed = true
 			goal_completed.emit(map_goal_data, self)
+			
+			call_deferred('queue_free')

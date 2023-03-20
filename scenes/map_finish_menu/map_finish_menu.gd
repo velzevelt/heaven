@@ -1,5 +1,7 @@
 extends MenuComponent
 
+var map_goals: Array[MapGoalData]
+
 @onready var next_map_button = $Panel/VBoxContainer/MarginContainer/HBoxContainer/NextButton as Button
 var next_map: MapData
 

@@ -2,6 +2,9 @@
 class_name Map
 extends Node3D
 
+@export var goal_storage: MapGoalStorage
+
+
 var map_finish_menu: PackedScene = preload("res://scenes/map_finish_menu/map_finish_menu.tscn")
 var map_escape_menu: PackedScene = preload("res://scenes/map_escape_menu/map_escape_menu.tscn")
 
