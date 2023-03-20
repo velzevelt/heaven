@@ -1,4 +1,3 @@
-@tool
 class_name FallingPlatformComponent 
 extends PlatformComponent
 
@@ -21,7 +20,11 @@ func _on_object_entered(_player):
 
 
 func start_falling():
-	fall_started.emit()
-	await get_tree().create_timer(live_time).timeout
-	fell.emit()
-	Logger.debug_log('Platform has fallen')
+	if is_instance_of(platform_body, RigidBody3D):
+		fall_started.emit()
+		await get_tree().create_timer(live_time).timeout
+		platform_body.freeze = false
+		fell.emit()
+		Logger.debug_log('Platform has fallen')
+	else:
+		Logger.debug_log("Expected RigidBody3D as platform_body!", MESSAGE_TYPE.WARNING)

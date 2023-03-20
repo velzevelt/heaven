@@ -10,5 +10,5 @@ offset_left = -45.0
 offset_bottom = 25.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
-text = "129"
+text = "131"
 script = ExtResource("1_k01rw")

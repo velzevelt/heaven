@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://bshm2v76b271p"]
+
+[ext_resource type="Script" path="res://scenes/components/subcomponents/platform_body.gd" id="1_cob60"]
+[ext_resource type="Texture2D" uid="uid://b58wxyidasbbx" path="res://addons/debug_tools/kenney_prototypetextures/Green/texture_01.png" id="2_7ntvk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jgrck"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_phiga"]
+albedo_texture = ExtResource("2_7ntvk")
+uv1_scale = Vector3(3, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_isnuo"]
+material = SubResource("StandardMaterial3D_phiga")
+
+[node name="PlatformRigidBody" type="RigidBody3D"]
+script = ExtResource("1_cob60")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_jgrck")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_isnuo")

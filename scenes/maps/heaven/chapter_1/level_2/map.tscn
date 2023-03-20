@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://bjtur4t1jufy"]
+
+[ext_resource type="Script" path="res://scenes/map.gd" id="1_2nmk6"]
+[ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="2_mcedb"]
+[ext_resource type="PackedScene" uid="uid://db5xremcmjtg3" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="3_le3kx"]
+[ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_xen4e"]
+[ext_resource type="Script" path="res://scenes/components/falling_platform_component.gd" id="6_2cs3x"]
+[ext_resource type="PackedScene" uid="uid://bshm2v76b271p" path="res://scenes/components/subcomponents/platform_rigid_body.tscn" id="7_mdw8s"]
+[ext_resource type="PackedScene" uid="uid://ca44olq010ifc" path="res://scenes/objects/coin/coin.tscn" id="9_6lou6"]
+[ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="12_fl1t1"]
+[ext_resource type="PackedScene" uid="uid://dch70obt1efrf" path="res://addons/debug_tools/debug_layer.tscn" id="13_ko3s4"]
+
+[node name="FinalTutorial" type="Node3D"]
+script = ExtResource("1_2nmk6")
+
+[node name="Player" parent="." instance=ExtResource("2_mcedb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
+
+[node name="KillingFloor" parent="." instance=ExtResource("3_le3kx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.79821, 0)
+
+[node name="Platform" parent="." instance=ExtResource("4_xen4e")]
+
+[node name="Platform2" parent="." instance=ExtResource("4_xen4e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.4972)
+
+[node name="Platform3" parent="." instance=ExtResource("4_xen4e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.1818)
+
+[node name="Platform5" parent="." instance=ExtResource("4_xen4e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.03175, 0, -16.3882)
+
+[node name="Platform6" parent="." instance=ExtResource("4_xen4e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.377, 0, -21.1132)
+
+[node name="Platform7" parent="." instance=ExtResource("4_xen4e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.19634, 0, -26.3496)
+
+[node name="DirectionalLight3D" parent="." instance=ExtResource("12_fl1t1")]
+
+[node name="DebugLayer" parent="." instance=ExtResource("13_ko3s4")]
+
+[node name="Platform8" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.4262)
+
+[node name="PlatformRigidBody" parent="Platform8" instance=ExtResource("7_mdw8s")]
+freeze = true
+
+[node name="Coin" parent="Platform8" instance=ExtResource("9_6lou6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10554, 0)
+
+[node name="FallingPlatformComponent" type="Node" parent="Platform8" node_paths=PackedStringArray("platform_body")]
+script = ExtResource("6_2cs3x")
+live_time = 0.5
+platform_body = NodePath("../PlatformRigidBody")
