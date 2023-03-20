@@ -3,10 +3,12 @@
 [ext_resource type="Script" path="res://addons/debug_tools/fps_counter/fps_counter.gd" id="1_k01rw"]
 
 [node name="FPSCounter" type="Label"]
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -45.0
 offset_bottom = 25.0
 grow_horizontal = 0
-text = "145"
+theme_override_font_sizes/font_size = 25
+text = "129"
 script = ExtResource("1_k01rw")
