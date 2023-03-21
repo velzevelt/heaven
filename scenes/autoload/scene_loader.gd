@@ -32,7 +32,7 @@ static func load_resources(path: String, resource_name: String):
 			else:
 				if file_name == resource_name:
 					if ResourceLoader.exists(file_path):
-						var data = load(file_path)
+						var data = ResourceLoader.load(file_path)
 						result.append(data)
 					else:
 						if Engine.is_editor_hint():
