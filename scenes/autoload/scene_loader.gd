@@ -15,8 +15,9 @@ var _map_packs: Array # Array of map_collection.tres
 func _ready():
 	if not Engine.is_editor_hint():
 		@warning_ignore("static_called_on_instance")
-		_map_packs = load_resources(_maps_path, MAP_PACK_FILE_NAME)
+		_map_packs = SceneLoaderStatic.load_resources(_maps_path, MAP_PACK_FILE_NAME)
 		Logger.debug_log(_map_packs)
+		
 		
 #		Logger.debug_log(DirAccess.dir_exists_absolute(_maps_path))
 #		Logger.debug_log(DirAccess.get_files_at(_maps_path))
@@ -26,9 +27,9 @@ func _ready():
 
 
 static func load_resources(path: String, resource_name: String):
-	# Godot export resources in bin with .remap on the end
-	if not OS.has_feature('editor'):
-		resource_name += ".remap"
+	# Godot export resources in bin with .remap on the end, need to trim .remap for loading
+	if not OS.has_feature('editor') and not resource_name.ends_with('.remap'):
+		resource_name += '.remap'
 	
 	var result = []
 	var dir = DirAccess.open(path)
@@ -39,12 +40,18 @@ static func load_resources(path: String, resource_name: String):
 		while not file_name.is_empty():
 			var file_path = path + "/" + file_name
 			
-			print(file_name + " " + resource_name)
-			
 			if dir.current_is_dir():
 				result.append_array(load_resources(file_path, resource_name))
 			else:
+				print(file_name + " " + resource_name)
+				
 				if file_name == resource_name:
+					
+					# Godot export resources in bin with .remap on the end, need to trim .remap for loading
+					if not OS.has_feature('editor') and file_name.ends_with('.remap'):
+						file_path = file_path.trim_suffix('.remap')
+					
+					
 					if ResourceLoader.exists(file_path):
 						var data = ResourceLoader.load(file_path)
 						result.append(data)
