@@ -27,7 +27,7 @@ func _ready():
 
 
 static func load_resources(path: String, resource_name: String):
-	# Godot export resources in bin with .remap on the end, need to trim .remap for loading
+	# Godot add .remap on the end of exported files
 	if not OS.has_feature('editor') and not resource_name.ends_with('.remap'):
 		resource_name += '.remap'
 	
@@ -47,7 +47,8 @@ static func load_resources(path: String, resource_name: String):
 				
 				if file_name == resource_name:
 					
-					# Godot export resources in bin with .remap on the end, need to trim .remap for loading
+					# Godot add .remap on the end of exported files, but ResourceLoader cannot recognize those files
+					# Need trim from .remap from end to fix it
 					if not OS.has_feature('editor') and file_name.ends_with('.remap'):
 						file_path = file_path.trim_suffix('.remap')
 					
