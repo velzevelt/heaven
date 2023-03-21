@@ -10,20 +10,14 @@ const MAP_SCENE_FILE_NAME = 'map.tscn'
 var _maps_path: String = "res://scenes/maps"
 
 @warning_ignore("unused_private_class_variable")
-var _map_packs: Array # Array of map_collection.tres
+var _map_packs: Array
+
 
 func _ready():
 	if not Engine.is_editor_hint():
 		@warning_ignore("static_called_on_instance")
 		_map_packs = SceneLoaderStatic.load_resources(_maps_path, MAP_PACK_FILE_NAME)
-		Logger.debug_log(_map_packs)
-		
-		
-#		Logger.debug_log(DirAccess.dir_exists_absolute(_maps_path))
-#		Logger.debug_log(DirAccess.get_files_at(_maps_path))
-#		Logger.debug_log(DirAccess.get_directories_at(_maps_path))
-#		Logger.debug_log(DirAccess.get_files_at(_maps_path + "/heaven/tutorial/jump"))
-		
+
 
 
 static func load_resources(path: String, resource_name: String):
@@ -37,6 +31,7 @@ static func load_resources(path: String, resource_name: String):
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
+		
 		while not file_name.is_empty():
 			var file_path = path + "/" + file_name
 			
@@ -50,7 +45,6 @@ static func load_resources(path: String, resource_name: String):
 					if not OS.has_feature('editor') and file_name.ends_with('.remap'):
 						file_path = file_path.trim_suffix('.remap')
 					
-					
 					if ResourceLoader.exists(file_path):
 						var data = ResourceLoader.load(file_path)
 						result.append(data)
@@ -62,6 +56,7 @@ static func load_resources(path: String, resource_name: String):
 			
 			file_name = dir.get_next()
 	else:
+		
 		if Engine.is_editor_hint():
 			push_error("Can't open scenes at " + path)
 		else:
