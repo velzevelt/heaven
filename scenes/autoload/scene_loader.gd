@@ -50,9 +50,9 @@ static func load_resources(path: String, resource_name: String):
 						result.append(data)
 					else:
 						if Engine.is_editor_hint():
-							push_error('Cant load at ' + file_path)
+							push_error("Can't load at %s file does't exist" % file_path)
 						else:
-							Logger.debug_log('Cant load at ' + file_path, MESSAGE_TYPE.ERROR)
+							Logger.debug_log("Can't load at %s file does't exist" % file_path, MESSAGE_TYPE.ERROR)
 			
 			file_name = dir.get_next()
 	else:
