@@ -66,7 +66,7 @@ var MAP_SCENE_FILE_NAME = SceneLoader.MAP_SCENE_FILE_NAME # unified name 'map.ts
 		return next_map_path
 	set(value):
 		if Engine.is_editor_hint():
-			var next_map = load(value) as MapData
+			var next_map = ResourceLoader.load(value) as MapData
 			if next_map != null:
 				next_map.previous_map_path = resource_path
 			

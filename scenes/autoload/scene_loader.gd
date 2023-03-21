@@ -16,6 +16,7 @@ func _ready():
 	if not Engine.is_editor_hint():
 		@warning_ignore("static_called_on_instance")
 		_map_packs = load_resources(_maps_path, MAP_PACK_FILE_NAME)
+		Logger.debug_log(_map_packs)
 
 
 static func load_resources(path: String, resource_name: String):
