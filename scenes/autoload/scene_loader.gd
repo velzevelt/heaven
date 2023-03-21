@@ -43,8 +43,6 @@ static func load_resources(path: String, resource_name: String):
 			if dir.current_is_dir():
 				result.append_array(load_resources(file_path, resource_name))
 			else:
-				print(file_name + " " + resource_name)
-				
 				if file_name == resource_name:
 					
 					# Godot add .remap on the end of exported files, but ResourceLoader cannot recognize those files
