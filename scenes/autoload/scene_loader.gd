@@ -17,9 +17,19 @@ func _ready():
 		@warning_ignore("static_called_on_instance")
 		_map_packs = load_resources(_maps_path, MAP_PACK_FILE_NAME)
 		Logger.debug_log(_map_packs)
+		
+#		Logger.debug_log(DirAccess.dir_exists_absolute(_maps_path))
+#		Logger.debug_log(DirAccess.get_files_at(_maps_path))
+#		Logger.debug_log(DirAccess.get_directories_at(_maps_path))
+#		Logger.debug_log(DirAccess.get_files_at(_maps_path + "/heaven/tutorial/jump"))
+		
 
 
 static func load_resources(path: String, resource_name: String):
+	# Godot export resources in bin with .remap on the end
+	if not OS.has_feature('editor'):
+		resource_name += ".remap"
+	
 	var result = []
 	var dir = DirAccess.open(path)
 
@@ -28,6 +38,9 @@ static func load_resources(path: String, resource_name: String):
 		var file_name = dir.get_next()
 		while not file_name.is_empty():
 			var file_path = path + "/" + file_name
+			
+			print(file_name + " " + resource_name)
+			
 			if dir.current_is_dir():
 				result.append_array(load_resources(file_path, resource_name))
 			else:
