@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bjtur4t1jufy"]
+[gd_scene load_steps=15 format=3 uid="uid://bjtur4t1jufy"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_2nmk6"]
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="2_mcedb"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://ca44olq010ifc" path="res://scenes/objects/coin/coin.tscn" id="9_6lou6"]
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="12_fl1t1"]
 [ext_resource type="Script" path="res://scenes/objects/map_goal_storage/map_goal_storage.gd" id="13_hagam"]
-[ext_resource type="PackedScene" uid="uid://dch70obt1efrf" path="res://addons/debug_tools/debug_layer.tscn" id="13_ko3s4"]
 [ext_resource type="Script" path="res://scenes/objects/map_goal/objective/collect.gd" id="14_yc1mm"]
 [ext_resource type="Resource" uid="uid://d3sett5fwbgyy" path="res://scenes/objects/map_goal/collect_all_coins.tres" id="15_bf2cl"]
 
@@ -55,8 +54,6 @@ script = ExtResource("6_xe71t")
 style = ExtResource("7_aeab2")
 
 [node name="DirectionalLight3D" parent="." instance=ExtResource("12_fl1t1")]
-
-[node name="DebugLayer" parent="." instance=ExtResource("13_ko3s4")]
 
 [node name="Platform8" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.4262)

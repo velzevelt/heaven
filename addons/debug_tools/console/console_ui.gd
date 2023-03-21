@@ -7,8 +7,10 @@ func _ready():
 	self.visible = false
 
 
-func _on_visibility_changed():
-	update_configuration_warnings()
+func _notification(what):
+	match what:
+		NOTIFICATION_VISIBILITY_CHANGED:
+			update_configuration_warnings()
 
 
 func _get_configuration_warnings():

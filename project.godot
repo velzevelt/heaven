@@ -25,6 +25,7 @@ Settings="*res://scenes/autoload/settings.gd"
 Globals="*res://scenes/autoload/globals.gd"
 Events="*res://scenes/autoload/events.gd"
 SceneLoader="*res://scenes/autoload/scene_loader.gd"
+DebugLayer="*res://addons/debug_tools/debug_layer.gd"
 
 [display]
 
