@@ -5,10 +5,10 @@ func execute():
 	if has_arguments() and not is_param(arguments[0]):
 		var err = SceneLoader.change_scene(arguments[0])
 		if err != OK:
-			get_suggesions(arguments[0])
+			get_suggestions(arguments[0])
 
 
-func get_suggesions(scene_name):
+func get_suggestions(scene_name):
 	var message = ''
 	for scene in SceneLoader._scenes:
 		if scene_name in scene:
