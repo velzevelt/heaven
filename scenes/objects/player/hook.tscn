@@ -9,7 +9,7 @@
 [node name="Hook" type="Node3D"]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.07343, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.07343, 3.27605, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("SphereShape3D_j5yk2")
@@ -28,6 +28,9 @@ visible = false
 mesh = SubResource("BoxMesh_o04yh")
 skeleton = NodePath("../../RigidBody3D")
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.82128)
+
 [node name="PinJoint3D" type="PinJoint3D" parent="."]
-node_a = NodePath("../StaticBody3D")
-node_b = NodePath("../RigidBody3D")
+node_a = NodePath("../RigidBody3D")
+node_b = NodePath("../StaticBody3D")
