@@ -30,11 +30,10 @@ func _initialize():
 
 
 func _get_configuration_warnings():
-	var warnings = super()
 	if not path_follow is NodePath:
-		warnings.append('Require PathFollow')
+		return ['Require PathFollow']
 	
-	return warnings
+	return []
 
 
 func _on_object_entered(_player):
@@ -49,6 +48,7 @@ func move_platform():
 	
 	if not loop:
 		tween.finished.connect(func(): move_ended.emit())
+		tween.stop()
 	else:
 		tween.tween_property(path_follow, 'progress_ratio', 0.0, anim_duration)
 		tween.set_loops()

@@ -18,4 +18,4 @@ hidden = false
 visible_name = "Level 1"
 previous_map_path = ""
 next_map_path = ""
-show_order = 0
+show_order = 1

@@ -7,10 +7,12 @@
 [node name="MovingPlatform" type="Node3D"]
 
 [node name="MovingPlatformBody" parent="." instance=ExtResource("1_y0mgq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
 
-[node name="MovingPlatformComponent" type="Node3D" parent="."]
+[node name="MovingPlatformComponent" type="Node3D" parent="." node_paths=PackedStringArray("platform_body")]
 script = ExtResource("3_chyvh")
 path_follow = NodePath("../Path3D/PathFollow3D")
+platform_body = NodePath("../MovingPlatformBody")
 
 [node name="Path3D" parent="." instance=ExtResource("3_ubrgq")]
 

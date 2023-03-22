@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://cu8akcbsh6ea7"]
+
+[ext_resource type="Script" path="res://scenes/map.gd" id="1_dboyf"]
+[ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="2_jtrn5"]
+[ext_resource type="PackedScene" uid="uid://db5xremcmjtg3" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="3_p8h34"]
+[ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_6mp61"]
+[ext_resource type="Script" path="res://scenes/objects/map_goal_storage/map_goal_storage.gd" id="5_lrar6"]
+[ext_resource type="Script" path="res://scenes/objects/map_goal/objective/collect.gd" id="6_iqhjf"]
+[ext_resource type="Resource" uid="uid://d3sett5fwbgyy" path="res://scenes/objects/map_goal/collect_all_coins.tres" id="7_0nitk"]
+[ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="8_kh84r"]
+[ext_resource type="PackedScene" uid="uid://ckemuy5whwa3e" path="res://scenes/objects/moving_platform/moving_platform.tscn" id="9_vnpow"]
+
+[sub_resource type="Curve3D" id="Curve3D_p3a3c"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.55615, -0.0987635, -4.57802, 0, 0, 0, 0, 0, 0, 2.9862, 0.914398, -8.66561),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[node name="Level3" type="Node3D" node_paths=PackedStringArray("goal_storage")]
+script = ExtResource("1_dboyf")
+goal_storage = NodePath("MapGoalStorage")
+
+[node name="Player" parent="." instance=ExtResource("2_jtrn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
+
+[node name="KillingFloor" parent="." instance=ExtResource("3_p8h34")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.79821, 0)
+
+[node name="Platform" parent="." instance=ExtResource("4_6mp61")]
+
+[node name="MapGoalStorage" type="Node" parent="."]
+script = ExtResource("5_lrar6")
+
+[node name="CollectNodeGoal" type="Node" parent="MapGoalStorage"]
+script = ExtResource("6_iqhjf")
+map_goal_data = ExtResource("7_0nitk")
+target_group = "coin"
+
+[node name="DirectionalLight3D" parent="." instance=ExtResource("8_kh84r")]
+
+[node name="Platform2" parent="." instance=ExtResource("4_6mp61")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.25852)
+
+[node name="MovingPlatform" parent="." instance=ExtResource("9_vnpow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.43675)
+
+[node name="MovingPlatformBody" parent="MovingPlatform" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+
+[node name="Path3D" parent="MovingPlatform" index="2"]
+curve = SubResource("Curve3D_p3a3c")
+
+[node name="PathFollow3D" parent="MovingPlatform/Path3D" index="0"]
+transform = Transform3D(-0.873118, 0.00918112, 0.487421, 0, 0.999823, -0.0188328, -0.487507, -0.0164433, -0.872963, 0, 0, 0)
+
+[editable path="MovingPlatform"]
+[editable path="MovingPlatform/MovingPlatformBody"]
+[editable path="MovingPlatform/Path3D"]
