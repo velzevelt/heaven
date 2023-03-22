@@ -4,6 +4,7 @@
 
 [node name="MapContainer" type="VBoxContainer"]
 custom_minimum_size = Vector2(0, 65)
+theme_override_constants/separation = 20
 script = ExtResource("1_vnfa7")
 
 [node name="Button" type="Button" parent="."]

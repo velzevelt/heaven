@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cu8akcbsh6ea7"]
+[gd_scene load_steps=13 format=3 uid="uid://cu8akcbsh6ea7"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_dboyf"]
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="2_jtrn5"]
@@ -9,6 +9,8 @@
 [ext_resource type="Resource" uid="uid://d3sett5fwbgyy" path="res://scenes/objects/map_goal/collect_all_coins.tres" id="7_0nitk"]
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="8_kh84r"]
 [ext_resource type="PackedScene" uid="uid://ckemuy5whwa3e" path="res://scenes/objects/moving_platform/moving_platform.tscn" id="9_vnpow"]
+[ext_resource type="Script" path="res://scenes/components/rotate_platform_component.gd" id="10_6u6lb"]
+[ext_resource type="Script" path="res://scenes/components/finish_platform_component.gd" id="11_66pe6"]
 
 [sub_resource type="Curve3D" id="Curve3D_p3a3c"]
 _data = {
@@ -57,9 +59,35 @@ curve = SubResource("Curve3D_p3a3c")
 [node name="PathFollow3D" parent="MovingPlatform/Path3D" index="0"]
 transform = Transform3D(-0.873115, 0.0091811, 0.487421, 0, 0.99982, -0.0188328, -0.487505, -0.0164432, -0.872963, 0, 0, 0)
 
-[node name="RemoteTransform3D" parent="MovingPlatform/Path3D/PathFollow3D" index="0"]
-update_scale = false
+[node name="MovingPlatform2" parent="." instance=ExtResource("9_vnpow")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 6.63383, 0.100407, -20.7766)
+
+[node name="MovingPlatformBody" parent="MovingPlatform2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+
+[node name="MovingPlatformComponent" parent="MovingPlatform2" index="1"]
+path_follow = NodePath("")
+
+[node name="RotatePlatformComponent" type="Node" parent="MovingPlatform2" node_paths=PackedStringArray("platform_body")]
+script = ExtResource("10_6u6lb")
+rotate_direction = Vector3(0, 0, 1)
+preview_rotation = false
+platform_body = NodePath("../MovingPlatformBody")
+
+[node name="Platform3" parent="." instance=ExtResource("4_6mp61")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5249, 2.12873, -24.5212)
+
+[node name="PlatformBody" parent="Platform3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12221, -1.14598, -0.783237)
+
+[node name="FinishPlatformComponent" type="Node" parent="Platform3" node_paths=PackedStringArray("platform_body")]
+script = ExtResource("11_66pe6")
+platform_body = NodePath("../PlatformBody")
 
 [editable path="MovingPlatform"]
 [editable path="MovingPlatform/MovingPlatformBody"]
 [editable path="MovingPlatform/Path3D"]
+[editable path="MovingPlatform2"]
+[editable path="MovingPlatform2/MovingPlatformBody"]
+[editable path="MovingPlatform2/Path3D"]
+[editable path="Platform3"]

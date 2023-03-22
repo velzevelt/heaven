@@ -18,6 +18,7 @@ platform_body = NodePath("../MovingPlatformBody")
 
 [node name="RemoteTransform3D" parent="Path3D/PathFollow3D" index="0"]
 remote_path = NodePath("../../../MovingPlatformBody")
+update_scale = false
 
 [editable path="MovingPlatformBody"]
 [editable path="Path3D"]

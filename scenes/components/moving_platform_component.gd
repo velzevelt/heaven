@@ -20,7 +20,7 @@ var _moving := false
 
 func _initialize():
 	super()
-	path_follow = get_node(path_follow)
+	path_follow = get_node_or_null(path_follow)
 	
 	move_started.connect(func(): _moving = true)
 	move_ended.connect(func(): _moving = false)
@@ -42,18 +42,19 @@ func _on_object_entered(_player):
 
 
 func move_platform():
-	var tween = create_tween()
-	tween.stop()
-	tween.tween_property(path_follow, 'progress_ratio', 1.0, anim_duration)
-	
-	if not loop:
-		tween.finished.connect(func(): move_ended.emit())
-	else:
-		tween.tween_property(path_follow, 'progress_ratio', 0.0, anim_duration)
-		tween.set_loops()
-	
-	tween.play()
-	move_started.emit()
+	if is_instance_valid(path_follow):
+		var tween = create_tween()
+		tween.stop()
+		tween.tween_property(path_follow, 'progress_ratio', 1.0, anim_duration)
+		
+		if not loop:
+			tween.finished.connect(func(): move_ended.emit())
+		else:
+			tween.tween_property(path_follow, 'progress_ratio', 0.0, anim_duration)
+			tween.set_loops()
+		
+		tween.play()
+		move_started.emit()
 
 
 
