@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dahjfd6jmc0wy"]
+[gd_scene load_steps=16 format=3 uid="uid://dahjfd6jmc0wy"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_vigc5"]
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="2_kouom"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://scenes/objects/player/override_player_crosshair.gd" id="6_qm46r"]
 [ext_resource type="Resource" uid="uid://cyeamk4lrqu56" path="res://scenes/objects/player/finish_crosshair_style.tres" id="7_fq03q"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/chapter_1/level_1/create_on_leave.gd" id="7_g6cdd"]
-[ext_resource type="Script" path="res://scenes/components/bounce_platform_component.gd" id="8_b41i8"]
 [ext_resource type="PackedScene" uid="uid://ca44olq010ifc" path="res://scenes/objects/coin/coin.tscn" id="9_8568k"]
 [ext_resource type="Script" path="res://scenes/objects/map_goal_storage/map_goal_storage.gd" id="14_0a0ad"]
 [ext_resource type="Script" path="res://scenes/objects/map_goal/objective/collect.gd" id="14_asoeh"]
@@ -39,26 +38,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.79821, 0)
 script = ExtResource("6_qm46r")
 style = SubResource("Resource_n5glx")
 
-[node name="CreateOnLeave" type="Node" parent="Platform" node_paths=PackedStringArray("create_node", "platform_body")]
+[node name="CreateOnLeave2" type="Node" parent="Platform" node_paths=PackedStringArray("new_parent", "platform_body")]
 script = ExtResource("7_g6cdd")
-create_node = NodePath("../BouncePlatformComponent")
-create_delay = 0.0
+create_node = ExtResource("9_8568k")
+new_parent = NodePath("..")
+create_delay = null
 platform_body = NodePath("../PlatformBody")
-
-[node name="BouncePlatformComponent" type="Node" parent="Platform" node_paths=PackedStringArray("platform_body")]
-script = ExtResource("8_b41i8")
-jump_force = 13.0
-platform_body = NodePath("../PlatformBody")
-
-[node name="CreateOnLeave2" type="Node" parent="Platform" node_paths=PackedStringArray("create_node", "platform_body")]
-script = ExtResource("7_g6cdd")
-create_node = NodePath("../Coin")
-create_immediately = false
-create_delay = 0.2
-platform_body = NodePath("../PlatformBody")
-
-[node name="Coin" parent="Platform" instance=ExtResource("9_8568k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38815, 0)
 
 [node name="Platform2" parent="." instance=ExtResource("4_svphb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.4972)

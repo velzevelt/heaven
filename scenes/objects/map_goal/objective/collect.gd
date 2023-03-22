@@ -20,16 +20,35 @@ func _ready():
 	max_target_count = get_tree().get_nodes_in_group(target_group).size()
 	
 	map_goal_data.progress = "%d/%d" % [target_count, max_target_count]
+	
+	Events.player_finished.connect(_on_player_finished)
+
+
+func _on_player_finished():
+	complete_check()
+
+
+func complete_check():
+	if target_count == max_target_count:
+		Logger.debug_log('All collected!')
+		map_goal_data.completed = true
+		goal_completed.emit(map_goal_data, self)
+	else:
+		map_goal_data.completed = false
 
 
 func _on_node_added(node):
 	if node.is_in_group(target_group):
 		max_target_count += 1
+		
+		complete_check()
 
 
 func _on_node_removed(node):
 	if node.is_in_group(target_group):
 		max_target_count -= 1
+		
+		complete_check()
 
 
 func _on_object_picked_up(obj):
@@ -37,9 +56,4 @@ func _on_object_picked_up(obj):
 		target_count += 1
 		map_goal_data.progress = "%d/%d" % [target_count, max_target_count]
 		
-		
-		if target_count == max_target_count:
-			Logger.debug_log('All collected!')
-			map_goal_data.completed = true
-			goal_completed.emit(map_goal_data, self)
-			
+		complete_check()
