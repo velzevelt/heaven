@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2vpfhkbbmjsj"]
+
+[ext_resource type="Script" path="res://scenes/components/bounce_platform_component.gd" id="1_gi8uk"]
+
+[node name="bounce_platform_component" type="Node"]
+script = ExtResource("1_gi8uk")

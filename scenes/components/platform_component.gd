@@ -13,9 +13,15 @@ func _ready():
 
 
 func _initialize():
-	platform_body.connect('object_entered', _on_object_entered)
-	platform_body.connect('object_exited', _on_object_exited)
+	if platform_body == null:
+		var parent = get_parent()
+		platform_body = parent if parent is PlatformBody else null
 	
+	if platform_body != null:
+		platform_body.connect('object_entered', _on_object_entered)
+		platform_body.connect('object_exited', _on_object_exited)
+	else:
+		Logger.debug_log("Platform init error! Missing platform_body", MESSAGE_TYPE.ERROR)
 
 
 @warning_ignore("unused_parameter")
