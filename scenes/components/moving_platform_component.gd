@@ -48,7 +48,6 @@ func move_platform():
 	
 	if not loop:
 		tween.finished.connect(func(): move_ended.emit())
-		tween.stop()
 	else:
 		tween.tween_property(path_follow, 'progress_ratio', 0.0, anim_duration)
 		tween.set_loops()

@@ -12,9 +12,8 @@ material = SubResource("StandardMaterial3D_ull6i")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eny5g"]
 
-[node name="MovingPlatformBody" type="CharacterBody3D"]
+[node name="MovingPlatformBody" type="AnimatableBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
-motion_mode = 1
 script = ExtResource("1_74yuj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

@@ -46,13 +46,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.25852)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.43675)
 
 [node name="MovingPlatformBody" parent="MovingPlatform" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+transform = Transform3D(0.999995, 0, 0, 0, 0.999997, 0, 0, 0, 0.999999, 0, 0, 0)
+
+[node name="MovingPlatformComponent" parent="MovingPlatform" index="1"]
+autoplay = false
 
 [node name="Path3D" parent="MovingPlatform" index="2"]
 curve = SubResource("Curve3D_p3a3c")
 
 [node name="PathFollow3D" parent="MovingPlatform/Path3D" index="0"]
-transform = Transform3D(-0.873118, 0.00918112, 0.487421, 0, 0.999823, -0.0188328, -0.487507, -0.0164433, -0.872963, 0, 0, 0)
+transform = Transform3D(-0.873115, 0.0091811, 0.487421, 0, 0.99982, -0.0188328, -0.487505, -0.0164432, -0.872963, 0, 0, 0)
+
+[node name="RemoteTransform3D" parent="MovingPlatform/Path3D/PathFollow3D" index="0"]
+update_scale = false
 
 [editable path="MovingPlatform"]
 [editable path="MovingPlatform/MovingPlatformBody"]
