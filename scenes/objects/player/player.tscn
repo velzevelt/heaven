@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://chaf5uqx5ltj2"]
+[gd_scene load_steps=19 format=3 uid="uid://chaf5uqx5ltj2"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_gwrkw"]
 [ext_resource type="Script" path="res://scenes/objects/player/camera_controller.gd" id="2_8xvxh"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://scenes/objects/player/player_move_component.gd" id="9_7a22w"]
 [ext_resource type="Script" path="res://scenes/components/velocity_component.gd" id="9_ytpbk"]
 [ext_resource type="Script" path="res://scenes/objects/player/dynamic_fov_change.gd" id="10_y34ym"]
+[ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer_label.gd" id="13_5krmr"]
+[ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer.gd" id="13_6lpoc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y1312"]
 height = 1.7
@@ -153,3 +155,12 @@ text = "hit_point: "
 script = ExtResource("7_tu7pf")
 target_path = NodePath("../../GrapplingHookComponent")
 desired_property = "hit_point"
+
+[node name="VelzTimerLabel" type="Label" parent="VBoxContainer" node_paths=PackedStringArray("timer")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+script = ExtResource("13_5krmr")
+timer = NodePath("VelzTimer")
+
+[node name="VelzTimer" type="Node" parent="VBoxContainer/VelzTimerLabel"]
+script = ExtResource("13_6lpoc")
