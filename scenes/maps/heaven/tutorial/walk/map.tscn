@@ -144,10 +144,11 @@ shape = SubResource("SphereShape3D_uyn55")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49721, 0)
 text = "Finish"
 
-[node name="Step1" type="Node3D" parent="." node_paths=PackedStringArray("finish")]
+[node name="Step1" type="Node3D" parent="." node_paths=PackedStringArray("finish", "message")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.903898, 0.608106, -17.0338)
 script = ExtResource("10_unuh0")
 finish = NodePath("../Finish")
+message = NodePath("Label")
 
 [node name="Area3D" type="Area3D" parent="Step1"]
 
@@ -157,6 +158,21 @@ shape = SubResource("SphereShape3D_uyn55")
 [node name="Label3D" type="Label3D" parent="Step1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49721, 0)
 text = "Go Here"
+
+[node name="Label" type="Label" parent="Step1"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -505.5
+offset_top = -60.0
+offset_right = 505.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 41
+text = "Movement after jumping allows you to reset speed instantly"
 
 [connection signal="body_entered" from="Finish/Area3D" to="Finish" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Step1/Area3D" to="Step1" method="_on_area_3d_body_entered"]
