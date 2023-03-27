@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_15gma")
-visible_name = "Complete in %d time"
+visible_name = "Complete in {time} time"
 goal_description = ""
 completed = false
