@@ -30,7 +30,6 @@ func _on_player_finished():
 
 func complete_check():
 	if target_count >= max_target_count:
-		Logger.debug_log('All collected!')
 		map_goal_data.completed = true
 		goal_completed.emit(map_goal_data, self)
 	else:
