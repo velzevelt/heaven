@@ -1,4 +1,4 @@
-class_name CompleteInTimeGoal
+class_name PassInTimeGoal
 extends Node
 
 signal goal_completed(goal_data, goal_node)
@@ -23,6 +23,6 @@ func complete_check():
 		map_goal_data.completed = true
 		goal_completed.emit(map_goal_data, self)
 	else:
-		map_goal_data.progress = "Your time: %s . Required time: %s" % [timer.time.get_vector(), required_time.get_vector()]
+		map_goal_data.progress = "Your time: %s Required time: %s" % [timer.time.get_vector(), required_time.get_vector()]
 		map_goal_data.completed = false
 
