@@ -1,20 +1,20 @@
-[gd_scene load_steps=15 format=3 uid="uid://8nsw6qdn1c0o"]
+[gd_scene load_steps=16 format=3 uid="uid://8nsw6qdn1c0o"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_pgdll"]
 [ext_resource type="PackedScene" uid="uid://db5xremcmjtg3" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_trrbi"]
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="4_04771"]
+[ext_resource type="Texture2D" uid="uid://cc6aunp3hqct5" path="res://addons/debug_tools/kenney_prototypetextures/Dark/texture_02.png" id="5_4ljt2"]
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="7_mhwni"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/walk/tutorial_layer.gd" id="7_nbayx"]
-[ext_resource type="Texture2D" uid="uid://cyxy3bwyd53vb" path="res://addons/debug_tools/kenney_prototypetextures/Green/texture_02.png" id="7_ofik6"]
 [ext_resource type="PackedScene" path="res://scenes/maps/heaven/tutorial/tutorial_layer.tscn" id="8_2ojtw"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/walk/finish.gd" id="9_1bkvt"]
 [ext_resource type="PackedScene" uid="uid://bcdqwr7wudsse" path="res://scenes/maps/heaven/tutorial/message_container.tscn" id="9_wpjt2"]
+[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/walk/step1.gd" id="10_unuh0"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ftrsi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tn38v"]
-albedo_color = Color(0.552941, 0.552941, 0.552941, 1)
-albedo_texture = ExtResource("7_ofik6")
+albedo_texture = ExtResource("5_4ljt2")
 uv1_triplanar = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_a3obb"]
@@ -130,8 +130,10 @@ size_flags_horizontal = 11
 text = "Left"
 
 [node name="Finish" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.903898, 0.608106, -17.7072)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.903898, 0.608106, -24.3874)
+visible = false
 script = ExtResource("9_1bkvt")
+enabled = false
 
 [node name="Area3D" type="Area3D" parent="Finish"]
 
@@ -140,9 +142,24 @@ shape = SubResource("SphereShape3D_uyn55")
 
 [node name="Label3D" type="Label3D" parent="Finish"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49721, 0)
+text = "Finish"
+
+[node name="Step1" type="Node3D" parent="." node_paths=PackedStringArray("finish")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.903898, 0.608106, -17.0338)
+script = ExtResource("10_unuh0")
+finish = NodePath("../Finish")
+
+[node name="Area3D" type="Area3D" parent="Step1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Step1/Area3D"]
+shape = SubResource("SphereShape3D_uyn55")
+
+[node name="Label3D" type="Label3D" parent="Step1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49721, 0)
 text = "Go Here"
 
 [connection signal="body_entered" from="Finish/Area3D" to="Finish" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Step1/Area3D" to="Step1" method="_on_area_3d_body_entered"]
 
 [editable path="Player"]
 [editable path="TutorialLayer"]
