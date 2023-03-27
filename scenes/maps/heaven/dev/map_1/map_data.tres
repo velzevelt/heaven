@@ -19,3 +19,4 @@ visible_name = "dev_map_1"
 previous_map_path = ""
 next_map_path = ""
 show_order = 0
+map_tags = PackedStringArray("dev", "debug")
