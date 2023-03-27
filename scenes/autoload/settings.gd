@@ -28,3 +28,6 @@ func _input(_event):
 		Settings.toggle_cursor_visibility()
 	if Input.is_action_just_pressed('toggle_fullscreen'):
 		Settings.toggle_fullscreen()
+	
+	if Input.is_action_just_pressed('reload_scene'):
+		SceneLoader.reload_scene()

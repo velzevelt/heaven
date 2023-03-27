@@ -69,12 +69,13 @@ static func load_resources(path: String, resource_name: String):
 func change_scene(scene: MapData):
 	var map = scene.map_packed
 	if map != null:
-		get_tree().change_scene_to_packed(scene.map_packed)
+		get_tree().change_scene_to_packed(map)
 	else:
 		Logger.debug_log("Missing map_packed " + scene.resource_path, MESSAGE_TYPE.ERROR)
 
 
 func reload_scene():
 	get_tree().reload_current_scene()
+	breakpoint
 
 
