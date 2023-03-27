@@ -79,7 +79,6 @@ theme_override_constants/separation = 20
 theme_override_styles/separator = SubResource("StyleBoxFlat_g2nof")
 
 [node name="LevelScrollArea" type="ScrollContainer" parent="MapSelector/HBoxContainer/Main/HBoxContainer/LeftSide"]
-clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
