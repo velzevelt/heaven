@@ -18,4 +18,4 @@ func _on_object_exited(player):
 		if disabled_target.get('enabled') != null:
 			disabled_target.enabled = true
 		else:
-			Logger.debug_log('Target node does not have "enabled" property. Not implemented yet?', MESSAGE_TYPE.ERROR)
+			Logger.debug_log('Target node %s does not have "enabled" property. Not implemented yet?' % disabled_target.name, MESSAGE_TYPE.ERROR)
