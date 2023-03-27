@@ -29,5 +29,7 @@ func _input(_event):
 	if Input.is_action_just_pressed('toggle_fullscreen'):
 		Settings.toggle_fullscreen()
 	
-	if Input.is_action_just_pressed('reload_scene'):
-		SceneLoader.reload_scene()
+	if _event is InputEventKey:
+		var e: InputEventKey = _event as InputEventKey
+		if e.is_action_released('reload_scene'):
+			SceneLoader.reload_scene()
