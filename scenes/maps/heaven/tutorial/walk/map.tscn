@@ -58,13 +58,13 @@ layout_mode = 2
 [node name="LabelW" parent="TutorialLayer/VBoxContainer/HBoxContainer2" instance=ExtResource("9_wpjt2")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.3
 text = "W"
 
 [node name="Label" parent="TutorialLayer/VBoxContainer/HBoxContainer2" instance=ExtResource("9_wpjt2")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 11
+size_flags_horizontal = 10
 text = "Forward"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="TutorialLayer/VBoxContainer" index="3"]
@@ -73,11 +73,13 @@ layout_mode = 2
 [node name="LabelS" parent="TutorialLayer/VBoxContainer/HBoxContainer3" instance=ExtResource("9_wpjt2")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_stretch_ratio = 0.3
 text = "S"
 
 [node name="Label2" parent="TutorialLayer/VBoxContainer/HBoxContainer3" instance=ExtResource("9_wpjt2")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 11
 text = "Backward"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="TutorialLayer/VBoxContainer" index="4"]
@@ -86,7 +88,7 @@ layout_mode = 2
 [node name="LabelD" parent="TutorialLayer/VBoxContainer/HBoxContainer4" instance=ExtResource("9_wpjt2")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.3
 text = "D"
 
 [node name="Label3" parent="TutorialLayer/VBoxContainer/HBoxContainer4" instance=ExtResource("9_wpjt2")]
@@ -101,7 +103,7 @@ layout_mode = 2
 [node name="LabelA" parent="TutorialLayer/VBoxContainer/HBoxContainer5" instance=ExtResource("9_wpjt2")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.3
 text = "A"
 
 [node name="Label4" parent="TutorialLayer/VBoxContainer/HBoxContainer5" instance=ExtResource("9_wpjt2")]
