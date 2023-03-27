@@ -19,6 +19,8 @@ extends Node
 ## Specific Input
 #@export var input_component: GrapplingHookInputComponent
 
+@export var enabled := true
+
 var hit_point: Vector3 = Vector3()
 var grappling := false
 
@@ -28,6 +30,9 @@ var _sb
 var _joint
 
 func _physics_process(_delta):
+	if not enabled:
+		return
+	
 	if not is_instance_valid(_hook_instance) and hook_raycast.is_colliding() and Input.is_action_just_pressed("forward") and not grappling:
 		
 		# Take control from PlayerMoveComponent to self

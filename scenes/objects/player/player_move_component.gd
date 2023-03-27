@@ -6,6 +6,7 @@ extends Node
 @export var head: Head
 @export var player_body: CharacterBody3D 
 @export var air_control := true
+@export var can_move := true
 
 var first_jump = true
 
@@ -25,17 +26,27 @@ func _physics_process(_delta):
 			player_body.velocity.z = forward.z * velocity_component.last_speed
 		
 	else:
-		player_body.velocity.x = move_toward(player_body.velocity.x, 0, velocity_component.friction)
-		player_body.velocity.z = move_toward(player_body.velocity.z, 0, velocity_component.friction)
-		velocity_component.last_speed = move_toward(velocity_component.last_speed, 1.0, velocity_component.friction)
+		var input_dir = Input.get_vector("left", "right", "forward", "backward")
+		var direction = (player_body.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		if direction:
+			player_body.velocity.x = direction.x * velocity_component.min_speed
+			player_body.velocity.z = direction.z * velocity_component.min_speed
+			velocity_component.last_speed = player_body.velocity.length()
+		else:
+			player_body.velocity.x = move_toward(player_body.velocity.x, 0, velocity_component.friction)
+			player_body.velocity.z = move_toward(player_body.velocity.z, 0, velocity_component.friction)
+			velocity_component.last_speed = move_toward(velocity_component.last_speed, 1.0, velocity_component.friction)
+			
 	
 	player_body.move_and_slide()
+
 
 # Handle Jump. Holding jump key longer make jump higher
 func _on_jump_pressed():
 	if player_body.is_on_floor():
 		first_jump = true
 		jump(velocity_component.jump_velocity)
+
 
 func _on_jump_released():
 	if first_jump and not player_body.is_on_floor():

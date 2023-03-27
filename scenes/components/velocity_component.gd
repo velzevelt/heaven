@@ -2,6 +2,7 @@ class_name VelocityComponent
 extends Node
 
 @export var max_speed := 150.0
+@export var min_speed := 4.0
 @export var jump_velocity := 6.0
 @export var jump_release := 2.0
 @export var mass := 1.0
