@@ -10,14 +10,12 @@ var appeared = false
 @export var highlight_style: StyleBoxFlat
 var _labels: Array
 
+var _init_slyle
 
-@onready var _init_slyle = _labels[0].get_theme_stylebox('normal').duplicate()
+#@onready var _init_slyle = _labels[0].get_theme_stylebox('normal').duplicate()
 
 func _ready():
-	_labels[0] = $VBoxContainer/LabelS
-	_labels[1] = $VBoxContainer/LabelW
-	_labels[2] = $VBoxContainer/LabelD
-	_labels[3] = $VBoxContainer/LabelA
+	_init_slyle = $%LabelS.get_theme_stylebox('normal').duplicate()
 	
 	offset.x += offset_value
 	await animate(init_offset).finished
@@ -32,8 +30,30 @@ func animate(new_offset):
 
 
 func _input(_event):
-	pass
-#	if Input.is_action_just_pressed("jump"):
-#		_label.add_theme_stylebox_override('normal', highlight_style)
-#	if Input.is_action_just_released("jump"):
-#		_label.add_theme_stylebox_override('normal', _init_slyle)
+	if Input.is_action_just_pressed('forward'):
+		var w = $%LabelW as Label
+		w.add_theme_stylebox_override('normal', highlight_style)
+	if Input.is_action_just_released("forward"):
+		var w = $%LabelW as Label
+		w.add_theme_stylebox_override('normal', _init_slyle)
+	
+	if Input.is_action_just_pressed('backward'):
+		var w = $%LabelS as Label
+		w.add_theme_stylebox_override('normal', highlight_style)
+	if Input.is_action_just_released("backward"):
+		var w = $%LabelS as Label
+		w.add_theme_stylebox_override('normal', _init_slyle)
+	
+	if Input.is_action_just_pressed('right'):
+		var w = $%LabelD as Label
+		w.add_theme_stylebox_override('normal', highlight_style)
+	if Input.is_action_just_released('right'):
+		var w = $%LabelD as Label
+		w.add_theme_stylebox_override('normal', _init_slyle)
+	
+	if Input.is_action_just_pressed('left'):
+		var w = $%LabelA as Label
+		w.add_theme_stylebox_override('normal', highlight_style)
+	if Input.is_action_just_released('left'):
+		var w = $%LabelA as Label
+		w.add_theme_stylebox_override('normal', _init_slyle)

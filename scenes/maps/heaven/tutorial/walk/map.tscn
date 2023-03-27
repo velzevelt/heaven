@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://8nsw6qdn1c0o"]
+[gd_scene load_steps=13 format=3 uid="uid://8nsw6qdn1c0o"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_pgdll"]
 [ext_resource type="PackedScene" uid="uid://db5xremcmjtg3" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_trrbi"]
@@ -19,6 +19,8 @@ uv1_triplanar = true
 [sub_resource type="PlaneMesh" id="PlaneMesh_a3obb"]
 material = SubResource("StandardMaterial3D_tn38v")
 size = Vector2(10000, 10000)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6epr"]
 
 [node name="JumpTutorial" type="Node3D"]
 script = ExtResource("1_pgdll")
@@ -42,6 +44,7 @@ mesh = SubResource("PlaneMesh_a3obb")
 
 [node name="TutorialLayer" parent="." instance=ExtResource("8_2ojtw")]
 script = ExtResource("7_nbayx")
+highlight_style = SubResource("StyleBoxFlat_j6epr")
 
 [node name="LookAround" parent="TutorialLayer/VBoxContainer" index="0"]
 visible = false
@@ -49,24 +52,62 @@ visible = false
 [node name="HBoxContainer" parent="TutorialLayer/VBoxContainer" index="1"]
 visible = false
 
-[node name="LabelS" parent="TutorialLayer/VBoxContainer" index="2" instance=ExtResource("9_wpjt2")]
+[node name="HBoxContainer2" type="HBoxContainer" parent="TutorialLayer/VBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="LabelW" parent="TutorialLayer/VBoxContainer/HBoxContainer2" instance=ExtResource("9_wpjt2")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+text = "W"
+
+[node name="Label" parent="TutorialLayer/VBoxContainer/HBoxContainer2" instance=ExtResource("9_wpjt2")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 11
+text = "Forward"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TutorialLayer/VBoxContainer" index="3"]
+layout_mode = 2
+
+[node name="LabelS" parent="TutorialLayer/VBoxContainer/HBoxContainer3" instance=ExtResource("9_wpjt2")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "S"
 
-[node name="LabelD" parent="TutorialLayer/VBoxContainer" index="3" instance=ExtResource("9_wpjt2")]
+[node name="Label2" parent="TutorialLayer/VBoxContainer/HBoxContainer3" instance=ExtResource("9_wpjt2")]
 unique_name_in_owner = true
 layout_mode = 2
+text = "Backward"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="TutorialLayer/VBoxContainer" index="4"]
+layout_mode = 2
+
+[node name="LabelD" parent="TutorialLayer/VBoxContainer/HBoxContainer4" instance=ExtResource("9_wpjt2")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
 text = "D"
 
-[node name="LabelW" parent="TutorialLayer/VBoxContainer" index="4" instance=ExtResource("9_wpjt2")]
+[node name="Label3" parent="TutorialLayer/VBoxContainer/HBoxContainer4" instance=ExtResource("9_wpjt2")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "W"
+size_flags_horizontal = 11
+text = "Right"
 
-[node name="LabelA" parent="TutorialLayer/VBoxContainer" index="5" instance=ExtResource("9_wpjt2")]
+[node name="HBoxContainer5" type="HBoxContainer" parent="TutorialLayer/VBoxContainer" index="5"]
+layout_mode = 2
+
+[node name="LabelA" parent="TutorialLayer/VBoxContainer/HBoxContainer5" instance=ExtResource("9_wpjt2")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 2
 text = "A"
+
+[node name="Label4" parent="TutorialLayer/VBoxContainer/HBoxContainer5" instance=ExtResource("9_wpjt2")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 11
+text = "Left"
 
 [editable path="TutorialLayer"]
