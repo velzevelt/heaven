@@ -22,7 +22,7 @@ size = Vector2(10000, 10000)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6epr"]
 
-[node name="JumpTutorial" type="Node3D"]
+[node name="WalkTutorial" type="Node3D"]
 script = ExtResource("1_pgdll")
 
 [node name="KillingFloor" parent="." instance=ExtResource("2_trrbi")]
@@ -44,7 +44,15 @@ mesh = SubResource("PlaneMesh_a3obb")
 
 [node name="TutorialLayer" parent="." instance=ExtResource("8_2ojtw")]
 script = ExtResource("7_nbayx")
+offset_value = 750
 highlight_style = SubResource("StyleBoxFlat_j6epr")
+
+[node name="VBoxContainer" parent="TutorialLayer" index="0"]
+offset_left = -588.0
+offset_top = -218.0
+offset_right = 136.0
+offset_bottom = 342.0
+scale = Vector2(0.8, 0.8)
 
 [node name="LookAround" parent="TutorialLayer/VBoxContainer" index="0"]
 visible = false
@@ -57,6 +65,7 @@ layout_mode = 2
 
 [node name="LabelW" parent="TutorialLayer/VBoxContainer/HBoxContainer2" instance=ExtResource("9_wpjt2")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(153, 137)
 layout_mode = 2
 size_flags_stretch_ratio = 0.3
 text = "W"
@@ -64,7 +73,6 @@ text = "W"
 [node name="Label" parent="TutorialLayer/VBoxContainer/HBoxContainer2" instance=ExtResource("9_wpjt2")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 10
 text = "Forward"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="TutorialLayer/VBoxContainer" index="3"]
@@ -72,6 +80,7 @@ layout_mode = 2
 
 [node name="LabelS" parent="TutorialLayer/VBoxContainer/HBoxContainer3" instance=ExtResource("9_wpjt2")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(153, 137)
 layout_mode = 2
 size_flags_stretch_ratio = 0.3
 text = "S"
@@ -79,7 +88,6 @@ text = "S"
 [node name="Label2" parent="TutorialLayer/VBoxContainer/HBoxContainer3" instance=ExtResource("9_wpjt2")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 11
 text = "Backward"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="TutorialLayer/VBoxContainer" index="4"]
@@ -87,6 +95,7 @@ layout_mode = 2
 
 [node name="LabelD" parent="TutorialLayer/VBoxContainer/HBoxContainer4" instance=ExtResource("9_wpjt2")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(153, 137)
 layout_mode = 2
 size_flags_stretch_ratio = 0.3
 text = "D"
@@ -102,6 +111,7 @@ layout_mode = 2
 
 [node name="LabelA" parent="TutorialLayer/VBoxContainer/HBoxContainer5" instance=ExtResource("9_wpjt2")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(153, 137)
 layout_mode = 2
 size_flags_stretch_ratio = 0.3
 text = "A"
