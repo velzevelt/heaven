@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://govqst40ly01"]
+[gd_scene load_steps=22 format=3 uid="uid://govqst40ly01"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_vigc5"]
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="2_kouom"]
@@ -15,6 +15,10 @@
 [ext_resource type="Script" path="res://scenes/objects/map_goal_storage/map_goal_storage.gd" id="14_0a0ad"]
 [ext_resource type="Script" path="res://scenes/objects/map_goal/objective/collect.gd" id="14_asoeh"]
 [ext_resource type="Resource" uid="uid://d3sett5fwbgyy" path="res://scenes/objects/map_goal/collect_all_coins.tres" id="15_77d6a"]
+[ext_resource type="Script" path="res://scenes/objects/map_goal/objective/complete_in_time_goal.gd" id="16_endvq"]
+[ext_resource type="Resource" uid="uid://cmmj8p66ec3e0" path="res://scenes/objects/map_goal/complete_in_n_time.tres" id="17_53igh"]
+[ext_resource type="Script" path="res://addons/debug_tools/timer/velz_time.gd" id="18_5iyv8"]
+[ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer.gd" id="19_c1wk0"]
 
 [sub_resource type="Resource" id="Resource_n5glx"]
 script = ExtResource("6_cgkie")
@@ -22,6 +26,12 @@ out_modulate = Color(0.745098, 0.745098, 0.745098, 1)
 out_size = Vector2(10, 10)
 in_modulate = Color(1, 1, 0.541176, 1)
 in_size = Vector2(15, 15)
+
+[sub_resource type="Resource" id="Resource_vuk4f"]
+script = ExtResource("18_5iyv8")
+seconds = 4.0
+hours = 0
+minutes = 0
 
 [node name="Level1" type="Node3D" node_paths=PackedStringArray("goal_storage")]
 script = ExtResource("1_vigc5")
@@ -99,6 +109,15 @@ script = ExtResource("14_0a0ad")
 script = ExtResource("14_asoeh")
 map_goal_data = ExtResource("15_77d6a")
 target_group = "coin"
+
+[node name="CompleteInTimeGoal" type="Node" parent="MapGoalStorage" node_paths=PackedStringArray("timer")]
+script = ExtResource("16_endvq")
+map_goal_data = ExtResource("17_53igh")
+timer = NodePath("VelzTimer")
+required_time = SubResource("Resource_vuk4f")
+
+[node name="VelzTimer" type="Node" parent="MapGoalStorage/CompleteInTimeGoal"]
+script = ExtResource("19_c1wk0")
 
 [editable path="Platform"]
 [editable path="Platform6"]
