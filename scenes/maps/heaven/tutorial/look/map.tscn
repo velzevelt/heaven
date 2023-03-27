@@ -56,7 +56,6 @@ arrow_left = NodePath("VBoxContainer/LookAround/MarginContainer/VBoxContainer/HB
 arrow_right = NodePath("VBoxContainer/LookAround/MarginContainer/VBoxContainer/HBoxContainer/ArrowRight")
 arrow_down = NodePath("VBoxContainer/LookAround/MarginContainer/VBoxContainer/ArrowDown")
 highlight_modulate = Color(0.870588, 0.780392, 0.337255, 1)
-_labels = null
 
 [node name="Label" parent="TutorialLayer/VBoxContainer" index="1" instance=ExtResource("7_dyghv")]
 layout_mode = 2

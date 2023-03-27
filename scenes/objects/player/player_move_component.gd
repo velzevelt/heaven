@@ -7,6 +7,7 @@ extends Node
 @export var player_body: CharacterBody3D 
 @export var air_control := true
 @export var can_move := true
+@export var can_jump := true
 
 var first_jump = true
 
@@ -43,7 +44,7 @@ func _physics_process(_delta):
 
 # Handle Jump. Holding jump key longer make jump higher
 func _on_jump_pressed():
-	if player_body.is_on_floor():
+	if player_body.is_on_floor() and can_jump:
 		first_jump = true
 		jump(velocity_component.jump_velocity)
 
