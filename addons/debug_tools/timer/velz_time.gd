@@ -30,3 +30,6 @@ func _init(hours := 0, minutes := 0, seconds := 0.0):
 
 func get_vector():
 	return Vector3(self.hours, self.minutes, self.seconds)
+
+func get_formatted_str():
+	return "%d:%d:%s" % [self.hours, self.minutes, snapped(self.seconds, 0.01)]

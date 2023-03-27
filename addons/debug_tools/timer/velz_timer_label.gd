@@ -7,4 +7,4 @@ func _ready():
 	timer.time_updated.connect(_on_time_updated)
 
 func _on_time_updated(new_time):
-	text = "%d : %d : %s" % [new_time.hours, new_time.minutes, snapped(new_time.seconds, 0.01)]
+	text = new_time.get_formatted_str()
