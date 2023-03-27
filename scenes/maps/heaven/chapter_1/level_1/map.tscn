@@ -47,6 +47,7 @@ platform_body = NodePath("../PlatformBody")
 
 [node name="BouncePlatformComponent" type="Node" parent="Platform" node_paths=PackedStringArray("platform_body")]
 script = ExtResource("8_cop0s")
+jump_force = 14.0
 enabled = false
 platform_body = NodePath("../PlatformBody")
 
