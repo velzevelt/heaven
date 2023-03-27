@@ -42,21 +42,21 @@ style = SubResource("Resource_n5glx")
 
 [node name="EnableOnLeave" type="Node" parent="Platform" node_paths=PackedStringArray("disabled_target", "platform_body")]
 script = ExtResource("7_rwxsy")
-disabled_target = NodePath("../BouncePlatformComponent")
+disabled_target = NodePath("BouncePlatformComponent")
 platform_body = NodePath("../PlatformBody")
 
-[node name="BouncePlatformComponent" type="Node" parent="Platform" node_paths=PackedStringArray("platform_body")]
+[node name="BouncePlatformComponent" type="Node" parent="Platform/EnableOnLeave" node_paths=PackedStringArray("platform_body")]
 script = ExtResource("8_cop0s")
-jump_force = 14.0
+jump_force = 13.0
 enabled = false
-platform_body = NodePath("../PlatformBody")
+platform_body = NodePath("../../PlatformBody")
 
 [node name="EnableOnLeave2" type="Node" parent="Platform" node_paths=PackedStringArray("disabled_target", "platform_body")]
 script = ExtResource("7_rwxsy")
-disabled_target = NodePath("../Coin")
+disabled_target = NodePath("Coin")
 platform_body = NodePath("../PlatformBody")
 
-[node name="Coin" parent="Platform" instance=ExtResource("9_lqjxl")]
+[node name="Coin" parent="Platform/EnableOnLeave2" instance=ExtResource("9_lqjxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34748, 0.0786262)
 visible = false
 enabled = false
