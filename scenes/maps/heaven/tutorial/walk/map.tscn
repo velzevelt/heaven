@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://8nsw6qdn1c0o"]
+
+[ext_resource type="Script" path="res://scenes/map.gd" id="1_pgdll"]
+[ext_resource type="PackedScene" uid="uid://db5xremcmjtg3" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_trrbi"]
+[ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="4_04771"]
+[ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="7_mhwni"]
+[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/walk/tutorial_layer.gd" id="7_nbayx"]
+[ext_resource type="Texture2D" uid="uid://cyxy3bwyd53vb" path="res://addons/debug_tools/kenney_prototypetextures/Green/texture_02.png" id="7_ofik6"]
+[ext_resource type="PackedScene" path="res://scenes/maps/heaven/tutorial/tutorial_layer.tscn" id="8_2ojtw"]
+[ext_resource type="PackedScene" uid="uid://bcdqwr7wudsse" path="res://scenes/maps/heaven/tutorial/message_container.tscn" id="9_wpjt2"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ftrsi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tn38v"]
+albedo_color = Color(0.552941, 0.552941, 0.552941, 1)
+albedo_texture = ExtResource("7_ofik6")
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a3obb"]
+material = SubResource("StandardMaterial3D_tn38v")
+size = Vector2(10000, 10000)
+
+[node name="JumpTutorial" type="Node3D"]
+script = ExtResource("1_pgdll")
+
+[node name="KillingFloor" parent="." instance=ExtResource("2_trrbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99159, 0)
+
+[node name="Player" parent="." instance=ExtResource("4_04771")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.31678, 0)
+
+[node name="DirectionalLight3D" parent="." instance=ExtResource("7_mhwni")]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43083, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("WorldBoundaryShape3D_ftrsi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_a3obb")
+
+[node name="TutorialLayer" parent="." instance=ExtResource("8_2ojtw")]
+script = ExtResource("7_nbayx")
+
+[node name="LookAround" parent="TutorialLayer/VBoxContainer" index="0"]
+visible = false
+
+[node name="HBoxContainer" parent="TutorialLayer/VBoxContainer" index="1"]
+visible = false
+
+[node name="LabelS" parent="TutorialLayer/VBoxContainer" index="2" instance=ExtResource("9_wpjt2")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "S"
+
+[node name="LabelD" parent="TutorialLayer/VBoxContainer" index="3" instance=ExtResource("9_wpjt2")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "D"
+
+[node name="LabelW" parent="TutorialLayer/VBoxContainer" index="4" instance=ExtResource("9_wpjt2")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "W"
+
+[node name="LabelA" parent="TutorialLayer/VBoxContainer" index="5" instance=ExtResource("9_wpjt2")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "A"
+
+[editable path="TutorialLayer"]

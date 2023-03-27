@@ -17,5 +17,5 @@ map_description = ""
 hidden = false
 visible_name = "Look Tutorial"
 previous_map_path = ""
-next_map_path = ""
+next_map_path = "res://scenes/maps/heaven/tutorial/walk/map_data.tres"
 show_order = 1
