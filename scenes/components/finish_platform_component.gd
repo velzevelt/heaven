@@ -34,7 +34,7 @@ func _physics_process(_delta):
 				await get_tree().create_timer(0.4).timeout # Little delay before finish registration
 				finished.emit()
 				Events.player_finished.emit()
-				Logger.debug_log("Player finished level!")
+				
 				
 				# Has to delete self after finish registration to avoid collision conflicts
 				# Conflict happens when 2 or more colliders too close to each other

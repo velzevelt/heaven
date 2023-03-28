@@ -29,7 +29,7 @@ func _physics_process(_delta):
 	else:
 		var input_dir = Input.get_vector("left", "right", "forward", "backward")
 		var direction = (player_body.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		if direction:
+		if direction and can_move:
 			player_body.velocity.x = direction.x * velocity_component.min_speed
 			player_body.velocity.z = direction.z * velocity_component.min_speed
 			velocity_component.last_speed = player_body.velocity.length()

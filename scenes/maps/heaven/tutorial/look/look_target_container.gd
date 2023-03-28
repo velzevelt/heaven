@@ -14,4 +14,4 @@ func _on_activated(object):
 		activated_targets.append(object)
 		if activated_targets.size() == targets_qty:
 			await get_tree().create_timer(2.0).timeout
-			finished.emit()
+			Events.player_finished.emit()

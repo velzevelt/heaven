@@ -37,6 +37,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.31678, 0)
 [node name="Head" parent="Player" index="1"]
 process_mode = 4
 
+[node name="PlayerMoveComponent" parent="Player" index="6"]
+can_move = false
+
 [node name="Platform" parent="." instance=ExtResource("4_dsab2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.735116, 0)
 

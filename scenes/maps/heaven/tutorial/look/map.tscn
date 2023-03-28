@@ -86,8 +86,6 @@ style = SubResource("Resource_mnk3b")
 [node name="Platform4" parent="LookTargets" instance=ExtResource("11_3w7f1")]
 transform = Transform3D(-0.0104158, -0.524595, -0.851288, -0.00641813, 0.851352, -0.524556, 0.999925, 0, -0.0122345, 5.3815, 6.12235, -1.98781)
 
-[connection signal="finished" from="LookTargets" to="." method="_on_player_finished"]
-
 [editable path="Player"]
 [editable path="TutorialLayer"]
 [editable path="TutorialLayer/VBoxContainer/LookAround"]
