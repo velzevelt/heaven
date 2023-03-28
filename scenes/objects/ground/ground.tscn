@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bna68wkaaquc6"]
+
+[ext_resource type="Texture2D" uid="uid://cc6aunp3hqct5" path="res://addons/debug_tools/kenney_prototypetextures/Dark/texture_02.png" id="1_8m3gq"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ftrsi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tn38v"]
+albedo_texture = ExtResource("1_8m3gq")
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a3obb"]
+material = SubResource("StandardMaterial3D_tn38v")
+size = Vector2(10000, 10000)
+
+[node name="Ground" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43083, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("WorldBoundaryShape3D_ftrsi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_a3obb")
