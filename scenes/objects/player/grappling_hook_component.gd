@@ -38,6 +38,21 @@ func _on_action_pressed(_action_name):
 	if not enabled:
 		return
 	
+	if grappling:
+		var momentum = _rb.linear_velocity.length()
+		_hook_instance.call_deferred('queue_free')
+		await _hook_instance.tree_exited
+		grappling = false
+		
+		# Give away _rb momentum to player
+		velocity_component.last_speed = momentum
+		
+		# Take back control to PlayerMoveComponent
+		if body.has_node("PlayerMoveComponent"):
+			body.get_node("PlayerMoveComponent").set_physics_process(true)
+	
+	
+	
 	if not is_instance_valid(_hook_instance) and hook_raycast.is_colliding() and not grappling:
 		
 		# Take control from PlayerMoveComponent to self
@@ -117,20 +132,3 @@ func _on_action_pressed(_action_name):
 		grappling = true
 		
 		
-	if grappling:
-		var momentum = _rb.linear_velocity.length()
-		_hook_instance.call_deferred('queue_free')
-		await _hook_instance.tree_exited
-		grappling = false
-		
-		# Give away _rb momentum to player
-		velocity_component.last_speed = momentum
-		
-		# Take back control to PlayerMoveComponent
-		if body.has_node("PlayerMoveComponent"):
-			body.get_node("PlayerMoveComponent").set_physics_process(true)
-
-
-
-func _physics_process(_delta):
-	
