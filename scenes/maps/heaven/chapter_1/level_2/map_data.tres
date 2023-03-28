@@ -19,3 +19,4 @@ visible_name = "Level 2"
 previous_map_path = "res://scenes/maps/heaven/chapter_1/level_1/map_data.tres"
 next_map_path = "res://scenes/maps/heaven/chapter_1/level_3/map_data.tres"
 show_order = 2
+map_tags = PackedStringArray()

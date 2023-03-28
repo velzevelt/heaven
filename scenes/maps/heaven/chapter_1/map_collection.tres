@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="MapCollection" load_steps=5 format=3 uid="uid://jh0vj16bollt"]
+[gd_resource type="Resource" script_class="MapCollection" load_steps=6 format=3 uid="uid://jh0vj16bollt"]
 
-[ext_resource type="Resource" uid="uid://b3uqxuwgbpw6e" path="res://scenes/maps/heaven/chapter_1/level_1/map_data.tres" id="1_aqxjv"]
+[ext_resource type="Resource" uid="uid://b3uqxuwgbpw6e" path="res://scenes/maps/heaven/chapter_1/level_1/map_data.tres" id="1_jo8ml"]
 [ext_resource type="Script" path="res://scenes/map_collection.gd" id="1_tpfi5"]
-[ext_resource type="Resource" uid="uid://bj7iagj4fkuaj" path="res://scenes/maps/heaven/chapter_1/level_2/map_data.tres" id="2_01ldn"]
-[ext_resource type="Resource" uid="uid://cdchhkvwmclke" path="res://scenes/maps/heaven/chapter_1/level_3/map_data.tres" id="3_nb3gh"]
+[ext_resource type="Resource" uid="uid://bj7iagj4fkuaj" path="res://scenes/maps/heaven/chapter_1/level_2/map_data.tres" id="2_gfo87"]
+[ext_resource type="Resource" uid="uid://cdchhkvwmclke" path="res://scenes/maps/heaven/chapter_1/level_3/map_data.tres" id="3_cnvun"]
+[ext_resource type="Resource" uid="uid://xjt6ys5endds" path="res://scenes/maps/heaven/chapter_1/level_4/map_data.tres" id="4_ltvcv"]
 
 [resource]
 script = ExtResource("1_tpfi5")
 visible_name = "Chapter 1"
 show_order = 1
 update_maps = false
-maps = [ExtResource("1_aqxjv"), ExtResource("2_01ldn"), ExtResource("3_nb3gh")]
+maps = [ExtResource("1_jo8ml"), ExtResource("2_gfo87"), ExtResource("3_cnvun"), ExtResource("4_ltvcv")]
 hidden = false
