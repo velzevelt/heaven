@@ -13,8 +13,12 @@ var first_jump = true
 
 
 func _ready():
-	input_component.action_just_pressed.connect(_on_jump_pressed)
-	input_component.action_just_released.connect(_on_jump_released)
+	if is_instance_valid(input_component):
+		input_component.action_just_pressed.connect(_on_jump_pressed)
+		input_component.action_just_released.connect(_on_jump_released)
+	else:
+		Logger.debug_log('Missing input_component', MESSAGE_TYPE.WARNING)
+
 
 func _physics_process(_delta):
 	if not player_body.is_on_floor():

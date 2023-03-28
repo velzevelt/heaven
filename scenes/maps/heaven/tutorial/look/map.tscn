@@ -49,6 +49,9 @@ script = ExtResource("5_d35bj")
 target_path = NodePath("../LookRaycast")
 desired_property = "target"
 
+[node name="PlayerMoveComponent" parent="Player" index="5" node_paths=PackedStringArray("input_component")]
+input_component = NodePath("InputComponent")
+
 [node name="TutorialLayer" parent="." node_paths=PackedStringArray("arrow_up", "arrow_left", "arrow_right", "arrow_down") instance=ExtResource("6_8usiu")]
 script = ExtResource("7_u10v7")
 arrow_up = NodePath("VBoxContainer/LookAround/MarginContainer/VBoxContainer/ArrowUp")

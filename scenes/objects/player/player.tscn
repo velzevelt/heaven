@@ -84,7 +84,7 @@ script = ExtResource("9_ytpbk")
 [node name="PlayerMoveComponent" type="Node" parent="." node_paths=PackedStringArray("velocity_component", "input_component", "head", "player_body")]
 script = ExtResource("9_7a22w")
 velocity_component = NodePath("../VelocityComponent")
-input_component = NodePath("")
+input_component = NodePath("InputComponent")
 head = NodePath("../Head")
 player_body = NodePath("..")
 
@@ -159,9 +159,13 @@ timer = NodePath("VelzTimer")
 [node name="VelzTimer" type="Node" parent="VBoxContainer/VelzTimerLabel"]
 script = ExtResource("13_6lpoc")
 
-[node name="GrapplingHookCompoment" type="Node" parent="."]
+[node name="GrapplingHookCompoment" type="Node" parent="." node_paths=PackedStringArray("hook_raycast", "body", "velocity_component", "input_component")]
 script = ExtResource("6_5cnao")
-hook = null
-base_pull_force = null
-free_fly_time = null
-enabled = null
+hook_raycast = NodePath("../Head/CrosshairRaycast")
+body = NodePath("..")
+velocity_component = NodePath("../VelocityComponent")
+input_component = NodePath("InputComponent")
+
+[node name="InputComponent" type="Node" parent="GrapplingHookCompoment"]
+script = ExtResource("9_udwp3")
+action_name = "hook"
