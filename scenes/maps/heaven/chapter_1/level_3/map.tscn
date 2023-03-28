@@ -60,10 +60,7 @@ preview_rotation = false
 platform_body = NodePath("../MovingPlatformBody")
 
 [node name="Platform3" parent="." instance=ExtResource("4_6mp61")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5249, 2.12873, -24.5212)
-
-[node name="PlatformBody" parent="Platform3" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12221, -1.14598, -0.783237)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42802, 0.176808, -24.5212)
 
 [node name="FinishPlatformComponent" type="Node" parent="Platform3" node_paths=PackedStringArray("platform_body")]
 script = ExtResource("11_66pe6")

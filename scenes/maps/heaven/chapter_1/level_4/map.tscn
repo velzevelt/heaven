@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://vv8f057ivm78"]
+
+[ext_resource type="Script" path="res://scenes/map.gd" id="1_2unsn"]
+[ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="2_1sfga"]
+[ext_resource type="PackedScene" uid="uid://db5xremcmjtg3" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="3_ynon5"]
+[ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_h64fj"]
+[ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="5_o2fw5"]
+[ext_resource type="Script" path="res://scenes/components/finish_platform_component.gd" id="8_dl4iq"]
+
+[node name="Level4" type="Node3D"]
+script = ExtResource("1_2unsn")
+
+[node name="Player" parent="." instance=ExtResource("2_1sfga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
+
+[node name="KillingFloor" parent="." instance=ExtResource("3_ynon5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.79821, 0)
+
+[node name="Platform" parent="." instance=ExtResource("4_h64fj")]
+
+[node name="DirectionalLight3D" parent="." instance=ExtResource("5_o2fw5")]
+
+[node name="Platform3" parent="." instance=ExtResource("4_h64fj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5249, 2.12873, -7.17087)
+
+[node name="FinishPlatformComponent" type="Node" parent="Platform3" node_paths=PackedStringArray("platform_body")]
+script = ExtResource("8_dl4iq")
+platform_body = NodePath("../PlatformBody")
+
+[editable path="Platform3"]
