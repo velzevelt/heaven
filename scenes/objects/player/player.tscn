@@ -1,11 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://chaf5uqx5ltj2"]
+[gd_scene load_steps=18 format=3 uid="uid://chaf5uqx5ltj2"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_gwrkw"]
 [ext_resource type="Script" path="res://scenes/objects/player/camera_controller.gd" id="2_8xvxh"]
 [ext_resource type="Script" path="res://scenes/objects/player/crosshair_raycast.gd" id="3_2e6su"]
 [ext_resource type="Script" path="res://scenes/objects/player/player_debug_mesh.gd" id="3_rbpt3"]
 [ext_resource type="Script" path="res://scenes/objects/player/crosshair.gd" id="4_gifrp"]
-[ext_resource type="Script" path="res://scenes/objects/player/grappling_hook_component.gd" id="6_5cnao"]
 [ext_resource type="Script" path="res://scenes/components/floor_activation_component.gd" id="7_mjju6"]
 [ext_resource type="Script" path="res://addons/debug_tools/info_label/info_label.gd" id="7_tu7pf"]
 [ext_resource type="Script" path="res://scenes/objects/player/jump_input_component.gd" id="8_xuxdu"]
@@ -73,13 +72,6 @@ anim_duration = 0.3
 material_override = SubResource("StandardMaterial3D_37kd4")
 mesh = SubResource("CapsuleMesh_720by")
 script = ExtResource("3_rbpt3")
-
-[node name="GrapplingHookComponent" type="Node" parent="." node_paths=PackedStringArray("hook_raycast", "body", "velocity_component")]
-script = ExtResource("6_5cnao")
-hook_raycast = NodePath("../Head/CrosshairRaycast")
-body = NodePath("..")
-velocity_component = NodePath("../VelocityComponent")
-enabled = false
 
 [node name="FloorActivationComponent" type="Node" parent="." node_paths=PackedStringArray("body")]
 script = ExtResource("7_mjju6")
@@ -153,7 +145,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "hit_point: "
 script = ExtResource("7_tu7pf")
-target_path = NodePath("../../GrapplingHookComponent")
+target_path = NodePath("")
 desired_property = "hit_point"
 
 [node name="VelzTimerLabel" type="Label" parent="VBoxContainer" node_paths=PackedStringArray("timer")]

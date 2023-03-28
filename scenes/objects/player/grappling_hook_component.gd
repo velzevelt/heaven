@@ -1,3 +1,4 @@
+class_name GrapplingHookCompoment
 extends Node
 
 @export var hook_raycast: RayCast3D
@@ -17,7 +18,7 @@ extends Node
 @export var free_fly_time := 0.4
 
 ## Specific Input
-#@export var input_component: GrapplingHookInputComponent
+@export var input_component: GrapplingHookInputComponent
 
 @export var enabled := true
 

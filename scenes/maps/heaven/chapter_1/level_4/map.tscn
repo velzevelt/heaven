@@ -42,7 +42,7 @@ platform_body = NodePath("../PlatformBody")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.035647, 3.89314, -11.8939)
 
 [node name="PlatformBody" parent="Platform2" index="0"]
-transform = Transform3D(-0.616122, 0.173757, -0.767981, -0.173775, 0.921016, 0.347825, 0.767972, 0.347804, -0.537429, 0, 0, 0)
+transform = Transform3D(-0.977246, -0.0465794, 0.205888, 0.0465853, 0.903417, 0.425557, -0.205882, 0.425527, -0.880966, 0, 0, 0)
 
 [node name="ReparentPlatformComponent" type="Node" parent="Platform2" node_paths=PackedStringArray("new_parent", "platform_body")]
 script = ExtResource("8_lbicb")

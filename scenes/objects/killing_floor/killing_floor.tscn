@@ -12,7 +12,7 @@ texture_filter = 5
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8fj81"]
 material = SubResource("StandardMaterial3D_641ot")
-size = Vector2(2048, 2048)
+size = Vector2(10000, 10000)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_7n1o2"]
 

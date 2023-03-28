@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_pgdll"]
 [ext_resource type="PackedScene" uid="uid://db5xremcmjtg3" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_trrbi"]
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="4_04771"]
-[ext_resource type="Texture2D" uid="uid://cc6aunp3hqct5" path="res://addons/debug_tools/kenney_prototypetextures/Dark/texture_02.png" id="5_4ljt2"]
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="7_mhwni"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/walk/tutorial_layer.gd" id="7_nbayx"]
 [ext_resource type="PackedScene" path="res://scenes/maps/heaven/tutorial/tutorial_layer.tscn" id="8_2ojtw"]
@@ -11,21 +10,22 @@
 [ext_resource type="PackedScene" uid="uid://bcdqwr7wudsse" path="res://scenes/maps/heaven/tutorial/message_container.tscn" id="9_wpjt2"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/walk/step_1.gd" id="10_ds47u"]
 [ext_resource type="PackedScene" uid="uid://4qxa6rxh1dhd" path="res://scenes/maps/heaven/tutorial/help_label.tscn" id="11_cyv8e"]
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ftrsi"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tn38v"]
-albedo_texture = ExtResource("5_4ljt2")
-uv1_triplanar = true
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_a3obb"]
-material = SubResource("StandardMaterial3D_tn38v")
-size = Vector2(10000, 10000)
+[ext_resource type="PackedScene" uid="uid://bna68wkaaquc6" path="res://scenes/objects/ground/ground.tscn" id="11_h5hds"]
+[ext_resource type="Texture2D" uid="uid://mruxbi8dw30s" path="res://addons/debug_tools/kenney_prototypetextures/Orange/texture_02.png" id="12_xmpis"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6epr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uyn55"]
 radius = 1.01251
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tn38v"]
+albedo_texture = ExtResource("12_xmpis")
+uv1_triplanar = true
+texture_filter = 5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_17oju"]
+material = SubResource("StandardMaterial3D_tn38v")
+size = Vector2(1000, 1000)
 
 [node name="WalkTutorial" type="Node3D"]
 script = ExtResource("1_pgdll")
@@ -36,19 +36,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99159, 0)
 [node name="Player" parent="." instance=ExtResource("4_04771")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31678, 0)
 
-[node name="PlayerMoveComponent" parent="Player" index="6"]
+[node name="PlayerMoveComponent" parent="Player" index="5"]
 can_jump = false
 
 [node name="DirectionalLight3D" parent="." instance=ExtResource("7_mhwni")]
-
-[node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43083, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-shape = SubResource("WorldBoundaryShape3D_ftrsi")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-mesh = SubResource("PlaneMesh_a3obb")
 
 [node name="TutorialLayer" parent="." instance=ExtResource("8_2ojtw")]
 script = ExtResource("7_nbayx")
@@ -162,8 +153,14 @@ text = "Go Here"
 
 [node name="HelpLabel" parent="Step1" instance=ExtResource("11_cyv8e")]
 
+[node name="Ground" parent="." instance=ExtResource("11_h5hds")]
+
+[node name="MeshInstance3D" parent="Ground" index="1"]
+mesh = SubResource("PlaneMesh_17oju")
+
 [connection signal="body_entered" from="Finish/Area3D" to="Finish" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Step1/Area3D" to="Step1" method="_on_area_3d_body_entered"]
 
 [editable path="Player"]
 [editable path="TutorialLayer"]
+[editable path="Ground"]
