@@ -1,14 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://chaf5uqx5ltj2"]
+[gd_scene load_steps=19 format=3 uid="uid://chaf5uqx5ltj2"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_gwrkw"]
 [ext_resource type="Script" path="res://scenes/objects/player/camera_controller.gd" id="2_8xvxh"]
 [ext_resource type="Script" path="res://scenes/objects/player/crosshair_raycast.gd" id="3_2e6su"]
 [ext_resource type="Script" path="res://scenes/objects/player/player_debug_mesh.gd" id="3_rbpt3"]
 [ext_resource type="Script" path="res://scenes/objects/player/crosshair.gd" id="4_gifrp"]
+[ext_resource type="Script" path="res://scenes/objects/player/grappling_hook_component.gd" id="6_5cnao"]
 [ext_resource type="Script" path="res://scenes/components/floor_activation_component.gd" id="7_mjju6"]
 [ext_resource type="Script" path="res://addons/debug_tools/info_label/info_label.gd" id="7_tu7pf"]
-[ext_resource type="Script" path="res://scenes/objects/player/jump_input_component.gd" id="8_xuxdu"]
 [ext_resource type="Script" path="res://scenes/objects/player/player_move_component.gd" id="9_7a22w"]
+[ext_resource type="Script" path="res://scenes/objects/player/input_component.gd" id="9_udwp3"]
 [ext_resource type="Script" path="res://scenes/components/velocity_component.gd" id="9_ytpbk"]
 [ext_resource type="Script" path="res://scenes/objects/player/dynamic_fov_change.gd" id="10_y34ym"]
 [ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer_label.gd" id="13_5krmr"]
@@ -83,12 +84,13 @@ script = ExtResource("9_ytpbk")
 [node name="PlayerMoveComponent" type="Node" parent="." node_paths=PackedStringArray("velocity_component", "input_component", "head", "player_body")]
 script = ExtResource("9_7a22w")
 velocity_component = NodePath("../VelocityComponent")
-input_component = NodePath("JumpInputComponent")
+input_component = NodePath("")
 head = NodePath("../Head")
 player_body = NodePath("..")
 
-[node name="JumpInputComponent" type="Node" parent="PlayerMoveComponent"]
-script = ExtResource("8_xuxdu")
+[node name="InputComponent" type="Node" parent="PlayerMoveComponent"]
+script = ExtResource("9_udwp3")
+action_name = "jump"
 
 [node name="DynamicFOVChange" type="Node" parent="." node_paths=PackedStringArray("camera", "velocity_component", "player_body")]
 script = ExtResource("10_y34ym")
@@ -156,3 +158,10 @@ timer = NodePath("VelzTimer")
 
 [node name="VelzTimer" type="Node" parent="VBoxContainer/VelzTimerLabel"]
 script = ExtResource("13_6lpoc")
+
+[node name="GrapplingHookCompoment" type="Node" parent="."]
+script = ExtResource("6_5cnao")
+hook = null
+base_pull_force = null
+free_fly_time = null
+enabled = null

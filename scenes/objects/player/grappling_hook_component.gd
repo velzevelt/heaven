@@ -18,7 +18,7 @@ extends Node
 @export var free_fly_time := 0.4
 
 ## Specific Input
-@export var input_component: GrapplingHookInputComponent
+@export var input_component: InputComponent
 
 @export var enabled := true
 
@@ -30,11 +30,15 @@ var _rb
 var _sb
 var _joint
 
-func _physics_process(_delta):
+
+func _ready():
+	input_component.action_just_pressed.connect(_on_action_pressed)
+
+func _on_action_pressed(_action_name):
 	if not enabled:
 		return
 	
-	if not is_instance_valid(_hook_instance) and hook_raycast.is_colliding() and Input.is_action_just_pressed("forward") and not grappling:
+	if not is_instance_valid(_hook_instance) and hook_raycast.is_colliding() and not grappling:
 		
 		# Take control from PlayerMoveComponent to self
 		if body.has_node("PlayerMoveComponent"):
@@ -111,8 +115,9 @@ func _physics_process(_delta):
 		_joint.node_b = _sb.get_path()
 		
 		grappling = true
-	
-	if grappling and Input.is_action_just_pressed("forward"):
+		
+		
+	if grappling:
 		var momentum = _rb.linear_velocity.length()
 		_hook_instance.call_deferred('queue_free')
 		await _hook_instance.tree_exited
@@ -124,3 +129,8 @@ func _physics_process(_delta):
 		# Take back control to PlayerMoveComponent
 		if body.has_node("PlayerMoveComponent"):
 			body.get_node("PlayerMoveComponent").set_physics_process(true)
+
+
+
+func _physics_process(_delta):
+	

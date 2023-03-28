@@ -2,7 +2,7 @@ class_name PlayerMoveComponent
 extends Node
 
 @export var velocity_component: VelocityComponent
-@export var input_component: JumpInputComponent
+@export var input_component: InputComponent
 @export var head: Head
 @export var player_body: CharacterBody3D 
 @export var air_control := true
@@ -13,8 +13,8 @@ var first_jump = true
 
 
 func _ready():
-	input_component.jump_pressed.connect(_on_jump_pressed)
-	input_component.jump_released.connect(_on_jump_released)
+	input_component.action_just_pressed.connect(_on_jump_pressed)
+	input_component.action_just_released.connect(_on_jump_released)
 
 func _physics_process(_delta):
 	if not player_body.is_on_floor():
@@ -43,13 +43,13 @@ func _physics_process(_delta):
 
 
 # Handle Jump. Holding jump key longer make jump higher
-func _on_jump_pressed():
+func _on_jump_pressed(_action_name):
 	if player_body.is_on_floor() and can_jump:
 		first_jump = true
 		jump(velocity_component.jump_velocity)
 
 
-func _on_jump_released():
+func _on_jump_released(_action_name):
 	if first_jump and not player_body.is_on_floor():
 		if player_body.velocity.y > 0:
 			player_body.velocity.y /= velocity_component.jump_release
