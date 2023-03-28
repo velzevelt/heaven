@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://vv8f057ivm78"]
+[gd_scene load_steps=9 format=3 uid="uid://vv8f057ivm78"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_2unsn"]
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="2_1sfga"]
 [ext_resource type="PackedScene" uid="uid://db5xremcmjtg3" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="3_ynon5"]
 [ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_h64fj"]
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="5_o2fw5"]
+[ext_resource type="Script" path="res://scenes/components/finish_platform_component.gd" id="6_8v8fq"]
 [ext_resource type="Script" path="res://scenes/components/rotate_platform_component.gd" id="7_1o8kc"]
 [ext_resource type="Script" path="res://scenes/components/reparent_platform_component.gd" id="8_lbicb"]
 
@@ -30,11 +31,18 @@ transform = Transform3D(1, 0, 0, 0, 0.926653, -0.375917, 0, 0.375917, 0.926653, 
 [node name="Platform5" parent="." instance=ExtResource("4_h64fj")]
 transform = Transform3D(1, 0, 0, 0, 0.926653, -0.375917, 0, 0.375917, 0.926653, -0.0308032, 3.09502, -8.70288)
 
+[node name="Platform6" parent="." instance=ExtResource("4_h64fj")]
+transform = Transform3D(1, 0, 0, 0, 0.926653, -0.375917, 0, 0.375917, 0.926653, 2.55874, 4.52549, -15.1616)
+
+[node name="FinishPlatformComponent" type="Node" parent="Platform6" node_paths=PackedStringArray("platform_body")]
+script = ExtResource("6_8v8fq")
+platform_body = NodePath("../PlatformBody")
+
 [node name="Platform2" parent="." instance=ExtResource("4_h64fj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.035647, 3.89314, -11.8939)
 
 [node name="PlatformBody" parent="Platform2" index="0"]
-transform = Transform3D(-0.585207, 0.178923, -0.790763, -0.178931, 0.922654, 0.341199, 0.790756, 0.341187, -0.508009, 0, 0, 0)
+transform = Transform3D(0.790287, 0.13515, -0.597347, -0.135164, 0.989547, 0.0450898, 0.597336, 0.0451039, 0.800497, 0, 0, 0)
 
 [node name="ReparentPlatformComponent" type="Node" parent="Platform2" node_paths=PackedStringArray("new_parent", "platform_body")]
 script = ExtResource("8_lbicb")
@@ -46,4 +54,5 @@ script = ExtResource("7_1o8kc")
 rotate_direction = Vector3(0, 0.137, 0.031)
 platform_body = NodePath("../PlatformBody")
 
+[editable path="Platform6"]
 [editable path="Platform2"]
