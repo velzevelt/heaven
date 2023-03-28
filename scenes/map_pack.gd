@@ -35,3 +35,5 @@ static func load_resources_sorted(res_path, res_name):
 					sorted_res.append(map_collection)
 		
 		return sorted_res
+
+@export var tags: PackedStringArray

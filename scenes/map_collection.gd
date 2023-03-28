@@ -20,4 +20,4 @@ extends Resource
 
 @export var hidden := false
 
-
+@export var tags: PackedStringArray

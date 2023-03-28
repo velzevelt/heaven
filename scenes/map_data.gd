@@ -49,9 +49,9 @@ var MAP_SCENE_FILE_NAME = SceneLoader.MAP_SCENE_FILE_NAME # unified name 'map.ts
 		else:
 			return map_packed
 
-@export_range(0.5, 5.0, 0.5) var map_difficulty: float
+@export_range(0.5, 5.0, 0.5) var difficulty: float
 
-@export_multiline var map_description = ''
+@export_multiline var description = ''
 
 ## Hide from LevelSelector
 @export var hidden := false
@@ -76,4 +76,4 @@ var MAP_SCENE_FILE_NAME = SceneLoader.MAP_SCENE_FILE_NAME # unified name 'map.ts
 ## Determinates position in LevelSelector. 0 - first map, 1 - second, etc
 @export_range(0, 10, 1) var show_order := 0
 
-@export var map_tags: PackedStringArray
+@export var tags: PackedStringArray
