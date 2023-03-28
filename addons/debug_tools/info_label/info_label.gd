@@ -41,7 +41,7 @@ func _get_configuration_warnings():
 func _ready():
 	update_configuration_warnings()
 	if target_path != null:
-		_target = get_node(target_path)
+		_target = get_node_or_null(target_path)
 
 
 func _process(_delta):
