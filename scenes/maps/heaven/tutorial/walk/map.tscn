@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://8nsw6qdn1c0o"]
+[gd_scene load_steps=17 format=3 uid="uid://dtnbnullxtst1"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_pgdll"]
 [ext_resource type="PackedScene" uid="uid://db5xremcmjtg3" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_trrbi"]
@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" path="res://scenes/maps/heaven/tutorial/tutorial_layer.tscn" id="8_2ojtw"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/walk/finish.gd" id="9_1bkvt"]
 [ext_resource type="PackedScene" uid="uid://bcdqwr7wudsse" path="res://scenes/maps/heaven/tutorial/message_container.tscn" id="9_wpjt2"]
-[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/walk/step1.gd" id="10_unuh0"]
+[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/walk/step_1.gd" id="10_ds47u"]
+[ext_resource type="PackedScene" uid="uid://4qxa6rxh1dhd" path="res://scenes/maps/heaven/tutorial/help_label.tscn" id="11_cyv8e"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ftrsi"]
 
@@ -146,9 +147,9 @@ text = "Finish"
 
 [node name="Step1" type="Node3D" parent="." node_paths=PackedStringArray("finish", "message")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.903898, 0.608106, -17.0338)
-script = ExtResource("10_unuh0")
+script = ExtResource("10_ds47u")
 finish = NodePath("../Finish")
-message = NodePath("Label")
+message = NodePath("HelpLabel")
 
 [node name="Area3D" type="Area3D" parent="Step1"]
 
@@ -159,20 +160,7 @@ shape = SubResource("SphereShape3D_uyn55")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49721, 0)
 text = "Go Here"
 
-[node name="Label" type="Label" parent="Step1"]
-visible = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -505.5
-offset_top = -60.0
-offset_right = 505.5
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 41
-text = "Movement after jumping allows you to reset speed instantly"
+[node name="HelpLabel" parent="Step1" instance=ExtResource("11_cyv8e")]
 
 [connection signal="body_entered" from="Finish/Area3D" to="Finish" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Step1/Area3D" to="Step1" method="_on_area_3d_body_entered"]

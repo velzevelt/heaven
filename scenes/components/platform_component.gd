@@ -21,7 +21,7 @@ func _initialize():
 		platform_body.connect('object_entered', _on_object_entered)
 		platform_body.connect('object_exited', _on_object_exited)
 	else:
-		Logger.debug_log("Platform init error! Missing platform_body", MESSAGE_TYPE.ERROR)
+		Logger.debug_log("Platform init failed! Missing platform_body", MESSAGE_TYPE.WARNING)
 
 
 @warning_ignore("unused_parameter")

@@ -1,12 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://bfovvy83almmm"]
+[gd_scene load_steps=14 format=3 uid="uid://bfovvy83almmm"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_3qy4q"]
 [ext_resource type="PackedScene" uid="uid://db5xremcmjtg3" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_2r0t7"]
 [ext_resource type="Script" path="res://scenes/objects/killing_floor/reset_player_on_touch.gd" id="3_mt1yh"]
 [ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_dsab2"]
 [ext_resource type="Script" path="res://scenes/components/finish_platform_component.gd" id="5_ms5rp"]
+[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/walk/step_1.gd" id="6_3atar"]
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="6_mcpiw"]
 [ext_resource type="PackedScene" path="res://scenes/maps/heaven/tutorial/tutorial_layer.tscn" id="7_1j02i"]
+[ext_resource type="PackedScene" uid="uid://4qxa6rxh1dhd" path="res://scenes/maps/heaven/tutorial/help_label.tscn" id="7_2vrhg"]
 [ext_resource type="PackedScene" uid="uid://bcdqwr7wudsse" path="res://scenes/maps/heaven/tutorial/message_container.tscn" id="8_rxtur"]
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="9_4rg3p"]
 
@@ -38,10 +40,20 @@ process_mode = 4
 [node name="Platform" parent="." instance=ExtResource("4_dsab2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.735116, 0)
 
-[node name="Platform2" parent="." instance=ExtResource("4_dsab2")]
+[node name="Platform2" parent="." node_paths=PackedStringArray("finish", "message", "platform_body") instance=ExtResource("4_dsab2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.735116, -3.98793)
+script = ExtResource("6_3atar")
+finish = NodePath("../Platform3")
+message = NodePath("HelpLabel")
+platform_body = NodePath("PlatformBody")
 
-[node name="FinishPlatformComponent" type="Node" parent="Platform2" node_paths=PackedStringArray("platform_body")]
+[node name="HelpLabel" parent="Platform2" instance=ExtResource("7_2vrhg")]
+text = "Holding jump key longer makes you jump higher"
+
+[node name="Platform3" parent="." instance=ExtResource("4_dsab2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.735116, -10.1238)
+
+[node name="FinishPlatformComponent" type="Node" parent="Platform3" node_paths=PackedStringArray("platform_body")]
 script = ExtResource("5_ms5rp")
 platform_body = NodePath("../PlatformBody")
 
@@ -77,4 +89,5 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ckwxc")
 [editable path="KillingFloor"]
 [editable path="Player"]
 [editable path="Platform2"]
+[editable path="Platform3"]
 [editable path="TutorialLayer"]

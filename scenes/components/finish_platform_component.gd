@@ -4,7 +4,10 @@ extends PlatformComponent
 
 signal finished
 
+@export var enabled := true
+
 var body: CharacterBody3D
+
 
 @warning_ignore("shadowed_variable")
 func _on_object_entered(body: CharacterBody3D):
@@ -17,7 +20,7 @@ func _on_object_exited(body):
 		self.body = null
 
 func _physics_process(_delta):
-	if not Engine.is_editor_hint() and is_instance_valid(self.body):
+	if not Engine.is_editor_hint() and is_instance_valid(self.body) and enabled:
 		# Player can fall from this platform due to inertia, we must be sure he stands still
 		if body.velocity == Vector3.ZERO:
 			# Player can slide out from finish platform to another body, so has to recheck it

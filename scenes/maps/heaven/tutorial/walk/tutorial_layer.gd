@@ -8,7 +8,6 @@ extends CanvasLayer
 var appeared = false
 
 @export var highlight_style: StyleBoxFlat
-var _labels: Array
 
 var _init_slyle
 

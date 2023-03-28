@@ -1,14 +1,21 @@
-extends Node3D
+extends PlatformComponent
 
-@export var finish: Node
+@export var finish: Node3D
 @export var message: Label
 @export var enabled := true
+@export var step_node: Node3D
 
 func _on_area_3d_body_entered(body):
 	if body.is_in_group('player') and enabled:
-		finish.visible = true
-		finish.enabled = true
-		visible = false
+		if is_instance_valid(finish): 
+			finish.visible = true 
+			if finish.get('enabled') != null: 
+				finish.enabled = true
+			elif finish.has_node('FinishPlatformComponent'):
+				finish.get_node('FinishPlatformComponent').enabled = true
+		
+		if is_instance_valid(step_node): step_node.visible = false
+		
 		enabled = false
 		
 		message.visible_ratio = 0.0
@@ -23,3 +30,6 @@ func _on_area_3d_body_entered(body):
 		
 		await tween.finished
 		message.visible = false
+
+func _on_object_entered(obj):
+	_on_area_3d_body_entered(obj)
