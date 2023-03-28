@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://vv8f057ivm78"]
+[gd_scene load_steps=8 format=3 uid="uid://vv8f057ivm78"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_2unsn"]
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="2_1sfga"]
 [ext_resource type="PackedScene" uid="uid://db5xremcmjtg3" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="3_ynon5"]
 [ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_h64fj"]
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="5_o2fw5"]
-[ext_resource type="Script" path="res://scenes/components/finish_platform_component.gd" id="8_dl4iq"]
+[ext_resource type="Script" path="res://scenes/components/rotate_platform_component.gd" id="7_1o8kc"]
+[ext_resource type="Script" path="res://scenes/components/reparent_platform_component.gd" id="8_lbicb"]
 
 [node name="Level4" type="Node3D"]
 script = ExtResource("1_2unsn")
@@ -21,10 +22,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.79821, 0)
 [node name="DirectionalLight3D" parent="." instance=ExtResource("5_o2fw5")]
 
 [node name="Platform3" parent="." instance=ExtResource("4_h64fj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5249, 2.12873, -7.17087)
+transform = Transform3D(1, 0, 0, 0, 0.926653, -0.375917, 0, 0.375917, 0.926653, -0.0308032, 0.828394, -3.11553)
 
-[node name="FinishPlatformComponent" type="Node" parent="Platform3" node_paths=PackedStringArray("platform_body")]
-script = ExtResource("8_dl4iq")
+[node name="Platform4" parent="." instance=ExtResource("4_h64fj")]
+transform = Transform3D(1, 0, 0, 0, 0.926653, -0.375917, 0, 0.375917, 0.926653, -0.0308032, 1.96047, -5.90614)
+
+[node name="Platform5" parent="." instance=ExtResource("4_h64fj")]
+transform = Transform3D(1, 0, 0, 0, 0.926653, -0.375917, 0, 0.375917, 0.926653, -0.0308032, 3.09502, -8.70288)
+
+[node name="Platform2" parent="." instance=ExtResource("4_h64fj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.035647, 3.61209, -11.5128)
+
+[node name="PlatformBody" parent="Platform2" index="0"]
+transform = Transform3D(0.222108, -0.215179, 0.950959, 0.215179, 0.962084, 0.167441, -0.950955, 0.16744, 0.259997, 0, 0, 0)
+
+[node name="ReparentPlatformComponent" type="Node" parent="Platform2" node_paths=PackedStringArray("new_parent", "platform_body")]
+script = ExtResource("8_lbicb")
+new_parent = NodePath("../PlatformBody")
 platform_body = NodePath("../PlatformBody")
 
-[editable path="Platform3"]
+[node name="RotatePlatformComponent" type="Node" parent="Platform2" node_paths=PackedStringArray("platform_body")]
+script = ExtResource("7_1o8kc")
+rotate_direction = Vector3(0, 0.137, 0.031)
+platform_body = NodePath("../PlatformBody")
+
+[editable path="Platform2"]

@@ -39,6 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.43675)
 transform = Transform3D(0.999995, 0, 0, 0, 0.999997, 0, 0, 0, 0.999999, 0, 0, 0)
 
 [node name="MovingPlatformComponent" parent="MovingPlatform" index="1"]
+enabled = null
 autoplay = false
 
 [node name="Path3D" parent="MovingPlatform" index="2"]
@@ -51,6 +52,7 @@ transform = Transform3D(-0.873115, 0.00918112, 0.487421, 1.39698e-09, 0.99982, -
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 6.63383, 0.100407, -20.7766)
 
 [node name="MovingPlatformComponent" parent="MovingPlatform2" index="1"]
+enabled = null
 path_follow = NodePath("")
 
 [node name="RotatePlatformComponent" type="Node" parent="MovingPlatform2" node_paths=PackedStringArray("platform_body")]

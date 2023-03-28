@@ -1,7 +1,7 @@
 class_name ReparentPlatformComponent
 extends PlatformComponent
 
-@export var target_type: Script
+@export var target_groups: PackedStringArray = ['player']
 @export var new_parent: Node3D
 
 var _player
@@ -12,7 +12,7 @@ func _ready():
 	platform_body.object_entered_strict.connect(_on_object_entered_strict)
 
 func _on_object_entered_strict(obj):
-	if is_instance_of(obj, target_type):
+	if obj.get_groups().any(func(group): return group in target_groups) :
 		_player = obj
 		_prev_parent = _player.get_parent()
 		_player.reparent(new_parent)

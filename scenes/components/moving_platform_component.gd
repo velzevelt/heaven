@@ -5,6 +5,8 @@ extends PlatformComponent
 signal move_started
 signal move_ended
 
+@export var enabled := true
+
 @export var autoplay := true
 @export var loop := true
 @export_range(1.0, 15.0, 1.0) var anim_duration := 3.0
@@ -42,7 +44,7 @@ func _on_object_entered(_player):
 
 
 func move_platform():
-	if is_instance_valid(path_follow):
+	if is_instance_valid(path_follow) and enabled:
 		var tween = create_tween()
 		tween.stop()
 		tween.tween_property(path_follow, 'progress_ratio', 1.0, anim_duration)
