@@ -19,7 +19,7 @@ texture_filter = 5
 material = SubResource("StandardMaterial3D_tn38v")
 size = Vector2(100, 100)
 
-[node name="Level4" type="Node3D"]
+[node name="Level5" type="Node3D"]
 script = ExtResource("1_75ff8")
 
 [node name="Player" parent="." instance=ExtResource("2_773fu")]
