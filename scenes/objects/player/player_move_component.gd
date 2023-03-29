@@ -10,7 +10,8 @@ extends Node
 @export var can_jump := true
 
 var first_jump = true
-
+var jump_direction: Vector3 = Vector3()
+var input_direction: Vector3 = Vector3()
 
 func _ready():
 	if is_instance_valid(input_component):
@@ -25,17 +26,18 @@ func _physics_process(_delta):
 #		player_body.velocity.y -= velocity_component.gravity * velocity_component.mass * delta
 		player_body.velocity.y = move_toward(player_body.velocity.y, -velocity_component.gravity * velocity_component.mass * velocity_component.last_speed, 0.25)
 		
-		if air_control:
-			var forward = -player_body.global_transform.basis.z
-			player_body.velocity.x = forward.x * velocity_component.last_speed
-			player_body.velocity.z = forward.z * velocity_component.last_speed
+#		if air_control:
+#			var new_direction = (input_direction + jump_direction).normalized()
+#
+#			player_body.velocity.x = new_direction.x * velocity_component.last_speed
+#			player_body.velocity.z = new_direction.z * velocity_component.last_speed
 		
 	else:
 		var input_dir = Input.get_vector("left", "right", "forward", "backward")
-		var direction = (player_body.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		if direction and can_move:
-			player_body.velocity.x = direction.x * velocity_component.min_speed
-			player_body.velocity.z = direction.z * velocity_component.min_speed
+		input_direction = (player_body.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		if input_direction != Vector3.ZERO and can_move:
+			player_body.velocity.x = input_direction.x * velocity_component.min_speed
+			player_body.velocity.z = input_direction.z * velocity_component.min_speed
 			velocity_component.last_speed = player_body.velocity.length()
 		else:
 			player_body.velocity.x = move_toward(player_body.velocity.x, 0, velocity_component.friction)
@@ -64,9 +66,18 @@ func jump(jump_velocity: float):
 	player_body.velocity.y = jump_velocity
 	velocity_component.last_velocity.y = jump_velocity
 
-	var forward = -player_body.global_transform.basis.z
+	var current_speed = player_body.velocity.normalized().dot(input_direction)
+	print(input_direction, current_speed)
+	var add_speed = clampf(velocity_component.max_speed - current_speed, 0, 10 * velocity_component.max_speed * get_physics_process_delta_time())
+	var final_velocity = add_speed * input_direction
+	
 #	var jump_direction = head.get_jump_direction()
-	player_body.velocity.x = forward.x * velocity_component.last_speed
-	player_body.velocity.z = forward.z * velocity_component.last_speed
+#	player_body.velocity.x = final_direction.x * velocity_component.last_speed
+#	player_body.velocity.z = final_direction.z * velocity_component.last_speed
+	player_body.velocity.x += final_velocity.x
+	player_body.velocity.z += final_velocity.z
+
 	velocity_component.last_speed = player_body.velocity.length()
 	velocity_component.last_velocity = Vector3(player_body.velocity.x, velocity_component.last_velocity.y, player_body.velocity.z)
+	
+	jump_direction = (velocity_component.last_velocity + input_direction).normalized()

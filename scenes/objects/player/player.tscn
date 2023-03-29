@@ -87,7 +87,6 @@ velocity_component = NodePath("../VelocityComponent")
 input_component = NodePath("InputComponent")
 head = NodePath("../Head")
 player_body = NodePath("..")
-air_control = false
 
 [node name="InputComponent" type="Node" parent="PlayerMoveComponent"]
 script = ExtResource("9_udwp3")
