@@ -66,10 +66,12 @@ func jump(jump_velocity: float):
 	player_body.velocity.y = jump_velocity
 	velocity_component.last_velocity.y = jump_velocity
 
-	var current_speed = player_body.velocity.normalized().dot(input_direction)
-	print(input_direction, current_speed)
-	var add_speed = clampf(velocity_component.max_speed - current_speed, 0, 10 * velocity_component.max_speed * get_physics_process_delta_time())
-	var final_velocity = add_speed * input_direction
+	var current_speed = player_body.velocity.dot(input_direction)
+	var add_speed = clampf(1.0 - current_speed, 0, 100)
+#	var final_velocity = add_speed * input_direction
+	var final_velocity = 3 * input_direction
+	
+	print(input_direction, final_velocity, current_speed)
 	
 #	var jump_direction = head.get_jump_direction()
 #	player_body.velocity.x = final_direction.x * velocity_component.last_speed
