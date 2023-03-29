@@ -71,14 +71,12 @@ func _on_jump_released(_action_name):
 func jump(jump_velocity: float):
 	player_body.velocity.y = jump_velocity
 	velocity_component.last_velocity.y = jump_velocity
-
-#	var final_velocity = velocity_component.last_speed * 
 	
-#	player_body.velocity.x += final_velocity.x
-#	player_body.velocity.z += final_velocity.z
+	var wish_dir = get_wish_direction()
+	var final_velocity = wish_dir * 3
 	
-#	player_body.velocity.x = move_toward(player_body.velocity.x, final_velocity.x, 0.4)
-#	player_body.velocity.z = move_toward(player_body.velocity.z, final_velocity.z, 0.4)
+	player_body.velocity.x = move_toward(player_body.velocity.x, final_velocity.x, 0.4)
+	player_body.velocity.z = move_toward(player_body.velocity.z, final_velocity.z, 0.4)
 
 	velocity_component.last_speed = player_body.velocity.length()
 	velocity_component.last_velocity = Vector3(player_body.velocity.x, velocity_component.last_velocity.y, player_body.velocity.z)
@@ -90,5 +88,5 @@ func get_wish_direction():
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	input_dir = (player_body.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	var mouse_dir = Input.get_last_mouse_velocity()
-	var wish_dir = (Vector3(input_dir.x + mouse_dir.x, 0, input_dir.z)).normalized()
+	var wish_dir = (Vector3(input_dir.x - mouse_dir.x, 0, input_dir.z)).normalized()
 	return wish_dir

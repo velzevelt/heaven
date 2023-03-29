@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cdsdb12d1ksl"]
+[gd_scene load_steps=24 format=3 uid="uid://cdsdb12d1ksl"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_dsnnr"]
 [ext_resource type="PackedScene" uid="uid://db5xremcmjtg3" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_g6p6m"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" path="res://scenes/objects/player/crosshair_style.gd" id="10_ml7gs"]
 [ext_resource type="Script" path="res://scenes/components/reparent_platform_component.gd" id="11_55fb8"]
 [ext_resource type="Texture2D" uid="uid://cyxy3bwyd53vb" path="res://addons/debug_tools/kenney_prototypetextures/Green/texture_02.png" id="11_x7od6"]
-[ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="12_yuay0"]
 [ext_resource type="Script" path="res://scenes/components/rotate_platform_component.gd" id="13_txruc"]
 
 [sub_resource type="Resource" id="Resource_ngsl4"]
@@ -85,6 +84,19 @@ platform_body = NodePath("../PlatformBody")
 script = ExtResource("9_pqq2b")
 style = SubResource("Resource_ngsl4")
 
+[node name="Platform3" parent="." instance=ExtResource("4_u1wqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.20193, 0.686358, 10.13)
+
+[node name="BouncePlatformComponent" type="Node" parent="Platform3" node_paths=PackedStringArray("platform_body")]
+script = ExtResource("5_rdpkx")
+jump_force = 4.0
+trampoline_mode = true
+platform_body = NodePath("../PlatformBody")
+
+[node name="OverridePlayerCrosshair" type="Node" parent="Platform3"]
+script = ExtResource("9_pqq2b")
+style = SubResource("Resource_ngsl4")
+
 [node name="DirectionalLight3D" parent="." instance=ExtResource("5_8a4gq")]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
@@ -118,7 +130,7 @@ script = ExtResource("9_pqq2b")
 style = SubResource("Resource_bha7d")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(-0.301013, 0.130909, -0.932309, 0.130731, 0.993368, 0.0932302, 0.932467, -0.093734, -0.314062, -5.67212, 1.40138, -2.73088)
+transform = Transform3D(-0.959309, 0.197081, 0.135011, 0.196558, 0.986727, -0.0135019, -0.135004, 0.0135704, -0.978805, -5.67212, 1.40138, -2.73088)
 use_collision = true
 size = Vector3(1.84565, 0.1, 1.963)
 script = ExtResource("8_d3cr6")
@@ -129,7 +141,6 @@ style = SubResource("Resource_ly24t")
 
 [node name="ReparentPlatformComponent" type="Node" parent="CSGBox3D2" node_paths=PackedStringArray("new_parent", "platform_body")]
 script = ExtResource("11_55fb8")
-target_type = ExtResource("12_yuay0")
 new_parent = NodePath("..")
 platform_body = NodePath("..")
 
@@ -151,7 +162,6 @@ style = SubResource("Resource_ly24t")
 
 [node name="ReparentPlatformComponent" type="Node" parent="CSGBox3D5" node_paths=PackedStringArray("new_parent", "platform_body")]
 script = ExtResource("11_55fb8")
-target_type = ExtResource("12_yuay0")
 new_parent = NodePath("..")
 platform_body = NodePath("..")
 
@@ -162,7 +172,7 @@ preview_rotation = false
 platform_body = NodePath("..")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(0.90862, 0, 0.402912, 0, 1, 0, -0.402912, 0, 0.90862, -5.12869, 2.18077, -6.39635)
+transform = Transform3D(-0.161686, 0, 0.9807, 0, 1, 0, -0.9807, 0, -0.161686, -5.12869, 2.18077, -6.39635)
 use_collision = true
 size = Vector3(1.84565, 0.1, 1.963)
 script = ExtResource("8_d3cr6")
@@ -218,3 +228,4 @@ node_b = NodePath("../StaticBody3D")
 
 [editable path="Platform"]
 [editable path="Platform2"]
+[editable path="Platform3"]
