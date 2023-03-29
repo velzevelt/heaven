@@ -36,8 +36,14 @@ func _physics_process(_delta):
 		var input_dir = Input.get_vector("left", "right", "forward", "backward")
 		input_direction = (player_body.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if input_direction != Vector3.ZERO and can_move:
-			player_body.velocity.x = input_direction.x * velocity_component.min_speed
-			player_body.velocity.z = input_direction.z * velocity_component.min_speed
+			var current_speed = player_body.velocity.dot(input_direction)
+			var add_speed = clampf(velocity_component.max_speed - current_speed, 0, velocity_component.max_speed * 2 * get_physics_process_delta_time())
+			var final_velocity = add_speed * input_direction
+			
+			player_body.velocity.x = move_toward(player_body.velocity.x, final_velocity.x, 0.4)
+			player_body.velocity.z = move_toward(player_body.velocity.z, final_velocity.z, 0.4)
+#			player_body.velocity.z = move_toward(player_body.velocity.z, input_direction.z * velocity_component.min_speed, 0.3)
+#			player_body.velocity.x = move_toward(player_body.velocity.x, input_direction.x * velocity_component.min_speed, 0.3)
 			velocity_component.last_speed = player_body.velocity.length()
 		else:
 			player_body.velocity.x = move_toward(player_body.velocity.x, 0, velocity_component.friction)
@@ -67,17 +73,14 @@ func jump(jump_velocity: float):
 	velocity_component.last_velocity.y = jump_velocity
 
 	var current_speed = player_body.velocity.dot(input_direction)
-	var add_speed = clampf(1.0 - current_speed, 0, 100)
+	var add_speed = clampf(velocity_component.max_speed - current_speed, 0, velocity_component.max_speed * 2 * get_physics_process_delta_time())
 #	var final_velocity = add_speed * input_direction
-	var final_velocity = 3 * input_direction
+	var final_velocity = add_speed * input_direction
 	
 	print(input_direction, final_velocity, current_speed)
 	
-#	var jump_direction = head.get_jump_direction()
-#	player_body.velocity.x = final_direction.x * velocity_component.last_speed
-#	player_body.velocity.z = final_direction.z * velocity_component.last_speed
-	player_body.velocity.x += final_velocity.x
-	player_body.velocity.z += final_velocity.z
+	player_body.velocity.x = move_toward(player_body.velocity.x, final_velocity.x, 0.4)
+	player_body.velocity.z = move_toward(player_body.velocity.z, final_velocity.z, 0.4)
 
 	velocity_component.last_speed = player_body.velocity.length()
 	velocity_component.last_velocity = Vector3(player_body.velocity.x, velocity_component.last_velocity.y, player_body.velocity.z)
