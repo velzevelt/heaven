@@ -1,5 +1,5 @@
 class_name PlayerMoveComponent
-extends Node3D
+extends Node3D # It's inherits from Node3D only for easier debugging
 
 @export var velocity_component: VelocityComponent
 @export var input_component: InputComponent
@@ -10,7 +10,7 @@ extends Node3D
 @export var can_jump := true
 
 var first_jump = true
-var jump_direction: Vector3 = Vector3()
+var look_direction: Vector3 = Vector3()
 #var input_direction: Vector3 = Vector3()
 
 var wish_dir: Vector3 = Vector3()
@@ -18,6 +18,7 @@ var wish_dir: Vector3 = Vector3()
 
 func _ready():
 	DebugLayer.draw.add_vector(self, 'wish_dir')
+	DebugLayer.draw.add_vector(self, 'look_direction', 1, 12, Color.BROWN)
 	
 	
 	if is_instance_valid(input_component):
@@ -46,9 +47,10 @@ func _physics_process(_delta):
 		if wish_dir != Vector3.ZERO and can_move:
 			var current_speed = player_body.velocity.dot(wish_dir)
 			var add_speed = velocity_component.max_speed - current_speed
+			print(current_speed)
 			
-			player_body.velocity.x += wish_dir.x
-			player_body.velocity.z += wish_dir.z
+			player_body.velocity.x += wish_dir.x * _delta * add_speed
+			player_body.velocity.z += wish_dir.z * _delta * add_speed 
 			velocity_component.last_speed = player_body.velocity.length()
 		else:
 			apply_friction()
@@ -73,12 +75,16 @@ func _on_jump_released(_action_name):
 func jump(jump_velocity: float):
 	player_body.velocity.y = jump_velocity
 	velocity_component.last_velocity.y = jump_velocity
+	look_direction = head.get_jump_direction()
 	
-#	var wish_dir = get_wish_direction()
-#	var final_velocity = wish_dir * 3
-#
-#	player_body.velocity.x = move_toward(player_body.velocity.x, final_velocity.x, 0.4)
-#	player_body.velocity.z = move_toward(player_body.velocity.z, final_velocity.z, 0.4)
+	var current_speed = player_body.velocity.dot(look_direction)
+	var add_speed = velocity_component.max_speed - current_speed
+	
+	player_body.velocity.x += look_direction.x * add_speed * get_physics_process_delta_time() * 10
+	player_body.velocity.z += look_direction.z * add_speed * get_physics_process_delta_time() * 10
+	
+#	player_body.velocity.x = move_toward(player_body.velocity.x, look_direction.x * velocity_component.last_speed, 0.4)
+#	player_body.velocity.z = move_toward(player_body.velocity.z, look_direction.z * velocity_component.last_speed, 0.4)
 
 	velocity_component.last_speed = player_body.velocity.length()
 	velocity_component.last_velocity = Vector3(player_body.velocity.x, velocity_component.last_velocity.y, player_body.velocity.z)
