@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dch70obt1efrf"]
+[gd_scene load_steps=4 format=3 uid="uid://dch70obt1efrf"]
 
 [ext_resource type="PackedScene" uid="uid://dw75qaapyyxif" path="res://addons/debug_tools/fps_counter/fps_counter.tscn" id="1_8yair"]
 [ext_resource type="Script" path="res://addons/debug_tools/debug_layer.gd" id="1_h2jx2"]
+[ext_resource type="Script" path="res://addons/debug_tools/vector/vector.gd" id="3_akri6"]
 
 [node name="DebugLayer" type="CanvasLayer"]
 process_mode = 3
@@ -9,6 +10,13 @@ script = ExtResource("1_h2jx2")
 
 [node name="FPSCounter" parent="." instance=ExtResource("1_8yair")]
 offset_bottom = 26.0
-text = "145"
+text = "108"
 horizontal_alignment = 2
 clip_text = true
+
+[node name="DebugVector3D" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_akri6")
