@@ -80,8 +80,8 @@ func jump(jump_velocity: float):
 	var current_speed = player_body.velocity.dot(look_direction)
 	var add_speed = velocity_component.max_speed - current_speed
 	
-	player_body.velocity.x += look_direction.x * add_speed * get_physics_process_delta_time() * 10
-	player_body.velocity.z += look_direction.z * add_speed * get_physics_process_delta_time() * 10
+	player_body.velocity.x += look_direction.x * add_speed * get_physics_process_delta_time() * 50
+	player_body.velocity.z += look_direction.z * add_speed * get_physics_process_delta_time() * 50
 	
 #	player_body.velocity.x = move_toward(player_body.velocity.x, look_direction.x * velocity_component.last_speed, 0.4)
 #	player_body.velocity.z = move_toward(player_body.velocity.z, look_direction.z * velocity_component.last_speed, 0.4)
