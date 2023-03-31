@@ -163,7 +163,7 @@ script = ExtResource("13_6lpoc")
 
 [node name="FPSCounter" parent="VBoxContainer" instance=ExtResource("14_h2rsf")]
 layout_mode = 2
-text = "126"
+text = "145"
 
 [node name="GrapplingHookCompoment" type="Node" parent="." node_paths=PackedStringArray("hook_raycast", "body", "velocity_component", "input_component")]
 script = ExtResource("6_5cnao")
