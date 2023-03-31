@@ -35,6 +35,6 @@ func _process(_delta):
 
 
 func _draw():
-	var camera = get_viewport().get_camera()
+	var camera = get_viewport().get_camera_3d()
 	for vector in vectors:
 		vector.draw(self, camera)

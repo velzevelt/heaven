@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://chaf5uqx5ltj2"]
+[gd_scene load_steps=19 format=3 uid="uid://chaf5uqx5ltj2"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_gwrkw"]
 [ext_resource type="Script" path="res://scenes/objects/player/camera_controller.gd" id="2_8xvxh"]
@@ -14,7 +14,6 @@
 [ext_resource type="Script" path="res://scenes/objects/player/dynamic_fov_change.gd" id="10_y34ym"]
 [ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer_label.gd" id="13_5krmr"]
 [ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer.gd" id="13_6lpoc"]
-[ext_resource type="PackedScene" uid="uid://dw75qaapyyxif" path="res://addons/debug_tools/fps_counter/fps_counter.tscn" id="14_h2rsf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y1312"]
 height = 1.7
@@ -160,10 +159,6 @@ timer = NodePath("VelzTimer")
 
 [node name="VelzTimer" type="Node" parent="VBoxContainer/VelzTimerLabel"]
 script = ExtResource("13_6lpoc")
-
-[node name="FPSCounter" parent="VBoxContainer" instance=ExtResource("14_h2rsf")]
-layout_mode = 2
-text = "145"
 
 [node name="GrapplingHookCompoment" type="Node" parent="." node_paths=PackedStringArray("hook_raycast", "body", "velocity_component", "input_component")]
 script = ExtResource("6_5cnao")
