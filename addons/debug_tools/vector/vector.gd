@@ -37,4 +37,7 @@ func _process(_delta):
 func _draw():
 	var camera = get_viewport().get_camera_3d()
 	for vector in vectors:
-		vector.draw(self, camera)
+		if is_instance_valid(vector.object):
+			vector.draw(self, camera)
+		else:
+			vectors.erase(vector)

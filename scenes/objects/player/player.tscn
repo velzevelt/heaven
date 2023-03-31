@@ -82,7 +82,7 @@ body = NodePath("..")
 script = ExtResource("9_ytpbk")
 max_speed = 10.0
 
-[node name="PlayerMoveComponent" type="Node" parent="." node_paths=PackedStringArray("velocity_component", "input_component", "head", "player_body")]
+[node name="PlayerMoveComponent" type="Node3D" parent="." node_paths=PackedStringArray("velocity_component", "input_component", "head", "player_body")]
 script = ExtResource("9_7a22w")
 velocity_component = NodePath("../VelocityComponent")
 input_component = NodePath("InputComponent")

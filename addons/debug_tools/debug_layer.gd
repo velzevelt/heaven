@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var draw: DebugVector3D = $%DebugVector3D
+@onready var draw: DebugVector3D = $%DebugVector3D as DebugVector3D
 
 
 func _ready():

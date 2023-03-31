@@ -1,5 +1,5 @@
 class_name PlayerMoveComponent
-extends Node
+extends Node3D
 
 @export var velocity_component: VelocityComponent
 @export var input_component: InputComponent
@@ -13,7 +13,13 @@ var first_jump = true
 var jump_direction: Vector3 = Vector3()
 #var input_direction: Vector3 = Vector3()
 
+var wish_dir: Vector3 = Vector3()
+
+
 func _ready():
+	DebugLayer.draw.add_vector(self, 'wish_dir')
+	
+	
 	if is_instance_valid(input_component):
 		input_component.action_just_pressed.connect(_on_jump_pressed)
 		input_component.action_just_released.connect(_on_jump_released)
@@ -34,7 +40,8 @@ func _physics_process(_delta):
 	else:
 		var input_dir = Input.get_vector("left", "right", "forward", "backward")
 		input_dir = (player_body.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		var wish_dir = input_dir
+		wish_dir = input_dir
+		
 		
 		if wish_dir != Vector3.ZERO and can_move:
 			var current_speed = player_body.velocity.dot(wish_dir)
