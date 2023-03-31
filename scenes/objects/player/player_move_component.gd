@@ -46,11 +46,9 @@ func _physics_process(_delta):
 #			player_body.velocity.x = final_velocity.x
 #			player_body.velocity.z = final_velocity.z
 			
-			player_body.velocity.x += wish_dir.x * get_process_delta_time() * 100
-			player_body.velocity.z += wish_dir.z * get_process_delta_time() * 100
+			player_body.velocity.x += wish_dir.x * get_process_delta_time() * 50
+			player_body.velocity.z += wish_dir.z * get_process_delta_time() * 50
 			
-			player_body.velocity.x = clampf(player_body.velocity.x, velocity_component.min_speed, velocity_component.max_speed)
-			player_body.velocity.z = clampf(player_body.velocity.z, velocity_component.min_speed, velocity_component.max_speed)
 				
 #			player_body.velocity.x = move_toward(player_body.velocity.x, wish_dir.x, _delta * 10)
 #			player_body.velocity.z = move_toward(player_body.velocity.z, wish_dir.z, _delta * 10)
