@@ -34,24 +34,14 @@ func _physics_process(_delta):
 	else:
 		var input_dir = Input.get_vector("left", "right", "forward", "backward")
 		input_dir = (player_body.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		var wish_dir = (Vector3(input_dir.x, input_dir.y, input_dir.z)).normalized()
-		
+		var wish_dir = input_dir
 		
 		if wish_dir != Vector3.ZERO and can_move:
-			var proj_speed = player_body.velocity.dot(wish_dir)
-			var add_speed = velocity_component.max_speed - proj_speed
+			var current_speed = player_body.velocity.dot(wish_dir)
+			var add_speed = velocity_component.max_speed - current_speed
 			
-#			var final_velocity = wish_dir * add_speed
-			
-#			player_body.velocity.x = final_velocity.x
-#			player_body.velocity.z = final_velocity.z
-			
-			player_body.velocity.x += wish_dir.x * get_process_delta_time() * 50
-			player_body.velocity.z += wish_dir.z * get_process_delta_time() * 50
-			
-				
-#			player_body.velocity.x = move_toward(player_body.velocity.x, wish_dir.x, _delta * 10)
-#			player_body.velocity.z = move_toward(player_body.velocity.z, wish_dir.z, _delta * 10)
+			player_body.velocity.x += wish_dir.x
+			player_body.velocity.z += wish_dir.z
 			velocity_component.last_speed = player_body.velocity.length()
 		else:
 			apply_friction()
@@ -95,9 +85,4 @@ func apply_friction():
 	velocity_component.last_speed = move_toward(velocity_component.last_speed, 1.0, velocity_component.friction)
 
 
-func get_wish_direction():
-	var input_dir = Input.get_vector("left", "right", "forward", "backward")
-	input_dir = (player_body.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	var mouse_dir = Input.get_last_mouse_velocity()
-	var wish_dir = (Vector3(input_dir.x + mouse_dir.x, 0, input_dir.z + mouse_dir.y)).normalized()
-	return wish_dir
+
