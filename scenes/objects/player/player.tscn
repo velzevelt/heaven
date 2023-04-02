@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://chaf5uqx5ltj2"]
+[gd_scene load_steps=18 format=3 uid="uid://chaf5uqx5ltj2"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_gwrkw"]
 [ext_resource type="Script" path="res://scenes/objects/player/camera_controller.gd" id="2_8xvxh"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://scenes/components/floor_activation_component.gd" id="7_mjju6"]
 [ext_resource type="Script" path="res://addons/debug_tools/info_label/info_label.gd" id="7_tu7pf"]
 [ext_resource type="Script" path="res://scenes/objects/player/player_move_component.gd" id="9_7a22w"]
-[ext_resource type="Script" path="res://scenes/objects/player/input_component.gd" id="9_udwp3"]
 [ext_resource type="Script" path="res://scenes/components/velocity_component.gd" id="9_ytpbk"]
 [ext_resource type="Script" path="res://scenes/objects/player/dynamic_fov_change.gd" id="10_y34ym"]
 [ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer_label.gd" id="13_5krmr"]
@@ -82,16 +81,11 @@ body = NodePath("..")
 script = ExtResource("9_ytpbk")
 max_speed = 10.0
 
-[node name="PlayerMoveComponent" type="Node3D" parent="." node_paths=PackedStringArray("velocity_component", "input_component", "head", "player_body")]
+[node name="PlayerMoveComponent" type="Node3D" parent="." node_paths=PackedStringArray("velocity_component", "head", "player_body")]
 script = ExtResource("9_7a22w")
 velocity_component = NodePath("../VelocityComponent")
-input_component = NodePath("InputComponent")
 head = NodePath("../Head")
 player_body = NodePath("..")
-
-[node name="InputComponent" type="Node" parent="PlayerMoveComponent"]
-script = ExtResource("9_udwp3")
-action_name = "jump"
 
 [node name="DynamicFOVChange" type="Node" parent="." node_paths=PackedStringArray("camera", "velocity_component", "player_body")]
 script = ExtResource("10_y34ym")
@@ -160,13 +154,8 @@ timer = NodePath("VelzTimer")
 [node name="VelzTimer" type="Node" parent="VBoxContainer/VelzTimerLabel"]
 script = ExtResource("13_6lpoc")
 
-[node name="GrapplingHookCompoment" type="Node" parent="." node_paths=PackedStringArray("hook_raycast", "body", "velocity_component", "input_component")]
+[node name="GrapplingHookCompoment" type="Node" parent="." node_paths=PackedStringArray("hook_raycast", "body", "velocity_component")]
 script = ExtResource("6_5cnao")
 hook_raycast = NodePath("../Head/CrosshairRaycast")
 body = NodePath("..")
 velocity_component = NodePath("../VelocityComponent")
-input_component = NodePath("InputComponent")
-
-[node name="InputComponent" type="Node" parent="GrapplingHookCompoment"]
-script = ExtResource("9_udwp3")
-action_name = "hook"

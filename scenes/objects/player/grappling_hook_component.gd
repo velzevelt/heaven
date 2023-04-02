@@ -17,8 +17,7 @@ extends Node
 ## Determine how long body be free untill it attached to _joint
 @export var free_fly_time := 0.4
 
-## Specific Input
-@export var input_component: InputComponent
+@export var hook_action := 'hook'
 
 @export var enabled := true
 
@@ -31,14 +30,12 @@ var _sb
 var _joint
 
 
-func _ready():
-	input_component.action_just_pressed.connect(_on_action_pressed)
 
 func _on_action_pressed(_action_name):
 	if not enabled:
 		return
 	
-	if grappling:
+	if grappling and Input.is_action_just_pressed(hook_action):
 		var momentum = _rb.linear_velocity.length()
 		_hook_instance.call_deferred('queue_free')
 		await _hook_instance.tree_exited
@@ -53,7 +50,7 @@ func _on_action_pressed(_action_name):
 	
 	
 	
-	if not is_instance_valid(_hook_instance) and hook_raycast.is_colliding() and not grappling:
+	if not is_instance_valid(_hook_instance) and hook_raycast.is_colliding() and not grappling and Input.is_action_just_pressed(hook_action):
 		
 		# Take control from PlayerMoveComponent to self
 		if body.has_node("PlayerMoveComponent"):
