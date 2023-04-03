@@ -1,5 +1,6 @@
+# based on https://github.com/axel37/godot-quake-movement/blob/main/Player.gd
 class_name PlayerMoveComponent
-extends Node3D # It's inherits from Node3D only for easier debugging
+extends Node3D # It inherits from Node3D only for easier debugging
 
 @export var velocity_component: VelocityComponent
 @export var head: Head
@@ -7,12 +8,18 @@ extends Node3D # It's inherits from Node3D only for easier debugging
 @export var air_control := true
 @export var can_move := true
 @export var can_jump := true
+@export var max_ramp_angle: float = 45 # Max angle that the player can go upwards at full speed
 
-var first_jump = true
-var look_direction: Vector3 = Vector3()
-#var input_direction: Vector3 = Vector3()
 
-var wish_dir: Vector3 = Vector3()
+@export var auto_jump := false # Auto bunnyhopping
+
+var wish_jump = true # If true, player has queued a jump : the jump key can be held down before hitting the ground to jump.
+
+var wish_dir: Vector3 = Vector3() # Desired travel direction of the player
+var vertical_velocity: float = 0 # Vertical component of our velocity. 
+var terminal_velocity: float = velocity_component.velocity_component.gravity * -5 # When this is reached, we stop increasing falling speed
+
+var snap: Vector3 # Needed for move_and_slide_with_snap(), which enables to go down slopes without falling
 
 var forward_action = 'forward'
 var backward_action = 'backward'
@@ -20,85 +27,71 @@ var right_action = 'right'
 var left_action = 'left'
 var jump_action = 'jump'
 
+
+# The next two variables are used to display corresponding vectors in game world.
+# This is probably not the best solution and will be removed in the future.
+var debug_horizontal_velocity: Vector3 = Vector3.ZERO
+var accelerate_return: Vector3 = Vector3.ZERO
+
+
 func _ready():
-	DebugLayer.draw.add_vector(self, 'wish_dir')
-	DebugLayer.draw.add_vector(self, 'look_direction', 1, 12, Color.BROWN)
+	# We tell our DebugLayer to draw those vectors in the game world.
+	DebugLayer.draw.add_vector(self, "wish_dir", 1, 8, Color(0,1,0, 0.5)) # Green, WISHDIR
+	DebugLayer.draw.add_vector(self, "accelerate_return", 0.2, 4, Color(0,0,1, 0.25)) # Blue, ACCEL
+	DebugLayer.draw.add_vector(self, "debug_horizontal_velocity", 0.2, 8, Color(1,0,0, 1)) # Red, VELOCITY
+
+
+func _physics_process(delta):
+	var forward_input: float = Input.get_action_strength(backward_action) - Input.get_action_strength(forward_action)
+	var strafe_input: float = Input.get_action_strength(right_action) - Input.get_action_strength(left_action)
+	wish_dir = Vector3(strafe_input, 0, forward_input).rotated(Vector3.UP, player_body.global_transform.basis.get_euler().y).normalized()
 	
-
-
-func _physics_process(_delta):
-	if not player_body.is_on_floor():
-		player_body.velocity.y = move_toward(player_body.velocity.y, -velocity_component.gravity * velocity_component.mass * velocity_component.last_speed, 0.25)
-		
-#		if air_control:
-#			var new_direction = (input_direction + jump_direction).normalized()
-#
-#			player_body.velocity.x = new_direction.x * velocity_component.last_speed
-#			player_body.velocity.z = new_direction.z * velocity_component.last_speed
-		
-	else:
-		#var input_dir = Input.get_vector("left", "right", "forward", "backward")
-		var input_dir = Input.get_vector(left_action, right_action, forward_action, backward_action)
-		
-		
-		input_dir = (player_body.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		wish_dir = input_dir
-		
-		
-		if wish_dir != Vector3.ZERO and can_move:
-			var current_speed = player_body.velocity.dot(wish_dir)
-			var add_speed = velocity_component.max_speed - current_speed
+	queue_jump()
+	
+	if player_body.is_on_floor():
+		if wish_jump: # If we're on the ground but wish_jump is still true, this means we've just landed
+			snap = Vector3.ZERO # Set snapping to zero so we can get off the ground
+			vertical_velocity = velocity_component.jump_velocity # Jump
 			
-			player_body.velocity.x += wish_dir.x * add_speed
-			player_body.velocity.z += wish_dir.z * add_speed 
-			velocity_component.last_speed = player_body.velocity.length()
-		else:
-			pass
-			#apply_friction()
+			move_air(wish_dir, player_body.velocity, delta) # Mimic Quake's way of treating first frame after landing as still in the air
+			
+			wish_jump = false # We have jumped, the player needs to press jump key again
+			
+		else: # Player is on the ground. Move normally, apply friction
+			vertical_velocity = 0
+			snap = -player_body.get_floor_normal() #Turn snapping on, so we stick to slopes
+			move_ground(wish_dir, player_body.velocity, delta)
+	else: # We're in the air. Do not apply friction
+		snap = Vector3.DOWN
+		vertical_velocity -= velocity_component.gravity * delta if vertical_velocity >= terminal_velocity else 0 # Stop adding to vertical velocity once terminal velocity is reached
+		move_air(wish_dir, player_body.velocity, delta)
 	
+	if player_body.is_on_ceiling(): #We've hit a ceiling, usually after a jump. Vertical velocity is reset to cancel any remaining jump momentum
+		vertical_velocity = 0
 	
-	if Input.is_action_just_pressed(jump_action):
-		_on_jump_pressed()
+	debug_horizontal_velocity = Vector3(player_body.velocity.x, 0, player_body.velocity.z) # Horizontal velocity to be displayed
+
+
+# Set wish_jump depending on player input.
+func queue_jump()-> void:
+	# If auto_jump is true, the player keeps jumping as long as the key is kept down
+	if auto_jump:
+		wish_jump = true if Input.is_action_pressed(jump_action) else false
+		return
 	
+	if Input.is_action_just_pressed(jump_action) and not wish_jump:
+		wish_jump = true
 	if Input.is_action_just_released(jump_action):
-		_on_jump_released()
-	
-	
-	player_body.move_and_slide()
-
-
-# Handle Jump. Holding jump key longer make jump higher
-func _on_jump_pressed():
-	if player_body.is_on_floor() and can_jump:
-		first_jump = true
-		jump(velocity_component.jump_velocity)
-
-
-func _on_jump_released():
-	if first_jump and not player_body.is_on_floor():
-		if player_body.velocity.y > 0:
-			player_body.velocity.y /= velocity_component.jump_release
-		first_jump = false
+		wish_jump = false
 
 
 func jump(jump_velocity: float):
 	player_body.velocity.y = jump_velocity
 	velocity_component.last_velocity.y = jump_velocity
-	
-	look_direction = head.get_jump_direction()
-	
-	var current_speed = player_body.velocity.dot(look_direction)
-	var add_speed = velocity_component.max_speed - current_speed
-	
-	player_body.velocity.x += wish_dir.x * add_speed
-	player_body.velocity.z += wish_dir.z * add_speed
-	
-	velocity_component.last_speed = player_body.velocity.length()
-	velocity_component.last_velocity = Vector3(player_body.velocity.x, velocity_component.last_velocity.y, player_body.velocity.z)
 
 
 # Scale down horizontal velocity
-func apply_friction(input_velocity: Vector3, delta: float, friction: float)-> Vector3:
+func apply_friction(input_velocity: Vector3, delta: float, friction: float) -> Vector3:
 	var speed: float = input_velocity.length()
 	var scaled_velocity: Vector3
 	
@@ -114,10 +107,10 @@ func apply_friction(input_velocity: Vector3, delta: float, friction: float)-> Ve
 	return scaled_velocity
 
 
-func accelerate(wishdir: Vector3, input_velocity: Vector3, accel: float, max_speed: float, delta: float)-> Vector3:
-	# Current speed is calculated by projecting our velocity onto wishdir.
-	# We can thus manipulate our wishdir to trick the engine into thinking we're going slower than we actually are, allowing us to accelerate further.
-	var current_speed: float = input_velocity.dot(wishdir)
+func accelerate(wish_dir: Vector3, input_velocity: Vector3, accel: float, max_speed: float, delta: float) -> Vector3:
+	# Current speed is calculated by projecting our velocity onto wish_dir.
+	# We can thus manipulate our wish_dir to trick the engine into thinking we're going slower than we actually are, allowing us to accelerate further.
+	var current_speed: float = input_velocity.dot(wish_dir)
 	
 	# Next, we calculate the speed to be added for the next frame.
 	# If our current speed is low enough, we will add the max acceleration.
@@ -125,5 +118,32 @@ func accelerate(wishdir: Vector3, input_velocity: Vector3, accel: float, max_spe
 	var add_speed: float = clamp(max_speed - current_speed, 0, accel * delta)
 	
 	# Put the new velocity in a variable, so the vector can be displayed.
-	var accelerate_return = input_velocity + wishdir * add_speed
+	accelerate_return = input_velocity + wish_dir * add_speed
 	return accelerate_return
+
+
+# Apply friction, then accelerate
+func move_ground(wish_dir: Vector3, input_velocity: Vector3, delta: float)-> void:
+	# We first work on only on the horizontal components of our current velocity
+	var next_velocity: Vector3 = Vector3.ZERO
+	next_velocity.x = input_velocity.x
+	next_velocity.z = input_velocity.z
+	next_velocity = apply_friction(next_velocity, delta, velocity_component.friction) # Scale down velocity
+	next_velocity = accelerate(wish_dir, next_velocity, velocity_component.max_speed * 10, velocity_component.max_speed, delta)
+	
+	# Then get back our vertical component, and move the player
+	next_velocity.y = vertical_velocity
+	player_body.move_and_slide_with_snap(next_velocity, snap, Vector3.UP, true, 4, deg_to_rad(max_ramp_angle))
+
+
+# Accelerate without applying friction (with a lower allowed max_speed)
+func move_air(wish_dir: Vector3, input_velocity: Vector3, delta: float) -> void:
+	# We first work on only on the horizontal components of our current velocity
+	var next_velocity: Vector3 = Vector3.ZERO
+	next_velocity.x = input_velocity.x
+	next_velocity.z = input_velocity.z
+	next_velocity = accelerate(wish_dir, next_velocity, velocity_component.move_accel, velocity_component.max_air_speed, delta)
+	
+	# Then get back our vertical component, and move the player
+	next_velocity.y = vertical_velocity
+	player_body.velocity = player_body.move_and_slide_with_snap(next_velocity, snap, Vector3.UP)
