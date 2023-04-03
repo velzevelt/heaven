@@ -8,7 +8,9 @@ extends Node
 @export var jump_release: float = 2.0
 @export var mass: float = 1.0
 @export var friction: float = 0.3
-@export var move_accel: float = self.max_speed * 10
+
+@export var move_accel: float = 0.0: 
+	get: return self.max_speed * 10
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 

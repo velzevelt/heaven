@@ -12,12 +12,21 @@ func _on_object_entered(body):
 		if body.has_node('PlayerMoveComponent'):
 			if trampoline_mode:
 				if body.has_node('VelocityComponent'):
-					var new_force = clampf(body.get_node('VelocityComponent').last_velocity.y / 2 + jump_force, 0.0, max_height)
-					body.get_node('PlayerMoveComponent').jump(new_force)
+					var move_component = body.get_node('PlayerMoveComponent') as PlayerMoveComponent
+					var old_velocity = move_component.velocity_component.jump_velocity
+					var new_velocity = clampf(move_component.last_velocity.y / 2 + jump_force, 0.0, max_height)
+					move_component.velocity_component.jump_velocity = new_velocity
+					move_component.queue_jump()
+					move_component.velocity_component.jump_velocity = old_velocity
 				else:
 					Logger.debug_log('No VelocityComponent found, trampoline does not work!', MESSAGE_TYPE.WARNING)
-					body.get_node('PlayerMoveComponent').jump(jump_force)
+					var move_component = body.get_node('PlayerMoveComponent') as PlayerMoveComponent
+					var old_velocity = move_component.velocity_component.jump_velocity
+					var new_velocity = move_component.velocity_component.jump_velocity + jump_force
+					move_component.velocity_component.jump_velocity = new_velocity
+					move_component.queue_jump()
+					move_component.velocity_component.jump_velocity = old_velocity
 			else:
-				body.get_node('PlayerMoveComponent').jump(jump_force)
+				body.get_node('PlayerMoveComponent').queue_jump(jump_force)
 		else:
 			Logger.debug_log('No MoveComponent found, skipping bounce', MESSAGE_TYPE.WARNING)
