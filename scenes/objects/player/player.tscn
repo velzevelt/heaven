@@ -79,7 +79,6 @@ body = NodePath("..")
 
 [node name="VelocityComponent" type="Node" parent="."]
 script = ExtResource("9_ytpbk")
-max_speed = 150.0
 friction = 3.0
 
 [node name="PlayerMoveComponent" type="Node3D" parent="." node_paths=PackedStringArray("velocity_component", "head", "player_body")]
