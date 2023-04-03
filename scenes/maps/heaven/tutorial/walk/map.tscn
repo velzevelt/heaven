@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dtnbnullxtst1"]
+[gd_scene load_steps=17 format=3]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_pgdll"]
 [ext_resource type="PackedScene" uid="uid://db5xremcmjtg3" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_trrbi"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/walk/step_1.gd" id="10_ds47u"]
 [ext_resource type="PackedScene" uid="uid://4qxa6rxh1dhd" path="res://scenes/maps/heaven/tutorial/help_label.tscn" id="11_cyv8e"]
 [ext_resource type="PackedScene" uid="uid://bna68wkaaquc6" path="res://scenes/objects/ground/ground.tscn" id="11_h5hds"]
-[ext_resource type="Texture2D" uid="uid://mruxbi8dw30s" path="res://addons/debug_tools/kenney_prototypetextures/Orange/texture_02.png" id="12_xmpis"]
+[ext_resource type="Texture2D" uid="uid://mruxbi8dw30s" path="res://textures/kenney_prototypetextures/Orange/texture_02.png" id="12_xmpis"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6epr"]
 

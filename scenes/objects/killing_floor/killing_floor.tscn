@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://db5xremcmjtg3"]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://scenes/objects/killing_floor/killing_floor.gd" id="1_8yrux"]
-[ext_resource type="Texture2D" uid="uid://bg0wrkes71ra2" path="res://addons/debug_tools/kenney_prototypetextures/Dark/texture_01.png" id="1_hc7hh"]
+[ext_resource type="Texture2D" uid="uid://bg0wrkes71ra2" path="res://textures/kenney_prototypetextures/Dark/texture_01.png" id="1_hc7hh"]
 [ext_resource type="Script" path="res://scenes/objects/killing_floor/reload_on_touch.gd" id="3_ejwrn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_641ot"]

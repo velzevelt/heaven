@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2cyimlissll4"]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_75ff8"]
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="2_773fu"]
 [ext_resource type="PackedScene" uid="uid://db5xremcmjtg3" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="3_qp2xn"]
 [ext_resource type="PackedScene" uid="uid://bna68wkaaquc6" path="res://scenes/objects/ground/ground.tscn" id="4_7ucik"]
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="5_r4wie"]
-[ext_resource type="Texture2D" uid="uid://mruxbi8dw30s" path="res://addons/debug_tools/kenney_prototypetextures/Orange/texture_02.png" id="5_w2eyw"]
+[ext_resource type="Texture2D" uid="uid://mruxbi8dw30s" path="res://textures/kenney_prototypetextures/Orange/texture_02.png" id="5_w2eyw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r8iq7"]
 size = Vector3(100, 0.1, 100)

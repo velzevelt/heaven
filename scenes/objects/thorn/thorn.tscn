@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxyvccbblq6py"]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://scenes/objects/thorn/thorn.gd" id="1_6ax07"]
-[ext_resource type="Texture2D" uid="uid://dy05jxy8k3cyl" path="res://addons/debug_tools/kenney_prototypetextures/Red/texture_02.png" id="1_pvng8"]
+[ext_resource type="Texture2D" uid="uid://dy05jxy8k3cyl" path="res://textures/kenney_prototypetextures/Red/texture_02.png" id="1_pvng8"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_q1f8q"]
 

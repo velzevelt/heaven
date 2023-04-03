@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cdsdb12d1ksl"]
+[gd_scene load_steps=24 format=3]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_dsnnr"]
 [ext_resource type="PackedScene" uid="uid://db5xremcmjtg3" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_g6p6m"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://scenes/objects/player/override_player_crosshair.gd" id="9_pqq2b"]
 [ext_resource type="Script" path="res://scenes/objects/player/crosshair_style.gd" id="10_ml7gs"]
 [ext_resource type="Script" path="res://scenes/components/reparent_platform_component.gd" id="11_55fb8"]
-[ext_resource type="Texture2D" uid="uid://cyxy3bwyd53vb" path="res://addons/debug_tools/kenney_prototypetextures/Green/texture_02.png" id="11_x7od6"]
+[ext_resource type="Texture2D" uid="uid://cyxy3bwyd53vb" path="res://textures/kenney_prototypetextures/Green/texture_02.png" id="11_x7od6"]
 [ext_resource type="Script" path="res://scenes/components/rotate_platform_component.gd" id="13_txruc"]
 
 [sub_resource type="Resource" id="Resource_ngsl4"]
