@@ -31,11 +31,8 @@ func _physics_process(_delta):
 			print(colliders)
 			
 			if platform_body in colliders:
+				self.enabled = false # Has to disable self to register finish only once
 				await get_tree().create_timer(0.4).timeout # Little delay before finish registration
 				finished.emit()
 				Events.player_finished.emit()
 				
-				
-				# Has to delete self after finish registration to avoid collision conflicts
-				# Conflict happens when 2 or more colliders too close to each other
-				self.queue_free()
