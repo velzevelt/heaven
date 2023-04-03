@@ -13,7 +13,7 @@ extends Node3D # It inherits from Node3D only for easier debugging
 
 @export var auto_jump := false # Auto bunnyhopping
 
-var wish_jump = true # If true, player has queued a jump : the jump key can be held down before hitting the ground to jump.
+var wish_jump := false # If true, player has queued a jump : the jump key can be held down before hitting the ground to jump.
 
 var wish_dir: Vector3 = Vector3() # Desired travel direction of the player
 var vertical_velocity: float = 0 # Vertical component of our velocity. 
