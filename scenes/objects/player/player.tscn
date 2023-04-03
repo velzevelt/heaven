@@ -148,6 +148,14 @@ script = ExtResource("7_tu7pf")
 target_path = NodePath("")
 desired_property = "hit_point"
 
+[node name="InfoLabel8" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "on_floor: "
+script = ExtResource("7_tu7pf")
+target_path = NodePath("../..")
+desired_property = "on_floor"
+
 [node name="VelzTimerLabel" type="Label" parent="VBoxContainer" node_paths=PackedStringArray("timer")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
