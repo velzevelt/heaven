@@ -17,7 +17,7 @@ var wish_jump = true # If true, player has queued a jump : the jump key can be h
 
 var wish_dir: Vector3 = Vector3() # Desired travel direction of the player
 var vertical_velocity: float = 0 # Vertical component of our velocity. 
-var terminal_velocity: float = velocity_component.velocity_component.gravity * -5 # When this is reached, we stop increasing falling speed
+@onready var terminal_velocity: float = velocity_component.gravity * -5 # When this is reached, we stop increasing falling speed
 
 var snap: Vector3 # Needed for move_and_slide_with_snap(), which enables to go down slopes without falling
 
@@ -133,7 +133,8 @@ func move_ground(wish_dir: Vector3, input_velocity: Vector3, delta: float)-> voi
 	
 	# Then get back our vertical component, and move the player
 	next_velocity.y = vertical_velocity
-	player_body.move_and_slide_with_snap(next_velocity, snap, Vector3.UP, true, 4, deg_to_rad(max_ramp_angle))
+	player_body.velocity = next_velocity
+	player_body.move_and_slide()
 
 
 # Accelerate without applying friction (with a lower allowed max_speed)
@@ -146,4 +147,5 @@ func move_air(wish_dir: Vector3, input_velocity: Vector3, delta: float) -> void:
 	
 	# Then get back our vertical component, and move the player
 	next_velocity.y = vertical_velocity
-	player_body.velocity = player_body.move_and_slide_with_snap(next_velocity, snap, Vector3.UP)
+	player_body.velocity = next_velocity
+	player_body.move_and_slide()
