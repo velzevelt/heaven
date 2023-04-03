@@ -27,6 +27,11 @@ func _on_object_entered(body):
 					move_component.queue_jump()
 					move_component.velocity_component.jump_velocity = old_velocity
 			else:
-				body.get_node('PlayerMoveComponent').queue_jump(jump_force)
+				var move_component = body.get_node('PlayerMoveComponent') as PlayerMoveComponent
+				var old_velocity = move_component.velocity_component.jump_velocity
+				var new_velocity = move_component.velocity_component.jump_velocity + jump_force
+				move_component.velocity_component.jump_velocity = new_velocity
+				move_component.queue_jump()
+				move_component.velocity_component.jump_velocity = old_velocity
 		else:
 			Logger.debug_log('No MoveComponent found, skipping bounce', MESSAGE_TYPE.WARNING)
