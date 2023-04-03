@@ -28,11 +28,8 @@ func _physics_process(_delta):
 			for i in range(0, body.get_slide_collision_count()):
 				colliders.append(body.get_slide_collision(i).get_collider())
 			
-			print(colliders)
-			
 			if platform_body in colliders:
 				self.enabled = false # Has to disable self to register finish only once
 				await get_tree().create_timer(0.4).timeout # Little delay before finish registration
 				finished.emit()
 				Events.player_finished.emit()
-				
