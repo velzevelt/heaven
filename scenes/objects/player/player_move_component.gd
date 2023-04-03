@@ -53,7 +53,8 @@ func _physics_process(_delta):
 			player_body.velocity.z += wish_dir.z * add_speed 
 			velocity_component.last_speed = player_body.velocity.length()
 		else:
-			apply_friction()
+			pass
+			#apply_friction()
 	
 	
 	if Input.is_action_just_pressed(jump_action):
@@ -92,17 +93,37 @@ func jump(jump_velocity: float):
 	player_body.velocity.x += wish_dir.x * add_speed
 	player_body.velocity.z += wish_dir.z * add_speed
 	
-#	player_body.velocity.x = move_toward(player_body.velocity.x, look_direction.x * velocity_component.last_speed, 0.4)
-#	player_body.velocity.z = move_toward(player_body.velocity.z, look_direction.z * velocity_component.last_speed, 0.4)
-
 	velocity_component.last_speed = player_body.velocity.length()
 	velocity_component.last_velocity = Vector3(player_body.velocity.x, velocity_component.last_velocity.y, player_body.velocity.z)
+
+
+# Scale down horizontal velocity
+func apply_friction(input_velocity: Vector3, delta: float, friction: float)-> Vector3:
+	var speed: float = input_velocity.length()
+	var scaled_velocity: Vector3
 	
-#	jump_direction = (velocity_component.last_velocity + input_direction).normalized()
+	# Check that speed isn't 0, this is to avoid divide by zero errors
+	if speed != 0:
+		var drop = speed * friction * delta # Amount of speed to be reduced by friction
+		# ((max(speed - drop, 0) / speed) will return a number between 0 and 1, this is our speed multiplier from friction
+		# The max() is there to avoid anything from happening in the case where the user sets friction to a negative value
+		scaled_velocity = input_velocity * max(speed - drop, 0) / speed
+	# Stop altogether if we're going too slow to notice
+	if speed < 0.1:
+		return scaled_velocity * 0
+	return scaled_velocity
 
 
-func apply_friction():
-	player_body.velocity.x = move_toward(player_body.velocity.x, 0, velocity_component.friction)
-	player_body.velocity.z = move_toward(player_body.velocity.z, 0, velocity_component.friction)
-	velocity_component.last_speed = move_toward(velocity_component.last_speed, 1.0, velocity_component.friction)
-
+func accelerate(wishdir: Vector3, input_velocity: Vector3, accel: float, max_speed: float, delta: float)-> Vector3:
+	# Current speed is calculated by projecting our velocity onto wishdir.
+	# We can thus manipulate our wishdir to trick the engine into thinking we're going slower than we actually are, allowing us to accelerate further.
+	var current_speed: float = input_velocity.dot(wishdir)
+	
+	# Next, we calculate the speed to be added for the next frame.
+	# If our current speed is low enough, we will add the max acceleration.
+	# If we're going too fast, our acceleration will be reduced (until it evenutually hits 0, where we don't add any more speed).
+	var add_speed: float = clamp(max_speed - current_speed, 0, accel * delta)
+	
+	# Put the new velocity in a variable, so the vector can be displayed.
+	var accelerate_return = input_velocity + wishdir * add_speed
+	return accelerate_return
