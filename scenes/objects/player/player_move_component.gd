@@ -17,7 +17,7 @@ var wish_jump := false # If true, player has queued a jump : the jump key can be
 
 var wish_dir: Vector3 = Vector3() # Desired travel direction of the player
 var vertical_velocity: float = 0 # Vertical component of our velocity. 
-@onready var terminal_velocity: float = velocity_component.gravity * -5 # When this is reached, we stop increasing falling speed
+@onready var max_falling_speed: float = velocity_component.gravity * -5 # When this is reached, we stop increasing falling speed
 
 var snap: Vector3 # Needed for move_and_slide_with_snap(), which enables to go down slopes without falling
 
@@ -29,16 +29,16 @@ var jump_action = 'jump'
 
 
 # The next two variables are used to display corresponding vectors in game world.
-# This is probably not the best solution and will be removed in the future.
 var debug_horizontal_velocity: Vector3 = Vector3.ZERO
 var accelerate_return: Vector3 = Vector3.ZERO
 
 
 func _ready():
 	# We tell our DebugLayer to draw those vectors in the game world.
-	DebugLayer.draw.add_vector(self, "wish_dir", 1, 4, Color(0,1,0, 0.5)) # Green, WISHDIR
-	DebugLayer.draw.add_vector(self, "accelerate_return", 1, 4, Color(0,0,1, 0.25)) # Blue, ACCEL
-	DebugLayer.draw.add_vector(self, "debug_horizontal_velocity", 2, 4, Color(1,0,0, 1)) # Red, VELOCITY
+	if OS.is_debug_build():
+		DebugLayer.draw.add_vector(self, "wish_dir", 1, 4, Color(0,1,0, 0.5)) # Green, WISHDIR
+		DebugLayer.draw.add_vector(self, "accelerate_return", 1, 4, Color(0,0,1, 0.25)) # Blue, ACCEL
+		DebugLayer.draw.add_vector(self, "debug_horizontal_velocity", 2, 4, Color(1,0,0, 1)) # Red, VELOCITY
 
 
 func _update_wish_dir():
@@ -69,7 +69,7 @@ func _physics_process(delta):
 			
 	else: # We're in the air. Do not apply friction
 		snap = Vector3.DOWN
-		vertical_velocity -= velocity_component.gravity * delta * velocity_component.mass if vertical_velocity >= terminal_velocity else 0 # Stop adding to vertical velocity once terminal velocity is reached
+		vertical_velocity -= velocity_component.gravity * delta * velocity_component.mass if vertical_velocity >= max_falling_speed else 0 # Stop adding to vertical velocity once terminal velocity is reached
 		move_air(wish_dir, player_body.velocity, delta)
 	
 	if player_body.is_on_ceiling(): #We've hit a ceiling, usually after a jump. Vertical velocity is reset to cancel any remaining jump momentum
