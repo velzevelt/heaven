@@ -11,6 +11,8 @@ extends Node
 
 @export var velocity_component: VelocityComponent
 
+@export var player_move_component: PlayerMoveComponent
+
 ## Determine force of engagement to hit_point
 @export var base_pull_force: float = 15.0
 
@@ -31,9 +33,10 @@ var _joint
 
 
 
-func _on_action_pressed(_action_name):
+func _physics_process(delta):
 	if not enabled:
 		return
+	
 	
 	if grappling and Input.is_action_just_pressed(hook_action):
 		var momentum = _rb.linear_velocity.length()
@@ -42,16 +45,14 @@ func _on_action_pressed(_action_name):
 		grappling = false
 		
 		# Give away _rb momentum to player
-		velocity_component.last_speed = momentum
+		player_move_component.player_body.velocity += _rb.linear_velocity
 		
 		# Take back control to PlayerMoveComponent
 		if body.has_node("PlayerMoveComponent"):
 			body.get_node("PlayerMoveComponent").set_physics_process(true)
 	
 	
-	
 	if not is_instance_valid(_hook_instance) and hook_raycast.is_colliding() and not grappling and Input.is_action_just_pressed(hook_action):
-		
 		# Take control from PlayerMoveComponent to self
 		if body.has_node("PlayerMoveComponent"):
 			body.get_node("PlayerMoveComponent").set_physics_process(false)

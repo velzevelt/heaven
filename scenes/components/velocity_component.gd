@@ -3,15 +3,16 @@ extends Node
 
 @export var max_speed: float = 6.0
 @export var min_speed: float = 4.0
-@export var max_air_speed: float = 0.6
 @export var jump_velocity: float = 6.0
 @export var jump_release: float = 2.0
 @export var mass: float = 1.0
 @export var friction: float = 0.3
-@export var move_accel: float = 60
 
-#@export var move_accel: float = 0.0: 
-#	get: return self.max_speed * 10
+
+@export var max_air_speed: float = 1.0
+@export var move_accel: float = 60.0
+
+
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 

@@ -14,24 +14,22 @@ func _on_object_entered(body):
 				if body.has_node('VelocityComponent'):
 					var move_component = body.get_node('PlayerMoveComponent') as PlayerMoveComponent
 					var old_velocity = move_component.velocity_component.jump_velocity
-					var new_velocity = clampf(move_component.last_velocity.y / 2 + jump_force, 0.0, max_height)
+					var new_velocity = clampf(move_component.velocity_component.last_velocity.y / 2 + jump_force, 0.0, max_height)
 					move_component.velocity_component.jump_velocity = new_velocity
-					move_component.queue_jump()
+					move_component.wish_jump = true
 					move_component.velocity_component.jump_velocity = old_velocity
 				else:
 					Logger.debug_log('No VelocityComponent found, trampoline does not work!', MESSAGE_TYPE.WARNING)
-					var move_component = body.get_node('PlayerMoveComponent') as PlayerMoveComponent
-					var old_velocity = move_component.velocity_component.jump_velocity
-					var new_velocity = move_component.velocity_component.jump_velocity + jump_force
-					move_component.velocity_component.jump_velocity = new_velocity
-					move_component.queue_jump()
-					move_component.velocity_component.jump_velocity = old_velocity
+					foo(body)
 			else:
-				var move_component = body.get_node('PlayerMoveComponent') as PlayerMoveComponent
-				var old_velocity = move_component.velocity_component.jump_velocity
-				var new_velocity = move_component.velocity_component.jump_velocity + jump_force
-				move_component.velocity_component.jump_velocity = new_velocity
-				move_component.queue_jump()
-				move_component.velocity_component.jump_velocity = old_velocity
+				foo(body)
 		else:
 			Logger.debug_log('No MoveComponent found, skipping bounce', MESSAGE_TYPE.WARNING)
+
+func foo(body):
+	var move_component = body.get_node('PlayerMoveComponent') as PlayerMoveComponent
+	var old_velocity = move_component.velocity_component.jump_velocity
+	var new_velocity = move_component.velocity_component.jump_velocity + jump_force
+	move_component.velocity_component.jump_velocity = new_velocity
+	move_component.wish_jump = true
+	move_component.velocity_component.jump_velocity = old_velocity

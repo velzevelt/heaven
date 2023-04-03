@@ -5,7 +5,6 @@ extends Node3D # It inherits from Node3D only for easier debugging
 @export var velocity_component: VelocityComponent
 @export var head: Head
 @export var player_body: CharacterBody3D 
-@export var air_control := true
 @export var can_move := true
 @export var can_jump := true
 @export var max_ramp_angle: float = 45 # Max angle that the player can go upwards at full speed
@@ -42,9 +41,13 @@ func _ready():
 
 
 func _physics_process(delta):
-	var forward_input: float = Input.get_action_strength(backward_action) - Input.get_action_strength(forward_action)
-	var strafe_input: float = Input.get_action_strength(right_action) - Input.get_action_strength(left_action)
-	wish_dir = Vector3(strafe_input, 0, forward_input).rotated(Vector3.UP, player_body.global_transform.basis.get_euler().y).normalized()
+	if can_move:
+		var forward_input: float = Input.get_action_strength(backward_action) - Input.get_action_strength(forward_action)
+		var strafe_input: float = Input.get_action_strength(right_action) - Input.get_action_strength(left_action)
+		wish_dir = Vector3(strafe_input, 0, forward_input).rotated(Vector3.UP, player_body.global_transform.basis.get_euler().y).normalized()
+	else:
+		wish_dir = Vector3.ZERO
+	
 	
 	queue_jump()
 	
@@ -69,12 +72,15 @@ func _physics_process(delta):
 	if player_body.is_on_ceiling(): #We've hit a ceiling, usually after a jump. Vertical velocity is reset to cancel any remaining jump momentum
 		vertical_velocity = 0
 	
-	velocity_component.last_speed = player_body.velocity.dot(wish_dir)
+	velocity_component.last_speed = player_body.velocity.length()
 	debug_horizontal_velocity = Vector3(player_body.velocity.x, 0, player_body.velocity.z) # Horizontal velocity to be displayed
 
 
 # Set wish_jump depending on player input.
-func queue_jump()-> void:
+func queue_jump() -> void:
+	if not can_jump:
+		return
+	
 	# If auto_jump is true, the player keeps jumping as long as the key is kept down
 	if auto_jump:
 		wish_jump = true if Input.is_action_pressed(jump_action) else false
@@ -126,7 +132,7 @@ func move_ground(wish_dir: Vector3, input_velocity: Vector3, delta: float)-> voi
 	next_velocity.x = input_velocity.x
 	next_velocity.z = input_velocity.z
 	next_velocity = apply_friction(next_velocity, delta, velocity_component.friction) # Scale down velocity
-	next_velocity = accelerate(wish_dir, next_velocity, velocity_component.max_speed * 10, velocity_component.max_speed, delta)
+	next_velocity = accelerate(wish_dir, next_velocity, velocity_component.move_accel, velocity_component.max_speed, delta)
 	
 	# Then get back our vertical component, and move the player
 	next_velocity.y = vertical_velocity
