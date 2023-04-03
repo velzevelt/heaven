@@ -59,7 +59,7 @@ func _physics_process(delta):
 			
 		else: # Player is on the ground. Move normally, apply friction
 			vertical_velocity = 0
-			snap = -player_body.get_floor_normal() #Turn snapping on, so we stick to slopes
+			snap = -player_body.get_floor_normal() # Turn snapping on, so we stick to slopes
 			move_ground(wish_dir, player_body.velocity, delta)
 	else: # We're in the air. Do not apply friction
 		snap = Vector3.DOWN
