@@ -7,6 +7,7 @@ extends Node3D # It inherits from Node3D only for easier debugging
 @export var player_body: CharacterBody3D 
 @export var can_move := true
 @export var can_jump := true
+@export var air_control := true
 @export var max_ramp_angle: float = 45 # Max angle that the player can go upwards at full speed
 
 
@@ -40,7 +41,7 @@ func _ready():
 	DebugLayer.draw.add_vector(self, "debug_horizontal_velocity", 2, 4, Color(1,0,0, 1)) # Red, VELOCITY
 
 
-func _unhandled_input(event):
+func _update_wish_dir():
 	if can_move:
 		var forward_input: float = Input.get_action_strength(backward_action) - Input.get_action_strength(forward_action)
 		var strafe_input: float = Input.get_action_strength(right_action) - Input.get_action_strength(left_action)
@@ -49,6 +50,7 @@ func _unhandled_input(event):
 		wish_dir = Vector3.ZERO
 
 func _physics_process(delta):
+	_update_wish_dir()
 	queue_jump()
 	
 	if player_body.is_on_floor():
@@ -64,6 +66,7 @@ func _physics_process(delta):
 			vertical_velocity = 0
 			snap = -player_body.get_floor_normal() # Turn snapping on, so we stick to slopes
 			move_ground(wish_dir, player_body.velocity, delta)
+			
 	else: # We're in the air. Do not apply friction
 		snap = Vector3.DOWN
 		vertical_velocity -= velocity_component.gravity * delta * velocity_component.mass if vertical_velocity >= terminal_velocity else 0 # Stop adding to vertical velocity once terminal velocity is reached

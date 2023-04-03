@@ -9,7 +9,7 @@ extends Node
 @export var friction: float = 0.3
 
 
-@export var max_air_speed: float = 1.0
+@export var max_air_speed: float = 2.0
 @export var move_accel: float = 60.0
 
 
