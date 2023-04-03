@@ -36,9 +36,9 @@ var accelerate_return: Vector3 = Vector3.ZERO
 
 func _ready():
 	# We tell our DebugLayer to draw those vectors in the game world.
-	DebugLayer.draw.add_vector(self, "wish_dir", 1, 8, Color(0,1,0, 0.5)) # Green, WISHDIR
-	DebugLayer.draw.add_vector(self, "accelerate_return", 0.2, 4, Color(0,0,1, 0.25)) # Blue, ACCEL
-	DebugLayer.draw.add_vector(self, "debug_horizontal_velocity", 0.2, 8, Color(1,0,0, 1)) # Red, VELOCITY
+	DebugLayer.draw.add_vector(self, "wish_dir", 1, 4, Color(0,1,0, 0.5)) # Green, WISHDIR
+	DebugLayer.draw.add_vector(self, "accelerate_return", 1, 4, Color(0,0,1, 0.25)) # Blue, ACCEL
+	DebugLayer.draw.add_vector(self, "debug_horizontal_velocity", 2, 4, Color(1,0,0, 1)) # Red, VELOCITY
 
 
 func _physics_process(delta):
@@ -63,12 +63,13 @@ func _physics_process(delta):
 			move_ground(wish_dir, player_body.velocity, delta)
 	else: # We're in the air. Do not apply friction
 		snap = Vector3.DOWN
-		vertical_velocity -= velocity_component.gravity * delta if vertical_velocity >= terminal_velocity else 0 # Stop adding to vertical velocity once terminal velocity is reached
+		vertical_velocity -= velocity_component.gravity * delta * velocity_component.mass if vertical_velocity >= terminal_velocity else 0 # Stop adding to vertical velocity once terminal velocity is reached
 		move_air(wish_dir, player_body.velocity, delta)
 	
 	if player_body.is_on_ceiling(): #We've hit a ceiling, usually after a jump. Vertical velocity is reset to cancel any remaining jump momentum
 		vertical_velocity = 0
 	
+	velocity_component.last_speed = player_body.velocity.dot(wish_dir)
 	debug_horizontal_velocity = Vector3(player_body.velocity.x, 0, player_body.velocity.z) # Horizontal velocity to be displayed
 
 
@@ -84,10 +85,6 @@ func queue_jump()-> void:
 	if Input.is_action_just_released(jump_action):
 		wish_jump = false
 
-
-func jump(jump_velocity: float):
-	player_body.velocity.y = jump_velocity
-	velocity_component.last_velocity.y = jump_velocity
 
 
 # Scale down horizontal velocity
@@ -133,7 +130,15 @@ func move_ground(wish_dir: Vector3, input_velocity: Vector3, delta: float)-> voi
 	
 	# Then get back our vertical component, and move the player
 	next_velocity.y = vertical_velocity
+	
+	# velocity = move_and_slide_with_snap(nextVelocity, snap, Vector3.UP, true, 4, deg2rad(max_ramp_angle))
+	
+	next_velocity = next_velocity.snapped(snap)
 	player_body.velocity = next_velocity
+	player_body.up_direction = Vector3.UP
+	player_body.floor_stop_on_slope = true
+	player_body.floor_max_angle = deg_to_rad(max_ramp_angle)
+	
 	player_body.move_and_slide()
 
 
@@ -147,5 +152,12 @@ func move_air(wish_dir: Vector3, input_velocity: Vector3, delta: float) -> void:
 	
 	# Then get back our vertical component, and move the player
 	next_velocity.y = vertical_velocity
+	
+	#velocity = move_and_slide_with_snap(nextVelocity, snap, Vector3.UP)
+	
+	next_velocity = next_velocity.snapped(snap)
 	player_body.velocity = next_velocity
+	player_body.up_direction = Vector3.UP
+	player_body.floor_stop_on_slope = false
+	player_body.floor_max_angle = deg_to_rad(max_ramp_angle)
 	player_body.move_and_slide()
