@@ -62,7 +62,7 @@ script = ExtResource("1_dsnnr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.94664, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_7t806")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51145, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.7101, 0)
 
 [node name="Platform" parent="." instance=ExtResource("4_u1wqf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.187434, 0, -6.65837)
@@ -140,7 +140,7 @@ script = ExtResource("9_pqq2b")
 style = SubResource("Resource_bha7d")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(-0.133918, 0.113922, 0.970294, 0.11383, 0.993136, -0.0970302, -0.970456, 0.0975521, -0.145254, -5.67212, 1.40138, -2.73088)
+transform = Transform3D(0.139557, 0.0864181, 0.972155, 0.0864682, 0.995751, -0.0972162, -0.972322, 0.0977402, 0.130908, -5.67212, 1.40138, -2.73088)
 use_collision = true
 size = Vector3(1.84565, 0.1, 1.963)
 script = ExtResource("8_d3cr6")
@@ -182,7 +182,7 @@ preview_rotation = false
 platform_body = NodePath("..")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(0.880644, 0, 0.459749, 0, 1, 0, -0.459749, 0, 0.880644, -5.12869, 2.18077, -6.39635)
+transform = Transform3D(-0.960119, 0, 0.254967, 0, 1, 0, -0.254967, 0, -0.960119, -5.12869, 2.18077, -6.39635)
 use_collision = true
 size = Vector3(1.84565, 0.1, 1.963)
 script = ExtResource("8_d3cr6")
@@ -233,8 +233,6 @@ mesh = SubResource("BoxMesh_r8hvh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0507, 5.99053, -9.32654)
 node_a = NodePath("../RigidBody3D")
 node_b = NodePath("../StaticBody3D")
-
-[connection signal="finished" from="CSGBox3D/FinishPlatformComponent" to="." method="_on_player_finished"]
 
 [editable path="Platform"]
 [editable path="Platform2"]
