@@ -118,7 +118,7 @@ func accelerate(wish_dir: Vector3, input_velocity: Vector3, accel: float, max_sp
 	# Next, we calculate the speed to be added for the next frame.
 	# If our current speed is low enough, we will add the max acceleration.
 	# If we're going too fast, our acceleration will be reduced (until it evenutually hits 0, where we don't add any more speed).
-	var add_speed: float = clamp(max_speed - current_speed, 0, accel * delta)
+	var add_speed: float = clampf(max_speed - current_speed, 0, accel * delta)
 	
 	# Put the new velocity in a variable, so the vector can be displayed.
 	accelerate_return = input_velocity + wish_dir * add_speed
