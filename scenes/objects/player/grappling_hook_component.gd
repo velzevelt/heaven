@@ -39,13 +39,14 @@ func _physics_process(delta):
 	
 	
 	if grappling and Input.is_action_just_pressed(hook_action):
-		var momentum = _rb.linear_velocity.length()
+		var momentum = _rb.linear_velocity
 		_hook_instance.call_deferred('queue_free')
 		await _hook_instance.tree_exited
 		grappling = false
 		
 		# Give away _rb momentum to player
-		player_move_component.player_body.velocity += _rb.linear_velocity
+#		player_move_component.player_body.velocity += _rb.linear_velocity
+		player_move_component.player_body.velocity = momentum
 		
 		# Take back control to PlayerMoveComponent
 		if body.has_node("PlayerMoveComponent"):

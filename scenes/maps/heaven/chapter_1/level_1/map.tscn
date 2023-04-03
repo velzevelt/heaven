@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bi2wjosg2nto8"]
+[gd_scene load_steps=21 format=3 uid="uid://bi2wjosg2nto8"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_vigc5"]
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="2_kouom"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://scenes/objects/player/override_player_crosshair.gd" id="6_qm46r"]
 [ext_resource type="Resource" uid="uid://cyeamk4lrqu56" path="res://scenes/objects/player/finish_crosshair_style.tres" id="7_fq03q"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/chapter_1/level_1/enable_on_leave.gd" id="7_rwxsy"]
-[ext_resource type="Script" path="res://scenes/components/bounce_platform_component.gd" id="8_cop0s"]
 [ext_resource type="PackedScene" uid="uid://ca44olq010ifc" path="res://scenes/objects/coin/coin.tscn" id="9_lqjxl"]
 [ext_resource type="Script" path="res://scenes/objects/map_goal_storage/map_goal_storage.gd" id="14_0a0ad"]
 [ext_resource type="Script" path="res://scenes/objects/map_goal/objective/collect.gd" id="14_asoeh"]
@@ -49,17 +48,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.79821, 0)
 [node name="OverridePlayerCrosshair" type="Node" parent="Platform"]
 script = ExtResource("6_qm46r")
 style = SubResource("Resource_n5glx")
-
-[node name="EnableOnLeave" type="Node" parent="Platform" node_paths=PackedStringArray("disabled_target", "platform_body")]
-script = ExtResource("7_rwxsy")
-disabled_target = NodePath("BouncePlatformComponent")
-platform_body = NodePath("../PlatformBody")
-
-[node name="BouncePlatformComponent" type="Node" parent="Platform/EnableOnLeave" node_paths=PackedStringArray("platform_body")]
-script = ExtResource("8_cop0s")
-jump_force = 13.0
-enabled = false
-platform_body = NodePath("../../PlatformBody")
 
 [node name="EnableOnLeave2" type="Node" parent="Platform" node_paths=PackedStringArray("disabled_target", "platform_body")]
 script = ExtResource("7_rwxsy")
