@@ -40,15 +40,15 @@ func _ready():
 	DebugLayer.draw.add_vector(self, "debug_horizontal_velocity", 2, 4, Color(1,0,0, 1)) # Red, VELOCITY
 
 
-func _physics_process(delta):
+func _unhandled_input(event):
 	if can_move:
 		var forward_input: float = Input.get_action_strength(backward_action) - Input.get_action_strength(forward_action)
 		var strafe_input: float = Input.get_action_strength(right_action) - Input.get_action_strength(left_action)
 		wish_dir = Vector3(strafe_input, 0, forward_input).rotated(Vector3.UP, player_body.global_transform.basis.get_euler().y).normalized()
 	else:
 		wish_dir = Vector3.ZERO
-	
-	
+
+func _physics_process(delta):
 	queue_jump()
 	
 	if player_body.is_on_floor():
