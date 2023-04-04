@@ -36,13 +36,17 @@ window/size/window_height_override=540
 window/stretch/mode="canvas_items"
 mouse_cursor/sensitivity=0.08
 
+[dotnet]
+
+project/assembly_name="Heaven"
+
 [editor]
 
 movie_writer/movie_file="C:/Users/Student-126/Desktop/temp/video/footage.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/debug_tools/plugin.cfg", "res://addons/tbloader/plugin.cfg")
+enabled=PackedStringArray("res://addons/debug_tools/plugin.cfg")
 
 [global]
 
