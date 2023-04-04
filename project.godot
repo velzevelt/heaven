@@ -46,7 +46,7 @@ movie_writer/movie_file="C:/Users/Student-126/Desktop/temp/video/footage.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/debug_tools/plugin.cfg")
+enabled=PackedStringArray("res://addons/debug_tools/plugin.cfg", "res://addons/tbloader/plugin.cfg")
 
 [global]
 

@@ -1,0 +1,79 @@
+// Game: Godot
+// Format: Standard
+// entity 0
+{
+"classname" "worldspawn"
+"_tb_textures" "textures/kenney_prototypetextures/Orange"
+// brush 0
+{
+( 128 128 128 ) ( 128 129 128 ) ( 128 128 129 ) kenney_prototypetextures/Orange/texture_01 64 0 0 1 1
+( 128 128 128 ) ( 128 128 129 ) ( 129 128 128 ) kenney_prototypetextures/Orange/texture_01 -160 0 0 1 1
+( 128 128 128 ) ( 129 128 128 ) ( 128 129 128 ) kenney_prototypetextures/Orange/texture_01 -160 -64 0 1 1
+( 160 224 160 ) ( 160 225 160 ) ( 161 224 160 ) kenney_prototypetextures/Orange/texture_01 -160 -64 0 1 1
+( 160 224 160 ) ( 161 224 160 ) ( 160 224 161 ) kenney_prototypetextures/Orange/texture_01 -160 0 0 1 1
+( 160 224 160 ) ( 160 224 161 ) ( 160 225 160 ) kenney_prototypetextures/Orange/texture_01 64 0 0 1 1
+}
+// brush 1
+{
+( 128 192 128 ) ( 128 193 128 ) ( 128 192 129 ) kenney_prototypetextures/Orange/texture_01 0 0 0 1 1
+( 128 192 128 ) ( 128 192 129 ) ( 129 192 128 ) kenney_prototypetextures/Orange/texture_01 -160 0 0 1 1
+( 128 192 128 ) ( 129 192 128 ) ( 128 193 128 ) kenney_prototypetextures/Orange/texture_01 -160 0 0 1 1
+( 160 288 160 ) ( 160 289 160 ) ( 161 288 160 ) kenney_prototypetextures/Orange/texture_01 -160 0 0 1 1
+( 160 288 160 ) ( 161 288 160 ) ( 160 288 161 ) kenney_prototypetextures/Orange/texture_01 -160 0 0 1 1
+( 160 288 160 ) ( 160 288 161 ) ( 160 289 160 ) kenney_prototypetextures/Orange/texture_01 0 0 0 1 1
+}
+// brush 2
+{
+( -64 -64 -16 ) ( -64 -63 -16 ) ( -64 -64 -15 ) kenney_prototypetextures/Orange/texture_01 0 0 0 1 1
+( -64 -64 -16 ) ( -64 -64 -15 ) ( -63 -64 -16 ) kenney_prototypetextures/Orange/texture_01 0 0 0 1 1
+( -64 -64 -16 ) ( -63 -64 -16 ) ( -64 -63 -16 ) kenney_prototypetextures/Orange/texture_01 0 0 0 1 1
+( 64 64 16 ) ( 64 65 16 ) ( 65 64 16 ) kenney_prototypetextures/Orange/texture_01 0 0 0 1 1
+( 64 64 16 ) ( 65 64 16 ) ( 64 64 17 ) kenney_prototypetextures/Orange/texture_01 0 0 0 1 1
+( 64 64 16 ) ( 64 64 17 ) ( 64 65 16 ) kenney_prototypetextures/Orange/texture_01 0 0 0 1 1
+}
+// brush 3
+{
+( -32 224 128 ) ( -32 225 128 ) ( -32 224 129 ) kenney_prototypetextures/Orange/texture_01 -32 0 0 1 1
+( -32 224 128 ) ( -32 224 129 ) ( -31 224 128 ) kenney_prototypetextures/Orange/texture_01 0 0 0 1 1
+( -32 224 128 ) ( -31 224 128 ) ( -32 225 128 ) kenney_prototypetextures/Orange/texture_01 0 32 0 1 1
+( 0 320 160 ) ( 0 321 160 ) ( 1 320 160 ) kenney_prototypetextures/Orange/texture_01 0 32 0 1 1
+( 0 320 160 ) ( 1 320 160 ) ( 0 320 161 ) kenney_prototypetextures/Orange/texture_01 0 0 0 1 1
+( 0 320 160 ) ( 0 320 161 ) ( 0 321 160 ) kenney_prototypetextures/Orange/texture_01 -32 0 0 1 1
+}
+// brush 4
+{
+( -64 224 128 ) ( -64 225 128 ) ( -64 224 129 ) kenney_prototypetextures/Orange/texture_01 -32 0 0 1 1
+( -64 224 128 ) ( -64 224 129 ) ( -63 224 128 ) kenney_prototypetextures/Orange/texture_01 32 0 0 1 1
+( -64 224 128 ) ( -63 224 128 ) ( -64 225 128 ) kenney_prototypetextures/Orange/texture_01 32 32 0 1 1
+( -32 320 160 ) ( -32 321 160 ) ( -31 320 160 ) kenney_prototypetextures/Orange/texture_01 32 32 0 1 1
+( -32 320 160 ) ( -31 320 160 ) ( -32 320 161 ) kenney_prototypetextures/Orange/texture_01 32 0 0 1 1
+( -32 320 160 ) ( -32 320 161 ) ( -32 321 160 ) kenney_prototypetextures/Orange/texture_01 -32 0 0 1 1
+}
+// brush 5
+{
+( 64 64 -16 ) ( 64 65 -16 ) ( 64 64 -15 ) kenney_prototypetextures/Orange/texture_01 -128 0 0 1 1
+( 64 64 -16 ) ( 64 64 -15 ) ( 65 64 -16 ) kenney_prototypetextures/Orange/texture_01 -128 0 0 1 1
+( 64 64 -16 ) ( 65 64 -16 ) ( 64 65 -16 ) kenney_prototypetextures/Orange/texture_01 -128 128 0 1 1
+( 192 192 16 ) ( 192 193 16 ) ( 193 192 16 ) kenney_prototypetextures/Orange/texture_01 -128 128 0 1 1
+( 192 192 16 ) ( 193 192 16 ) ( 192 192 17 ) kenney_prototypetextures/Orange/texture_01 -128 0 0 1 1
+( 192 192 16 ) ( 192 192 17 ) ( 192 193 16 ) kenney_prototypetextures/Orange/texture_01 -128 0 0 1 1
+}
+// brush 6
+{
+( -64 64 -16 ) ( -64 65 -16 ) ( -64 64 -15 ) kenney_prototypetextures/Orange/texture_01 -128 0 0 1 1
+( -64 64 -16 ) ( -64 64 -15 ) ( -63 64 -16 ) kenney_prototypetextures/Orange/texture_01 0 0 0 1 1
+( -64 64 -16 ) ( -63 64 -16 ) ( -64 65 -16 ) kenney_prototypetextures/Orange/texture_01 0 128 0 1 1
+( 64 192 16 ) ( 64 193 16 ) ( 65 192 16 ) kenney_prototypetextures/Orange/texture_01 0 128 0 1 1
+( 64 192 16 ) ( 65 192 16 ) ( 64 192 17 ) kenney_prototypetextures/Orange/texture_01 0 0 0 1 1
+( 64 192 16 ) ( 64 192 17 ) ( 64 193 16 ) kenney_prototypetextures/Orange/texture_01 -128 0 0 1 1
+}
+// brush 7
+{
+( 64 -64 -16 ) ( 64 -63 -16 ) ( 64 -64 -15 ) kenney_prototypetextures/Orange/texture_01 0 0 0 1 1
+( 64 -64 -16 ) ( 64 -64 -15 ) ( 65 -64 -16 ) kenney_prototypetextures/Orange/texture_01 -128 0 0 1 1
+( 64 -64 -16 ) ( 65 -64 -16 ) ( 64 -63 -16 ) kenney_prototypetextures/Orange/texture_01 -128 0 0 1 1
+( 192 64 16 ) ( 192 65 16 ) ( 193 64 16 ) kenney_prototypetextures/Orange/texture_01 -128 0 0 1 1
+( 192 64 16 ) ( 193 64 16 ) ( 192 64 17 ) kenney_prototypetextures/Orange/texture_01 -128 0 0 1 1
+( 192 64 16 ) ( 192 64 17 ) ( 192 65 16 ) kenney_prototypetextures/Orange/texture_01 0 0 0 1 1
+}
+}

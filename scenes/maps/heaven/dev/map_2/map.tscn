@@ -1,3 +1,13 @@
-[gd_scene format=3 uid="uid://btedw0ai6lua0"]
+[gd_scene load_steps=4 format=3 uid="uid://btedw0ai6lua0"]
 
-[node name="Map" type="Node3D"]
+[ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="1_q1mjs"]
+[ext_resource type="Script" path="res://scenes/map.gd" id="1_q7kco"]
+[ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="3_3oc0c"]
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_q7kco")
+
+[node name="Player" parent="." instance=ExtResource("1_q1mjs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.849962, 0)
+
+[node name="DirectionalLight3D" parent="." instance=ExtResource("3_3oc0c")]
