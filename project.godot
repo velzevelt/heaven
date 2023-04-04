@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Heaven"
 run/main_scene="res://scenes/maps/main_menu/map.tscn"
-config/features=PackedStringArray("4.0", "Mobile")
+config/features=PackedStringArray("4.0", "C#", "Mobile")
 config/icon="res://icon.svg"
 config/duplicate_logger_output_to_debugger=true
 config/version="1.0-pre-alpha"
@@ -46,7 +46,7 @@ movie_writer/movie_file="C:/Users/Student-126/Desktop/temp/video/footage.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/debug_tools/plugin.cfg")
+enabled=PackedStringArray("res://addons/debug_tools/plugin.cfg", "res://addons/qodot/plugin.cfg")
 
 [global]
 

@@ -1,44 +1,16 @@
-// Game: Godot4
+// Game: QodotHeaven
 // Format: Standard
 // entity 0
 {
 "classname" "worldspawn"
-"_tb_textures" "textures;textures/kenney_prototypetextures/Dark;textures/kenney_prototypetextures/Green"
-"_tb_def" "external:addons/tbloader/tb-gameconfig/Godot.fgd"
+"_tb_textures" "textures;textures/kenney_prototypetextures/Dark;textures/kenney_prototypetextures/Purple"
 // brush 0
 {
-( 0 0 -16 ) ( 0 1 -16 ) ( 0 0 -15 ) kenney_prototypetextures/Green/texture_01 0 0 0 1 1
-( 0 0 -16 ) ( 0 0 -15 ) ( 1 0 -16 ) kenney_prototypetextures/Green/texture_01 0 0 0 1 1
-( 0 0 -16 ) ( 1 0 -16 ) ( 0 1 -16 ) kenney_prototypetextures/Green/texture_01 0 0 0 1 1
-( 128 128 16 ) ( 128 129 16 ) ( 129 128 16 ) kenney_prototypetextures/Green/texture_01 0 0 0 1 1
-( 128 128 16 ) ( 129 128 16 ) ( 128 128 17 ) kenney_prototypetextures/Green/texture_01 0 0 0 1 1
-( 128 128 16 ) ( 128 128 17 ) ( 128 129 16 ) kenney_prototypetextures/Green/texture_01 0 0 0 1 1
-}
-// brush 1
-{
-( 0 0 16 ) ( 0 -128 16 ) ( 0 -128 -16 ) kenney_prototypetextures/Dark/texture_01 0 0 0 1 1
-( 0 -128 16 ) ( 128 -128 16 ) ( 128 -128 -16 ) kenney_prototypetextures/Dark/texture_01 0 0 0 1 1
-( 128 -128 -16 ) ( 128 0 -16 ) ( 0 0 -16 ) kenney_prototypetextures/Dark/texture_01 0 0 0 1 1
-( 0 0 16 ) ( 128 0 16 ) ( 128 -128 16 ) kenney_prototypetextures/Dark/texture_01 0 0 0 1 1
-( 128 0 -16 ) ( 128 0 16 ) ( 0 0 16 ) kenney_prototypetextures/Dark/texture_01 0 0 0 1 1
-( 128 -128 16 ) ( 128 0 16 ) ( 128 0 -16 ) kenney_prototypetextures/Dark/texture_01 0 0 0 1 1
-}
-// brush 2
-{
-( -128 0 16 ) ( -128 -128 16 ) ( -128 -128 -16 ) kenney_prototypetextures/Dark/texture_01 0 0 0 1 1
-( -128 -128 16 ) ( 0 -128 16 ) ( 0 -128 -16 ) kenney_prototypetextures/Dark/texture_01 0 0 0 1 1
-( 0 -128 -16 ) ( 0 0 -16 ) ( -128 0 -16 ) kenney_prototypetextures/Dark/texture_01 0 0 0 1 1
-( -128 0 16 ) ( 0 0 16 ) ( 0 -128 16 ) kenney_prototypetextures/Dark/texture_01 0 0 0 1 1
-( 0 0 -16 ) ( 0 0 16 ) ( -128 0 16 ) kenney_prototypetextures/Dark/texture_01 0 0 0 1 1
-( 0 -128 16 ) ( 0 0 16 ) ( 0 0 -16 ) kenney_prototypetextures/Dark/texture_01 0 0 0 1 1
-}
-// brush 3
-{
-( -128 0 -16 ) ( -128 1 -16 ) ( -128 0 -15 ) kenney_prototypetextures/Green/texture_01 0 0 0 1 1
-( -128 0 -16 ) ( -128 0 -15 ) ( -127 0 -16 ) kenney_prototypetextures/Green/texture_01 0 0 0 1 1
-( -128 0 -16 ) ( -127 0 -16 ) ( -128 1 -16 ) kenney_prototypetextures/Green/texture_01 0 0 0 1 1
-( 0 128 16 ) ( 0 129 16 ) ( 1 128 16 ) kenney_prototypetextures/Green/texture_01 0 0 0 1 1
-( 0 128 16 ) ( 1 128 16 ) ( 0 128 17 ) kenney_prototypetextures/Green/texture_01 0 0 0 1 1
-( 0 128 16 ) ( 0 128 17 ) ( 0 129 16 ) kenney_prototypetextures/Green/texture_01 0 0 0 1 1
+( -64 -64 -16 ) ( -64 -63 -16 ) ( -64 -64 -15 ) kenney_prototypetextures/Purple/texture_01 0 0 0 0.1 0.1
+( -64 -64 -16 ) ( -64 -64 -15 ) ( -63 -64 -16 ) kenney_prototypetextures/Purple/texture_01 0 0 0 0.1 0.1
+( -64 -64 -16 ) ( -63 -64 -16 ) ( -64 -63 -16 ) kenney_prototypetextures/Purple/texture_01 0 0 0 0.1 0.1
+( 64 64 16 ) ( 64 65 16 ) ( 65 64 16 ) kenney_prototypetextures/Purple/texture_01 0 0 0 0.1 0.1
+( 64 64 16 ) ( 65 64 16 ) ( 64 64 17 ) kenney_prototypetextures/Purple/texture_01 0 0 0 0.1 0.1
+( 64 64 16 ) ( 64 64 17 ) ( 64 65 16 ) kenney_prototypetextures/Purple/texture_01 0 0 0 0.1 0.1
 }
 }

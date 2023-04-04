@@ -21,7 +21,7 @@ func do_export_file():
 			var file_obj := FileAccess.open(target_file, FileAccess.WRITE)
 			file_obj.store_string(build_class_text())
 			file_obj.close()
-@export var target_file : String # (String, FILE, GLOBAL, "*.cfg")
+@export_file var target_file : String # (String, FILE, GLOBAL, "*.cfg")
 
 @export var game_name := "Qodot"
 

@@ -26,7 +26,7 @@ func do_export_file():
 				var file_obj := FileAccess.open(fgd_file, FileAccess.WRITE)
 				file_obj.store_string(build_class_text())
 				file_obj.close()
-@export var target_folder : String # (String, DIR, GLOBAL)
+@export_dir var target_folder : String # (String, DIR, GLOBAL)
 @export var fgd_name: String = "Qodot"
 @export var base_fgd_files: Array[Resource] = [] # (Array, Resource)
 @export var entity_definitions: Array[Variant] = [ # (Array, Resource)
