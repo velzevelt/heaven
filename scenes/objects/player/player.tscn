@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scenes/objects/player/player_move_component.gd" id="9_7a22w"]
 [ext_resource type="Script" path="res://scenes/components/velocity_component.gd" id="9_ytpbk"]
 [ext_resource type="Script" path="res://scenes/objects/player/dynamic_fov_change.gd" id="10_y34ym"]
-[ext_resource type="PackedScene" uid="uid://csq6iwgkllvel" path="res://scenes/objects/player/light_detection_component.tscn" id="12_tiydx"]
+[ext_resource type="PackedScene" uid="uid://brstrae8eg525" path="res://scenes/objects/player/light_detection_component.tscn" id="12_tiydx"]
 [ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer_label.gd" id="13_5krmr"]
 [ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer.gd" id="13_6lpoc"]
 

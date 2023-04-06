@@ -1,21 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4o7qe5437oya"]
+[gd_scene load_steps=5 format=3 uid="uid://c4o7qe5437oya"]
 
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="1_q1mjs"]
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_q7kco"]
-[ext_resource type="PackedScene" uid="uid://csq6iwgkllvel" path="res://scenes/objects/player/light_detection_component.tscn" id="3_hwhyj"]
 [ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material.tres" id="5_rwyit"]
-
-[sub_resource type="GDScript" id="GDScript_fvbla"]
-script/source = "extends OmniLight3D
-
-
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Input.is_action_just_pressed('jump'):
-		visible = !visible
-"
 
 [sub_resource type="Environment" id="Environment_02f0l"]
 ambient_light_source = 2
@@ -27,20 +14,6 @@ adjustment_contrast = 1.17
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_q7kco")
-
-[node name="Player" parent="." instance=ExtResource("1_q1mjs")]
-
-[node name="Camera3D" parent="Player/Head" index="0"]
-cull_mask = 524285
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Player"]
-visible = false
-layers = 0
-light_color = Color(0.235294, 1, 0.917647, 1)
-light_bake_mode = 0
-script = SubResource("GDScript_fvbla")
-
-[node name="SubViewport" parent="Player" instance=ExtResource("3_hwhyj")]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 use_collision = true
@@ -108,4 +81,4 @@ omni_range = 3.9738
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_02f0l")
 
-[editable path="Player"]
+[node name="Player" parent="." instance=ExtResource("1_q1mjs")]
