@@ -172,7 +172,7 @@ player = NodePath("../..")
 player_camera = NodePath("../../Head/Camera3D")
 sub_viewport = NodePath("..")
 avg_color_debug = NodePath("../../ColorRect")
-player_light = NodePath("")
+player_light = NodePath("../../OmniLight3D")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 6
@@ -185,5 +185,10 @@ offset_top = -77.0
 offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+visible = false
+layers = 2
+light_color = Color(0.227451, 1, 1, 1)
 
 [editable path="SubViewport"]

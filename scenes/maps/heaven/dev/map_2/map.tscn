@@ -68,7 +68,6 @@ omni_range = 3.02078
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.62131, 0, -4.58921)
-layers = 2
 light_energy = 1.162
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
