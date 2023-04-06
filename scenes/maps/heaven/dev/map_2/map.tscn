@@ -1,10 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://btedw0ai6lua0"]
+[gd_scene load_steps=8 format=3 uid="uid://c4o7qe5437oya"]
 
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="1_q1mjs"]
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_q7kco"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/dev/map_2/light_detection.gd" id="3_cqbpp"]
-[ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://tmp/pr_mat.tres" id="4_2pmh8"]
 [ext_resource type="Script" path="res://addons/debug_tools/info_label/info_label.gd" id="4_ipbgo"]
+[ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material.tres" id="5_rwyit"]
+
+[sub_resource type="GDScript" id="GDScript_fvbla"]
+script/source = "extends OmniLight3D
+
+
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if Input.is_action_just_pressed('jump'):
+		visible = !visible
+"
 
 [sub_resource type="Environment" id="Environment_02f0l"]
 ambient_light_source = 2
@@ -21,9 +33,10 @@ script = ExtResource("1_q7kco")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Player"]
 visible = false
-layers = 262144
+layers = 0
 light_color = Color(0.235294, 1, 0.917647, 1)
-light_cull_mask = 4294180863
+light_bake_mode = 0
+script = SubResource("GDScript_fvbla")
 
 [node name="ColorRect" type="ColorRect" parent="Player"]
 custom_minimum_size = Vector2(10, 10)
@@ -38,6 +51,7 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="SubViewport" type="SubViewport" parent="Player"]
+debug_draw = 2
 size = Vector2i(64, 64)
 render_target_update_mode = 4
 
@@ -46,11 +60,11 @@ script = ExtResource("3_cqbpp")
 player = NodePath("../..")
 sub_viewport = NodePath("..")
 avg_color_debug = NodePath("../../ColorRect")
-dark_threshold = 0.1
+dark_threshold = 0.04
 player_light = NodePath("../../OmniLight3D")
 
 [node name="Camera3D" type="Camera3D" parent="Player/SubViewport/LightDetection"]
-cull_mask = 262143
+cull_mask = 262141
 
 [node name="InfoLabel" type="Label" parent="Player"]
 anchors_preset = 3
@@ -64,56 +78,75 @@ offset_right = -47.0
 offset_bottom = -44.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_font_sizes/font_size = 24
 text = "debug_is_dark: "
 script = ExtResource("4_ipbgo")
 target_path = NodePath("../SubViewport/LightDetection")
 desired_property = "debug_is_dark"
 
+[node name="InfoLabel2" type="Label" parent="Player"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -228.0
+offset_top = -119.0
+offset_right = -99.0
+offset_bottom = -82.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "light_level: "
+script = ExtResource("4_ipbgo")
+target_path = NodePath("../SubViewport/LightDetection")
+desired_property = "light_level"
+
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 use_collision = true
 size = Vector3(41.3825, 4, 4)
-material = ExtResource("4_2pmh8")
+material = ExtResource("5_rwyit")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D"]
 operation = 2
 size = Vector3(3.6, 3.6, 3.6)
-material = ExtResource("4_2pmh8")
+material = ExtResource("5_rwyit")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.711859, -0.445015, -1.63313)
 operation = 2
 size = Vector3(1.29335, 2.53876, 1.83235)
-material = ExtResource("4_2pmh8")
+material = ExtResource("5_rwyit")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.98786)
 use_collision = true
 size = Vector3(41.3825, 4, 4)
-material = ExtResource("4_2pmh8")
+material = ExtResource("5_rwyit")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86832, -3.99358)
 use_collision = true
 size = Vector3(41.1825, 0.191538, 4)
-material = ExtResource("4_2pmh8")
+material = ExtResource("5_rwyit")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86367, -3.99358)
 use_collision = true
 size = Vector3(41.1825, 0.191538, 4)
-material = ExtResource("4_2pmh8")
+material = ExtResource("5_rwyit")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 20.4712, 0.174354, -3.99358)
 use_collision = true
 size = Vector3(4.55523, 0.191538, 4)
-material = ExtResource("4_2pmh8")
+material = ExtResource("5_rwyit")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -20.3972, 0.174354, -3.99358)
 use_collision = true
 size = Vector3(4.55523, 0.191538, 4)
-material = ExtResource("4_2pmh8")
+material = ExtResource("5_rwyit")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_02f0l")
@@ -122,3 +155,9 @@ environment = SubResource("Environment_02f0l")
 shadow_enabled = true
 distance_fade_enabled = true
 omni_range = 3.02078
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02725, 0, -3.96613)
+layers = 2
+light_color = Color(0.235294, 1, 0.917647, 1)
+light_bake_mode = 0

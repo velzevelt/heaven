@@ -12,7 +12,7 @@ extends Node3D
 		return is_in_darkness()
 
 
-var light_level: float = 0.0001
+var light_level: float = 0.0
 
 func _ready():
 	if not OS.is_debug_build():
@@ -25,14 +25,18 @@ func _update():
 		get_light_level()
 		var t = 1.0 - light_level
 		player_light.light_energy = t
-		print(t)
 		await get_tree().create_timer(update_tick).timeout.connect(_update)
 
 func _process(delta):
 	# It does not updates automatically
 	self.global_position = player.global_position
 	self.global_rotation = player.global_rotation
-
+	
+	if Input.is_action_just_pressed("hook"):
+		var texture = sub_viewport.get_texture()
+		texture.get_image().save_png('res://tmp/test.png')
+	
+#	player_light.visible = is_in_darkness()
 
 func get_light_level():
 	var texture = sub_viewport.get_texture()
@@ -50,4 +54,4 @@ func get_average_color(texture: ViewportTexture) -> Color:
 
 
 func is_in_darkness(dark_threshold=self.dark_threshold):
-	return light_level < dark_threshold
+	return dark_threshold > light_level

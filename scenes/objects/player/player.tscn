@@ -171,3 +171,4 @@ hook_raycast = NodePath("../Head/CrosshairRaycast")
 body = NodePath("..")
 velocity_component = NodePath("../PlayerMoveComponent/VelocityComponent")
 player_move_component = NodePath("../PlayerMoveComponent")
+enabled = false
