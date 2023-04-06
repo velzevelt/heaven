@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var player: Player
+@export var player_camera: Camera3D
 @export var sub_viewport: SubViewport
 @export var avg_color_debug: ColorRect
 @export var dark_threshold: float = 0.001
@@ -11,6 +12,8 @@ extends Node3D
 	get:
 		return is_in_darkness()
 
+
+@onready var viewport_camera = sub_viewport.get_camera_3d()
 
 var light_level: float = 0.0
 
@@ -31,6 +34,7 @@ func _process(delta):
 	# It does not updates automatically
 	self.global_position = player.global_position
 	self.global_rotation = player.global_rotation
+	self.viewport_camera.fov = player_camera.fov
 	
 	if Input.is_action_just_pressed("hook"):
 		var texture = sub_viewport.get_texture()
