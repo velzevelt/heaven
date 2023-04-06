@@ -28,13 +28,13 @@ func _update():
 		get_light_level()
 		
 		var t = create_tween()
-		if not is_in_darkness():
-			t.tween_property(player_light, 'light_energy', 0.0, 0.3)
-		else:
-			t.tween_interval(2)
+		if is_in_darkness():
 			var new_energy = 1.0 - light_level
 			t.tween_property(player_light, 'light_energy', new_energy, 2.0)
+		else:
+			t.tween_property(player_light, 'light_energy', 0.0, 0.3)
 		
+#		await t.finished
 		await get_tree().create_timer(update_tick).timeout.connect(_update)
 
 func _process(delta):

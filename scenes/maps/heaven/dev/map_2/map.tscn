@@ -8,7 +8,8 @@
 ambient_light_source = 2
 glow_enabled = true
 glow_normalized = true
-fog_light_color = Color(0.262745, 0.286275, 0.32549, 1)
+fog_enabled = true
+fog_light_color = Color(0.113725, 0.12549, 0.14902, 1)
 adjustment_enabled = true
 adjustment_contrast = 1.17
 
