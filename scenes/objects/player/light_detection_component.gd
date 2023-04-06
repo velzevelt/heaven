@@ -26,8 +26,15 @@ func _ready():
 func _update():
 	if is_processing():
 		get_light_level()
-		var t = 1.0 - light_level
-		player_light.light_energy = t
+		
+		var t = create_tween()
+		if not is_in_darkness():
+			t.tween_property(player_light, 'light_energy', 0.0, 0.3)
+		else:
+			t.tween_interval(2)
+			var new_energy = 1.0 - light_level
+			t.tween_property(player_light, 'light_energy', new_energy, 2.0)
+		
 		await get_tree().create_timer(update_tick).timeout.connect(_update)
 
 func _process(delta):
@@ -40,15 +47,11 @@ func _process(delta):
 		var texture = sub_viewport.get_texture()
 		texture.get_image().save_png('res://tmp/test.png')
 	
-	player_light.visible = is_in_darkness()
 
 func get_light_level():
 	var texture = sub_viewport.get_texture()
 	var avg_color = get_average_color(texture)
 	light_level = avg_color.get_luminance()
-	
-	avg_color_debug.color = avg_color
-	
 
 
 func get_average_color(texture: ViewportTexture) -> Color:
