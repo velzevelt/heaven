@@ -39,7 +39,9 @@ mesh = SubResource("BoxMesh_deav3")
 shape = SubResource("ConvexPolygonShape3D_w3oia")
 
 [node name="HingeJoint3D" type="HingeJoint3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.68958, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.637813, 0, 0)
 node_a = NodePath("../PhysicsDoor")
 node_b = NodePath("../DoorFrame")
 angular_limit/enable = true
+angular_limit/bias = 0.99
+angular_limit/softness = 16.0
