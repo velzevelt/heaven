@@ -13,7 +13,6 @@ extends Node3D
 
 
 @onready var viewport_camera = sub_viewport.get_camera_3d()
-
 var light_level: float = 0.0
 
 
@@ -21,22 +20,6 @@ func _ready():
 	if not OS.is_debug_build():
 		avg_color_debug.visible = false
 	
-	_update()
-
-func _update():
-	if is_processing():
-		get_light_level()
-		
-		var tween = create_tween()
-		if is_in_darkness():
-			var new_energy = 1.0 - light_level
-			tween.set_ease(Tween.EASE_IN)
-			tween.tween_property(player_light, 'light_energy', new_energy, 2.0)
-		else:
-			tween.set_ease(Tween.EASE_OUT)
-			tween.tween_property(player_light, 'light_energy', 0.0, 0.3)
-		
-		await get_tree().create_timer(update_tick).timeout.connect(_update)
 
 func _process(delta):
 	# It does not updates automatically
@@ -47,6 +30,16 @@ func _process(delta):
 	if Input.is_action_just_pressed("hook"):
 		var texture = sub_viewport.get_texture()
 		texture.get_image().save_png('res://tmp/test.png')
+	
+	get_light_level()
+	var tween = create_tween()
+	if is_in_darkness():
+		var new_energy = 1.0 - light_level
+		tween.set_ease(Tween.EASE_IN)
+		tween.tween_property(player_light, 'light_energy', new_energy, 2.0)
+	else:
+		tween.set_ease(Tween.EASE_OUT)
+		tween.tween_property(player_light, 'light_energy', 0.0, 0.3)
 
 
 func get_light_level():
