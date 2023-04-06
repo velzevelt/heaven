@@ -1,0 +1,2 @@
+extends OmniLight3D
+
