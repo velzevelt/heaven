@@ -1,6 +1,5 @@
 extends Node3D
 
-#@export var player: Player
 @export var player_camera: Camera3D
 @export var sub_viewport: SubViewport
 @export var avg_color_debug: ColorRect
@@ -16,7 +15,7 @@ extends Node3D
 @onready var viewport_camera = sub_viewport.get_camera_3d()
 
 var light_level: float = 0.0
-var _tween: Tween
+
 
 func _ready():
 	if not OS.is_debug_build():
@@ -28,14 +27,14 @@ func _update():
 	if is_processing():
 		get_light_level()
 		
+		var tween = create_tween()
 		if is_in_darkness():
-			_tween = create_tween()
 			var new_energy = 1.0 - light_level
-			_tween.tween_property(player_light, 'light_energy', new_energy, 2.0)
+			tween.set_ease(Tween.EASE_IN)
+			tween.tween_property(player_light, 'light_energy', new_energy, 2.0)
 		else:
-			_tween = create_tween()
-			_tween.tween_property(player_light, 'light_energy', 0.0, 0.3)
-		
+			tween.set_ease(Tween.EASE_OUT)
+			tween.tween_property(player_light, 'light_energy', 0.0, 0.3)
 		
 		await get_tree().create_timer(update_tick).timeout.connect(_update)
 
