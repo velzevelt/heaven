@@ -20,6 +20,8 @@ points = PackedVector3Array(-0.05, -1.241, -0.05, -0.05, -1.241, 0.05, -0.05, 1.
 [node name="PhysicsDoor" type="RigidBody3D" parent="."]
 collision_layer = 0
 collision_mask = 8
+gravity_scale = 0.0
+can_sleep = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PhysicsDoor"]
 mesh = SubResource("BoxMesh_0dfmj")
@@ -38,10 +40,8 @@ mesh = SubResource("BoxMesh_deav3")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorFrame"]
 shape = SubResource("ConvexPolygonShape3D_w3oia")
 
-[node name="HingeJoint3D" type="HingeJoint3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.637813, 0, 0)
+[node name="HingeJoint" type="HingeJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.679156, 0, 0)
 node_a = NodePath("../PhysicsDoor")
 node_b = NodePath("../DoorFrame")
 angular_limit/enable = true
-angular_limit/bias = 0.99
-angular_limit/softness = 16.0
