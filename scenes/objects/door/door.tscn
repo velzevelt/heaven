@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://ci56u4m6pvss1"]
+
+[ext_resource type="Material" uid="uid://bm6134mi4goc8" path="res://textures/prototype_material_green.tres" id="1_sa73t"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0dfmj"]
+size = Vector3(1.25, 2.5, 0.1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fe2dl"]
+points = PackedVector3Array(-0.625, -1.25, -0.05, -0.625, -1.25, 0.05, -0.625, 1.25, -0.05, 0.625, -1.25, -0.05, 0.625, -1.25, 0.05, -0.625, 1.25, 0.05, 0.625, 1.25, -0.05, 0.625, 1.25, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_deav3"]
+material = ExtResource("1_sa73t")
+size = Vector3(0.1, 2.482, 0.1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_w3oia"]
+points = PackedVector3Array(-0.05, -1.241, -0.05, -0.05, -1.241, 0.05, -0.05, 1.241, -0.05, 0.05, -1.241, -0.05, 0.05, -1.241, 0.05, -0.05, 1.241, 0.05, 0.05, 1.241, -0.05, 0.05, 1.241, 0.05)
+
+[node name="Door" type="Node3D"]
+
+[node name="PhysicsDoor" type="RigidBody3D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PhysicsDoor"]
+mesh = SubResource("BoxMesh_0dfmj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsDoor"]
+shape = SubResource("ConvexPolygonShape3D_fe2dl")
+
+[node name="DoorFrame" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.677659, 0, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DoorFrame"]
+mesh = SubResource("BoxMesh_deav3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorFrame"]
+shape = SubResource("ConvexPolygonShape3D_w3oia")
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.68958, 0, 0)
+node_a = NodePath("../PhysicsDoor")
+node_b = NodePath("../DoorFrame")
+angular_limit/upper = 0.0
