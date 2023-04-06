@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://chaf5uqx5ltj2"]
+[gd_scene load_steps=17 format=3 uid="uid://chaf5uqx5ltj2"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_gwrkw"]
 [ext_resource type="Script" path="res://scenes/objects/player/camera_controller.gd" id="2_8xvxh"]
 [ext_resource type="Script" path="res://scenes/objects/player/crosshair_raycast.gd" id="3_2e6su"]
-[ext_resource type="Script" path="res://scenes/objects/player/player_debug_mesh.gd" id="3_rbpt3"]
 [ext_resource type="Script" path="res://scenes/objects/player/crosshair.gd" id="4_gifrp"]
 [ext_resource type="Script" path="res://scenes/objects/player/grappling_hook_component.gd" id="6_5cnao"]
 [ext_resource type="Script" path="res://scenes/components/floor_activation_component.gd" id="7_mjju6"]
@@ -41,6 +40,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.48634e-05, 0.4, -0.00502777
 script = ExtResource("2_8xvxh")
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+cull_mask = 524287
 current = true
 fov = 85.0
 
@@ -69,9 +69,9 @@ script = ExtResource("4_gifrp")
 anim_duration = 0.3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 524288
 material_override = SubResource("StandardMaterial3D_37kd4")
 mesh = SubResource("CapsuleMesh_720by")
-script = ExtResource("3_rbpt3")
 
 [node name="FloorActivationComponent" type="Node" parent="." node_paths=PackedStringArray("body")]
 script = ExtResource("7_mjju6")
