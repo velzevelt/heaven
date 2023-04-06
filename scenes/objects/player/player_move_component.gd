@@ -32,6 +32,10 @@ var jump_action = 'jump'
 var debug_horizontal_velocity: Vector3 = Vector3.ZERO
 var accelerate_return: Vector3 = Vector3.ZERO
 
+enum STATES {
+	WALK,
+	CROUCH
+}
 
 func _ready():
 	# We tell our DebugLayer to draw those vectors in the game world.
@@ -52,6 +56,7 @@ func _update_wish_dir():
 func _physics_process(delta):
 	_update_wish_dir()
 	queue_jump()
+	
 	
 	if player_body.is_on_floor():
 		if wish_jump: # If we're on the ground but wish_jump is still true, this means we've just landed

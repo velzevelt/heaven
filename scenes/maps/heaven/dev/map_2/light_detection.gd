@@ -54,4 +54,4 @@ func get_average_color(texture: ViewportTexture) -> Color:
 
 
 func is_in_darkness(dark_threshold=self.dark_threshold):
-	return dark_threshold > light_level
+	return light_level < dark_threshold
