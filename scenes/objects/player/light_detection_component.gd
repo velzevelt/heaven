@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var player: Player
+#@export var player: Player
 @export var player_camera: Camera3D
 @export var sub_viewport: SubViewport
 @export var avg_color_debug: ColorRect
@@ -16,6 +16,7 @@ extends Node3D
 @onready var viewport_camera = sub_viewport.get_camera_3d()
 
 var light_level: float = 0.0
+var _tween: Tween
 
 func _ready():
 	if not OS.is_debug_build():
@@ -27,26 +28,27 @@ func _update():
 	if is_processing():
 		get_light_level()
 		
-		var t = create_tween()
 		if is_in_darkness():
+			_tween = create_tween()
 			var new_energy = 1.0 - light_level
-			t.tween_property(player_light, 'light_energy', new_energy, 2.0)
+			_tween.tween_property(player_light, 'light_energy', new_energy, 2.0)
 		else:
-			t.tween_property(player_light, 'light_energy', 0.0, 0.3)
+			_tween = create_tween()
+			_tween.tween_property(player_light, 'light_energy', 0.0, 0.3)
 		
-#		await t.finished
+		
 		await get_tree().create_timer(update_tick).timeout.connect(_update)
 
 func _process(delta):
 	# It does not updates automatically
-	self.global_position = player.global_position
-	self.global_rotation = player.global_rotation
+	self.global_position = player_camera.global_position
+	self.global_rotation = player_camera.global_rotation
 	self.viewport_camera.fov = player_camera.fov
 	
 	if Input.is_action_just_pressed("hook"):
 		var texture = sub_viewport.get_texture()
 		texture.get_image().save_png('res://tmp/test.png')
-	
+
 
 func get_light_level():
 	var texture = sub_viewport.get_texture()

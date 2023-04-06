@@ -156,6 +156,22 @@ script = ExtResource("7_tu7pf")
 target_path = NodePath("../..")
 desired_property = "on_floor"
 
+[node name="InfoLabel9" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "debug_is_dark: "
+script = ExtResource("7_tu7pf")
+target_path = NodePath("../../SubViewport/LightDetection")
+desired_property = "debug_is_dark"
+
+[node name="InfoLabel10" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "light_level: "
+script = ExtResource("7_tu7pf")
+target_path = NodePath("../../SubViewport/LightDetection")
+desired_property = "light_level"
+
 [node name="VelzTimerLabel" type="Label" parent="VBoxContainer" node_paths=PackedStringArray("timer")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -167,15 +183,15 @@ script = ExtResource("13_6lpoc")
 
 [node name="SubViewport" parent="." instance=ExtResource("12_tiydx")]
 
-[node name="LightDetection" parent="SubViewport" index="0" node_paths=PackedStringArray("player", "player_camera", "sub_viewport", "avg_color_debug", "player_light")]
-player = NodePath("../..")
+[node name="LightDetection" parent="SubViewport" index="0" node_paths=PackedStringArray("player_camera", "sub_viewport", "avg_color_debug", "player_light")]
 player_camera = NodePath("../../Head/Camera3D")
 sub_viewport = NodePath("..")
 avg_color_debug = NodePath("")
+dark_threshold = 0.04
 player_light = NodePath("../../OmniLight3D")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 layers = 2
-light_color = Color(0.227451, 1, 1, 1)
+light_color = Color(0.290196, 0.27451, 0.729412, 1)
 
 [editable path="SubViewport"]
