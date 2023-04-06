@@ -27,7 +27,7 @@ func _update():
 	if is_processing():
 		get_light_level()
 		var t = 1.0 - light_level
-		player_light.light_energy = t
+#		player_light.light_energy = t
 		await get_tree().create_timer(update_tick).timeout.connect(_update)
 
 func _process(delta):

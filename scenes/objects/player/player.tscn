@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://chaf5uqx5ltj2"]
+[gd_scene load_steps=17 format=3 uid="uid://chaf5uqx5ltj2"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_gwrkw"]
 [ext_resource type="Script" path="res://scenes/objects/player/camera_controller.gd" id="2_8xvxh"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/objects/player/player_move_component.gd" id="9_7a22w"]
 [ext_resource type="Script" path="res://scenes/components/velocity_component.gd" id="9_ytpbk"]
 [ext_resource type="Script" path="res://scenes/objects/player/dynamic_fov_change.gd" id="10_y34ym"]
+[ext_resource type="PackedScene" uid="uid://csq6iwgkllvel" path="res://scenes/objects/player/light_detection_component.tscn" id="12_tiydx"]
 [ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer_label.gd" id="13_5krmr"]
 [ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer.gd" id="13_6lpoc"]
 
@@ -163,3 +164,26 @@ timer = NodePath("VelzTimer")
 
 [node name="VelzTimer" type="Node" parent="VBoxContainer/VelzTimerLabel"]
 script = ExtResource("13_6lpoc")
+
+[node name="SubViewport" parent="." instance=ExtResource("12_tiydx")]
+
+[node name="LightDetection" parent="SubViewport" index="0" node_paths=PackedStringArray("player", "player_camera", "sub_viewport", "avg_color_debug", "player_light")]
+player = NodePath("../..")
+player_camera = NodePath("../../Head/Camera3D")
+sub_viewport = NodePath("..")
+avg_color_debug = NodePath("../../ColorRect")
+player_light = NodePath("")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -77.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[editable path="SubViewport"]

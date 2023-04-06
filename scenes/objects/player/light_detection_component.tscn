@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://brstrae8eg525"]
+
+[ext_resource type="Script" path="res://scenes/objects/player/light_detection_component.gd" id="1_bax12"]
+
+[node name="SubViewport" type="SubViewport"]
+debug_draw = 2
+size = Vector2i(64, 64)
+render_target_update_mode = 4
+
+[node name="LightDetection" type="Node3D" parent="."]
+script = ExtResource("1_bax12")
+dark_threshold = 0.09
+
+[node name="Camera3D" type="Camera3D" parent="LightDetection"]
+cull_mask = 524285
+fov = 85.0

@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4o7qe5437oya"]
+[gd_scene load_steps=7 format=3 uid="uid://c4o7qe5437oya"]
 
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="1_q1mjs"]
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_q7kco"]
-[ext_resource type="Script" path="res://scenes/maps/heaven/dev/map_2/light_detection.gd" id="3_cqbpp"]
-[ext_resource type="Script" path="res://addons/debug_tools/info_label/info_label.gd" id="4_ipbgo"]
+[ext_resource type="PackedScene" uid="uid://csq6iwgkllvel" path="res://scenes/objects/player/light_detection_component.tscn" id="3_hwhyj"]
 [ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material.tres" id="5_rwyit"]
 
 [sub_resource type="GDScript" id="GDScript_fvbla"]
@@ -31,6 +30,9 @@ script = ExtResource("1_q7kco")
 
 [node name="Player" parent="." instance=ExtResource("1_q1mjs")]
 
+[node name="Camera3D" parent="Player/Head" index="0"]
+cull_mask = 524285
+
 [node name="OmniLight3D" type="OmniLight3D" parent="Player"]
 visible = false
 layers = 0
@@ -38,71 +40,7 @@ light_color = Color(0.235294, 1, 0.917647, 1)
 light_bake_mode = 0
 script = SubResource("GDScript_fvbla")
 
-[node name="ColorRect" type="ColorRect" parent="Player"]
-custom_minimum_size = Vector2(10, 10)
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -36.0
-offset_top = -26.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="SubViewport" type="SubViewport" parent="Player"]
-debug_draw = 2
-size = Vector2i(64, 64)
-render_target_update_mode = 4
-
-[node name="LightDetection" type="Node3D" parent="Player/SubViewport" node_paths=PackedStringArray("player", "player_camera", "sub_viewport", "avg_color_debug", "player_light")]
-script = ExtResource("3_cqbpp")
-player = NodePath("../..")
-player_camera = NodePath("../../Head/Camera3D")
-sub_viewport = NodePath("..")
-avg_color_debug = NodePath("../../ColorRect")
-dark_threshold = 0.09
-player_light = NodePath("../../OmniLight3D")
-
-[node name="Camera3D" type="Camera3D" parent="Player/SubViewport/LightDetection"]
-cull_mask = 524285
-fov = 85.0
-
-[node name="InfoLabel" type="Label" parent="Player"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -166.0
-offset_top = -70.0
-offset_right = -47.0
-offset_bottom = -44.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "debug_is_dark: "
-script = ExtResource("4_ipbgo")
-target_path = NodePath("../SubViewport/LightDetection")
-desired_property = "debug_is_dark"
-
-[node name="InfoLabel2" type="Label" parent="Player"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -228.0
-offset_top = -119.0
-offset_right = -99.0
-offset_bottom = -82.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "light_level: "
-script = ExtResource("4_ipbgo")
-target_path = NodePath("../SubViewport/LightDetection")
-desired_property = "light_level"
+[node name="SubViewport" parent="Player" instance=ExtResource("3_hwhyj")]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 use_collision = true
@@ -150,9 +88,6 @@ use_collision = true
 size = Vector3(4.55523, 0.191538, 4)
 material = ExtResource("5_rwyit")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_02f0l")
-
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 shadow_enabled = true
 distance_fade_enabled = true
@@ -169,5 +104,8 @@ light_bake_mode = 0
 shadow_enabled = true
 distance_fade_enabled = true
 omni_range = 3.9738
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_02f0l")
 
 [editable path="Player"]
