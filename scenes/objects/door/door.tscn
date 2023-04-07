@@ -23,11 +23,9 @@ points = PackedVector3Array(-0.05, -1.241, -0.05, -0.05, -1.241, 0.05, -0.05, 1.
 collision_layer = 8
 collision_mask = 8
 collision_priority = 4.0
-mass = 0.1
 can_sleep = false
 script = ExtResource("1_aqs8e")
 joint = NodePath("../HingeJoint")
-fix_threshold = 0.1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PhysicsDoor"]
 mesh = SubResource("BoxMesh_0dfmj")

@@ -7,8 +7,6 @@ extends RigidBody3D
 @onready var upper_limit: float = joint.get_param(HingeJoint3D.PARAM_LIMIT_UPPER) - fix_threshold
 @onready var lower_limit: float = joint.get_param(HingeJoint3D.PARAM_LIMIT_LOWER) + fix_threshold
 
-var is_pushing := false
-
 var product: float = 0.0
 var body
 
@@ -17,26 +15,29 @@ var normal_direction: Vector3:
 		return self.transform.basis.z
 
 func _ready():
-	DebugLayer.draw.add_vector(self, 'normal_direction')
+	DebugLayer.draw.add_vector(self, 'global_position')
 
 
 func _on_area_3d_body_entered(body: CharacterBody3D):
 	self.body = body
-	is_pushing = true
 
 
 func _on_area_3d_body_exited(body):
 	self.body = null
-	is_pushing = false
 
 func _physics_process(delta):
 	if is_instance_valid(body):
-		product = body.transform.basis.z.normalized().dot(self.normal_direction)
-		var speed = body.velocity.length() + 10
-		print(speed)
 		
-		if product > 0.0:
-			self.apply_central_force(Vector3(0, 0, -speed)) #, body.global_position)
-		else:
-			self.apply_central_force(Vector3(0, 0, speed)) #, body.global_position)
-	
+		var push_direction = (self.global_position - body.global_position).normalized()
+		self.apply_force(push_direction * 10, body.global_position)
+#
+#		if product > 0.0:
+#			self.apply_central_force(Vector3(0, 0, speed)) #, body.global_position)
+#		else:
+#			self.apply_central_force(Vector3(0, 0, -speed)) #, body.global_position)
+#
+#	if Input.is_action_just_pressed('left_click'):
+#		self.linear_velocity = Vector3(0, 0, 1)
+#
+#	if Input.is_action_just_pressed('right_click'):
+#		self.linear_velocity = Vector3(0, 0, -1)
