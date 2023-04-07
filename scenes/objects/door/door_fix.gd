@@ -25,10 +25,11 @@ func _on_body_entered(body):
 		self.set_collision_layer_value(active_layer, is_looking_at_me(body))
 	elif self.rotation.y <= lower_limit:
 		self.set_collision_layer_value(active_layer, not is_looking_at_me(body))
-
+	else:
+		self.set_collision_layer_value(active_layer, is_looking_at_me(body))
 
 func is_looking_at_me(body: Node3D):
-	var product = body.global_transform.basis.z
+	var product = body.global_position
 	product = product.dot(self.normal_direction)
 	return product > 0
 
