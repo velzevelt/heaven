@@ -24,9 +24,6 @@ collision_layer = 0
 collision_mask = 8
 collision_priority = 4.0
 continuous_cd = true
-max_contacts_reported = 1
-contact_monitor = true
-can_sleep = false
 script = ExtResource("1_aqs8e")
 joint = NodePath("../HingeJoint")
 fix_threshold = 0.1
@@ -40,6 +37,7 @@ shape = SubResource("ConvexPolygonShape3D_fe2dl")
 [node name="Area3D" type="Area3D" parent="PhysicsDoor"]
 collision_layer = 4
 collision_mask = 4
+priority = 2.0
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="PhysicsDoor/Area3D"]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
