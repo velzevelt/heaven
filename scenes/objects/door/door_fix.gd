@@ -15,7 +15,7 @@ var body
 
 var normal_direction: Vector3:
 	get:
-		return self.global_transform.basis.z
+		return self.transform.basis.z
 
 func _ready():
 	DebugLayer.draw.add_vector(self, 'normal_direction')
@@ -32,12 +32,9 @@ func _on_area_3d_body_exited(body):
 
 func _physics_process(delta):
 	if is_instance_valid(body):
-		if is_pushing:
-			var product = body.global_position.normalized().dot(normal_direction)
-			pass
+		product = body.transform.basis.z.normalized().dot(self.normal_direction)
+		if product > 0.0:
+			self.apply_force(Vector3(0, 0, -14), body.global_position)
+		else:
+			self.apply_force(Vector3(0, 0, 14), body.global_position)
 	
-	if Input.is_action_just_pressed("left_click"):
-		apply_central_impulse(Vector3(0, 0, -1))
-	
-	if Input.is_action_just_pressed("jump"):
-		apply_central_impulse(Vector3(0, 0, 1))
