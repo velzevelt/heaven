@@ -26,18 +26,17 @@ func _ready():
 func _on_area_3d_body_entered(body):
 	self.body = body
 
+
 func _physics_process(delta):
-	if is_instance_valid(body):
-		if self.rotation.y >= upper_limit:
-			self.set_collision_layer_value(active_layer, is_looking_at_me(body))
-		elif self.rotation.y <= lower_limit:
-			self.set_collision_layer_value(active_layer, not is_looking_at_me(body))
-		else:
-			self.set_collision_layer_value(active_layer, false)
+	if self.rotation.y >= upper_limit:
+		self.set_collision_layer_value(active_layer, is_looking_at_me(body))
+	elif self.rotation.y <= lower_limit:
+		self.set_collision_layer_value(active_layer, not is_looking_at_me(body))
 	else:
-		pass
+		self.set_collision_layer_value(active_layer, false)
+
 
 func is_looking_at_me(body: Node3D):
 	product = body.global_position.normalized().dot(self.normal_direction)
-	return product >= 0
+	return product >= 0.0
 
