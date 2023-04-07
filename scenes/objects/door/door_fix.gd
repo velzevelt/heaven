@@ -14,3 +14,7 @@ func _physics_process(_delta):
 		self.set_collision_layer_value(active_layer, true)
 	else:
 		self.set_collision_layer_value(active_layer, false)
+
+
+func _integrate_forces(state):
+	pass
