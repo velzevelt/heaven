@@ -14,21 +14,23 @@ var normal_direction: Vector3:
 
 func _ready():
 	DebugLayer.draw.add_vector(self, 'normal_direction')
+	self.body_entered.connect(_on_body_entered)
 
 
-func _physics_process(_delta):
-	if self.rotation.y > upper_limit:
-		for body in get_colliding_bodies():
-			if body is CharacterBody3D:
-				body = body as CharacterBody3D
-				var direction = -body.global_transform.basis.z
-				direction = direction.dot(self.normal_direction)
-				print(direction)
-				if direction < 0:
-					self.set_collision_layer_value(active_layer, true)
-				elif direction > 0:
-					self.set_collision_layer_value(active_layer, false)
-	
-	if self.rotation.y < lower_limit:
-		print(1)
+func _on_area_3d_body_entered(body):
+	_on_body_entered(body)
+
+func _on_body_entered(body):
+	if self.rotation.y >= upper_limit:
+		self.set_collision_layer_value(active_layer, is_looking_at_me(body))
+	elif self.rotation.y <= lower_limit:
+		self.set_collision_layer_value(active_layer, not is_looking_at_me(body))
+
+
+func is_looking_at_me(body: Node3D):
+	var product = body.global_transform.basis.z
+	product = product.dot(self.normal_direction)
+	return product > 0
+
+
 
