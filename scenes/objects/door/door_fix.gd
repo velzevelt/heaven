@@ -29,7 +29,7 @@ func _physics_process(delta):
 	if is_instance_valid(body):
 		
 		var push_direction = (self.global_position - body.global_position).normalized()
-		self.apply_central_force(push_direction * 10)
+		self.apply_central_force(push_direction * 100)
 #
 #		if product > 0.0:
 #			self.apply_central_force(Vector3(0, 0, speed)) #, body.global_position)
