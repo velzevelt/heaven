@@ -33,8 +33,10 @@ func _on_area_3d_body_exited(body):
 func _physics_process(delta):
 	if is_instance_valid(body):
 		product = body.transform.basis.z.normalized().dot(self.normal_direction)
+		var speed = body.velocity.length() + 1
+		
 		if product > 0.0:
-			self.apply_force(Vector3(0, 0, -14), body.global_position)
+			self.apply_force(Vector3(0, 0, -speed), body.global_position)
 		else:
-			self.apply_force(Vector3(0, 0, 14), body.global_position)
+			self.apply_force(Vector3(0, 0, speed), body.global_position)
 	

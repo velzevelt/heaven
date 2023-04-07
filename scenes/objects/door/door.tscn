@@ -40,7 +40,7 @@ collision_mask = 4
 priority = 2.0
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="PhysicsDoor/Area3D"]
-transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_fe2dl")
 
 [node name="DoorFrame" type="StaticBody3D" parent="."]
