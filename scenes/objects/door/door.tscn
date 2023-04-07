@@ -67,9 +67,25 @@ offset_top = -13.0
 offset_right = 72.0
 offset_bottom = 13.0
 grow_vertical = 2
-text = "rotation_degrees: "
+theme_override_font_sizes/font_size = 29
+text = "product: "
 script = ExtResource("3_ev5fk")
 target_path = NodePath("../PhysicsDoor")
-desired_property = "rotation_degrees"
+desired_property = "product"
+
+[node name="InfoLabel2" type="Label" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = 42.0
+offset_right = 75.0
+offset_bottom = 68.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 29
+text = "shit: "
+script = ExtResource("3_ev5fk")
+target_path = NodePath("../PhysicsDoor")
+desired_property = "shit"
 
 [connection signal="body_entered" from="PhysicsDoor/Area3D" to="PhysicsDoor" method="_on_area_3d_body_entered"]

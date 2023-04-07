@@ -8,30 +8,36 @@ extends RigidBody3D
 @onready var upper_limit: float = joint.get_param(HingeJoint3D.PARAM_LIMIT_UPPER) - fix_threshold
 @onready var lower_limit: float = joint.get_param(HingeJoint3D.PARAM_LIMIT_LOWER) + fix_threshold
 
+var product: float = 0.0
+var body
+
+var shit: Vector3:
+	get:
+		return Vector3(self.rotation.y, lower_limit, upper_limit)
+
 var normal_direction: Vector3:
 	get:
 		return self.global_transform.basis.z
 
 func _ready():
 	DebugLayer.draw.add_vector(self, 'normal_direction')
-	self.body_entered.connect(_on_body_entered)
 
 
 func _on_area_3d_body_entered(body):
-	_on_body_entered(body)
+	self.body = body
 
-func _on_body_entered(body):
-	if self.rotation.y >= upper_limit:
-		self.set_collision_layer_value(active_layer, is_looking_at_me(body))
-	elif self.rotation.y <= lower_limit:
-		self.set_collision_layer_value(active_layer, not is_looking_at_me(body))
+func _physics_process(delta):
+	if is_instance_valid(body):
+		if self.rotation.y >= upper_limit:
+			self.set_collision_layer_value(active_layer, is_looking_at_me(body))
+		elif self.rotation.y <= lower_limit:
+			self.set_collision_layer_value(active_layer, not is_looking_at_me(body))
+		else:
+			self.set_collision_layer_value(active_layer, false)
 	else:
-		self.set_collision_layer_value(active_layer, is_looking_at_me(body))
+		pass
 
 func is_looking_at_me(body: Node3D):
-	var product = body.global_position
-	product = product.dot(self.normal_direction)
-	return product > 0
-
-
+	product = body.global_position.normalized().dot(self.normal_direction)
+	return product >= 0
 
