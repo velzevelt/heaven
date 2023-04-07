@@ -21,7 +21,7 @@ func _ready():
 		avg_color_debug.visible = false
 	
 
-func _process(delta):
+func _physics_process(delta):
 	# It does not updates automatically
 	self.global_position = player_camera.global_position
 	self.global_rotation = player_camera.global_rotation
