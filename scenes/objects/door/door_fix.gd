@@ -3,7 +3,6 @@ extends RigidBody3D
 @export var joint: HingeJoint3D
 @export var fix_threshold: float = 0.4
 @export var active_layer: int = 4
-@export var max_force: float = 2.0
 
 @onready var upper_limit: float = joint.get_param(HingeJoint3D.PARAM_LIMIT_UPPER) - fix_threshold
 @onready var lower_limit: float = joint.get_param(HingeJoint3D.PARAM_LIMIT_LOWER) + fix_threshold
@@ -33,10 +32,11 @@ func _on_area_3d_body_exited(body):
 func _physics_process(delta):
 	if is_instance_valid(body):
 		product = body.transform.basis.z.normalized().dot(self.normal_direction)
-		var speed = body.velocity.length() + 1
+		var speed = body.velocity.length() + 10
+		print(speed)
 		
 		if product > 0.0:
-			self.apply_force(Vector3(0, 0, -speed), body.global_position)
+			self.apply_central_force(Vector3(0, 0, -speed)) #, body.global_position)
 		else:
-			self.apply_force(Vector3(0, 0, speed), body.global_position)
+			self.apply_central_force(Vector3(0, 0, speed)) #, body.global_position)
 	

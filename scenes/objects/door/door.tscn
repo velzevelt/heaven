@@ -23,7 +23,8 @@ points = PackedVector3Array(-0.05, -1.241, -0.05, -0.05, -1.241, 0.05, -0.05, 1.
 collision_layer = 8
 collision_mask = 8
 collision_priority = 4.0
-continuous_cd = true
+mass = 0.1
+can_sleep = false
 script = ExtResource("1_aqs8e")
 joint = NodePath("../HingeJoint")
 fix_threshold = 0.1
@@ -59,8 +60,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.679
 node_a = NodePath("../PhysicsDoor")
 node_b = NodePath("../DoorFrame")
 angular_limit/enable = true
-angular_limit/upper = 1.65806
-angular_limit/lower = -1.65806
 
 [node name="InfoLabel" type="Label" parent="."]
 anchors_preset = 4
