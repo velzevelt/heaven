@@ -34,14 +34,16 @@ func _process(_delta):
 			is_dragging = false
 	else:
 		if is_instance_valid(body):
-			product = normal_direction.dot(body.global_position)
-			
-			if (rotation.y > upper_limit and product > 0.0) or (rotation.y < lower_limit and product < 0.0):
-				return 
+#			product = normal_direction.dot(body.global_position)
+#			if (rotation.y > upper_limit and product > 0.0) or (rotation.y < lower_limit and product < 0.0):
+#				return 
 			
 			var push_direction = (self.global_position - body.global_position).normalized()
 			self.apply_impulse(push_direction)
 	
+
+func _integrate_forces(state):
+	pass
 
 
 func interact_begin(data):
