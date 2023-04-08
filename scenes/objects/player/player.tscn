@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://chaf5uqx5ltj2"]
+[gd_scene load_steps=18 format=3 uid="uid://chaf5uqx5ltj2"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_gwrkw"]
 [ext_resource type="Script" path="res://scenes/objects/player/camera_controller.gd" id="2_8xvxh"]
 [ext_resource type="Script" path="res://scenes/objects/player/crosshair_raycast.gd" id="3_2e6su"]
+[ext_resource type="Script" path="res://scenes/objects/player/interact_raycast.gd" id="4_esbbd"]
 [ext_resource type="Script" path="res://scenes/objects/player/crosshair.gd" id="4_gifrp"]
 [ext_resource type="Script" path="res://scenes/components/floor_activation_component.gd" id="7_mjju6"]
 [ext_resource type="Script" path="res://addons/debug_tools/info_label/info_label.gd" id="7_tu7pf"]
@@ -51,8 +52,14 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.732067)
 
 [node name="CrosshairRaycast" type="RayCast3D" parent="Head"]
+visible = false
 target_position = Vector3(0, 0, -15)
 script = ExtResource("3_2e6su")
+
+[node name="InteractRaycast" type="RayCast3D" parent="Head"]
+target_position = Vector3(0, 0, -2)
+collision_mask = 12
+script = ExtResource("4_esbbd")
 
 [node name="CenterContainer" type="CenterContainer" parent="Head"]
 anchors_preset = 15

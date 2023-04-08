@@ -30,14 +30,7 @@ func _physics_process(delta):
 		
 		var push_direction = (self.global_position - body.global_position).normalized()
 		self.apply_central_force(push_direction * 100)
-#
-#		if product > 0.0:
-#			self.apply_central_force(Vector3(0, 0, speed)) #, body.global_position)
-#		else:
-#			self.apply_central_force(Vector3(0, 0, -speed)) #, body.global_position)
-#
-#	if Input.is_action_just_pressed('left_click'):
-#		self.linear_velocity = Vector3(0, 0, 1)
-#
-#	if Input.is_action_just_pressed('right_click'):
-#		self.linear_velocity = Vector3(0, 0, -1)
+
+
+func get_logic_unit() -> DoorLogic:
+	pass

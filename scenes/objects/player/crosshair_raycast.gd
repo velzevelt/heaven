@@ -22,20 +22,3 @@ func _physics_process(_delta):
 		_active_collider = collider
 	else:
 		Events.player_target_losted.emit(_old_crosshair)
-	
-#	if is_colliding() and not _spotted:
-#		_spotted = true
-#		var collider = get_collider()
-#		if collider.has_node("OverridePlayerCrosshair"):
-#			var new_crosshair = collider.get_node("OverridePlayerCrosshair")
-#			Events.player_target_spotted.emit(new_crosshair)
-#		elif collider.get_parent().has_node("OverridePlayerCrosshair"):
-#			var new_crosshair = collider.get_parent().get_node("OverridePlayerCrosshair")
-#			Events.player_target_spotted.emit(new_crosshair)
-#		else:
-#			Events.player_target_spotted.emit(_old_crosshair)
-#	if not is_colliding() and _spotted:
-#		_spotted = false
-#		Events.player_target_losted.emit(_old_crosshair)
-
-
