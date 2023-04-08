@@ -23,18 +23,18 @@ func _on_area_3d_body_exited(body):
 func _physics_process(_delta):
 	if is_dragging:
 		if Input.is_action_pressed('interact'):
-			push_door(raycast_data.player, 2, true)
+			push_door(raycast_data.player.global_position, 2, true)
 		
 		if Input.is_action_just_released('interact') or raycast_data.from.target_position.length() < (self.global_position - raycast_data.player.global_position).length():
 			is_dragging = false
 	else:
 		if is_instance_valid(body):
-			push_door(self.body, self.body.velocity.length() + 1)
+			push_door(self.global_position - self.body.global_position, self.body.velocity.length() + 1)
 
 
-func push_door(body, push_force=1, opposite_direction=false):
+func push_door(push_position, push_force=1, opposite_direction=false):
 	if is_instance_valid(body):
-		var push_direction = (self.global_position - body.global_position).normalized()
+		var push_direction = push_position.normalized()
 		if opposite_direction:
 			push_direction = -push_direction
 		self.linear_velocity = push_direction * push_force
