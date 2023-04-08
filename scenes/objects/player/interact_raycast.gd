@@ -1,6 +1,7 @@
 extends RayCast3D
 
 @export var player: Player
+@onready var data: RayCastData = RayCastData.new(self, self.player)
 
 var interactable_object = null
 
@@ -10,7 +11,7 @@ func _physics_process(_delta):
 		if not is_instance_valid(interactable_object):
 			if collider.has_method('interact_begin'):
 				interactable_object = collider
-				interactable_object.interact_begin(RayCastData.new(self, self.player))
+				interactable_object.interact_begin(data)
 		else:
 			if interactable_object.has_method('interact_process'):
 				interactable_object.interact_process()

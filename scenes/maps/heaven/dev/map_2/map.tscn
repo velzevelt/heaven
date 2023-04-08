@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="1_q1mjs"]
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_q7kco"]
 [ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material_orange.tres" id="2_yo2dg"]
-[ext_resource type="PackedScene" uid="uid://ci56u4m6pvss1" path="res://scenes/objects/door/door.tscn" id="5_tn3bt"]
+[ext_resource type="PackedScene" uid="uid://wbd0ynecsosi" path="res://scenes/objects/door/door.tscn" id="5_tn3bt"]
 
 [sub_resource type="Environment" id="Environment_02f0l"]
 ambient_light_source = 2

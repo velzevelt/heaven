@@ -26,3 +26,5 @@ func _physics_process(delta):
 		self.apply_central_force(push_direction * 100)
 
 
+func interact_begin(data):
+	pass

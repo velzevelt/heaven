@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bm3pxicdnscc1"]
+[gd_scene load_steps=8 format=3 uid="uid://wbd0ynecsosi"]
 
 [ext_resource type="Script" path="res://scenes/objects/door/door.gd" id="1_s877w"]
 [ext_resource type="Material" uid="uid://bm6134mi4goc8" path="res://textures/prototype_material_green.tres" id="1_sa73t"]
