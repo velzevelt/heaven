@@ -24,6 +24,7 @@ var is_dark: bool:
 			else:
 				darkness_exited.emit()
 
+var tween: Tween
 
 func _ready():
 	if not OS.is_debug_build() and is_instance_valid(average_color_debug):
@@ -36,14 +37,17 @@ func _ready():
 
 
 func _on_darkness_entered():
-	var tween = create_tween()
+	tween = create_tween()
 	tween.tween_interval(2.0)
 	tween.set_ease(Tween.EASE_IN)
 	tween.tween_property(player_light, 'light_energy', 1.0, 2.0)
 
 
 func _on_darkness_exited():
-	var tween = create_tween()
+	if tween:
+		tween.kill()
+	
+	tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property(player_light, 'light_energy', 0.0, 0.3)
 

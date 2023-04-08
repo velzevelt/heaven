@@ -9,9 +9,6 @@ var normal_direction: Vector3:
 	get:
 		return self.transform.basis.z
 
-#func _ready():
-#	DebugLayer.draw.add_vector(self, 'global_position')
-
 
 func _on_area_3d_body_entered(body):
 	self.body = body
@@ -26,5 +23,13 @@ func _physics_process(delta):
 		self.apply_central_force(push_direction * 100)
 
 
+
 func interact_begin(data):
+	print(data.player)
+	self.body = data.player
+
+func interact_process():
 	pass
+
+func interact_end():
+	self.body = null
