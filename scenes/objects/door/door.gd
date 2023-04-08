@@ -48,9 +48,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D):
 	
 	
 	if (rotation.y > upper_limit and product > 0.0) or (rotation.y < lower_limit and product < 0.0):
-		var delta = get_physics_process_delta_time()
-		linear_velocity = linear_velocity.move_toward(Vector3.ZERO, 10 * delta)
-		angular_velocity = angular_velocity.move_toward(Vector3.ZERO, 10 * delta)
+		linear_velocity = Vector3.ZERO
 
 
 func interact_begin(data):
