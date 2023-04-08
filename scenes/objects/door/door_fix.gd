@@ -7,7 +7,6 @@ extends RigidBody3D
 @onready var upper_limit: float = joint.get_param(HingeJoint3D.PARAM_LIMIT_UPPER) - fix_threshold
 @onready var lower_limit: float = joint.get_param(HingeJoint3D.PARAM_LIMIT_LOWER) + fix_threshold
 
-var product: float = 0.0
 var body
 
 var normal_direction: Vector3:
@@ -27,10 +26,7 @@ func _on_area_3d_body_exited(body):
 
 func _physics_process(delta):
 	if is_instance_valid(body):
-		
 		var push_direction = (self.global_position - body.global_position).normalized()
 		self.apply_central_force(push_direction * 100)
 
 
-func get_logic_unit() -> DoorLogic:
-	pass

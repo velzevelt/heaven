@@ -26,8 +26,6 @@ collision_priority = 4.0
 can_sleep = false
 script = ExtResource("1_aqs8e")
 joint = NodePath("../HingeJoint")
-fix_threshold = null
-active_layer = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PhysicsDoor"]
 mesh = SubResource("BoxMesh_0dfmj")

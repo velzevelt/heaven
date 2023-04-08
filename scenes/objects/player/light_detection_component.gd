@@ -1,25 +1,52 @@
 extends Node3D
 
+signal darkness_entered
+signal darkness_exited
+
 @export var player_camera: Camera3D
 @export var sub_viewport: SubViewport
-@export var avg_color_debug: ColorRect
+@export var average_color_debug: ColorRect
 @export var dark_threshold: float = 0.001
-@export var update_tick: float = 0.1
 @export var player_light: OmniLight3D
 
-@export var debug_is_dark: bool:
-	get:
-		return is_in_darkness()
-
-
 @onready var viewport_camera = sub_viewport.get_camera_3d()
+
 var light_level: float = 0.0
+
+var is_dark: bool:
+	get:
+		return is_dark
+	set(value):
+		if value != is_dark:
+			is_dark = value
+			if is_dark: 
+				darkness_entered.emit()
+			else:
+				darkness_exited.emit()
 
 
 func _ready():
-	if not OS.is_debug_build():
-		avg_color_debug.visible = false
+	if not OS.is_debug_build() and is_instance_valid(average_color_debug):
+		average_color_debug.visible = false
 	
+	darkness_entered.connect(_on_darkness_entered)
+	darkness_exited.connect(_on_darkness_exited)
+	
+	darkness_exited.emit() # disable light by default
+
+
+func _on_darkness_entered():
+	var tween = create_tween()
+	tween.tween_interval(2.0)
+	tween.set_ease(Tween.EASE_IN)
+	tween.tween_property(player_light, 'light_energy', 1.0, 2.0)
+
+
+func _on_darkness_exited():
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(player_light, 'light_energy', 0.0, 0.3)
+
 
 func _physics_process(delta):
 	# It does not updates automatically
@@ -32,20 +59,13 @@ func _physics_process(delta):
 		texture.get_image().save_png('res://tmp/test.png')
 	
 	get_light_level()
-	var tween = create_tween()
-	if is_in_darkness():
-		var new_energy = 1.0 - light_level
-		tween.set_ease(Tween.EASE_IN)
-		tween.tween_property(player_light, 'light_energy', new_energy, 2.0)
-	else:
-		tween.set_ease(Tween.EASE_OUT)
-		tween.tween_property(player_light, 'light_energy', 0.0, 0.3)
+	self.is_dark = is_in_darkness()
 
 
 func get_light_level():
 	var texture = sub_viewport.get_texture()
-	var avg_color = get_average_color(texture)
-	light_level = avg_color.get_luminance()
+	var average_color = get_average_color(texture)
+	light_level = average_color.get_luminance()
 
 
 func get_average_color(texture: ViewportTexture) -> Color:
