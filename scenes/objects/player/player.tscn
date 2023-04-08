@@ -196,9 +196,9 @@ script = ExtResource("13_6lpoc")
 player_camera = NodePath("../../Head/Camera3D")
 sub_viewport = NodePath("..")
 dark_threshold = 0.04
-player_light = NodePath("../../OmniLight3D")
+player_light = NodePath("../../PlayerNightVision")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="PlayerNightVision" type="OmniLight3D" parent="."]
 layers = 2
 light_color = Color(0.290196, 0.27451, 0.729412, 1)
 

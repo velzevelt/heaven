@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://ci56u4m6pvss1"]
+[gd_scene load_steps=8 format=3 uid="uid://bm3pxicdnscc1"]
 
-[ext_resource type="Script" path="res://scenes/objects/door/door_fix.gd" id="1_aqs8e"]
+[ext_resource type="Script" path="res://scenes/objects/door/door.gd" id="1_s877w"]
 [ext_resource type="Material" uid="uid://bm6134mi4goc8" path="res://textures/prototype_material_green.tres" id="1_sa73t"]
 [ext_resource type="Script" path="res://addons/debug_tools/info_label/info_label.gd" id="3_ev5fk"]
 
@@ -19,13 +19,12 @@ points = PackedVector3Array(-0.05, -1.241, -0.05, -0.05, -1.241, 0.05, -0.05, 1.
 
 [node name="Door" type="Node3D" groups=["door"]]
 
-[node name="PhysicsDoor" type="RigidBody3D" parent="." node_paths=PackedStringArray("joint") groups=["door"]]
+[node name="PhysicsDoor" type="RigidBody3D" parent="." groups=["door"]]
 collision_layer = 8
 collision_mask = 8
 collision_priority = 4.0
 can_sleep = false
-script = ExtResource("1_aqs8e")
-joint = NodePath("../HingeJoint")
+script = ExtResource("1_s877w")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PhysicsDoor"]
 mesh = SubResource("BoxMesh_0dfmj")
