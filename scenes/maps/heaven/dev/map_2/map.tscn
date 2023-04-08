@@ -78,6 +78,17 @@ shadow_enabled = true
 distance_fade_enabled = true
 omni_range = 3.9738
 
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.34439, 0, -4.58921)
+light_energy = 1.162
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+light_bake_mode = 0
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 3.9738
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_02f0l")
 
