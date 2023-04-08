@@ -18,24 +18,28 @@ func _on_area_3d_body_exited(body):
 	self.body = null
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	push_door(self.body)
 
 
 func push_door(body, push_force=100, opposite_direction=false):
 	if is_instance_valid(body):
 		var push_direction = (self.global_position - body.global_position).normalized()
+		#push_direction = push_direction.normalized()
 		if opposite_direction:
 			push_direction = -push_direction
-		self.apply_central_force(push_direction * push_force)
+		
+		self.linear_velocity = push_direction
+#		self.apply_central_force(push_direction * (body.velocity.length() + 2))
 
 
 func interact_begin(data):
 	raycast_data = data
 
 func interact_process():
-	if Input.is_action_pressed('interact') and not is_instance_valid(self.body):
-		push_door(raycast_data.player, 2, true)
+	pass
+#	if Input.is_action_pressed('interact') and not is_instance_valid(self.body):
+#		push_door(raycast_data.player, 2, true)
 	
 
 func interact_end():
