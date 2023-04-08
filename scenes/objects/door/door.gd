@@ -10,7 +10,7 @@ extends RigidBody3D
 var body: PhysicsBody3D
 var raycast_data
 var is_dragging := false
-var product: float
+var product: float = 0.0
 
 var normal_direction: Vector3:
 	get:
@@ -42,8 +42,15 @@ func _process(_delta):
 			self.apply_impulse(push_direction)
 	
 
-func _integrate_forces(state):
-	pass
+func _integrate_forces(state: PhysicsDirectBodyState3D):
+	if is_instance_valid(body):
+		product = normal_direction.dot(body.global_position)
+	
+	
+	if (rotation.y > upper_limit and product > 0.0) or (rotation.y < lower_limit and product < 0.0):
+		var delta = get_physics_process_delta_time()
+		linear_velocity = linear_velocity.move_toward(Vector3.ZERO, 10 * delta)
+		angular_velocity = angular_velocity.move_toward(Vector3.ZERO, 10 * delta)
 
 
 func interact_begin(data):

@@ -26,6 +26,7 @@ collision_priority = 4.0
 custom_integrator = true
 script = ExtResource("1_s877w")
 joint = NodePath("../HingeJoint")
+fix_threshold = 0.1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PhysicsDoor"]
 mesh = SubResource("BoxMesh_0dfmj")
