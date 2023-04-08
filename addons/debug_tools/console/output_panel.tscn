@@ -18,5 +18,6 @@ theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "awdawdawd"
 scroll_following = true
+threaded = true
 selection_enabled = true
 script = ExtResource("1_4pybw")
