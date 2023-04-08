@@ -33,7 +33,7 @@ func _ready():
 	darkness_entered.connect(_on_darkness_entered)
 	darkness_exited.connect(_on_darkness_exited)
 	
-	darkness_exited.emit() # disable light by default
+	player_light.light_energy = 0.0 # disable light by default
 
 
 func _on_darkness_entered():
@@ -58,12 +58,14 @@ func _physics_process(delta):
 	self.global_rotation = player_camera.global_rotation
 	self.viewport_camera.fov = player_camera.fov
 	
-	if Input.is_action_just_pressed("hook"):
-		var texture = sub_viewport.get_texture()
-		texture.get_image().save_png('res://tmp/test.png')
-	
 	get_light_level()
 	self.is_dark = is_in_darkness()
+	
+	if OS.is_debug_build():
+		# Debugging lighting texture
+		if Input.is_action_just_pressed("hook"):
+			var texture = sub_viewport.get_texture()
+			texture.get_image().save_png('res://tmp/lighting.png')
 
 
 func get_light_level():

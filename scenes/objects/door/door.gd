@@ -18,18 +18,20 @@ func _on_area_3d_body_exited(body):
 
 
 func _physics_process(delta):
+	push_door(self.body)
+
+
+func push_door(body):
 	if is_instance_valid(body):
 		var push_direction = (self.global_position - body.global_position).normalized()
 		self.apply_central_force(push_direction * 100)
 
 
-
 func interact_begin(data):
-	print(data.player)
-	self.body = data.player
+	pass
 
 func interact_process():
 	pass
 
 func interact_end():
-	self.body = null
+	pass
