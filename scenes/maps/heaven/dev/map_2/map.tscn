@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://gv2ckk344gs1"]
+[gd_scene load_steps=6 format=3 uid="uid://gv2ckk344gs1"]
 
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="1_q1mjs"]
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_q7kco"]
 [ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material_orange.tres" id="2_yo2dg"]
-[ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="5_n3tgc"]
 [ext_resource type="PackedScene" uid="uid://wbd0ynecsosi" path="res://scenes/objects/door/door.tscn" id="5_tn3bt"]
 
 [sub_resource type="Environment" id="Environment_02f0l"]
@@ -86,6 +85,3 @@ environment = SubResource("Environment_02f0l")
 
 [node name="Door" parent="." instance=ExtResource("5_tn3bt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.778444, -0.411662, -1.9303)
-
-[node name="DirectionalLight3D" parent="." instance=ExtResource("5_n3tgc")]
-transform = Transform3D(1, 0, 0, 0, -0.989157, 0.14686, 0, -0.14686, -0.989157, -12.9122, 8.22106, 9.95039)
