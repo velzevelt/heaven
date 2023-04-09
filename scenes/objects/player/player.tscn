@@ -58,7 +58,7 @@ script = ExtResource("3_2e6su")
 
 [node name="InteractMarker" type="Marker3D" parent="Head"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.887605)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.33146)
 
 [node name="InteractRaycast" type="RayCast3D" parent="Head" node_paths=PackedStringArray("player", "marker")]
 target_position = Vector3(0, 0, -2)
@@ -158,10 +158,10 @@ desired_property = "global_position"
 [node name="InfoLabel7" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "hit_point: "
+text = "current_floor: "
 script = ExtResource("7_tu7pf")
-target_path = NodePath("")
-desired_property = "hit_point"
+target_path = NodePath("../../FloorActivationComponent")
+desired_property = "current_floor"
 
 [node name="InfoLabel8" type="Label" parent="VBoxContainer"]
 layout_mode = 2

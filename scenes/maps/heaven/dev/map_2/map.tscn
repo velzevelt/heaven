@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://gv2ckk344gs1"]
+[gd_scene load_steps=9 format=3 uid="uid://gv2ckk344gs1"]
 
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="1_q1mjs"]
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_q7kco"]
 [ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material_orange.tres" id="2_yo2dg"]
+[ext_resource type="Script" path="res://scenes/components/prop.gd" id="5_bdfbj"]
 [ext_resource type="PackedScene" uid="uid://wbd0ynecsosi" path="res://scenes/objects/door/door.tscn" id="5_tn3bt"]
 
 [sub_resource type="Environment" id="Environment_02f0l"]
@@ -12,6 +13,10 @@ glow_normalized = true
 fog_light_color = Color(0.113725, 0.12549, 0.14902, 1)
 adjustment_enabled = true
 adjustment_contrast = 1.17
+
+[sub_resource type="BoxMesh" id="BoxMesh_kn5tu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6gddd"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_q7kco")
@@ -96,3 +101,15 @@ environment = SubResource("Environment_02f0l")
 
 [node name="Door" parent="." instance=ExtResource("5_tn3bt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.778444, -0.411662, -1.9303)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.00507, 0, -4.06582)
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("5_bdfbj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("BoxMesh_kn5tu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_6gddd")

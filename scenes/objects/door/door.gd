@@ -24,7 +24,7 @@ func _on_area_3d_body_exited(body):
 	self.body = null
 
 
-func _process(_delta):
+func _physics_process(_delta):
 	if is_dragging:
 		if Input.is_action_just_released('interact') or raycast_data.from.target_position.length() < (self.global_position - raycast_data.player.global_position).length():
 			is_dragging = false

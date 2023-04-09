@@ -174,3 +174,10 @@ hook={
 "deadzone": 0.5,
 "events": []
 }
+
+[layer_names]
+
+3d_physics/layer_1="level"
+3d_physics/layer_2="prop"
+3d_physics/layer_3="items"
+3d_physics/layer_4="doors"
