@@ -46,7 +46,7 @@ func _ready():
 
 
 func _update_wish_dir():
-	if can_move:
+	if can_move and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		var forward_input: float = Input.get_action_strength(backward_action) - Input.get_action_strength(forward_action)
 		var strafe_input: float = Input.get_action_strength(right_action) - Input.get_action_strength(left_action)
 		wish_dir = Vector3(strafe_input, 0, forward_input).rotated(Vector3.UP, player_body.global_transform.basis.get_euler().y).normalized()

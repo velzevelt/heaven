@@ -7,6 +7,7 @@ extends RayCast3D
 
 var interactable_object = null
 
+
 func _physics_process(_delta):
 	if is_colliding():
 		var collider = get_collider()

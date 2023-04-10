@@ -3,6 +3,7 @@ extends RigidBody3D
 signal object_entered_strict(object)
 signal object_exited(object)
 
+
 var body: PhysicsBody3D
 var raycast_data
 var is_dragging := false
@@ -12,6 +13,10 @@ var pull_force := 10
 var can_drag := true
 
 func _ready():
+#	if not is_instance_valid(interact_point):
+#		interact_point = self
+#		Logger.debug_log('Prop %s does not have interact_point, using center of mass instead' % self.name, MESSAGE_TYPE.WARNING)
+	
 	object_entered_strict.connect(_on_object_entered)
 	object_exited.connect(_on_object_exited)
 
