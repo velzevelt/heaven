@@ -1,8 +1,9 @@
 extends RayCast3D
 
 @export var player: Player
-@export var marker: Marker3D
-@onready var data: RayCastData = RayCastData.new(self, self.player, self.marker)
+@export var door_marker: Marker3D
+@export var prop_marker: Marker3D
+@onready var data: RayCastData = RayCastData.new(self, self.player, self.door_marker, self.prop_marker)
 
 
 var interactable_object = null
@@ -30,10 +31,12 @@ func _physics_process(_delta):
 class RayCastData:
 	var from: RayCast3D
 	var player: Player
-	var marker: Marker3D
+	var door_marker: Marker3D
+	var prop_marker: Marker3D
 	
 	@warning_ignore("shadowed_variable")
-	func _init(from, player, marker):
+	func _init(from, player, door_marker, prop_marker):
 		self.from = from
 		self.player = player
-		self.marker = marker
+		self.door_marker = door_marker
+		self.prop_marker = prop_marker

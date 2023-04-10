@@ -12,6 +12,7 @@ var pull_force := 10
 
 var can_drag := true
 
+
 func _ready():
 #	if not is_instance_valid(interact_point):
 #		interact_point = self
@@ -36,12 +37,12 @@ func _physics_process(_delta):
 			return
 		
 		if Input.is_action_just_pressed('right_click'):
-			apply_impulse(-raycast_data.marker.global_transform.basis.z * push_force)
+			apply_impulse(-raycast_data.prop_marker.global_transform.basis.z * push_force)
 			is_dragging = false
 			return
 		
 		if Input.is_action_pressed('interact'):
-			linear_velocity = (raycast_data.marker.global_position - global_position) * pull_force
+			linear_velocity = (raycast_data.prop_marker.global_position - global_position) * pull_force
 		
 
 

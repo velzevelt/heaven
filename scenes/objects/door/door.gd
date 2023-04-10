@@ -31,7 +31,7 @@ func _physics_process(_delta):
 		
 		if Input.is_action_pressed('interact'):
 			product = -normal_direction.dot(raycast_data.player.global_position)
-			linear_velocity = (raycast_data.marker.global_position - global_position).normalized() * 2
+			linear_velocity = (raycast_data.door_marker.global_position - global_position).normalized() * 2
 		
 	else:
 		if is_instance_valid(body):

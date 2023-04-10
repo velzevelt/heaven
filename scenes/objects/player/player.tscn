@@ -56,16 +56,21 @@ visible = false
 target_position = Vector3(0, 0, -15)
 script = ExtResource("3_2e6su")
 
-[node name="InteractMarker" type="Marker3D" parent="Head"]
+[node name="DoorMarker" type="Marker3D" parent="Head"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
 
-[node name="InteractRaycast" type="RayCast3D" parent="Head" node_paths=PackedStringArray("player", "marker")]
+[node name="PropMarker" type="Marker3D" parent="Head"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.75)
+
+[node name="InteractRaycast" type="RayCast3D" parent="Head" node_paths=PackedStringArray("player", "door_marker", "prop_marker")]
 target_position = Vector3(0, 0, -2)
 collision_mask = 12
 script = ExtResource("4_esbbd")
 player = NodePath("../..")
-marker = NodePath("../InteractMarker")
+door_marker = NodePath("../DoorMarker")
+prop_marker = NodePath("../PropMarker")
 
 [node name="CenterContainer" type="CenterContainer" parent="Head"]
 anchors_preset = 15
