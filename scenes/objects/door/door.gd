@@ -17,9 +17,11 @@ var normal_direction: Vector3:
 		return self.transform.basis.z
 
 
+@warning_ignore("shadowed_variable")
 func _on_area_3d_body_entered(body):
 	self.body = body
 
+@warning_ignore("shadowed_variable")
 func _on_area_3d_body_exited(body):
 	self.body = null
 
@@ -39,7 +41,7 @@ func _physics_process(_delta):
 			self.apply_impulse(push_direction)
 	
 
-func _integrate_forces(state: PhysicsDirectBodyState3D):
+func _integrate_forces(_state: PhysicsDirectBodyState3D):
 	if is_instance_valid(body):
 		product = normal_direction.dot(body.global_position)
 	

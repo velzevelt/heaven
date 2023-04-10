@@ -52,7 +52,7 @@ func _on_darkness_exited():
 	tween.tween_property(player_light, 'light_energy', 0.0, 0.3)
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# It does not updates automatically
 	self.global_position = player_camera.global_position
 	self.global_rotation = player_camera.global_rotation
@@ -80,5 +80,6 @@ func get_average_color(texture: ViewportTexture) -> Color:
 	return image.get_pixel(0, 0)
 
 
+@warning_ignore("shadowed_variable")
 func is_in_darkness(dark_threshold=self.dark_threshold):
 	return light_level < dark_threshold

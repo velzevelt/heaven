@@ -118,6 +118,7 @@ func apply_friction(input_velocity: Vector3, delta: float, friction: float) -> V
 	return scaled_velocity
 
 
+@warning_ignore("shadowed_variable")
 func accelerate(wish_dir: Vector3, input_velocity: Vector3, accel: float, max_speed: float, delta: float) -> Vector3:
 	# Current speed is calculated by projecting our velocity onto wish_dir.
 	# We can thus manipulate our wish_dir to trick the engine into thinking we're going slower than we actually are, allowing us to accelerate further.
@@ -134,6 +135,7 @@ func accelerate(wish_dir: Vector3, input_velocity: Vector3, accel: float, max_sp
 
 
 # Apply friction, then accelerate
+@warning_ignore("shadowed_variable")
 func move_ground(wish_dir: Vector3, input_velocity: Vector3, delta: float)-> void:
 	# We first work on only on the horizontal components of our current velocity
 	var next_velocity: Vector3 = Vector3.ZERO
@@ -157,6 +159,7 @@ func move_ground(wish_dir: Vector3, input_velocity: Vector3, delta: float)-> voi
 
 
 # Accelerate without applying friction (with a lower allowed max_speed)
+@warning_ignore("shadowed_variable")
 func move_air(wish_dir: Vector3, input_velocity: Vector3, delta: float) -> void:
 	# We first work on only on the horizontal components of our current velocity
 	var next_velocity: Vector3 = Vector3.ZERO
