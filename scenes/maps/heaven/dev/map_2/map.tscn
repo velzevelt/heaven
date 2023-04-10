@@ -1,22 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://gv2ckk344gs1"]
+[gd_scene load_steps=6 format=3 uid="uid://gv2ckk344gs1"]
 
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="1_q1mjs"]
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_q7kco"]
 [ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material_orange.tres" id="2_yo2dg"]
-[ext_resource type="Script" path="res://scenes/components/prop.gd" id="5_bdfbj"]
-[ext_resource type="PackedScene" uid="uid://wbd0ynecsosi" path="res://scenes/objects/door/door.tscn" id="5_tn3bt"]
+[ext_resource type="PackedScene" uid="uid://dnbtlnnkgj0h0" path="res://scenes/objects/room/room.tscn" id="3_pkkgi"]
 
 [sub_resource type="Environment" id="Environment_02f0l"]
-ambient_light_source = 2
-glow_enabled = true
+ambient_light_source = 1
+ambient_light_energy = 0.1
 glow_normalized = true
+fog_enabled = true
 fog_light_color = Color(0.113725, 0.12549, 0.14902, 1)
-adjustment_enabled = true
 adjustment_contrast = 1.17
-
-[sub_resource type="BoxMesh" id="BoxMesh_kn5tu"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6gddd"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_q7kco")
@@ -28,27 +23,39 @@ use_collision = true
 size = Vector3(41.3825, 4, 4)
 material = ExtResource("2_yo2dg")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Geometry/CSGBox3D"]
-operation = 2
-size = Vector3(3.6, 3.6, 3.6)
-material = ExtResource("2_yo2dg")
+[node name="Room" parent="Geometry/CSGBox3D" instance=ExtResource("3_pkkgi")]
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Geometry/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.711859, -0.445015, -1.63313)
-operation = 2
-size = Vector3(1.29335, 2.53876, 1.83235)
-material = ExtResource("2_yo2dg")
+[node name="SpotLight3D" parent="Geometry/CSGBox3D/Room" index="3"]
+light_energy = 3.019
+
+[node name="Room2" parent="Geometry/CSGBox3D" instance=ExtResource("3_pkkgi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+
+[node name="Room3" parent="Geometry/CSGBox3D" instance=ExtResource("3_pkkgi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
+[node name="Room4" parent="Geometry/CSGBox3D" instance=ExtResource("3_pkkgi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
+
+[node name="Room6" parent="Geometry/CSGBox3D" instance=ExtResource("3_pkkgi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
+
+[node name="Room7" parent="Geometry/CSGBox3D" instance=ExtResource("3_pkkgi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="Room8" parent="Geometry/CSGBox3D" instance=ExtResource("3_pkkgi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.98786)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.07881)
 use_collision = true
 size = Vector3(41.3825, 4, 4)
 material = ExtResource("2_yo2dg")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86832, -3.99358)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86832, -3.48437)
 use_collision = true
-size = Vector3(41.1825, 0.191538, 4)
+size = Vector3(40.988, 0.2, 3)
 material = ExtResource("2_yo2dg")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Geometry"]
@@ -58,62 +65,27 @@ size = Vector3(41.1825, 0.191538, 4)
 material = ExtResource("2_yo2dg")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 20.4712, 0.174354, -3.99358)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 20.4644, 0.174354, -3.99358)
 use_collision = true
 size = Vector3(4.55523, 0.191538, 4)
 material = ExtResource("2_yo2dg")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -20.3972, 0.174354, -3.99358)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -20.5718, 0.174354, -3.99358)
 use_collision = true
 size = Vector3(4.55523, 0.191538, 4)
 material = ExtResource("2_yo2dg")
 
 [node name="Lights" type="Node3D" parent="."]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1239, 0, -4.58921)
 shadow_enabled = true
 distance_fade_enabled = true
-omni_range = 3.02078
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.62131, 0, -4.58921)
-light_energy = 1.162
-light_indirect_energy = 0.0
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-light_bake_mode = 0
-shadow_enabled = true
-distance_fade_enabled = true
-omni_range = 3.9738
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.34439, 0, -4.58921)
-light_energy = 1.162
-light_indirect_energy = 0.0
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-light_bake_mode = 0
-shadow_enabled = true
-distance_fade_enabled = true
-omni_range = 3.9738
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_02f0l")
 
 [node name="Player" parent="." instance=ExtResource("1_q1mjs")]
 
-[node name="Door" parent="." instance=ExtResource("5_tn3bt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.778444, -0.411662, -1.9303)
-
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.00507, 0, -4.06582)
-collision_layer = 4
-collision_mask = 13
-script = ExtResource("5_bdfbj")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
-mesh = SubResource("BoxMesh_kn5tu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-shape = SubResource("BoxShape3D_6gddd")
+[editable path="Geometry/CSGBox3D/Room"]

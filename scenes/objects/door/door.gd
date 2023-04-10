@@ -1,5 +1,13 @@
 extends RigidBody3D
 
+@export var closed := false:
+	set(value):
+		closed = value
+		freeze = closed
+	get:
+		freeze = closed
+		return closed
+
 @export var joint: HingeJoint3D
 @export var fix_threshold: float = 0.4
 @export var active_layer: int = 4
@@ -26,7 +34,13 @@ func _on_area_3d_body_exited(body):
 	self.body = null
 
 
+func _ready():
+	freeze = closed
+
 func _physics_process(_delta):
+	if closed:
+		return
+	
 	if is_dragging:
 		if Input.is_action_just_released('interact') or raycast_data.from.target_position.length() < (self.global_position - raycast_data.player.global_position).length():
 			is_dragging = false

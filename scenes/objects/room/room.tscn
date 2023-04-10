@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnbtlnnkgj0h0"]
+
+[ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material_orange.tres" id="1_7tdir"]
+[ext_resource type="PackedScene" uid="uid://wbd0ynecsosi" path="res://scenes/objects/door/door.tscn" id="2_g5iqa"]
+
+[node name="Room" type="CSGCombiner3D"]
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+size = Vector3(3.6, 3.6, 3.6)
+material = ExtResource("1_7tdir")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.711859, -0.445015, -1.63313)
+size = Vector3(1.29335, 2.53876, 1.83235)
+material = ExtResource("1_7tdir")
+
+[node name="Door" parent="." instance=ExtResource("2_g5iqa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.778444, -0.411662, -1.9303)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.973906, 0)
+light_energy = 0.0
+shadow_enabled = true
+spot_range = 3.39462
+spot_angle = 45.2179

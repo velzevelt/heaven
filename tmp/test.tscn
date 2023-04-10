@@ -10,11 +10,11 @@
 background_mode = 1
 ambient_light_source = 1
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_urbcf"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_kfua6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5o16f"]
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_urbcf")
+albedo_texture = SubResource("ViewportTexture_kfua6")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lt7mx"]
 material = SubResource("StandardMaterial3D_5o16f")
