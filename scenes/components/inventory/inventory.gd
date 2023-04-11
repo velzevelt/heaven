@@ -73,8 +73,10 @@ class Slot:
 			
 			return in_stack >= item.max_stack_size
 	
+	
 	func use_item():
 		pass
+	
 	
 	func throw_away_item():
 		pass

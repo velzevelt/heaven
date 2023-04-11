@@ -4,6 +4,7 @@ extends Node
 signal item_added(item)
 signal inventory_overflowed
 
+@export var inventory_menu: PackedScene # preload(...)
 @export var inventory_res: Inventory = Inventory.new()
 
 
@@ -22,4 +23,4 @@ func _on_object_picked_up(object):
 			OK:
 				item_added.emit(object.item)
 	else:
-		Logger.debug_log('Failed to add item on %s, make sure that it has item resource' % object.name, MESSAGE_TYPE.WARNING)
+		Logger.debug_log('Failed to add_item on %s, make sure that it has item resource if it was not intended' % object.name, MESSAGE_TYPE.WARNING)
