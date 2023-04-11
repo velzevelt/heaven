@@ -1,6 +1,7 @@
 class_name InventoryNode
 extends Node
 
+signal inventory_changed(new_inventory)
 signal item_added(item)
 signal inventory_overflowed
 
@@ -34,6 +35,7 @@ func _on_object_picked_up(object):
 				inventory_overflowed.emit()
 			OK:
 				item_added.emit(object.item)
+				inventory_changed.emit(inventory_res)
 	else:
 		Logger.debug_log('Failed to add_item on %s, make sure that it has item resource if it was not intended' % object.name, MESSAGE_TYPE.WARNING)
 
