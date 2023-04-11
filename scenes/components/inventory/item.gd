@@ -21,13 +21,3 @@ var item_node
 
 @export var is_consumable := false
 @export var is_equippable := false
-
-
-func instantiate_item():
-	if packed_item is PackedScene:
-		var res = packed_item.instantiate()
-		item_node = res
-		return res
-	else:
-		Logger.debug_log('Missing packed_item %s' % resource_name, MESSAGE_TYPE.ERROR)
-		return null
