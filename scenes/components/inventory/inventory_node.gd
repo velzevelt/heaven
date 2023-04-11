@@ -14,21 +14,19 @@ var _inventory_menu_instance
 func _ready():
 	Events.object_picked_up.connect(_on_object_picked_up)
 	
-	for i in 1:
-		inventory_res.add_item(test_item)
-	
+
+func _debug_slot_data():
 	for slot in inventory_res.slots:
 		if slot.item:
 			print([slot.in_stack, slot.item.max_stack_size, slot.is_full, slot.item.name])
 		else:
 			print('null')
 
-
 func _on_object_picked_up(object):
 	if object.get('item') != null:
 		var error = inventory_res.add_item(object.item)
 		match error:
-			Inventory.ERR_HAVE_NO_SPACE:
+			Inventory.ERR_HAVE_NO_SPACE, Inventory.ERR_ADD_INCOMPLETE:
 				inventory_overflowed.emit()
 			ERR_BUG:
 				Logger.debug_log('Unknown error in inventory occured', MESSAGE_TYPE.ERROR)
