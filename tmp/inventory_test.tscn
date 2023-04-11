@@ -17,7 +17,7 @@ name = "test"
 icon = ExtResource("3_tt1yn")
 is_consumable = false
 is_equippable = false
-max_stack_size = 2
+max_stack_size = 1
 
 [node name="Node3D" type="Node3D"]
 
