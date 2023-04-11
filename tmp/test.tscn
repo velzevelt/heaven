@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://2sgyl3seaxw8"]
+[gd_scene load_steps=12 format=3 uid="uid://2sgyl3seaxw8"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_6066y"]
 [ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material_orange.tres" id="1_fvsls"]
@@ -6,15 +6,21 @@
 [ext_resource type="Script" path="res://tmp/portal_mesh.gd" id="3_2henp"]
 [ext_resource type="Script" path="res://tmp/cum.gd" id="5_rhlj4"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2ksx3"]
+
+[sub_resource type="Sky" id="Sky_ialo3"]
+sky_material = SubResource("ProceduralSkyMaterial_2ksx3")
+
 [sub_resource type="Environment" id="Environment_g7017"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_ialo3")
 ambient_light_source = 1
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_kfua6"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_qqg1c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5o16f"]
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_kfua6")
+albedo_texture = SubResource("ViewportTexture_qqg1c")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lt7mx"]
 material = SubResource("StandardMaterial3D_5o16f")
