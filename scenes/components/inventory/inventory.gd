@@ -4,6 +4,9 @@ extends Resource
 ## Inventory is full, items cannot be added
 const ERR_HAVE_NO_SPACE = 1
 
+## Not all items was added
+const ERR_ITEM_LEACK = 2
+
 @export var pocket_size := 3
 @export var size := 6
 
@@ -32,20 +35,36 @@ func add_item(item: Item) -> Error:
 		@warning_ignore("int_as_enum_without_cast")
 		return ERR_HAVE_NO_SPACE
 	
+	
 	# At first, loop through slots with this item to add it to stack
 	for slot in slots:
 		if slot.item == item and not slot.is_full:
-			slot.in_stack += 1
+			var new_stack = slot.in_stack + item.in_stack
+			
+			if new_stack > item.max_stack_size:
+				new_stack -= item.max_stack_size
+				item.in_stack -= new_stack
+				slot.in_stack += new_stack
+				
+				if has_free_slot():
+					continue
+				else:
+					@warning_ignore("int_as_enum_without_cast")
+					return ERR_HAVE_NO_SPACE
+			
+			slot.in_stack += item.in_stack
 			return OK
 	
 	# At second, loop through remaining slots and add it to free slot
 	for slot in slots:
 		if slot.item == null:
 			slot.item = item
-			slot.in_stack = 1
+			slot.in_stack = item.in_stack
 			return OK
 	
-	return ERR_BUG
+	
+	@warning_ignore("int_as_enum_without_cast")
+	return ERR_ITEM_LEACK
 
 
 func has_free_slot() -> bool:
@@ -60,16 +79,32 @@ class Slot:
 	var in_stack := 0:
 		set(value):
 			in_stack = value
-			if in_stack < 0:
-				in_stack = 0
+			if in_stack <= 0:
+				clear()
 		get:
 			return in_stack
 	
-	## Slot cannot has new items anymore
 	var is_full: bool = false:
 		get:
 			if not is_instance_valid(item):
 				return false
 			
 			return in_stack >= item.max_stack_size
+	
+	
+	func clear():
+		self.in_stack = 0
+		self.item = null
+	
+	
+	## Update position or any properties after calling this method
+	func throw_away_item() -> Node:
+		var instance = item.packed_item.instantiate()
+		
+		# Update in_stack before clearing slot to not lose items in stack
+		item.in_stack = in_stack
+		instance.item = item
+		
+		clear() # Throw away whole stack
+		return instance
 	

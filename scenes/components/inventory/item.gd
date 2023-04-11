@@ -3,6 +3,7 @@ extends Resource
 
 signal item_used
 
+
 @export var visible_name: String = ''
 @export var name: String = ''
 @export var icon = preload("res://icon.svg")
@@ -15,11 +16,19 @@ signal item_used
 	get:
 		return max_stack_size
 
+@export var in_stack := 1:
+	set(value):
+		in_stack = value
+		if in_stack <= 0:
+			in_stack = 0
+		elif in_stack > max_stack_size:
+			in_stack = max_stack_size
+	get:
+		return in_stack
+
 ## Item that will be used in scene
 @export var packed_item: PackedScene
 
-## Reference to instance of packed_item
-var item_node
 
 @export var is_consumable := false
 @export var is_equippable := false

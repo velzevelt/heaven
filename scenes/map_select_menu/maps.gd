@@ -42,7 +42,7 @@ func _on_map_container_selected(map_collection):
 @warning_ignore("shadowed_variable")
 func _add_map_item(map_item: PackedScene, map_data: MapData):
 	if not map_data.hidden:
-		if not OS.is_debug_build() and map_data.tags.has('debug'):
+		if not OS.is_debug_build():
 			return
 		
 		var item = map_item.instantiate() as MapItem
