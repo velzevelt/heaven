@@ -24,6 +24,10 @@ var item_node
 
 
 func instantiate_item():
-	var res = packed_item.instantiate()
-	item_node = res
-	return res
+	if packed_item is PackedScene:
+		var res = packed_item.instantiate()
+		item_node = res
+		return res
+	else:
+		Logger.debug_log('Missing packed_item %s' % resource_name, MESSAGE_TYPE.ERROR)
+		return null
