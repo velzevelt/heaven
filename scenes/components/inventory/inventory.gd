@@ -37,7 +37,7 @@ func add_item(item: Item) -> Error:
 		return ERR_HAVE_NO_SPACE
 	
 	
-	# At first, loop through slots with this item to add it to stack
+	# At first, loop through slots with current item and add it to stack
 	for slot in slots:
 		if slot.item == item and not slot.is_full:
 			var new_stack = slot.in_stack + item.in_stack
@@ -74,7 +74,7 @@ func add_item(item: Item) -> Error:
 			slot.in_stack = item.in_stack
 			return OK
 	
-	
+	Logger.debug_log('Unkown error in add_item', MESSAGE_TYPE.ERROR)
 	return ERR_BUG
 
 

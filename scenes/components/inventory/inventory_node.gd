@@ -28,8 +28,6 @@ func _on_object_picked_up(object):
 		match error:
 			Inventory.ERR_HAVE_NO_SPACE, Inventory.ERR_ADD_INCOMPLETE:
 				inventory_overflowed.emit()
-			ERR_BUG:
-				Logger.debug_log('Unknown error in inventory occured', MESSAGE_TYPE.ERROR)
 			OK:
 				item_added.emit(object.item)
 	else:
