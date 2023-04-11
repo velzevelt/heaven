@@ -21,8 +21,6 @@ signal item_used
 		in_stack = value
 		if in_stack <= 0:
 			in_stack = 0
-		elif in_stack > max_stack_size:
-			in_stack = max_stack_size
 	get:
 		return in_stack
 

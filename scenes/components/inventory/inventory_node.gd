@@ -14,12 +14,12 @@ var _inventory_menu_instance
 func _ready():
 	Events.object_picked_up.connect(_on_object_picked_up)
 	
-	for i in 30:
+	for i in 1:
 		inventory_res.add_item(test_item)
 	
 	for slot in inventory_res.slots:
 		if slot.item:
-			print([slot.in_stack, slot.item.max_stack_size, slot.is_full])
+			print([slot.in_stack, slot.item.max_stack_size, slot.is_full, slot.item.name])
 		else:
 			print('null')
 
