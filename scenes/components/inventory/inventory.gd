@@ -4,7 +4,7 @@ extends Resource
 ## Inventory is full, items cannot be added
 const ERR_HAVE_NO_SPACE = 1
 
-## Some of items was added, but inventory overfloawed during process
+## Some items was added, but inventory overfloawed during process
 const ERR_ADD_INCOMPLETE = 2
 
 
