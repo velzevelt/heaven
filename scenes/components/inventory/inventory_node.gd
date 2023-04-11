@@ -21,3 +21,5 @@ func _on_object_picked_up(object):
 				Logger.debug_log('Unknown error in inventory occured', MESSAGE_TYPE.ERROR)
 			OK:
 				item_added.emit(object.item)
+	else:
+		Logger.debug_log('Failed to add item on %s, make sure that it has item resource' % object.name, MESSAGE_TYPE.WARNING)
