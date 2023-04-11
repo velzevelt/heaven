@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://chaf5uqx5ltj2"]
+[gd_scene load_steps=21 format=3 uid="uid://chaf5uqx5ltj2"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_gwrkw"]
 [ext_resource type="Script" path="res://scenes/objects/player/camera_controller.gd" id="2_8xvxh"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://brstrae8eg525" path="res://scenes/objects/player/light_detection_component.tscn" id="12_tiydx"]
 [ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer_label.gd" id="13_5krmr"]
 [ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer.gd" id="13_6lpoc"]
+[ext_resource type="Script" path="res://scenes/components/inventory/inventory_node.gd" id="14_287iq"]
+[ext_resource type="Script" path="res://scenes/components/inventory/inventory.gd" id="15_tbmd0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y1312"]
 height = 1.7
@@ -28,6 +30,11 @@ albedo_color = Color(0.909804, 0.717647, 0.356863, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_720by"]
 height = 1.7
+
+[sub_resource type="Resource" id="Resource_7a81c"]
+script = ExtResource("15_tbmd0")
+pocket_size = 3
+size = 6
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 15
@@ -212,5 +219,9 @@ player_light = NodePath("../../PlayerNightVision")
 [node name="PlayerNightVision" type="OmniLight3D" parent="."]
 layers = 2
 light_color = Color(0.290196, 0.27451, 0.729412, 1)
+
+[node name="InventoryNode" type="Node" parent="."]
+script = ExtResource("14_287iq")
+inventory_res = SubResource("Resource_7a81c")
 
 [editable path="SubViewport"]

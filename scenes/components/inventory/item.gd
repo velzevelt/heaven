@@ -1,6 +1,8 @@
 class_name Item
 extends Resource
 
+signal item_used
+
 @export var visible_name: String = ''
 @export var name: String = ''
 @export var icon = preload("res://icon.svg")
