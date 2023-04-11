@@ -1,14 +1,23 @@
 class_name InventoryNode
 extends Node
 
+signal item_added(item)
+signal inventory_overflowed
+
 @export var inventory_res: Inventory = Inventory.new()
-@export var test_item: Item = Item.new()
+
 
 func _ready():
-	inventory_res.add_item(test_item)
-	inventory_res.add_item(test_item)
-	inventory_res.add_item(test_item)
-	
-	for t in inventory_res.slots:
-		if t.item != null:
-			print(t.item.name, t.in_stack)
+	Events.object_picked_up.connect(_on_object_picked_up)
+
+
+func _on_object_picked_up(object):
+	if object.get('item') != null:
+		var error = inventory_res.add_item(object.item)
+		match error:
+			Inventory.ERR_HAVE_NO_SPACE:
+				inventory_overflowed.emit()
+			ERR_BUG:
+				Logger.debug_log('Unknown error in inventory occured', MESSAGE_TYPE.ERROR)
+			OK:
+				item_added.emit(object.item)

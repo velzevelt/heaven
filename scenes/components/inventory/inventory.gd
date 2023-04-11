@@ -29,6 +29,7 @@ func _reset_slots():
 
 func add_item(item: Item) -> Error:
 	if not has_free_slot():
+		@warning_ignore("int_as_enum_without_cast")
 		return ERR_HAVE_NO_SPACE
 	
 	# At first, loop through slots with this item to add it to stack
@@ -71,3 +72,9 @@ class Slot:
 				return false
 			
 			return in_stack >= item.max_stack_size
+	
+	func use_item():
+		pass
+	
+	func throw_away_item():
+		pass

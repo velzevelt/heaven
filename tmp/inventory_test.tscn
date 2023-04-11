@@ -1,27 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpjgv2jddfgqu"]
+[gd_scene load_steps=4 format=3 uid="uid://dpjgv2jddfgqu"]
 
 [ext_resource type="Script" path="res://scenes/components/inventory/inventory_node.gd" id="1_2vq3c"]
 [ext_resource type="Script" path="res://scenes/components/inventory/inventory.gd" id="2_wh741"]
-[ext_resource type="Texture2D" uid="uid://cn5nhs2dyxodr" path="res://icon.svg" id="3_tt1yn"]
-[ext_resource type="Script" path="res://scenes/components/inventory/item.gd" id="4_wyq4u"]
 
 [sub_resource type="Resource" id="Resource_xtaib"]
 script = ExtResource("2_wh741")
 pocket_size = 3
 size = 6
 
-[sub_resource type="Resource" id="Resource_y5k0o"]
-script = ExtResource("4_wyq4u")
-visible_name = "test"
-name = "test"
-icon = ExtResource("3_tt1yn")
-is_consumable = false
-is_equippable = false
-max_stack_size = 1
-
 [node name="Node3D" type="Node3D"]
 
 [node name="InventoryNode" type="Node" parent="."]
 script = ExtResource("1_2vq3c")
 inventory_res = SubResource("Resource_xtaib")
-test_item = SubResource("Resource_y5k0o")
