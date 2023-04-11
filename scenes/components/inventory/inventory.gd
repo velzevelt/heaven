@@ -85,6 +85,7 @@ func has_free_slot() -> bool:
 class Slot:
 	## Means player can switch to that slot using Input actions
 	var is_pocket := false
+	
 	var item: Item = null
 	
 	var in_stack := 0:
@@ -102,11 +103,9 @@ class Slot:
 			
 			return in_stack >= item.max_stack_size
 	
-	
-	func clear():
-		self.in_stack = 0
-		self.item = null
-	
+	func clear() -> void:
+		in_stack = 0
+		item = null
 	
 	## Update position or any properties after calling this method
 	func throw_away_item() -> Node:
@@ -116,6 +115,6 @@ class Slot:
 		item.in_stack = in_stack
 		instance.item = item
 		
-		clear() # Throw away whole stack
+		clear() # Throw away whole stack instead of just one item
 		return instance
 	

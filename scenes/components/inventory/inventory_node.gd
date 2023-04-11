@@ -14,13 +14,17 @@ var _inventory_menu_instance
 func _ready():
 	Events.object_picked_up.connect(_on_object_picked_up)
 	
+	item_added.connect(func(_p): _debug_inventory_slots())
+	inventory_overflowed.connect(func(): _debug_inventory_slots())
 
-func _debug_slot_data():
+
+func _debug_inventory_slots():
 	for slot in inventory_res.slots:
 		if slot.item:
 			print([slot.in_stack, slot.item.max_stack_size, slot.is_full, slot.item.name])
 		else:
 			print('null')
+
 
 func _on_object_picked_up(object):
 	if object.get('item') != null:
