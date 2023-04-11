@@ -4,8 +4,12 @@ extends Resource
 ## Inventory is full, items cannot be added
 const ERR_HAVE_NO_SPACE = 1
 
-## Not all items was added
+## Leak occured
 const ERR_ITEM_LEACK = 2
+
+## Some of items was added, but inventory overfloawed during process
+const ERR_ADD_INCOMPLETE = 3
+
 
 @export var pocket_size := 3
 @export var size := 6
@@ -50,7 +54,7 @@ func add_item(item: Item) -> Error:
 					continue
 				else:
 					@warning_ignore("int_as_enum_without_cast")
-					return ERR_HAVE_NO_SPACE
+					return ERR_ADD_INCOMPLETE
 			
 			slot.in_stack += item.in_stack
 			return OK
