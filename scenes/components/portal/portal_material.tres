@@ -1,9 +1,17 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bcod5rcg812m7"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dim50m7igv4es"]
 
-[ext_resource type="Shader" path="res://scenes/components/portal/portal_shader.gdshader" id="1_j18v5"]
-[ext_resource type="Texture2D" uid="uid://cn5nhs2dyxodr" path="res://icon.svg" id="2_xfj8w"]
+[ext_resource type="Shader" uid="uid://k7bf4uejafay" path="res://scenes/components/portal/portal_shader.tres" id="1_kdujq"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_j18v5")
-shader_parameter/albedo = ExtResource("2_xfj8w")
+shader = ExtResource("1_kdujq")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Plane(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
