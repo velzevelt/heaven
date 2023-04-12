@@ -90,10 +90,32 @@ func throw_item_from(slot: Slot) -> Node:
 	slot.instance.item = slot.item
 	
 	if instance.has_method('_on_throwed_away'):
-		instance.callv('_on_throwed_away', [self, slot, slot.item])
+		instance.callv('_on_throwed_away', [self, slot])
 	
 	slot.clear() # Throw away whole stack instead of just one item
 	return instance
+
+## Update position or any properties after calling this method
+func throw_item(item: Item) -> Node:
+	var res = null
+	
+	for slot in slots:
+		if slot.item == item:
+			res = throw_item_from(slot)
+			break
+	
+	return res
+
+
+func remove_item_from(slot: Slot) -> void:
+	slot.clear()
+
+
+func remove_item(item: Item) -> void:
+	for slot in slots:
+		if slot.item == item:
+			slot.clear()
+			return
 
 
 class Slot:
