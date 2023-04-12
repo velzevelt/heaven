@@ -24,9 +24,14 @@ signal item_used
 	get:
 		return in_stack
 
-## Item that will be used in scene
-@export var packed_item: PackedScene
-
+## Script that will perform item specific logic 
+@export var item_behaviour: PackedScene = null
 
 @export var is_consumable := false
 @export var is_equippable := false
+
+#func _on_context_menu_opened():
+#	pass
+#
+#func _on_throwed_away():
+#	pass

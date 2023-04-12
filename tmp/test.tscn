@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://2sgyl3seaxw8"]
+[gd_scene load_steps=12 format=3 uid="uid://2sgyl3seaxw8"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_6066y"]
 [ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material_orange.tres" id="1_fvsls"]
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="2_qe0d0"]
+[ext_resource type="PackedScene" uid="uid://1w15x5akleyo" path="res://scenes/objects/coin/coin.tscn" id="5_lxstv"]
 [ext_resource type="Script" path="res://tmp/cum.gd" id="5_rhlj4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2ksx3"]
@@ -104,6 +105,9 @@ sub_viewport = NodePath("..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/Camera3D"]
 shape = SubResource("BoxShape3D_oj374")
 disabled = true
+
+[node name="Coin" parent="." instance=ExtResource("5_lxstv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03486, -3.22156)
 
 [editable path="Player"]
 [editable path="Player/SubViewport"]

@@ -10,7 +10,6 @@ signal inventory_overflowed
 
 var _inventory_menu_instance
 
-@export var test_item: Item
 
 func _ready():
 	Events.object_picked_up.connect(_on_object_picked_up)
@@ -29,13 +28,16 @@ func _debug_inventory_slots():
 
 func _on_object_picked_up(object):
 	if object.get('item') != null:
-		var error = inventory_res.add_item(object.item)
-		match error:
-			Inventory.ERR_HAVE_NO_SPACE, Inventory.ERR_ADD_INCOMPLETE:
-				inventory_overflowed.emit()
-			OK:
-				item_added.emit(object.item)
-				inventory_changed.emit(inventory_res)
+		if object.item is Item:
+			var error = inventory_res.add_item(object.item)
+			match error:
+				Inventory.ERR_HAVE_NO_SPACE, Inventory.ERR_ADD_INCOMPLETE:
+					inventory_overflowed.emit()
+				OK:
+					item_added.emit(object.item)
+					inventory_changed.emit(inventory_res)
+		else:
+			Logger.debug_log('%s: Item cast failed, wrong .tres?' % object.name, MESSAGE_TYPE.ERROR)
 	else:
 		Logger.debug_log('Failed to add_item on %s, make sure that it has item resource if it was not intended' % object.name, MESSAGE_TYPE.WARNING)
 

@@ -4,7 +4,7 @@ extends Resource
 ## Inventory is full, items cannot be added
 const ERR_HAVE_NO_SPACE = 1
 
-## Some items was added, but inventory overfloawed during process
+## Some items were added, but inventory overfloawed during process
 const ERR_ADD_INCOMPLETE = 2
 
 
@@ -81,6 +81,20 @@ func add_item(item: Item) -> Error:
 func has_free_slot() -> bool:
 	return slots.any(func(slot): return not slot.is_full)
 
+## Update position or any properties after calling this method
+func throw_item_from(slot: Slot) -> Node:
+	var instance = slot.item.item_behaviour.instantiate()
+	
+	# Update in_stack before clearing slot to not lose items in stack
+	slot.item.in_stack = slot.in_stack
+	slot.instance.item = slot.item
+	
+	if instance.has_method('_on_throwed_away'):
+		instance.callv('_on_throwed_away', [self, slot, slot.item])
+	
+	slot.clear() # Throw away whole stack instead of just one item
+	return instance
+
 
 class Slot:
 	## Means player can switch to that slot using Input actions
@@ -106,15 +120,3 @@ class Slot:
 	func clear() -> void:
 		in_stack = 0
 		item = null
-	
-	## Update position or any properties after calling this method
-	func throw_away_item() -> Node:
-		var instance = item.packed_item.instantiate()
-		
-		# Update in_stack before clearing slot to not lose items in stack
-		item.in_stack = in_stack
-		instance.item = item
-		
-		clear() # Throw away whole stack instead of just one item
-		return instance
-	

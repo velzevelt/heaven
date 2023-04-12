@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://u3n5f1weby5w"]
-
-[ext_resource type="Script" path="res://scenes/objects/coin_storage/coin_storage.gd" id="1_vk6tp"]
-[ext_resource type="PackedScene" uid="uid://ca44olq010ifc" path="res://scenes/objects/coin/coin.tscn" id="2_oi7t8"]
-
-[node name="CoinStorage" type="Node"]
-script = ExtResource("1_vk6tp")
-
-[node name="Coin" parent="." instance=ExtResource("2_oi7t8")]

@@ -4,6 +4,7 @@ extends Node3D
 signal picked_up
 
 @export var enabled := true
+@export var item: Item
 
 func _ready():
 	self.picked_up.connect(_on_pickup)
