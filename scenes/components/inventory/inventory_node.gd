@@ -19,11 +19,13 @@ func _ready():
 
 
 func _debug_inventory_slots():
+	var i = 0
 	for slot in inventory_res.slots:
 		if slot.item:
-			print([slot.in_stack, slot.item.max_stack_size, slot.is_full, slot.item.name])
+			print([i, slot.in_stack, slot.item.max_stack_size, slot.is_full, slot.item.name])
 		else:
-			print('null')
+			print([i, null])
+		i += 1
 
 
 func _on_object_picked_up(object):
