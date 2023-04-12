@@ -1,7 +1,4 @@
-[gd_resource type="Shader" format=3 uid="uid://k7bf4uejafay"]
-
-[resource]
-code = "// NOTE: Shader automatically converted from Godot Engine 4.0.2.stable's StandardMaterial3D.
+// NOTE: Shader automatically converted from Godot Engine 4.0.2.stable's StandardMaterial3D.
 
 shader_type spatial;
 render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
@@ -40,4 +37,3 @@ void fragment() {
 	ROUGHNESS = roughness_tex * roughness;
 	SPECULAR = specular;
 }
-"

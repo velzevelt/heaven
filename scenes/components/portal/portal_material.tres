@@ -1,6 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dim50m7igv4es"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://milj8r0vdtn4"]
 
-[ext_resource type="Shader" uid="uid://k7bf4uejafay" path="res://scenes/components/portal/portal_shader.tres" id="1_kdujq"]
+[ext_resource type="Shader" path="res://scenes/components/portal/portal_shader.gdshader" id="1_kdujq"]
 
 [resource]
 render_priority = 0

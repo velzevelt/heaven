@@ -11,5 +11,8 @@ extends Camera3D
 	get:
 		return sub_viewport.get_texture()
 
+func _ready():
+	fov = player_cam.fov
+
 func _physics_process(_delta):
 	material.set_shader_parameter('texture_albedo', screen_texture)
