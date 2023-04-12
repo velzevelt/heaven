@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material_orange.tres" id="1_fvsls"]
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="2_qe0d0"]
 [ext_resource type="Script" path="res://scenes/components/portal/cum.gd" id="4_p7ogx"]
+[ext_resource type="Material" uid="uid://bcod5rcg812m7" path="res://scenes/components/portal/portal_material.tres" id="4_t75vl"]
 [ext_resource type="PackedScene" uid="uid://1w15x5akleyo" path="res://scenes/objects/coin/coin.tscn" id="5_lxstv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2ksx3"]
@@ -16,14 +17,11 @@ background_mode = 2
 sky = SubResource("Sky_ialo3")
 ambient_light_source = 1
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5o16f"]
-shading_mode = 0
+[sub_resource type="BoxShape3D" id="BoxShape3D_oj374"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lt7mx"]
-material = SubResource("StandardMaterial3D_5o16f")
+material = ExtResource("4_t75vl")
 size = Vector2(5, 5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_oj374"]
 
 [node name="Test" type="Node3D"]
 script = ExtResource("1_6066y")
@@ -85,26 +83,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.08754, 1.00808, -10.6402)
 light_energy = 4.0
 shadow_enabled = true
 
-[node name="Portal" type="Node3D" parent="."]
-transform = Transform3D(0, -1, 1.74846e-07, 1, 1.55294e-22, 3.55271e-15, 0, 1.74846e-07, 1, 19.1219, 1.12642, -2.56622)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Portal"]
-transform = Transform3D(1, -1.51461e-28, 0, 0, 1, -5.68434e-14, 0, 5.68434e-14, 1, 2.18185, 10.4763, -1.90735e-06)
-mesh = SubResource("PlaneMesh_lt7mx")
-
 [node name="SubViewport" type="SubViewport" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport" node_paths=PackedStringArray("portal", "portal_mesh", "player_cam", "sub_viewport")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4545, 1.74119, 0)
 script = ExtResource("4_p7ogx")
-portal = NodePath("../../Portal")
-portal_mesh = NodePath("../../Portal/MeshInstance3D")
+portal = NodePath("../Portal")
+portal_mesh = NodePath("../Portal/MeshInstance3D")
 player_cam = NodePath("../../Player/Head/Camera3D")
 sub_viewport = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/Camera3D"]
 shape = SubResource("BoxShape3D_oj374")
 disabled = true
+
+[node name="Portal" type="Node3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.92254, 1.12642, -2.56622)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/Portal"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 1.72284, 1.85361, 0)
+mesh = SubResource("PlaneMesh_lt7mx")
 
 [node name="Coin" parent="." instance=ExtResource("5_lxstv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03486, -3.22156)

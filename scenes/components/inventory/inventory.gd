@@ -127,7 +127,7 @@ class Slot:
 	var in_stack := 0:
 		set(value):
 			in_stack = value
-			if in_stack <= 0:
+			if in_stack <= 0 or item == null:
 				clear()
 		get:
 			return in_stack
