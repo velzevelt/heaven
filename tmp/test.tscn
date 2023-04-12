@@ -15,6 +15,7 @@ sky_material = SubResource("ProceduralSkyMaterial_2ksx3")
 background_mode = 2
 sky = SubResource("Sky_ialo3")
 ambient_light_source = 1
+fog_enabled = true
 
 [node name="Test" type="Node3D"]
 script = ExtResource("1_6066y")
@@ -22,12 +23,6 @@ script = ExtResource("1_6066y")
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 use_collision = true
 size = Vector3(24.2304, 0.086836, 12.8804)
-material = ExtResource("1_fvsls")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.99246, 0)
-use_collision = true
-size = Vector3(8.50756, 0.086836, 7.15051)
 material = ExtResource("1_fvsls")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
@@ -63,18 +58,15 @@ environment = SubResource("Environment_g7017")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00808, 0)
 light_energy = 4.0
-shadow_enabled = true
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6987, 1.00808, -10.6402)
 layers = 2
 light_energy = 4.0
-shadow_enabled = true
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.08754, 1.00808, -10.6402)
 light_energy = 4.0
-shadow_enabled = true
 
 [node name="Coin" parent="." instance=ExtResource("5_lxstv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03486, -3.22156)

@@ -24,13 +24,16 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 
 script = ExtResource("2_ennjp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Portal"]
-visible = false
 mesh = SubResource("BoxMesh_6j3mu")
 
 [node name="Area3D" type="Area3D" parent="Portal"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Portal/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.63776e-09, 0.174731, 0)
 shape = SubResource("BoxShape3D_0o4eh")
 script = ExtResource("4_nwbfh")
 
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
 [connection signal="body_entered" from="Portal/Area3D" to="Portal" method="_on_area_3d_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="Portal" method="_on_visible_on_screen_notifier_3d_screen_exited"]
