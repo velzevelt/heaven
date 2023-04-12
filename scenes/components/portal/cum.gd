@@ -12,6 +12,7 @@ extends Camera3D
 		return sub_viewport.get_texture()
 
 func _ready():
+	sub_viewport.size = Vector2i(1920, 1080)
 	fov = player_cam.fov
 
 func _physics_process(_delta):

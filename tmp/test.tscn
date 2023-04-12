@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dl2gqbqws7qo8"]
+[gd_scene load_steps=9 format=3 uid="uid://dl2gqbqws7qo8"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_6066y"]
 [ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material_orange.tres" id="1_fvsls"]
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="2_qe0d0"]
-[ext_resource type="Script" path="res://scenes/components/portal/cum.gd" id="4_p7ogx"]
-[ext_resource type="Material" uid="uid://milj8r0vdtn4" path="res://scenes/components/portal/portal_material.tres" id="4_t75vl"]
+[ext_resource type="PackedScene" uid="uid://cpojp30lnid13" path="res://scenes/components/portal/portal_setup.tscn" id="5_3nsui"]
 [ext_resource type="PackedScene" uid="uid://1w15x5akleyo" path="res://scenes/objects/coin/coin.tscn" id="5_lxstv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2ksx3"]
@@ -16,12 +15,6 @@ sky_material = SubResource("ProceduralSkyMaterial_2ksx3")
 background_mode = 2
 sky = SubResource("Sky_ialo3")
 ambient_light_source = 1
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_oj374"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_lt7mx"]
-material = ExtResource("4_t75vl")
-size = Vector2(2, 1)
 
 [node name="Test" type="Node3D"]
 script = ExtResource("1_6066y")
@@ -83,26 +76,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.08754, 1.00808, -10.6402)
 light_energy = 4.0
 shadow_enabled = true
 
-[node name="SubViewport" type="SubViewport" parent="."]
-
-[node name="Camera3D" type="Camera3D" parent="SubViewport" node_paths=PackedStringArray("portal_mesh", "player_cam", "sub_viewport")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4545, 1.74119, 0)
-script = ExtResource("4_p7ogx")
-portal_mesh = NodePath("../Portal/MeshInstance3D")
-player_cam = NodePath("../../Player/Head/Camera3D")
-sub_viewport = NodePath("..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/Camera3D"]
-shape = SubResource("BoxShape3D_oj374")
-disabled = true
-
-[node name="Portal" type="Node3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.92254, 1.12711, -2.56622)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/Portal"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("PlaneMesh_lt7mx")
-
 [node name="Coin" parent="." instance=ExtResource("5_lxstv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03486, -3.22156)
 
@@ -112,5 +85,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91147, 1.03486, -3.22156)
 [node name="Coin3" parent="." instance=ExtResource("5_lxstv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.87637, 1.03486, -3.22156)
 
+[node name="PortalViewport" parent="." instance=ExtResource("5_3nsui")]
+
+[node name="Camera3D" parent="PortalViewport" index="0" node_paths=PackedStringArray("player_cam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.95334, 1.51663, 0)
+player_cam = NodePath("../../Player/Head/Camera3D")
+
+[node name="Portal" parent="PortalViewport" index="1" node_paths=PackedStringArray("destination")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -9.60628, 1.00838, 0)
+destination = NodePath("../Camera3D")
+
 [editable path="Player"]
 [editable path="Player/SubViewport"]
+[editable path="PortalViewport"]
