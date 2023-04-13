@@ -163,4 +163,5 @@ light_color = Color(0.290196, 0.27451, 0.729412, 1)
 script = ExtResource("14_287iq")
 inventory_res = SubResource("Resource_7a81c")
 
+[editable path="Head"]
 [editable path="SubViewport"]
