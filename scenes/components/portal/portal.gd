@@ -27,7 +27,7 @@ func _ready():
 func _physics_process(_delta):
 	material.set_shader_parameter('texture_albedo', screen_texture)
 	holder.global_rotation = player_camera.global_rotation
-
+	portal_camera.fov = player_camera.fov
 
 func sync_viewport_size() -> void:
 	portal_viewport.size = get_tree().root.size
@@ -36,15 +36,14 @@ func sync_viewport_size() -> void:
 
 func teleport(body):
 	Logger.debug_log('teleporting...')
-#	body.global_transform = destination.global_transform
-	body.global_position = destination.global_position
-	body.velocity = -destination.global_transform.basis.z * body.velocity.length()
+	var dest = destination.global_position
+	dest.y -= player_camera.get_parent().position.y
+	body.global_position = dest
+#	body.velocity = -body.global_transform.basis.z * body.velocity.length()
 
 
 func _on_area_3d_area_entered(area):
 	if area.is_in_group('player'):
 		var player = area.get_parent().get_parent()
-		var player_view_texture = player_camera.get_viewport().get_texture()
-		player_view_texture.get_image().save_png('res://tmp/portal.png')
 		
-#		teleport(player)
+		teleport(player)

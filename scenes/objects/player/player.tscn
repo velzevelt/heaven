@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_gwrkw"]
 [ext_resource type="Script" path="res://scenes/objects/player/camera_controller.gd" id="2_8xvxh"]
+[ext_resource type="PackedScene" uid="uid://0pjdi51ba3dw" path="res://scenes/objects/player/player_collision_shape.tscn" id="2_wt83f"]
 [ext_resource type="Script" path="res://scenes/objects/player/crosshair_raycast.gd" id="3_2e6su"]
 [ext_resource type="Script" path="res://scenes/objects/player/interact_raycast.gd" id="4_esbbd"]
 [ext_resource type="Script" path="res://scenes/objects/player/crosshair.gd" id="4_gifrp"]
@@ -15,9 +16,6 @@
 [ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer.gd" id="13_6lpoc"]
 [ext_resource type="Script" path="res://scenes/components/inventory/inventory_node.gd" id="14_287iq"]
 [ext_resource type="Script" path="res://scenes/components/inventory/inventory.gd" id="15_tbmd0"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y1312"]
-height = 1.7
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_huofl"]
 corner_radius_top_left = 20
@@ -44,8 +42,7 @@ collision_layer = 15
 collision_mask = 15
 script = ExtResource("1_gwrkw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_y1312")
+[node name="CollisionShape3D" parent="." instance=ExtResource("2_wt83f")]
 
 [node name="Head" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -105,8 +102,7 @@ monitoring = false
 shape = SubResource("SphereShape3D_u41ki")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
-layers = 524289
+layers = 524288
 material_override = SubResource("StandardMaterial3D_37kd4")
 mesh = SubResource("CapsuleMesh_720by")
 

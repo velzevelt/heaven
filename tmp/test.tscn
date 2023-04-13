@@ -58,19 +58,23 @@ environment = SubResource("Environment_g7017")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00808, 0)
+visible = false
 light_energy = 4.0
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0225, 1.00808, 0)
+visible = false
 light_energy = 4.0
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6987, 1.00808, -10.6402)
+visible = false
 layers = 2
 light_energy = 4.0
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.08754, 1.00808, -10.6402)
+visible = false
 light_energy = 4.0
 
 [node name="Coin" parent="." instance=ExtResource("5_lxstv")]
@@ -90,7 +94,7 @@ portal_viewport = NodePath("../PortalViewport")
 [node name="PortalViewport" parent="." instance=ExtResource("6_ycm8a")]
 
 [node name="CameraHolder" parent="PortalViewport" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81063, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73754, 1.37533, 0)
 
 [editable path="Player"]
 [editable path="Player/SubViewport"]
