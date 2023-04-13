@@ -2,9 +2,10 @@ class_name Portal
 extends Node
 
 @export var destination: Node3D
-@export var player_camera: Camera3D
+@export var portal_viewport: SubViewport
 
-@onready var portal_viewport: SubViewport = $PortalViewport
+@onready var area: Area3D = $Area3D
+@onready var player_camera: Camera3D = get_tree().root.get_camera_3d()
 @onready var portal_camera: Camera3D = portal_viewport.get_camera_3d()
 @onready var holder: Node3D = portal_camera.get_parent()
 @onready var portal_mesh: MeshInstance3D = $MeshInstance3D
@@ -14,33 +15,36 @@ extends Node
 	get:
 		return portal_viewport.get_texture()
 
-var _traveller: Node3D
+@onready var init_transform: Transform3D = self.global_transform
 
 
 func _ready():
 	portal_camera.fov = player_camera.fov
-	sync_viewport()
-	get_tree().root.size_changed.connect(sync_viewport)
+	sync_viewport_size()
+	get_tree().root.size_changed.connect(sync_viewport_size)
 
 
 func _physics_process(_delta):
 	material.set_shader_parameter('texture_albedo', screen_texture)
-	move_camera()
+	holder.global_rotation = player_camera.global_rotation
 
 
-func _on_area_3d_body_entered(body):
-	if body.is_in_group('player'):
-		Logger.debug_log('teleporting...')
-
-
-func sync_viewport() -> void:
+func sync_viewport_size() -> void:
 	portal_viewport.size = get_tree().root.size
-
-
-func move_camera() -> void:
-	var transform: Transform3D = destination.global_transform.inverse() * portal_camera.global_transform
-#	transform = transform.rotated(Vector3.UP, PI)
-	holder.transform = transform
 	
-	var cam_pos: Transform3D = holder.global_transform
-	portal_camera.global_transform = cam_pos
+
+
+func teleport(body):
+	Logger.debug_log('teleporting...')
+#	body.global_transform = destination.global_transform
+	body.global_position = destination.global_position
+	body.velocity = -destination.global_transform.basis.z * body.velocity.length()
+
+
+func _on_area_3d_area_entered(area):
+	if area.is_in_group('player'):
+		var player = area.get_parent().get_parent()
+		var player_view_texture = player_camera.get_viewport().get_texture()
+		player_view_texture.get_image().save_png('res://tmp/portal.png')
+		
+#		teleport(player)

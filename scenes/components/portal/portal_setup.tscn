@@ -1,42 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://canx7gpmd6rat"]
+[gd_scene load_steps=5 format=3 uid="uid://canx7gpmd6rat"]
 
 [ext_resource type="Script" path="res://scenes/components/portal/portal.gd" id="1_38t1e"]
 [ext_resource type="Material" uid="uid://milj8r0vdtn4" path="res://scenes/components/portal/portal_material.tres" id="2_w7y4h"]
-[ext_resource type="Script" path="res://scenes/components/portal/shape_update.gd" id="4_nwbfh"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_6j3mu"]
+[sub_resource type="BoxMesh" id="BoxMesh_r1auf"]
 material = ExtResource("2_w7y4h")
-size = Vector3(2, 0.5, 1.4)
+size = Vector3(1.8, 0.3, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0o4eh"]
-size = Vector3(0.1, 0.1, 0.1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_t6vfs"]
+size = Vector3(0.02, 1.8, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_pqd40"]
-radius = 0.1
-height = 0.2
-
-[node name="Portal" type="Node"]
+[node name="Portal" type="Node3D"]
 script = ExtResource("1_38t1e")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_6j3mu")
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_r1auf")
 
-[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+[node name="Area3D" type="Area3D" parent="."]
+monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.63776e-09, 0.174731, 0)
-shape = SubResource("BoxShape3D_0o4eh")
-script = ExtResource("4_nwbfh")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_t6vfs")
 
-[node name="PortalViewport" type="SubViewport" parent="."]
-
-[node name="CameraHolder" type="Node3D" parent="PortalViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.965238, 0)
-
-[node name="Camera3D" type="Camera3D" parent="PortalViewport/CameraHolder"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PortalViewport/CameraHolder"]
-mesh = SubResource("SphereMesh_pqd40")
-skeleton = NodePath("../..")
-
-[connection signal="body_entered" from="MeshInstance3D/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

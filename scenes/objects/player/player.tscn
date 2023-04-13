@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://chaf5uqx5ltj2"]
+[gd_scene load_steps=22 format=3 uid="uid://chaf5uqx5ltj2"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_gwrkw"]
 [ext_resource type="Script" path="res://scenes/objects/player/camera_controller.gd" id="2_8xvxh"]
@@ -24,6 +24,9 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_u41ki"]
+radius = 0.0348663
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37kd4"]
 albedo_color = Color(0.909804, 0.717647, 0.356863, 1)
@@ -95,8 +98,15 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_huofl")
 script = ExtResource("4_gifrp")
 anim_duration = 0.3
 
+[node name="CameraArea" type="Area3D" parent="Head" groups=["player"]]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/CameraArea"]
+shape = SubResource("SphereShape3D_u41ki")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-layers = 524288
+visible = false
+layers = 524289
 material_override = SubResource("StandardMaterial3D_37kd4")
 mesh = SubResource("CapsuleMesh_720by")
 

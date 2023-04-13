@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://calkh60ro7f1q"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_pqd40"]
+radius = 0.1
+height = 0.2
+
+[node name="PortalViewport" type="SubViewport"]
+
+[node name="CameraHolder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.965238, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraHolder"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CameraHolder"]
+mesh = SubResource("SphereMesh_pqd40")
+skeleton = NodePath("../..")

@@ -1,13 +1,11 @@
 @tool
 extends CollisionShape3D
 
+@export var size = 0.1
+
 @export var update_shape := false:
 	set(value):
-		var mesh = $"../../MeshInstance3D"
-		mesh = mesh.mesh as BoxMesh
 		var shape = self.shape as BoxShape3D
-		shape.size = mesh.size
-		shape.size /= 2.0
-		shape.size.y = 0.1
+		shape.size = Vector3(size, size, size)
 	get:
 		return update_shape
