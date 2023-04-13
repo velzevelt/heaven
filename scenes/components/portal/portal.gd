@@ -15,7 +15,8 @@ extends Node
 	get:
 		return portal_viewport.get_texture()
 
-@onready var init_transform: Transform3D = holder.global_transform
+@onready var init_position: Vector3 = destination.global_transform.origin
+@onready var player = player_camera.get_parent().get_parent()
 
 
 func _ready():
@@ -26,11 +27,10 @@ func _ready():
 
 func _physics_process(_delta):
 	material.set_shader_parameter('texture_albedo', screen_texture)
-#	holder.position = player_camera.global_position
-	holder.global_rotation = player_camera.global_rotation
+	
+	portal_camera.global_rotation = player_camera.global_rotation
 	portal_camera.fov = player_camera.fov
-#	holder.global_transform = player_camera.global_transform
-
+	
 
 func sync_viewport_size() -> void:
 	portal_viewport.size = get_tree().root.size
@@ -39,10 +39,10 @@ func sync_viewport_size() -> void:
 
 func teleport(body):
 	Logger.debug_log('teleporting...')
-	var dest = destination.global_position
-#	dest.y -= player_camera.get_parent().position.y
-	body.global_position = dest
-#	body.velocity = -body.global_transform.basis.z * body.velocity.length()
+#	portal_camera.fov = player_camera.fov
+#	await RenderingServer.frame_post_draw
+
+	body.global_position = destination.global_position
 
 
 func _on_area_3d_area_entered(area):
