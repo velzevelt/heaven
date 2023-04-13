@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://calkh60ro7f1q"]
+[gd_scene load_steps=4 format=3 uid="uid://calkh60ro7f1q"]
 
+[ext_resource type="PackedScene" uid="uid://bgac5mna4qv2q" path="res://scenes/objects/player/head.tscn" id="1_60yvv"]
 [ext_resource type="PackedScene" uid="uid://0pjdi51ba3dw" path="res://scenes/objects/player/player_collision_shape.tscn" id="1_qs4hy"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_pqd40"]
@@ -9,15 +10,14 @@ height = 0.2
 [node name="PortalViewport" type="SubViewport"]
 
 [node name="CameraHolder" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42571, 0)
 
-[node name="Camera3D" type="Camera3D" parent="CameraHolder"]
-cull_mask = 524287
+[node name="Head" parent="CameraHolder" instance=ExtResource("1_60yvv")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CameraHolder"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CameraHolder/Head"]
 mesh = SubResource("SphereMesh_pqd40")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
 [node name="CollisionShape3D" parent="CameraHolder" instance=ExtResource("1_qs4hy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.460472, 0)
 disabled = true
+
+[editable path="CameraHolder/Head"]

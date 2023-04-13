@@ -1,11 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://chaf5uqx5ltj2"]
+[gd_scene load_steps=17 format=3 uid="uid://chaf5uqx5ltj2"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_gwrkw"]
-[ext_resource type="Script" path="res://scenes/objects/player/camera_controller.gd" id="2_8xvxh"]
 [ext_resource type="PackedScene" uid="uid://0pjdi51ba3dw" path="res://scenes/objects/player/player_collision_shape.tscn" id="2_wt83f"]
-[ext_resource type="Script" path="res://scenes/objects/player/crosshair_raycast.gd" id="3_2e6su"]
-[ext_resource type="Script" path="res://scenes/objects/player/interact_raycast.gd" id="4_esbbd"]
-[ext_resource type="Script" path="res://scenes/objects/player/crosshair.gd" id="4_gifrp"]
+[ext_resource type="PackedScene" uid="uid://bgac5mna4qv2q" path="res://scenes/objects/player/head.tscn" id="3_pi4sb"]
 [ext_resource type="Script" path="res://scenes/components/floor_activation_component.gd" id="7_mjju6"]
 [ext_resource type="Script" path="res://addons/debug_tools/info_label/info_label.gd" id="7_tu7pf"]
 [ext_resource type="Script" path="res://scenes/objects/player/player_move_component.gd" id="9_7a22w"]
@@ -16,15 +13,6 @@
 [ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer.gd" id="13_6lpoc"]
 [ext_resource type="Script" path="res://scenes/components/inventory/inventory_node.gd" id="14_287iq"]
 [ext_resource type="Script" path="res://scenes/components/inventory/inventory.gd" id="15_tbmd0"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_huofl"]
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_u41ki"]
-radius = 0.0348663
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37kd4"]
 albedo_color = Color(0.909804, 0.717647, 0.356863, 1)
@@ -44,62 +32,7 @@ script = ExtResource("1_gwrkw")
 
 [node name="CollisionShape3D" parent="." instance=ExtResource("2_wt83f")]
 
-[node name="Head" type="Node3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.48634e-05, 0.4, -0.00502777)
-script = ExtResource("2_8xvxh")
-
-[node name="Camera3D" type="Camera3D" parent="Head"]
-cull_mask = 524287
-current = true
-fov = 85.0
-
-[node name="JumpPoint" type="Node3D" parent="Head"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.732067)
-
-[node name="CrosshairRaycast" type="RayCast3D" parent="Head"]
-visible = false
-target_position = Vector3(0, 0, -15)
-script = ExtResource("3_2e6su")
-
-[node name="DoorMarker" type="Marker3D" parent="Head"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
-
-[node name="PropMarker" type="Marker3D" parent="Head"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.75)
-
-[node name="InteractRaycast" type="RayCast3D" parent="Head" node_paths=PackedStringArray("player", "door_marker", "prop_marker")]
-target_position = Vector3(0, 0, -2)
-collision_mask = 12
-script = ExtResource("4_esbbd")
-player = NodePath("../..")
-door_marker = NodePath("../DoorMarker")
-prop_marker = NodePath("../PropMarker")
-
-[node name="CenterContainer" type="CenterContainer" parent="Head"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Crosshair" type="Panel" parent="Head/CenterContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(15, 15)
-layout_mode = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_huofl")
-script = ExtResource("4_gifrp")
-anim_duration = 0.3
-
-[node name="CameraArea" type="Area3D" parent="Head" groups=["player"]]
-monitoring = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/CameraArea"]
-shape = SubResource("SphereShape3D_u41ki")
+[node name="Head" parent="." instance=ExtResource("3_pi4sb")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 layers = 524288

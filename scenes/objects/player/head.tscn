@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgac5mna4qv2q"]
+
+[ext_resource type="Script" path="res://scenes/objects/player/camera_controller.gd" id="1_xwp82"]
+[ext_resource type="Script" path="res://scenes/objects/player/crosshair_raycast.gd" id="2_hjh4f"]
+[ext_resource type="Script" path="res://scenes/objects/player/interact_raycast.gd" id="3_l3uou"]
+[ext_resource type="Script" path="res://scenes/objects/player/crosshair.gd" id="4_legje"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_huofl"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_u41ki"]
+radius = 0.0348663
+
+[node name="Head" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+script = ExtResource("1_xwp82")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+cull_mask = 524287
+current = true
+fov = 85.0
+
+[node name="JumpPoint" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.732067)
+
+[node name="CrosshairRaycast" type="RayCast3D" parent="."]
+visible = false
+target_position = Vector3(0, 0, -15)
+script = ExtResource("2_hjh4f")
+
+[node name="DoorMarker" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
+
+[node name="PropMarker" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.75)
+
+[node name="InteractRaycast" type="RayCast3D" parent="." node_paths=PackedStringArray("player", "door_marker", "prop_marker")]
+target_position = Vector3(0, 0, -2)
+collision_mask = 12
+script = ExtResource("3_l3uou")
+player = NodePath("../..")
+door_marker = NodePath("../DoorMarker")
+prop_marker = NodePath("../PropMarker")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="Panel" parent="CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_huofl")
+script = ExtResource("4_legje")
+anim_duration = 0.3
+
+[node name="CameraArea" type="Area3D" parent="." groups=["player"]]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraArea"]
+shape = SubResource("SphereShape3D_u41ki")

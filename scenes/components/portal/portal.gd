@@ -37,7 +37,7 @@ func sync_viewport_size() -> void:
 func teleport(body):
 	Logger.debug_log('teleporting...')
 	var dest = destination.global_position
-	dest.y -= player_camera.get_parent().position.y
+#	dest.y -= player_camera.get_parent().position.y
 	body.global_position = dest
 #	body.velocity = -body.global_transform.basis.z * body.velocity.length()
 

@@ -94,8 +94,9 @@ portal_viewport = NodePath("../PortalViewport")
 [node name="PortalViewport" parent="." instance=ExtResource("6_ycm8a")]
 
 [node name="CameraHolder" parent="PortalViewport" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73754, 1.37533, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8848, 0.893418, 0)
 
 [editable path="Player"]
 [editable path="Player/SubViewport"]
 [editable path="PortalViewport"]
+[editable path="PortalViewport/CameraHolder/Head"]
