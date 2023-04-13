@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpojp30lnid13"]
+[gd_scene load_steps=6 format=3 uid="uid://canx7gpmd6rat"]
 
-[ext_resource type="Script" path="res://scenes/components/portal/cum.gd" id="1_ddlk7"]
-[ext_resource type="Script" path="res://scenes/components/portal/portal_travel.gd" id="2_ennjp"]
+[ext_resource type="Script" path="res://scenes/components/portal/portal.gd" id="1_38t1e"]
 [ext_resource type="Material" uid="uid://milj8r0vdtn4" path="res://scenes/components/portal/portal_material.tres" id="2_w7y4h"]
 [ext_resource type="Script" path="res://scenes/components/portal/shape_update.gd" id="4_nwbfh"]
 
@@ -12,28 +11,22 @@ size = Vector3(2, 0.5, 1.4)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0o4eh"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="PortalViewport" type="SubViewport"]
-
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("portal_mesh", "sub_viewport")]
-script = ExtResource("1_ddlk7")
-portal_mesh = NodePath("../Portal/MeshInstance3D")
-sub_viewport = NodePath("..")
-
-[node name="Portal" type="Node3D" parent="."]
+[node name="Portal" type="Node3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-script = ExtResource("2_ennjp")
+script = ExtResource("1_38t1e")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Portal"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_6j3mu")
 
-[node name="Area3D" type="Area3D" parent="Portal"]
+[node name="Area3D" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Portal/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.63776e-09, 0.174731, 0)
 shape = SubResource("BoxShape3D_0o4eh")
 script = ExtResource("4_nwbfh")
 
-[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+[node name="PortalViewport" type="SubViewport" parent="."]
 
-[connection signal="body_entered" from="Portal/Area3D" to="Portal" method="_on_area_3d_body_entered"]
-[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="Portal" method="_on_visible_on_screen_notifier_3d_screen_exited"]
+[node name="Camera3D" type="Camera3D" parent="PortalViewport"]
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

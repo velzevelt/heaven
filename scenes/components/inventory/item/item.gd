@@ -1,8 +1,6 @@
 class_name Item
 extends Resource
 
-signal item_used
-
 
 @export var visible_name: String = ''
 @export var name: String = ''
@@ -29,9 +27,3 @@ signal item_used
 
 @export var is_consumable := false
 @export var is_equippable := false
-
-#func _on_context_menu_opened():
-#	pass
-#
-#func _on_throwed_away():
-#	pass

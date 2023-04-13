@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_6066y"]
 [ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material_orange.tres" id="1_fvsls"]
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="2_qe0d0"]
-[ext_resource type="PackedScene" uid="uid://cpojp30lnid13" path="res://scenes/components/portal/portal_setup.tscn" id="5_3nsui"]
-[ext_resource type="PackedScene" uid="uid://1w15x5akleyo" path="res://scenes/objects/coin/coin.tscn" id="5_lxstv"]
+[ext_resource type="PackedScene" uid="uid://canx7gpmd6rat" path="res://scenes/components/portal/portal_setup.tscn" id="5_3nsui"]
+[ext_resource type="PackedScene" path="res://scenes/objects/coin/coin.tscn" id="5_lxstv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2ksx3"]
 
@@ -57,6 +57,10 @@ environment = SubResource("Environment_g7017")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00808, 0)
+light_energy = 4.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0225, 1.00808, 0)
 light_energy = 4.0
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]

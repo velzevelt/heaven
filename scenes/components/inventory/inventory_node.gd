@@ -51,5 +51,5 @@ func _unhandled_input(_event):
 		
 		### Make mouse visible when inventory_menu appeared, resume when closed
 		
-		inventory_menu.call_deferred('_early_ready') # Create slots here
+		inventory_menu.call_deferred('_early_ready') # Create UI for slots here
 		call_deferred('add_child', inventory_menu)
