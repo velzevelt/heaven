@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://gv2ckk344gs1"]
+[gd_scene load_steps=8 format=3 uid="uid://gv2ckk344gs1"]
 
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="1_q1mjs"]
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_q7kco"]
+[ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material_orange.tres" id="2_yo2dg"]
 [ext_resource type="PackedScene" uid="uid://cym3bkd2813fl" path="res://scenes/maps/heaven/dev/map_2/corridor.tscn" id="3_qg6sw"]
-[ext_resource type="PackedScene" uid="uid://canx7gpmd6rat" path="res://scenes/components/portal/portal_setup.tscn" id="4_rnjng"]
-[ext_resource type="PackedScene" uid="uid://calkh60ro7f1q" path="res://scenes/components/portal/portal_viewport.tscn" id="5_ijj8i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0mfy5"]
 
@@ -24,16 +23,6 @@ adjustment_contrast = 1.17
 [node name="World" type="Node3D"]
 script = ExtResource("1_q7kco")
 
-[node name="Lights" type="Node3D" parent="."]
-
-[node name="OmniLight3D6" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1239, 0, -4.58921)
-distance_fade_enabled = true
-
-[node name="OmniLight3D7" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.3265, 0, -4.58921)
-distance_fade_enabled = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_02f0l")
 
@@ -41,18 +30,18 @@ environment = SubResource("Environment_02f0l")
 
 [node name="Corridor" parent="." instance=ExtResource("3_qg6sw")]
 
+[node name="Corridor3" parent="." instance=ExtResource("3_qg6sw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.971, 0, 0)
+
 [node name="Corridor2" parent="." instance=ExtResource("3_qg6sw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.0844, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.982, 0, 0)
 
-[node name="Portal" parent="." node_paths=PackedStringArray("destination", "portal_viewport") instance=ExtResource("4_rnjng")]
-transform = Transform3D(1, 0, 0, 0, 2.17189, 0, 0, 0, 3.29293, -19.4225, -0.0165692, -3.52915)
-destination = NodePath("PortalViewport/CameraHolder/Head")
-portal_viewport = NodePath("PortalViewport")
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.5005, 0, -3.23474)
+size = Vector3(0.1, 4.3, 4.3)
+material = ExtResource("2_yo2dg")
 
-[node name="PortalViewport" parent="Portal" instance=ExtResource("5_ijj8i")]
-
-[node name="CameraHolder" parent="Portal/PortalViewport" index="0"]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -20.9224, -0.91832, -3.32956)
-
-[editable path="Portal/PortalViewport"]
-[editable path="Portal/PortalViewport/CameraHolder/Head"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.5813, 0, -3.23474)
+size = Vector3(0.1, 4.3, 4.3)
+material = ExtResource("2_yo2dg")
