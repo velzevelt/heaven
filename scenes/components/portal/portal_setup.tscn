@@ -8,7 +8,7 @@ material = ExtResource("2_w7y4h")
 size = Vector3(1.8, 0.2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t6vfs"]
-size = Vector3(0.1, 1.8, 1)
+size = Vector3(0.15, 1.8, 1)
 
 [node name="Portal" type="Node3D"]
 script = ExtResource("1_38t1e")

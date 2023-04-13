@@ -15,7 +15,7 @@ extends Node
 	get:
 		return portal_viewport.get_texture()
 
-@onready var init_transform: Transform3D = self.global_transform
+@onready var init_transform: Transform3D = holder.global_transform
 
 
 func _ready():
@@ -26,8 +26,11 @@ func _ready():
 
 func _physics_process(_delta):
 	material.set_shader_parameter('texture_albedo', screen_texture)
+#	holder.position = player_camera.global_position
 	holder.global_rotation = player_camera.global_rotation
 	portal_camera.fov = player_camera.fov
+#	holder.global_transform = player_camera.global_transform
+
 
 func sync_viewport_size() -> void:
 	portal_viewport.size = get_tree().root.size

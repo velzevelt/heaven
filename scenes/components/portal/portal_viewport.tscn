@@ -13,6 +13,24 @@ height = 0.2
 
 [node name="Head" parent="CameraHolder" instance=ExtResource("1_60yvv")]
 
+[node name="CrosshairRaycast" parent="CameraHolder/Head" index="2"]
+process_mode = 4
+
+[node name="DoorMarker" parent="CameraHolder/Head" index="3"]
+process_mode = 4
+
+[node name="PropMarker" parent="CameraHolder/Head" index="4"]
+process_mode = 4
+
+[node name="InteractRaycast" parent="CameraHolder/Head" index="5"]
+process_mode = 4
+
+[node name="CenterContainer" parent="CameraHolder/Head" index="6"]
+visible = false
+
+[node name="CameraArea" parent="CameraHolder/Head" index="7"]
+process_mode = 4
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraHolder/Head"]
 mesh = SubResource("SphereMesh_pqd40")
 skeleton = NodePath("../../..")

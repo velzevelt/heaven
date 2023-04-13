@@ -34,6 +34,9 @@ script = ExtResource("1_gwrkw")
 
 [node name="Head" parent="." instance=ExtResource("3_pi4sb")]
 
+[node name="InteractRaycast" parent="Head" index="5" node_paths=PackedStringArray("player")]
+player = NodePath("../..")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 layers = 524288
 material_override = SubResource("StandardMaterial3D_37kd4")
