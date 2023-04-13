@@ -1,4 +1,4 @@
-extends Node3D
+extends Node
 
 @export var destination: Node3D
 @export var player_camera: Camera3D
@@ -32,5 +32,4 @@ func _ready():
 
 func _physics_process(_delta):
 	material.set_shader_parameter('texture_albedo', screen_texture)
-
 

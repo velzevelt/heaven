@@ -11,16 +11,15 @@ size = Vector3(2, 0.5, 1.4)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0o4eh"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="Portal" type="Node3D"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+[node name="Portal" type="Node"]
 script = ExtResource("1_38t1e")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_6j3mu")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.63776e-09, 0.174731, 0)
 shape = SubResource("BoxShape3D_0o4eh")
 script = ExtResource("4_nwbfh")
@@ -29,4 +28,4 @@ script = ExtResource("4_nwbfh")
 
 [node name="Camera3D" type="Camera3D" parent="PortalViewport"]
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="MeshInstance3D/Area3D" to="." method="_on_area_3d_body_entered"]
