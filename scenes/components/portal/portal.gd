@@ -1,9 +1,10 @@
 extends Node3D
 
 @export var destination: Node3D
-@export var player_cam: Camera3D
+@export var player_camera: Camera3D
 
 @onready var portal_viewport: SubViewport = $PortalViewport
+@onready var portal_camera: Camera3D = portal_viewport.get_camera_3d()
 @onready var portal_mesh: MeshInstance3D = $MeshInstance3D
 @onready var material: ShaderMaterial = portal_mesh.get_active_material(0)
 
@@ -26,8 +27,10 @@ func _on_area_3d_body_entered(body):
 
 func _ready():
 	portal_viewport.size = get_tree().root.size
-	portal_viewport.get_camera_3d().fov = player_cam.fov
+	portal_camera.fov = player_camera.fov
 
 
 func _physics_process(_delta):
 	material.set_shader_parameter('texture_albedo', screen_texture)
+
+
