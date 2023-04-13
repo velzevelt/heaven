@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://gv2ckk344gs1"]
+[gd_scene load_steps=9 format=3 uid="uid://d1ip00x2v50sc"]
 
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="1_q1mjs"]
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_q7kco"]
 [ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material_orange.tres" id="2_yo2dg"]
 [ext_resource type="PackedScene" uid="uid://cym3bkd2813fl" path="res://scenes/maps/heaven/dev/map_2/corridor.tscn" id="3_qg6sw"]
+[ext_resource type="Script" path="res://scenes/maps/heaven/dev/map_2/infinite_corridor.gd" id="5_ekrvm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0mfy5"]
 
@@ -28,20 +29,29 @@ environment = SubResource("Environment_02f0l")
 
 [node name="Player" parent="." instance=ExtResource("1_q1mjs")]
 
-[node name="Corridor" parent="." instance=ExtResource("3_qg6sw")]
+[node name="CorridorCenter" parent="." instance=ExtResource("3_qg6sw")]
 
-[node name="Corridor3" parent="." instance=ExtResource("3_qg6sw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.971, 0, 0)
+[node name="CorridorTop" parent="." instance=ExtResource("3_qg6sw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
 
-[node name="Corridor2" parent="." instance=ExtResource("3_qg6sw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.982, 0, 0)
+[node name="CorridorBack" parent="." instance=ExtResource("3_qg6sw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.5005, 0, -3.23474)
+visible = false
 size = Vector3(0.1, 4.3, 4.3)
 material = ExtResource("2_yo2dg")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.5813, 0, -3.23474)
+visible = false
 size = Vector3(0.1, 4.3, 4.3)
 material = ExtResource("2_yo2dg")
+
+[node name="InfiniteCorridor" type="Node" parent="." node_paths=PackedStringArray("player", "top_part", "central_part", "back_part")]
+script = ExtResource("5_ekrvm")
+player = NodePath("../Player")
+top_part = NodePath("../CorridorTop")
+central_part = NodePath("../CorridorCenter")
+back_part = NodePath("../CorridorBack")
