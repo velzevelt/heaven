@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cym3bkd2813fl"]
+[gd_scene load_steps=3 format=3 uid="uid://cym3bkd2813fl"]
 
 [ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material_orange.tres" id="1_fdxb5"]
 [ext_resource type="PackedScene" uid="uid://dnbtlnnkgj0h0" path="res://scenes/objects/room/room.tscn" id="2_8m4ha"]
-[ext_resource type="PackedScene" uid="uid://qrbcckhovcto" path="res://scenes/objects/room/door_way.tscn" id="3_dcw67"]
 
 [node name="Corridor" type="Node3D"]
 
@@ -87,26 +86,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86367, -3.99358)
 use_collision = true
 size = Vector3(41.1825, 0.191538, 4)
 material = ExtResource("1_fdxb5")
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 20.4644, 0.174354, -3.99358)
-use_collision = true
-size = Vector3(4.55523, 0.191538, 4)
-material = ExtResource("1_fdxb5")
-
-[node name="DoorWay" parent="CSGBox3D5" instance=ExtResource("3_dcw67")]
-transform = Transform3D(1.91069e-15, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 0, -4.37114e-08, 0.619369, 0.34923, 0.354339)
-operation = 2
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -20.5718, 0.174354, -3.99358)
-use_collision = true
-size = Vector3(4.55523, 0.191538, 4)
-material = ExtResource("1_fdxb5")
-
-[node name="DoorWay2" parent="CSGBox3D6" instance=ExtResource("3_dcw67")]
-transform = Transform3D(1.91069e-15, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 0, -4.37114e-08, 0.619369, 0.346806, 0.354339)
-operation = 2
-
-[editable path="CSGBox3D5/DoorWay"]
-[editable path="CSGBox3D6/DoorWay2"]

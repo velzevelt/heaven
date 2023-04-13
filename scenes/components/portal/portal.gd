@@ -20,7 +20,6 @@ extends Node
 
 
 func _ready():
-	portal_camera.fov = player_camera.fov
 	sync_viewport_size()
 	get_tree().root.size_changed.connect(sync_viewport_size)
 
@@ -28,9 +27,9 @@ func _ready():
 func _physics_process(_delta):
 	material.set_shader_parameter('texture_albedo', screen_texture)
 	
+	portal_camera.set_perspective(player_camera.fov, player_camera.near, player_camera.far)
 	portal_camera.global_rotation = player_camera.global_rotation
-	portal_camera.fov = player_camera.fov
-	
+#	destination.global_position = Vector3(-player.global_position.x, player.global_position.y, -player.global_position.z) * init_position
 
 func sync_viewport_size() -> void:
 	portal_viewport.size = get_tree().root.size
