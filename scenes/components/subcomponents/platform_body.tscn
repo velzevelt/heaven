@@ -1,14 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://du4vhvf6ceisx"]
+[gd_scene load_steps=5 format=3 uid="uid://du4vhvf6ceisx"]
 
 [ext_resource type="Script" path="res://scenes/components/subcomponents/platform_body.gd" id="1_3vo1p"]
 [ext_resource type="Script" path="res://scenes/components/subcomponents/platform_collision_shape.gd" id="2_5hv81"]
-[ext_resource type="Material" uid="uid://ys587ewu4f0m" path="res://textures/prototype_material_purple.tres" id="3_pcry4"]
+[ext_resource type="BoxMesh" uid="uid://d1w1tt6v6rjjf" path="res://scenes/components/subcomponents/platform_body_mesh.tres" id="3_kteox"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pxphh"]
-size = Vector3(2, 0.3, 2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_fjode"]
-material = ExtResource("3_pcry4")
 size = Vector3(2, 0.3, 2)
 
 [node name="PlatformBody" type="StaticBody3D"]
@@ -19,4 +15,4 @@ shape = SubResource("BoxShape3D_pxphh")
 script = ExtResource("2_5hv81")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_fjode")
+mesh = ExtResource("3_kteox")
