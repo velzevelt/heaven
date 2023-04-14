@@ -2,39 +2,48 @@
 class_name PlayerMoveComponent
 extends Node3D # It inherits from Node3D only for easier debugging
 
+@export_group('Crouch')
+@export var player_collision_shape: CollisionShape3D
+@export var player_standing_shape: Shape3D
+@export var player_crouching_shape: Shape3D
+
+@export_group('Dependencies')
 @export var velocity_component: VelocityComponent
+@export var standing_velocity_component: VelocityComponent
+@export var crouching_velocity_component: VelocityComponent
 @export var head: Head
-@export var player_body: CharacterBody3D 
+@export var player_body: CharacterBody3D
+
+@export_group('Behaviour') 
 @export var can_move := true
 @export var can_jump := true
 @export var air_control := true
 @export var max_ramp_angle: float = 45 # Max angle that the player can go upwards at full speed
-
-
 @export var auto_jump := false # Auto bunnyhopping
 
-var wish_jump := false # If true, player has queued a jump : the jump key can be held down before hitting the ground to jump.
-
-var wish_dir: Vector3 = Vector3() # Desired travel direction of the player
-var vertical_velocity: float = 0 # Vertical component of our velocity. 
 @onready var max_falling_speed: float = velocity_component.gravity * -5 # When this is reached, we stop increasing falling speed
 
+var wish_jump := false # If true, player has queued a jump : the jump key can be held down before hitting the ground to jump.
+var wish_dir: Vector3 = Vector3() # Desired travel direction of the player
+var vertical_velocity: float = 0 # Vertical component of our velocity. 
 
-var forward_action = 'forward'
-var backward_action = 'backward'
-var right_action = 'right'
-var left_action = 'left'
-var jump_action = 'jump'
-
+var forward_action := 'forward'
+var backward_action := 'backward'
+var right_action := 'right'
+var left_action := 'left'
+var jump_action := 'jump'
 
 # The next two variables are used to display corresponding vectors in game world.
 var debug_horizontal_velocity: Vector3 = Vector3.ZERO
 var accelerate_return: Vector3 = Vector3.ZERO
 
-enum STATES {
-	WALK,
+enum States {
+	STAND,
 	CROUCH
 }
+
+var current_state = States.STAND
+
 
 func _ready():
 	# We tell our DebugLayer to draw those vectors in the game world.
@@ -55,11 +64,13 @@ func _update_wish_dir():
 func _physics_process(delta):
 	_update_wish_dir()
 	queue_jump()
-	
+	queue_crouch()
 	
 	if player_body.is_on_floor():
 		if wish_jump: # If we're on the ground but wish_jump is still true, this means we've just landed
+			
 			vertical_velocity = velocity_component.jump_velocity # Jump
+			
 			move_air(wish_dir, player_body.velocity, delta) # Mimic Quake's way of treating first frame after landing as still in the air
 			wish_jump = false # We have jumped, the player needs to press jump key again
 			
@@ -76,6 +87,23 @@ func _physics_process(delta):
 	
 	velocity_component.last_speed = player_body.velocity.length()
 	debug_horizontal_velocity = Vector3(player_body.velocity.x, 0, player_body.velocity.z) # Horizontal velocity to be displayed
+
+
+func queue_crouch() -> void:
+	if not can_move:
+		return
+	
+	if Input.is_action_just_pressed("crouch"):
+		if current_state != States.CROUCH:
+			current_state = States.CROUCH
+			player_collision_shape.shape = player_crouching_shape
+			velocity_component = crouching_velocity_component
+			
+	elif Input.is_action_just_released("crouch"):
+		if current_state == States.CROUCH:
+			current_state = States.STAND
+			player_collision_shape.shape = player_standing_shape
+			velocity_component = standing_velocity_component
 
 
 # Set wish_jump depending on player input.

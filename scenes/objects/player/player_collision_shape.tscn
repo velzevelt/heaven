@@ -1,7 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://0pjdi51ba3dw"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y1312"]
-height = 1.7
+[ext_resource type="Shape3D" uid="uid://c8hw2d0vbaj0t" path="res://scenes/objects/player/player_standing_shape.tres" id="1_n6jso"]
 
 [node name="CollisionShape3D" type="CollisionShape3D"]
-shape = SubResource("CapsuleShape3D_y1312")
+shape = ExtResource("1_n6jso")

@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://chaf5uqx5ltj2"]
+[gd_scene load_steps=18 format=3 uid="uid://colma6wid3n1x"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_gwrkw"]
 [ext_resource type="PackedScene" uid="uid://0pjdi51ba3dw" path="res://scenes/objects/player/player_collision_shape.tscn" id="2_wt83f"]
 [ext_resource type="PackedScene" uid="uid://bgac5mna4qv2q" path="res://scenes/objects/player/head.tscn" id="3_pi4sb"]
+[ext_resource type="Shape3D" uid="uid://c8hw2d0vbaj0t" path="res://scenes/objects/player/player_standing_shape.tres" id="6_ey304"]
+[ext_resource type="Shape3D" uid="uid://b43jtqa76you0" path="res://scenes/objects/player/player_crouching_shape.tres" id="7_bagsb"]
 [ext_resource type="Script" path="res://scenes/components/floor_activation_component.gd" id="7_mjju6"]
 [ext_resource type="Script" path="res://addons/debug_tools/info_label/info_label.gd" id="7_tu7pf"]
 [ext_resource type="Script" path="res://scenes/objects/player/player_move_component.gd" id="9_7a22w"]
@@ -41,6 +43,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 layers = 524288
 material_override = SubResource("StandardMaterial3D_37kd4")
 mesh = SubResource("CapsuleMesh_720by")
@@ -49,12 +52,16 @@ mesh = SubResource("CapsuleMesh_720by")
 script = ExtResource("7_mjju6")
 body = NodePath("..")
 
-[node name="PlayerMoveComponent" type="Node3D" parent="." node_paths=PackedStringArray("velocity_component", "head", "player_body")]
+[node name="PlayerMoveComponent" type="Node3D" parent="." node_paths=PackedStringArray("player_collision_shape", "velocity_component", "standing_velocity_component", "crouching_velocity_component", "head", "player_body")]
 script = ExtResource("9_7a22w")
+player_collision_shape = NodePath("../CollisionShape3D")
+player_standing_shape = ExtResource("6_ey304")
+player_crouching_shape = ExtResource("7_bagsb")
 velocity_component = NodePath("VelocityComponent")
+standing_velocity_component = NodePath("VelocityComponent")
+crouching_velocity_component = NodePath("CrouchingVelocity")
 head = NodePath("../Head")
 player_body = NodePath("..")
-max_ramp_angle = 60.0
 
 [node name="VelocityComponent" type="Node" parent="PlayerMoveComponent"]
 script = ExtResource("9_ytpbk")
@@ -62,6 +69,12 @@ max_speed = 15.0
 jump_velocity = 4.0
 friction = 5.0
 move_accel = 30.0
+
+[node name="CrouchingVelocity" type="Node" parent="PlayerMoveComponent"]
+script = ExtResource("9_ytpbk")
+friction = 10.0
+max_air_speed = 3.0
+move_accel = 20.0
 
 [node name="DynamicFOVChange" type="Node" parent="." node_paths=PackedStringArray("camera", "velocity_component", "player_body")]
 script = ExtResource("10_y34ym")

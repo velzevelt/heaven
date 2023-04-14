@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="6_mcpiw"]
 [ext_resource type="PackedScene" path="res://scenes/maps/heaven/tutorial/tutorial_layer.tscn" id="7_1j02i"]
 [ext_resource type="PackedScene" uid="uid://bcdqwr7wudsse" path="res://scenes/maps/heaven/tutorial/message_container.tscn" id="8_rxtur"]
-[ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="9_4rg3p"]
+[ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="9_4rg3p"]
 [ext_resource type="PackedScene" uid="uid://cmai6yuuktlww" path="res://scenes/objects/map_template/world_environment.tscn" id="12_cl61m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xajhp"]

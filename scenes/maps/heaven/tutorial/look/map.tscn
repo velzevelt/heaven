@@ -17,7 +17,7 @@
 script = ExtResource("1_i88nr")
 
 [node name="KillingFloor" parent="." instance=ExtResource("2_kmd12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.391168, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.91041, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_tg8ae")]
 process_mode = 4
