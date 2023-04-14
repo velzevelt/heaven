@@ -28,7 +28,7 @@ point_count = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.56148, 0)
 
 [node name="Player" parent="." index="3" instance=ExtResource("3_n78v4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.12422, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1.12422, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.06957, 0)
@@ -58,10 +58,26 @@ closed = true
 [node name="HingeJoint" parent="Door" index="2"]
 angular_limit/upper = 0.0
 
-[node name="LockedDoor" type="Node" parent="Door" index="3" node_paths=PackedStringArray("door")]
+[node name="LockedDoor" type="Node" parent="Door" index="3" node_paths=PackedStringArray("door", "closed_label")]
 script = ExtResource("6_63s88")
 door = NodePath("../PhysicsDoor")
 key_item = ExtResource("7_wqfx2")
+closed_label = NodePath("Label")
+
+[node name="Label" type="Label" parent="Door/LockedDoor" index="0"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 38
+text = "Closed"
 
 [node name="Area3D" type="Area3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2457, -0.619414, 0.00917453)
@@ -89,8 +105,8 @@ curve = SubResource("Curve3D_g18fu")
 [node name="Coin" parent="MovingPlatform" index="3" instance=ExtResource("8_uqjor")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0399952, 1.24398, 0)
 
-[node name="Coin2" parent="MovingPlatform" index="4" instance=ExtResource("8_uqjor")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4068, 1.24398, 0)
+[connection signal="interaction_begin" from="Door/PhysicsDoor" to="Door/LockedDoor" method="_on_physics_door_interaction_begin"]
+[connection signal="interaction_end" from="Door/PhysicsDoor" to="Door/LockedDoor" method="_on_physics_door_interaction_end"]
 
 [editable path="Door"]
 [editable path="MovingPlatform"]

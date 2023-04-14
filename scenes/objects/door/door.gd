@@ -1,6 +1,9 @@
 class_name DoorRigidBody3D
 extends RigidBody3D
 
+signal interaction_begin
+signal interaction_end
+
 @export var closed := false:
 	set(value):
 		closed = value
@@ -67,10 +70,11 @@ func _integrate_forces(_state: PhysicsDirectBodyState3D):
 
 func interact_begin(data):
 	raycast_data = data
+	interaction_begin.emit()
 
 func interact_process():
 	if Input.is_action_pressed('interact'):
 		is_dragging = true
 
 func interact_end():
-	pass
+	interaction_end.emit()

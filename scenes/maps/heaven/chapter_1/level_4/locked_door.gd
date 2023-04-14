@@ -2,17 +2,24 @@ extends Node
 
 @export var door: DoorRigidBody3D
 @export var key_item: Item
+@export var closed_label: Label
 
-
-#func _on_area_3d_body_entered(body):
-#	if body.is_in_group('player') and body.has_node('InventoryNode'):
-#		var inventory = body.get_node('InventoryNode').inventory_res as Inventory
-#		if inventory.has_item(key_item):
-#			door.closed = false
 
 func _ready():
 	Events.item_added.connect(open_door)
+	closed_label.visible = false
+
 
 func open_door(item):
 	if item == key_item:
 		door.closed = false
+
+
+func _on_physics_door_interaction_begin():
+	if door.closed:
+		closed_label.visible = true
+		await get_tree().create_timer(2.0).timeout
+		closed_label.visible = false
+
+func _on_physics_door_interaction_end():
+	closed_label.visible = false
