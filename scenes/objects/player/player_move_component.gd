@@ -2,7 +2,7 @@
 class_name PlayerMoveComponent
 extends Node3D # It inherits from Node3D only for easier debugging
 
-@export_group('CROUCHING')
+@export_group('Crouch')
 @export var player_collision_shape: CollisionShape3D
 @export var player_standing_shape: Shape3D
 @export var player_crouching_shape: Shape3D
