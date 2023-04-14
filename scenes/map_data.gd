@@ -65,12 +65,10 @@ var MAP_SCENE_FILE_NAME = SceneLoader.MAP_SCENE_FILE_NAME # unified name 'map.ts
 	get:
 		return next_map_path
 	set(value):
-		if Engine.is_editor_hint():
-			var next_map = ResourceLoader.load(value) as MapData
-			if next_map != null:
-				next_map.previous_map_path = resource_path
-			
-		
+#		if Engine.is_editor_hint():
+#			var next_map = ResourceLoader.load(value) as MapData
+#			if next_map != null:
+#				next_map.previous_map_path = resource_path
 		next_map_path = value
 
 ## Determinates position in LevelSelector. 0 - first map, 1 - second, etc

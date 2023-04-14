@@ -101,7 +101,7 @@ func queue_crouch() -> void:
 			velocity_component = crouching_velocity_component
 			
 	elif Input.is_action_just_released(crouch_action):
-		if current_state == States.CROUCHING:
+		if current_state == States.CROUCHING and not wish_jump:
 			current_state = States.STANDING
 			player_collision_shape.shape = player_standing_shape
 			velocity_component = standing_velocity_component
