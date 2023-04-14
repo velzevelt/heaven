@@ -1,3 +1,4 @@
+class_name DoorRigidBody3D
 extends RigidBody3D
 
 @export var closed := false:

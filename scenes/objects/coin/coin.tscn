@@ -1,19 +1,8 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://bepjx2iwc10qi"]
 
 [ext_resource type="Script" path="res://scenes/objects/coin/coin.gd" id="1_jrmyy"]
 [ext_resource type="Texture2D" uid="uid://c2rpvnx5aenl2" path="res://textures/kenney_prototypetextures/Orange/texture_01.png" id="1_n0rmg"]
-[ext_resource type="Texture2D" uid="uid://cn5nhs2dyxodr" path="res://icon.svg" id="2_2skh1"]
-[ext_resource type="Script" path="res://scenes/components/inventory/item/item.gd" id="3_1tm5y"]
-
-[sub_resource type="Resource" id="Resource_tdysj"]
-script = ExtResource("3_1tm5y")
-visible_name = "coin"
-name = "coin_test"
-icon = ExtResource("2_2skh1")
-max_stack_size = 1
-in_stack = 1
-is_consumable = false
-is_equippable = false
+[ext_resource type="Resource" uid="uid://bjufqcguyiri8" path="res://scenes/objects/coin/coin.tres" id="2_qs4ja"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6eqw3"]
 albedo_texture = ExtResource("1_n0rmg")
@@ -30,7 +19,7 @@ radius = 0.25
 
 [node name="Coin" type="Node3D" groups=["coin"]]
 script = ExtResource("1_jrmyy")
-item = SubResource("Resource_tdysj")
+item = ExtResource("2_qs4ja")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CylinderMesh_crl44")

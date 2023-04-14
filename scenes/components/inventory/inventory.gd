@@ -77,6 +77,11 @@ func add_item(item: Item) -> Error:
 	Logger.debug_log('Unkown error in add_item', MESSAGE_TYPE.ERROR)
 	return ERR_BUG
 
+func has_item(item: Item) -> bool:
+	for slot in slots:
+		if slot.item == item:
+			return true
+	return false
 
 func has_free_slot() -> bool:
 	return slots.any(func(slot): return not slot.is_full)

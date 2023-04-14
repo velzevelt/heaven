@@ -16,6 +16,6 @@ difficulty = 0.0
 description = ""
 hidden = false
 visible_name = "Level 2"
-next_map_path = ""
+next_map_path = "res://scenes/maps/heaven/chapter_1/level_3/map_data.tres"
 show_order = 2
 tags = PackedStringArray()

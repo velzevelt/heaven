@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=3 uid="uid://jhng3cnom2ob"]
+
+[ext_resource type="PackedScene" uid="uid://c3j4bosemqpe" path="res://scenes/objects/map_template/map.tscn" id="1_eqvbu"]
+[ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_yf7o4"]
+[ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="3_n78v4"]
+[ext_resource type="Material" uid="uid://ys587ewu4f0m" path="res://textures/prototype_material_purple.tres" id="4_e24h0"]
+[ext_resource type="PackedScene" uid="uid://wbd0ynecsosi" path="res://scenes/objects/door/door.tscn" id="5_qtnvq"]
+[ext_resource type="Script" path="res://scenes/maps/heaven/chapter_1/level_4/locked_door.gd" id="6_63s88"]
+[ext_resource type="Script" path="res://scenes/maps/heaven/chapter_1/level_4/finish_area.gd" id="6_qjk4w"]
+[ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="7_v28gy"]
+[ext_resource type="Resource" uid="uid://bjufqcguyiri8" path="res://scenes/objects/coin/coin.tres" id="7_wqfx2"]
+[ext_resource type="PackedScene" uid="uid://bepjx2iwc10qi" path="res://scenes/objects/coin/coin.tscn" id="8_uqjor"]
+[ext_resource type="PackedScene" uid="uid://ckemuy5whwa3e" path="res://scenes/objects/moving_platform/moving_platform.tscn" id="10_cifil"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ymno8"]
+size = Vector3(1, 1, 0.709217)
+
+[sub_resource type="Curve3D" id="Curve3D_g18fu"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 5, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Map" instance=ExtResource("1_eqvbu")]
+
+[node name="KillingFloor" parent="." index="2" instance=ExtResource("2_yf7o4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.56148, 0)
+
+[node name="Player" parent="." index="3" instance=ExtResource("3_n78v4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.12422, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.06957, 0)
+use_collision = true
+size = Vector3(16.1509, 0.190702, 11.5071)
+material = ExtResource("4_e24h0")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.15477, 1.18827, 0)
+use_collision = true
+size = Vector3(5.84135, 3.07931, 5.44604)
+material = ExtResource("4_e24h0")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D/CSGBox3D2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.441449, 0.14911, 0)
+operation = 2
+use_collision = true
+size = Vector3(5.18684, 2.26896, 1.15824)
+material = ExtResource("4_e24h0")
+
+[node name="Door" parent="." index="5" instance=ExtResource("5_qtnvq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.22633, -0.6812, -0.0258474)
+
+[node name="PhysicsDoor" parent="Door" index="0"]
+closed = true
+
+[node name="HingeJoint" parent="Door" index="2"]
+angular_limit/upper = 0.0
+
+[node name="LockedDoor" type="Node" parent="Door" index="3" node_paths=PackedStringArray("door")]
+script = ExtResource("6_63s88")
+door = NodePath("../PhysicsDoor")
+key_item = ExtResource("7_wqfx2")
+
+[node name="Area3D" type="Area3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2457, -0.619414, 0.00917453)
+script = ExtResource("6_qjk4w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("BoxShape3D_ymno8")
+
+[node name="Platform" parent="." index="7" instance=ExtResource("7_v28gy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6175, -2.34021, 0)
+
+[node name="Platform2" parent="." index="8" instance=ExtResource("7_v28gy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1418, -2.34021, 0)
+
+[node name="MovingPlatform" parent="." index="9" instance=ExtResource("10_cifil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8786, -2.33124, 0)
+
+[node name="MovingPlatformComponent" parent="MovingPlatform" index="1"]
+autoplay = false
+loop = false
+
+[node name="Path3D" parent="MovingPlatform" index="2"]
+curve = SubResource("Curve3D_g18fu")
+
+[node name="Coin" parent="MovingPlatform" index="3" instance=ExtResource("8_uqjor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0399952, 1.24398, 0)
+
+[node name="Coin2" parent="MovingPlatform" index="4" instance=ExtResource("8_uqjor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4068, 1.24398, 0)
+
+[editable path="Door"]
+[editable path="MovingPlatform"]
+[editable path="MovingPlatform/MovingPlatformBody"]
+[editable path="MovingPlatform/Path3D"]

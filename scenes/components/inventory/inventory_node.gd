@@ -36,6 +36,8 @@ func _on_object_picked_up(object):
 				Inventory.ERR_HAVE_NO_SPACE, Inventory.ERR_ADD_INCOMPLETE:
 					inventory_overflowed.emit()
 				OK:
+					Events.item_added.emit(object.item)
+					
 					item_added.emit(object.item)
 					inventory_changed.emit(inventory_res)
 		else:
