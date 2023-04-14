@@ -26,9 +26,10 @@ func custom_exit():
 
 
 func _on_ui_cancel_just_pressed():
-	pass
+	_on_back_button_pressed()
 
-func _input(_event):
+
+func _unhandled_input(_event):
 	if Input.is_action_just_pressed('ui_cancel'):
 		_on_ui_cancel_just_pressed()
 

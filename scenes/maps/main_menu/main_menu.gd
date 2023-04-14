@@ -7,13 +7,18 @@ extends MenuComponent
 var _map_select_menu_instance
 var _settings_menu_instance
 
+func custom_exit():
+	if is_instance_valid(_map_select_menu_instance) or is_instance_valid(_settings_menu_instance):
+		return
+	else:
+		get_tree().quit()
+
 func _on_play_button_pressed():
 	if map_select_menu != null:
 		if not is_instance_valid(_map_select_menu_instance):
 			_map_select_menu_instance = MenuComponent.open_menu(map_select_menu, self)
 	else:
 		Logger.debug_log('Missing map_select_menu!', MESSAGE_TYPE.ERROR)
-
 
 
 func _on_settings_button_pressed():

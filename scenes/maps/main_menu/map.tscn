@@ -7,7 +7,7 @@
 [node name="MainMenuLayer" type="CanvasLayer"]
 layer = 0
 script = ExtResource("1_axffq")
-on_back = 2
+on_back = 4
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
