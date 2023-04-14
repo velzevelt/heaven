@@ -21,10 +21,13 @@ func _ready():
 func on_focus():
 	if not _activated:
 		_tween = create_tween()
+		_tween.set_parallel()
 		_tween.tween_property(mesh.material_override, 'albedo_color', final_color, anim_duration)
-		_tween.tween_property(mesh, 'transparency', 1.0, anim_duration)
+#		_tween.tween_property(mesh, 'transparency', 1.0, anim_duration)
+		_tween.tween_callback(func(): label.visible = false).set_delay(anim_duration)
 		_activated = true
+		activated.emit(self)
 
 func focus_losted():
-	label.visible = false
-	activated.emit(self)
+	pass
+#	activated.emit(self)

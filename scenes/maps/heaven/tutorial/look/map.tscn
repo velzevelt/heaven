@@ -1,25 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://3gx2fd0lc5ql"]
+[gd_scene load_steps=13 format=3]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_i88nr"]
-[ext_resource type="PackedScene" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_kmd12"]
+[ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_kmd12"]
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="3_tg8ae"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/look/look_raycast.gd" id="4_h61jh"]
 [ext_resource type="Script" path="res://addons/debug_tools/info_label/info_label.gd" id="5_d35bj"]
 [ext_resource type="PackedScene" path="res://scenes/maps/heaven/tutorial/tutorial_layer.tscn" id="6_8usiu"]
-[ext_resource type="Script" path="res://scenes/objects/player/crosshair_style.gd" id="6_sf15l"]
 [ext_resource type="PackedScene" uid="uid://bcdqwr7wudsse" path="res://scenes/maps/heaven/tutorial/message_container.tscn" id="7_dyghv"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/look/tutorial_layer.gd" id="7_u10v7"]
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="8_d20ya"]
 [ext_resource type="PackedScene" uid="uid://ex464073xs62" path="res://scenes/maps/heaven/tutorial/look/look_target.tscn" id="11_3w7f1"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/look/look_target_container.gd" id="11_le02a"]
-[ext_resource type="Script" path="res://scenes/objects/player/override_player_crosshair.gd" id="12_s2jc0"]
-
-[sub_resource type="Resource" id="Resource_mnk3b"]
-script = ExtResource("6_sf15l")
-out_modulate = Color(0.745098, 0.745098, 0.745098, 1)
-out_size = Vector2(10, 10)
-in_modulate = Color(1, 0.282353, 1, 1)
-in_size = Vector2(15, 15)
+[ext_resource type="PackedScene" uid="uid://67c1ga5t3lga" path="res://scenes/objects/map_template/world_environment.tscn" id="12_4k14e"]
 
 [node name="LookTutorial" type="Node3D"]
 script = ExtResource("1_i88nr")
@@ -71,22 +63,20 @@ visible = false
 script = ExtResource("11_le02a")
 
 [node name="Platform" parent="LookTargets" instance=ExtResource("11_3w7f1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38211, 2.84969, -6.27967)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09896, 2.84969, -6.27967)
 
 [node name="Platform2" parent="LookTargets" instance=ExtResource("11_3w7f1")]
 transform = Transform3D(0.681756, 0, -0.73158, 0, 1, 0, 0.73158, 0, 0.681756, 5.3815, 2.84969, -6.27967)
 
 [node name="Platform3" parent="LookTargets" instance=ExtResource("11_3w7f1")]
-transform = Transform3D(-0.0122344, 0, -0.999925, 0, 1, 0, 0.999925, 0, -0.0122344, 5.3815, 2.84969, -3.17181)
-
-[node name="OverridePlayerCrosshair" type="Node" parent="LookTargets/Platform3"]
-script = ExtResource("12_s2jc0")
-style = SubResource("Resource_mnk3b")
+transform = Transform3D(-0.0122344, 0, -0.999925, 0, 1, 0, 0.999925, 0, -0.0122344, 5.98247, 2.84969, -1.91855)
 
 [node name="Platform4" parent="LookTargets" instance=ExtResource("11_3w7f1")]
 transform = Transform3D(-0.0104158, -0.524595, -0.851288, -0.00641813, 0.851352, -0.524556, 0.999925, 0, -0.0122345, 5.3815, 6.12235, -1.98781)
 
+[node name="WorldEnvironment" parent="." instance=ExtResource("12_4k14e")]
+
 [editable path="Player"]
-[editable path="Player/SubViewport"]
+[editable path="Player/Head"]
 [editable path="TutorialLayer"]
 [editable path="TutorialLayer/VBoxContainer/LookAround"]

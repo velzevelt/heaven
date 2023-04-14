@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://chaf5uqx5ltj2"]
+[gd_scene load_steps=16 format=3 uid="uid://chaf5uqx5ltj2"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_gwrkw"]
 [ext_resource type="PackedScene" uid="uid://0pjdi51ba3dw" path="res://scenes/objects/player/player_collision_shape.tscn" id="2_wt83f"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://scenes/objects/player/player_move_component.gd" id="9_7a22w"]
 [ext_resource type="Script" path="res://scenes/components/velocity_component.gd" id="9_ytpbk"]
 [ext_resource type="Script" path="res://scenes/objects/player/dynamic_fov_change.gd" id="10_y34ym"]
-[ext_resource type="PackedScene" uid="uid://brstrae8eg525" path="res://scenes/objects/player/light_detection_component.tscn" id="12_tiydx"]
 [ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer_label.gd" id="13_5krmr"]
 [ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer.gd" id="13_6lpoc"]
 [ext_resource type="Script" path="res://scenes/components/inventory/inventory_node.gd" id="14_287iq"]
@@ -69,11 +68,11 @@ camera = NodePath("../Head/Camera3D")
 velocity_component = NodePath("../PlayerMoveComponent/VelocityComponent")
 player_body = NodePath("..")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="DebugPanel" type="VBoxContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="InfoLabel" type="Label" parent="VBoxContainer"]
+[node name="InfoLabel" type="Label" parent="DebugPanel"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "rotation: "
@@ -81,7 +80,7 @@ script = ExtResource("7_tu7pf")
 target_path = NodePath("../..")
 desired_property = "rotation"
 
-[node name="InfoLabel2" type="Label" parent="VBoxContainer"]
+[node name="InfoLabel2" type="Label" parent="DebugPanel"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "velocity: "
@@ -89,7 +88,7 @@ script = ExtResource("7_tu7pf")
 target_path = NodePath("../..")
 desired_property = "velocity"
 
-[node name="InfoLabel3" type="Label" parent="VBoxContainer"]
+[node name="InfoLabel3" type="Label" parent="DebugPanel"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "last_speed: "
@@ -97,7 +96,7 @@ script = ExtResource("7_tu7pf")
 target_path = NodePath("../../PlayerMoveComponent/VelocityComponent")
 desired_property = "last_speed"
 
-[node name="InfoLabel4" type="Label" parent="VBoxContainer"]
+[node name="InfoLabel4" type="Label" parent="DebugPanel"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "fov: "
@@ -105,7 +104,7 @@ script = ExtResource("7_tu7pf")
 target_path = NodePath("../../Head/Camera3D")
 desired_property = "fov"
 
-[node name="InfoLabel5" type="Label" parent="VBoxContainer"]
+[node name="InfoLabel5" type="Label" parent="DebugPanel"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "global_position: "
@@ -113,7 +112,7 @@ script = ExtResource("7_tu7pf")
 target_path = NodePath("../..")
 desired_property = "global_position"
 
-[node name="InfoLabel7" type="Label" parent="VBoxContainer"]
+[node name="InfoLabel7" type="Label" parent="DebugPanel"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "current_floor: "
@@ -121,54 +120,17 @@ script = ExtResource("7_tu7pf")
 target_path = NodePath("../../FloorActivationComponent")
 desired_property = "current_floor"
 
-[node name="InfoLabel8" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "on_floor: "
-script = ExtResource("7_tu7pf")
-target_path = NodePath("../..")
-desired_property = "on_floor"
-
-[node name="InfoLabel9" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "is_dark: "
-script = ExtResource("7_tu7pf")
-target_path = NodePath("../../SubViewport/LightDetection")
-desired_property = "is_dark"
-
-[node name="InfoLabel10" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "light_level: "
-script = ExtResource("7_tu7pf")
-target_path = NodePath("../../SubViewport/LightDetection")
-desired_property = "light_level"
-
-[node name="VelzTimerLabel" type="Label" parent="VBoxContainer" node_paths=PackedStringArray("timer")]
+[node name="VelzTimerLabel" type="Label" parent="DebugPanel" node_paths=PackedStringArray("timer")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 script = ExtResource("13_5krmr")
 timer = NodePath("VelzTimer")
 
-[node name="VelzTimer" type="Node" parent="VBoxContainer/VelzTimerLabel"]
+[node name="VelzTimer" type="Node" parent="DebugPanel/VelzTimerLabel"]
 script = ExtResource("13_6lpoc")
-
-[node name="SubViewport" parent="." instance=ExtResource("12_tiydx")]
-
-[node name="LightDetection" parent="SubViewport" index="0" node_paths=PackedStringArray("player_camera", "sub_viewport", "player_light")]
-player_camera = NodePath("../../Head/Camera3D")
-sub_viewport = NodePath("..")
-dark_threshold = 0.04
-player_light = NodePath("../../PlayerNightVision")
-
-[node name="PlayerNightVision" type="OmniLight3D" parent="."]
-layers = 2
-light_color = Color(0.290196, 0.27451, 0.729412, 1)
 
 [node name="InventoryNode" type="Node" parent="."]
 script = ExtResource("14_287iq")
 inventory_res = SubResource("Resource_7a81c")
 
 [editable path="Head"]
-[editable path="SubViewport"]

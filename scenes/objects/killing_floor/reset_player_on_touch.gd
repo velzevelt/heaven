@@ -1,9 +1,8 @@
 extends KillingFloorTouchHandler
 
-@export var player: Player
-
-@onready var _init_position = player.global_position
 
 func _on_floor_touched(_obj):
-	player.global_position = _init_position
-	player.get_node("VelocityComponent").last_speed = 1.0
+	if _obj.is_in_group('player'):
+		var player = _obj as Player
+		player.global_position = player.init_position
+		player.velocity = Vector3.ZERO

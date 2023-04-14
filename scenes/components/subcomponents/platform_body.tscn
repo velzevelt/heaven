@@ -1,23 +1,22 @@
 [gd_scene load_steps=6 format=3 uid="uid://du4vhvf6ceisx"]
 
 [ext_resource type="Script" path="res://scenes/components/subcomponents/platform_body.gd" id="1_3vo1p"]
-[ext_resource type="Texture2D" uid="uid://l8fqklj10278" path="res://textures/kenney_prototypetextures/Purple/texture_01.png" id="2_i0p4g"]
+[ext_resource type="Script" path="res://scenes/components/subcomponents/platform_collision_shape.gd" id="2_5hv81"]
+[ext_resource type="Material" uid="uid://ys587ewu4f0m" path="res://textures/prototype_material_purple.tres" id="3_pcry4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pxphh"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tj6lx"]
-transparency = 1
-albedo_texture = ExtResource("2_i0p4g")
-uv1_scale = Vector3(3, 2, 1)
+size = Vector3(2, 0.3, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_fjode"]
-material = SubResource("StandardMaterial3D_tj6lx")
+material = ExtResource("3_pcry4")
+size = Vector3(2, 0.3, 2)
 
 [node name="PlatformBody" type="StaticBody3D"]
 script = ExtResource("1_3vo1p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_pxphh")
+script = ExtResource("2_5hv81")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_fjode")

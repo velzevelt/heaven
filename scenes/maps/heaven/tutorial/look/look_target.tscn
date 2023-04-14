@@ -1,11 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://ex464073xs62"]
 
-[ext_resource type="PackedScene" uid="uid://byyvo5cy7ir30" path="res://scenes/objects/platform/platform.tscn" id="1_xu76a"]
+[ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="1_xu76a"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/look/look_target.gd" id="2_pjfby"]
 
 [node name="Platform" groups=["look_target"] instance=ExtResource("1_xu76a")]
 script = ExtResource("2_pjfby")
 
+[node name="PlatformBody" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
 [node name="Label3D" type="Label3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.756933, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35825, 0)
 text = "Look at me"
