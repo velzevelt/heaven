@@ -161,9 +161,7 @@ func move_air(wish_dir: Vector3, input_velocity: Vector3, delta: float) -> void:
 	# Then get back our vertical component, and move the player
 	next_velocity.y = vertical_velocity
 	
-	#velocity = move_and_slide_with_snap(nextVelocity, snap, Vector3.UP)
 	
-	#next_velocity = next_velocity.snapped(snap)
 	player_body.velocity = next_velocity
 	player_body.up_direction = Vector3.UP
 	player_body.floor_stop_on_slope = false

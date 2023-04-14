@@ -54,6 +54,7 @@ script = ExtResource("9_7a22w")
 velocity_component = NodePath("VelocityComponent")
 head = NodePath("../Head")
 player_body = NodePath("..")
+max_ramp_angle = 60.0
 
 [node name="VelocityComponent" type="Node" parent="PlayerMoveComponent"]
 script = ExtResource("9_ytpbk")
