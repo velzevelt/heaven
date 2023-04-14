@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqwpw7cfox201"]
+
+[ext_resource type="PackedScene" uid="uid://c3j4bosemqpe" path="res://scenes/objects/map_template/map.tscn" id="1_agjxv"]
+[ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_xpj37"]
+[ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="3_ik56s"]
+[ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_c3vpe"]
+[ext_resource type="PackedScene" uid="uid://ckemuy5whwa3e" path="res://scenes/objects/moving_platform/moving_platform.tscn" id="5_xnj5o"]
+
+[sub_resource type="Curve3D" id="Curve3D_yc06k"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -100),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Map" instance=ExtResource("1_agjxv")]
+
+[node name="KillingFloor" parent="." index="2" instance=ExtResource("2_xpj37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.37933, 0)
+
+[node name="Player" parent="." index="3" instance=ExtResource("3_ik56s")]
+
+[node name="Platform" parent="." index="4" instance=ExtResource("4_c3vpe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.61865, 0)
+
+[node name="Platform2" parent="." index="5" instance=ExtResource("4_c3vpe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.61865, -4.16278)
+
+[node name="MovingPlatform" parent="." index="6" instance=ExtResource("5_xnj5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.37743, -10.7214)
+
+[node name="MovingPlatformComponent" parent="MovingPlatform" index="1"]
+autoplay = false
+loop = false
+anim_duration = 10.0
+
+[node name="Path3D" parent="MovingPlatform" index="2"]
+curve = SubResource("Curve3D_yc06k")
+
+[editable path="MovingPlatform"]
+[editable path="MovingPlatform/MovingPlatformBody"]
+[editable path="MovingPlatform/Path3D"]

@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0p0tbse1j7uk"]
 
-[ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material_orange.tres" id="1_qmoot"]
+[ext_resource type="Material" uid="uid://ys587ewu4f0m" path="res://textures/prototype_material_purple.tres" id="1_7dmae"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ftrsi"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_rbpl8"]
-material = ExtResource("1_qmoot")
+material = ExtResource("1_7dmae")
 size = Vector2(1000, 1000)
 
 [node name="Ground" type="StaticBody3D"]

@@ -1,23 +1,21 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://51sgfh4nhl4t"]
 
 [ext_resource type="Script" path="res://scenes/components/subcomponents/platform_body.gd" id="1_74yuj"]
-[ext_resource type="Texture2D" uid="uid://bdc7y7cgqrlrn" path="res://textures/kenney_prototypetextures/Red/texture_01.png" id="2_62mir"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ull6i"]
-albedo_texture = ExtResource("2_62mir")
-uv1_scale = Vector3(3, 2, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_33va2"]
-material = SubResource("StandardMaterial3D_ull6i")
+[ext_resource type="BoxMesh" uid="uid://d1w1tt6v6rjjf" path="res://scenes/components/subcomponents/platform_body_mesh.tres" id="2_jfsgs"]
+[ext_resource type="Script" path="res://scenes/components/portal/shape_update.gd" id="3_725i1"]
+[ext_resource type="Material" uid="uid://bm6134mi4goc8" path="res://textures/prototype_material_green.tres" id="3_asgmc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eny5g"]
+size = Vector3(2, 0.3, 2)
 
 [node name="MovingPlatformBody" type="AnimatableBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
 script = ExtResource("1_74yuj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_33va2")
+mesh = ExtResource("2_jfsgs")
+surface_material_override/0 = ExtResource("3_asgmc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_eny5g")
+script = ExtResource("3_725i1")

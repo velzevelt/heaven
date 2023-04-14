@@ -38,9 +38,10 @@ func _get_configuration_warnings():
 	return []
 
 
-func _on_object_entered(_player):
-	if not _moving:
-		move_platform()
+func _on_object_entered(obj):
+	if obj.is_in_group('player'):
+		if not _moving:
+			move_platform()
 
 
 func move_platform():
