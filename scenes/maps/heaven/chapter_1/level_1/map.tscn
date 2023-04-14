@@ -1,15 +1,14 @@
-[gd_scene load_steps=21 format=3]
+[gd_scene load_steps=20 format=3 uid="uid://d14ksx7g0fgg"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_vigc5"]
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="2_kouom"]
-[ext_resource type="PackedScene" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="3_vd4a2"]
+[ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="3_vd4a2"]
 [ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_svphb"]
+[ext_resource type="Script" path="res://scenes/maps/heaven/chapter_1/enable_on_enter.gd" id="5_ddb06"]
 [ext_resource type="Script" path="res://scenes/components/finish_platform_component.gd" id="5_hpq6w"]
-[ext_resource type="Script" path="res://scenes/objects/player/crosshair_style.gd" id="6_cgkie"]
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="6_p80ff"]
 [ext_resource type="Script" path="res://scenes/objects/player/override_player_crosshair.gd" id="6_qm46r"]
 [ext_resource type="Resource" uid="uid://cyeamk4lrqu56" path="res://scenes/objects/player/finish_crosshair_style.tres" id="7_fq03q"]
-[ext_resource type="Script" path="res://scenes/maps/heaven/chapter_1/enable_on_leave.gd" id="7_rwxsy"]
 [ext_resource type="PackedScene" path="res://scenes/objects/coin/coin.tscn" id="9_lqjxl"]
 [ext_resource type="Script" path="res://scenes/objects/map_goal_storage/map_goal_storage.gd" id="14_0a0ad"]
 [ext_resource type="Script" path="res://scenes/objects/map_goal/objective/collect.gd" id="14_asoeh"]
@@ -18,17 +17,11 @@
 [ext_resource type="Resource" uid="uid://cmmj8p66ec3e0" path="res://scenes/objects/map_goal/pass_in_time.tres" id="17_mkm8t"]
 [ext_resource type="Script" path="res://addons/debug_tools/timer/velz_time.gd" id="18_5iyv8"]
 [ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer.gd" id="19_c1wk0"]
-
-[sub_resource type="Resource" id="Resource_n5glx"]
-script = ExtResource("6_cgkie")
-out_modulate = Color(0.745098, 0.745098, 0.745098, 1)
-out_size = Vector2(10, 10)
-in_modulate = Color(1, 1, 0.541176, 1)
-in_size = Vector2(15, 15)
+[ext_resource type="PackedScene" uid="uid://cmai6yuuktlww" path="res://scenes/objects/map_template/world_environment.tscn" id="19_cn806"]
 
 [sub_resource type="Resource" id="Resource_vuk4f"]
 script = ExtResource("18_5iyv8")
-seconds = 4.0
+seconds = 12.0
 hours = 0
 minutes = 0
 
@@ -38,29 +31,22 @@ goal_storage = NodePath("MapGoalStorage")
 
 [node name="Player" parent="." instance=ExtResource("2_kouom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
-visible = false
 
 [node name="KillingFloor" parent="." instance=ExtResource("3_vd4a2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.79821, 0)
 
 [node name="Platform" parent="." instance=ExtResource("4_svphb")]
 
-[node name="OverridePlayerCrosshair" type="Node" parent="Platform"]
-script = ExtResource("6_qm46r")
-style = SubResource("Resource_n5glx")
-
-[node name="EnableOnLeave2" type="Node" parent="Platform" node_paths=PackedStringArray("disabled_target", "platform_body")]
-script = ExtResource("7_rwxsy")
-disabled_target = NodePath("Coin")
-platform_body = NodePath("../PlatformBody")
-
-[node name="Coin" parent="Platform/EnableOnLeave2" instance=ExtResource("9_lqjxl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34748, 0.0786262)
+[node name="Coin" parent="Platform" instance=ExtResource("9_lqjxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.824634, 0)
 visible = false
 enabled = false
 
-[node name="Platform2" parent="." instance=ExtResource("4_svphb")]
+[node name="Platform2" parent="." node_paths=PackedStringArray("disabled_target", "platform_body") instance=ExtResource("4_svphb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.4972)
+script = ExtResource("5_ddb06")
+disabled_target = NodePath("../Platform/Coin")
+platform_body = NodePath("PlatformBody")
 
 [node name="Platform3" parent="." instance=ExtResource("4_svphb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.1818)
@@ -69,13 +55,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.1818)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.3989)
 
 [node name="Platform5" parent="." instance=ExtResource("4_svphb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.670645, -17.4637)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.670645, -18.7653)
 
 [node name="Platform6" parent="." instance=ExtResource("4_svphb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.724, 3.60827, -21.0007)
 
 [node name="PlatformBody" parent="Platform6" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.650386, -1.76323, 0.968782)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.76279, -2.22025, -0.0110474)
 
 [node name="FinishPlatformComponent" type="Node" parent="Platform6" node_paths=PackedStringArray("platform_body")]
 script = ExtResource("5_hpq6w")
@@ -84,9 +70,6 @@ platform_body = NodePath("../PlatformBody")
 [node name="OverridePlayerCrosshair" type="Node" parent="Platform6"]
 script = ExtResource("6_qm46r")
 style = ExtResource("7_fq03q")
-
-[node name="Platform7" parent="." instance=ExtResource("4_svphb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0518, 2.80705, -21.094)
 
 [node name="DirectionalLight3D" parent="." instance=ExtResource("6_p80ff")]
 
@@ -107,5 +90,7 @@ required_time = SubResource("Resource_vuk4f")
 [node name="VelzTimer" type="Node" parent="MapGoalStorage/CompleteInTimeGoal"]
 script = ExtResource("19_c1wk0")
 
-[editable path="Platform"]
+[node name="WorldEnvironment" parent="." instance=ExtResource("19_cn806")]
+
+[editable path="Platform2"]
 [editable path="Platform6"]

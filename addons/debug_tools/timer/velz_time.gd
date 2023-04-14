@@ -37,5 +37,11 @@ func _init(hours := 0, minutes := 0, seconds := 0.0):
 func get_vector():
 	return Vector3(self.hours, self.minutes, self.seconds)
 
-func get_formatted_str():
-	return "%d:%d:%s" % [self.hours, self.minutes, snapped(self.seconds, 0.01)]
+func get_formatted_str() -> String:
+	var hours = '%d:' % self.hours
+	var minutes = '%d:' % self.minutes
+	var seconds = '%s' % snapped(self.seconds, 0.01)
+	var res = hours + minutes + seconds
+	
+	return res
+	#return "%d:%d:%s" % [self.hours, self.minutes, snapped(self.seconds, 0.01)]

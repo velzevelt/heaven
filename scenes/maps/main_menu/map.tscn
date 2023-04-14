@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/maps/main_menu/main_menu.gd" id="1_axffq"]
 [ext_resource type="PackedScene" uid="uid://dwwwcmbjvlht7" path="res://scenes/components/subcomponents/menu_buttons.tscn" id="2_5vetg"]
-[ext_resource type="PackedScene" path="res://scenes/components/subcomponents/game_version_label.tscn" id="3_bbyou"]
+[ext_resource type="PackedScene" uid="uid://b6677bqdiqlei" path="res://scenes/components/subcomponents/game_version_label.tscn" id="3_bbyou"]
 
 [node name="MainMenuLayer" type="CanvasLayer"]
 layer = 0

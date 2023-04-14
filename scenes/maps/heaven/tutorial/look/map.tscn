@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3]
+[gd_scene load_steps=13 format=3 uid="uid://br6vqx8rasxv"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_i88nr"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_kmd12"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="8_d20ya"]
 [ext_resource type="PackedScene" uid="uid://ex464073xs62" path="res://scenes/maps/heaven/tutorial/look/look_target.tscn" id="11_3w7f1"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/look/look_target_container.gd" id="11_le02a"]
-[ext_resource type="PackedScene" uid="uid://67c1ga5t3lga" path="res://scenes/objects/map_template/world_environment.tscn" id="12_4k14e"]
+[ext_resource type="PackedScene" uid="uid://cmai6yuuktlww" path="res://scenes/objects/map_template/world_environment.tscn" id="12_4k14e"]
 
 [node name="LookTutorial" type="Node3D"]
 script = ExtResource("1_i88nr")
@@ -48,6 +48,13 @@ arrow_left = NodePath("VBoxContainer/LookAround/MarginContainer/VBoxContainer/HB
 arrow_right = NodePath("VBoxContainer/LookAround/MarginContainer/VBoxContainer/HBoxContainer/ArrowRight")
 arrow_down = NodePath("VBoxContainer/LookAround/MarginContainer/VBoxContainer/ArrowDown")
 highlight_modulate = Color(0.870588, 0.780392, 0.337255, 1)
+
+[node name="VBoxContainer" parent="TutorialLayer" index="0"]
+offset_left = -215.0
+offset_top = -125.0
+offset_right = -57.0
+offset_bottom = 77.0
+scale = Vector2(1.3, 1.3)
 
 [node name="Label" parent="TutorialLayer/VBoxContainer" index="1" instance=ExtResource("7_dyghv")]
 layout_mode = 2
