@@ -59,8 +59,9 @@ var MAP_SCENE_FILE_NAME = SceneLoader.MAP_SCENE_FILE_NAME # unified name 'map.ts
 ## Name used in LevelSelector
 @export var visible_name: String = 'Unnamed level'
 
-@export var previous_map_path: String
+#@export var previous_map_path: String
 
+## map_data
 @export_file var next_map_path: String:
 	get:
 		return next_map_path

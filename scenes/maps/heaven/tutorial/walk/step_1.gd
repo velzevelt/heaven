@@ -18,18 +18,22 @@ func _on_area_3d_body_entered(body):
 		
 		enabled = false
 		
+		#show_help_label()
+
+func show_help_label():
 		message.visible_ratio = 0.0
 		message.visible = true
 		var tween = get_tree().create_tween()
 		tween.tween_property(message, 'visible_ratio', 1.0, 2.0)
-		
+
 		await tween.finished
 		await get_tree().create_timer(2.0).timeout
 		tween = get_tree().create_tween()
 		tween.tween_property(message, 'visible_ratio', 0.0, 2.0)
-		
+
 		await tween.finished
 		message.visible = false
+
 
 func _on_object_entered(obj):
 	_on_area_3d_body_entered(obj)

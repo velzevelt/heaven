@@ -10,5 +10,6 @@ script = ExtResource("1_y52f7")
 visible_name = "Tutorial"
 show_order = 0
 update_maps = false
-maps = [ExtResource("1_33ee6"), ExtResource("2_5ojf5"), ExtResource("3_nj7il")]
+maps = [ExtResource("2_5ojf5"), ExtResource("3_nj7il"), ExtResource("1_33ee6")]
 hidden = false
+tags = PackedStringArray()

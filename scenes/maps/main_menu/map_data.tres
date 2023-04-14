@@ -8,15 +8,14 @@
 script = ExtResource("2_rwhht")
 author = &"velz"
 thumbnail = ExtResource("3_1p4d0")
-game_version = &"1.0-pre-alpha"
-engine_version = &"4.0.1-stable (official)"
+game_version = &"0.1.0-pre-alpha"
+engine_version = &"4.0.2-stable (official)"
 map_version = &"0.1.0"
 map_packed = ExtResource("1_ckvxr")
 difficulty = 0.0
 description = ""
 hidden = false
 visible_name = "Main Menu"
-previous_map_path = ""
 next_map_path = ""
 show_order = 0
 tags = PackedStringArray()
