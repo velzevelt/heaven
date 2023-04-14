@@ -2,7 +2,7 @@
 class_name PlayerMoveComponent
 extends Node3D # It inherits from Node3D only for easier debugging
 
-@export_group('Crouch')
+@export_group('CROUCHING')
 @export var player_collision_shape: CollisionShape3D
 @export var player_standing_shape: Shape3D
 @export var player_crouching_shape: Shape3D
@@ -32,17 +32,18 @@ var backward_action := 'backward'
 var right_action := 'right'
 var left_action := 'left'
 var jump_action := 'jump'
+var crouch_action := 'crouch'
 
 # The next two variables are used to display corresponding vectors in game world.
 var debug_horizontal_velocity: Vector3 = Vector3.ZERO
 var accelerate_return: Vector3 = Vector3.ZERO
 
 enum States {
-	STAND,
-	CROUCH
+	STANDING,
+	CROUCHING
 }
 
-var current_state = States.STAND
+var current_state = States.STANDING
 
 
 func _ready():
@@ -93,15 +94,15 @@ func queue_crouch() -> void:
 	if not can_move:
 		return
 	
-	if Input.is_action_just_pressed("crouch"):
-		if current_state != States.CROUCH:
-			current_state = States.CROUCH
+	if Input.is_action_just_pressed(crouch_action):
+		if current_state != States.CROUCHING:
+			current_state = States.CROUCHING
 			player_collision_shape.shape = player_crouching_shape
 			velocity_component = crouching_velocity_component
 			
-	elif Input.is_action_just_released("crouch"):
-		if current_state == States.CROUCH:
-			current_state = States.STAND
+	elif Input.is_action_just_released(crouch_action):
+		if current_state == States.CROUCHING:
+			current_state = States.STANDING
 			player_collision_shape.shape = player_standing_shape
 			velocity_component = standing_velocity_component
 
