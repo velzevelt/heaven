@@ -12,6 +12,8 @@ extends Resource
 		if Engine.is_editor_hint():
 			map_collections.clear()
 			map_collections = MapPack.load_resources_sorted(resource_path.get_base_dir(), SceneLoader.MAP_COLLECTION_FILE_NAME)
+	get:
+		return update_collections
 
 @export var map_collections: Array
 

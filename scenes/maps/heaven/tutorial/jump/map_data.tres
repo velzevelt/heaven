@@ -16,6 +16,6 @@ difficulty = 0.0
 description = ""
 hidden = false
 visible_name = "Jump Tutorial"
-next_map_path = "res://scenes/maps/heaven/tutorial/look/map_data.tres"
+next_map_path = ""
 show_order = 3
 tags = PackedStringArray()

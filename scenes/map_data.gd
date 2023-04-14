@@ -41,7 +41,6 @@ var MAP_SCENE_FILE_NAME = SceneLoader.MAP_SCENE_FILE_NAME # unified name 'map.ts
 			# .../tutorial/map.tscn
 			var path = resource_path.get_base_dir() + "/" + MAP_SCENE_FILE_NAME
 			if ResourceLoader.exists(path):
-				
 				return load(path)
 			else:
 				push_error(path + " Missing map")
