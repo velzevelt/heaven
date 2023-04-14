@@ -30,7 +30,7 @@ script = ExtResource("1_vigc5")
 goal_storage = NodePath("MapGoalStorage")
 
 [node name="Player" parent="." instance=ExtResource("2_kouom")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="KillingFloor" parent="." instance=ExtResource("3_vd4a2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.79821, 0)

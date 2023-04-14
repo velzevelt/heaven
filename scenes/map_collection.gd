@@ -5,7 +5,7 @@ class_name MapCollection
 extends Resource
 
 @export var visible_name := 'Unnamed MapCollection'
-@export_range(0, 10, 1) var show_order := 0
+@export_range(0, 100, 1) var show_order := 0
 
 @export var update_maps := false:
 	set(_value):

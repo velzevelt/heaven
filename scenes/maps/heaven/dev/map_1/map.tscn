@@ -1,7 +1,7 @@
-[gd_scene load_steps=24 format=3]
+[gd_scene load_steps=25 format=3 uid="uid://t8p2gi15pnjv"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_dsnnr"]
-[ext_resource type="PackedScene" uid="uid://db5xremcmjtg3" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_g6p6m"]
+[ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_g6p6m"]
 [ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="3_7t806"]
 [ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_u1wqf"]
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="5_8a4gq"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scenes/components/reparent_platform_component.gd" id="11_55fb8"]
 [ext_resource type="Texture2D" uid="uid://cyxy3bwyd53vb" path="res://textures/kenney_prototypetextures/Green/texture_02.png" id="11_x7od6"]
 [ext_resource type="Script" path="res://scenes/components/rotate_platform_component.gd" id="13_txruc"]
+[ext_resource type="PackedScene" uid="uid://cmai6yuuktlww" path="res://scenes/objects/map_template/world_environment.tscn" id="14_afem2"]
 
 [sub_resource type="Resource" id="Resource_ngsl4"]
 script = ExtResource("10_ml7gs")
@@ -62,7 +63,7 @@ script = ExtResource("1_dsnnr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.94664, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_7t806")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.7101, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7505, 25.9393, 25.3429)
 
 [node name="Platform" parent="." instance=ExtResource("4_u1wqf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.187434, 0, -6.65837)
@@ -130,7 +131,7 @@ script = ExtResource("9_pqq2b")
 style = SubResource("Resource_bha7d")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.77511, 0.631826, 0, -0.631826, 0.77511, 12.5123, 0.868937, 20.2217)
+transform = Transform3D(1, 0, 0, 0, 0.808082, 0.589069, 0, -0.589069, 0.808082, 12.5123, 3.154, 25.0392)
 use_collision = true
 size = Vector3(9.685, 0.5, 10.37)
 script = ExtResource("8_d3cr6")
@@ -140,7 +141,7 @@ script = ExtResource("9_pqq2b")
 style = SubResource("Resource_bha7d")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(0.975956, 0.00227093, -0.13518, 0.00276014, 1.00348, 0.0135186, 0.135179, -0.0135856, 0.975511, -5.67212, 1.40138, -2.73088)
+transform = Transform3D(-0.96482, 0.197324, 0.0176461, 0.196801, 0.983609, -0.00176455, -0.0176242, 0.00176939, -0.984336, -5.67212, 1.40138, -2.73088)
 use_collision = true
 size = Vector3(1.84565, 0.1, 1.963)
 script = ExtResource("8_d3cr6")
@@ -182,7 +183,7 @@ preview_rotation = false
 platform_body = NodePath("..")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(-0.251605, 0, 0.96083, 0, 1, 0, -0.96083, 0, -0.251605, -5.12869, 2.18077, -6.39635)
+transform = Transform3D(0.519406, 0, -0.846481, 0, 1, 0, 0.846481, 0, 0.519406, -5.12869, 2.18077, -6.39635)
 use_collision = true
 size = Vector3(1.84565, 0.1, 1.963)
 script = ExtResource("8_d3cr6")
@@ -233,6 +234,8 @@ mesh = SubResource("BoxMesh_r8hvh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0507, 5.99053, -9.32654)
 node_a = NodePath("../RigidBody3D")
 node_b = NodePath("../StaticBody3D")
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("14_afem2")]
 
 [editable path="Platform"]
 [editable path="Platform2"]

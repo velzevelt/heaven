@@ -35,7 +35,7 @@ script = ExtResource("1_pgdll")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99159, 0)
 
 [node name="Player" parent="." instance=ExtResource("4_04771")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31678, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28083, 0)
 
 [node name="DirectionalLight3D" parent="." instance=ExtResource("7_mhwni")]
 

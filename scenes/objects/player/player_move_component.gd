@@ -19,7 +19,6 @@ var wish_dir: Vector3 = Vector3() # Desired travel direction of the player
 var vertical_velocity: float = 0 # Vertical component of our velocity. 
 @onready var max_falling_speed: float = velocity_component.gravity * -5 # When this is reached, we stop increasing falling speed
 
-var snap: Vector3 # Needed for move_and_slide_with_snap(), which enables to go down slopes without falling
 
 var forward_action = 'forward'
 var backward_action = 'backward'
@@ -60,20 +59,15 @@ func _physics_process(delta):
 	
 	if player_body.is_on_floor():
 		if wish_jump: # If we're on the ground but wish_jump is still true, this means we've just landed
-			#snap = Vector3.ZERO # Set snapping to zero so we can get off the ground
 			vertical_velocity = velocity_component.jump_velocity # Jump
-			
 			move_air(wish_dir, player_body.velocity, delta) # Mimic Quake's way of treating first frame after landing as still in the air
-			
 			wish_jump = false # We have jumped, the player needs to press jump key again
 			
 		else: # Player is on the ground. Move normally, apply friction
 			vertical_velocity = 0
-			#snap = -player_body.get_floor_normal() # Turn snapping on, so we stick to slopes
 			move_ground(wish_dir, player_body.velocity, delta)
 			
 	else: # We're in the air. Do not apply friction
-		#snap = Vector3.DOWN
 		vertical_velocity -= velocity_component.gravity * delta * velocity_component.mass if vertical_velocity >= max_falling_speed else 0 # Stop adding to vertical velocity once terminal velocity is reached
 		move_air(wish_dir, player_body.velocity, delta)
 	
@@ -147,9 +141,6 @@ func move_ground(wish_dir: Vector3, input_velocity: Vector3, delta: float)-> voi
 	# Then get back our vertical component, and move the player
 	next_velocity.y = vertical_velocity
 	
-	# velocity = move_and_slide_with_snap(nextVelocity, snap, Vector3.UP, true, 4, deg2rad(max_ramp_angle))
-	
-	#next_velocity = next_velocity.snapped(snap)
 	player_body.velocity = next_velocity
 	player_body.up_direction = Vector3.UP
 	player_body.floor_stop_on_slope = true

@@ -74,6 +74,6 @@ var MAP_SCENE_FILE_NAME = SceneLoader.MAP_SCENE_FILE_NAME # unified name 'map.ts
 		next_map_path = value
 
 ## Determinates position in LevelSelector. 0 - first map, 1 - second, etc
-@export_range(0, 10, 1) var show_order := 0
+@export_range(0, 100, 1) var show_order := 0
 
 @export var tags: PackedStringArray

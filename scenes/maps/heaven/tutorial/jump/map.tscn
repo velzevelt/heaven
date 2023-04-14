@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfovvy83almmm"]
+[gd_scene load_steps=12 format=3 uid="uid://bfovvy83almmm"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_3qy4q"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_2r0t7"]
-[ext_resource type="Script" path="res://scenes/objects/killing_floor/reset_player_on_touch.gd" id="3_mt1yh"]
 [ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_dsab2"]
 [ext_resource type="Script" path="res://scenes/components/finish_platform_component.gd" id="5_ms5rp"]
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="6_mcpiw"]
@@ -26,11 +25,8 @@ script = ExtResource("1_3qy4q")
 [node name="KillingFloor" parent="." instance=ExtResource("2_2r0t7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.78327, 0)
 
-[node name="OnTouch" parent="KillingFloor" index="2"]
-script = ExtResource("3_mt1yh")
-
 [node name="Player" parent="." instance=ExtResource("9_4rg3p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.31678, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73512, 0)
 
 [node name="Platform" parent="." instance=ExtResource("4_dsab2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.735116, 0)
@@ -76,6 +72,5 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ckwxc")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("12_cl61m")]
 
-[editable path="KillingFloor"]
 [editable path="Platform3"]
 [editable path="TutorialLayer"]
