@@ -1,4 +1,4 @@
-extends CSGBox3D
+extends MeshInstance3D
 
 @export var video_material: StandardMaterial3D
 @onready var view_port: SubViewport = $SubViewport
@@ -15,6 +15,8 @@ func _process(_delta):
 	if visible:
 		var texture = view_port.get_texture()
 		video_material.albedo_texture = texture
+		texture.get_image().save_png('res://tmp/video_frame.png')
+		breakpoint
 
 func _on_video_stream_player_finished():
 	video_player.play()
