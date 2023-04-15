@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=4 format=3 uid="uid://d4hgcpca4wwxi"]
+
+[ext_resource type="PackedScene" uid="uid://v8bowgjb3uhr" path="res://scenes/maps/heaven/tutorial/advanced_jump_bh/map.tscn" id="1_jt8bo"]
+[ext_resource type="Script" path="res://scenes/map_data.gd" id="2_wl232"]
+[ext_resource type="Texture2D" uid="uid://cn5nhs2dyxodr" path="res://icon.svg" id="3_8sjmr"]
+
+[resource]
+script = ExtResource("2_wl232")
+author = &"velz"
+thumbnail = ExtResource("3_8sjmr")
+game_version = &"0.1.0-pre-alpha"
+engine_version = &"4.0.2-stable (official)"
+map_version = &"0.1.0"
+map_packed = ExtResource("1_jt8bo")
+difficulty = 0.0
+description = ""
+hidden = false
+visible_name = "Advanced jumps"
+next_map_path = ""
+show_order = 4
+tags = PackedStringArray()

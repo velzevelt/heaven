@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://wbd0ynecsosi"]
+[gd_scene load_steps=8 format=3 uid="uid://wbd0ynecsosi"]
 
 [ext_resource type="Script" path="res://scenes/objects/door/door.gd" id="1_s877w"]
 [ext_resource type="Material" uid="uid://bm6134mi4goc8" path="res://textures/prototype_material_green.tres" id="1_sa73t"]
+[ext_resource type="Material" uid="uid://c50ygn438wgo7" path="res://textures/prototype_material_light.tres" id="2_qj55h"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0dfmj"]
+material = ExtResource("2_qj55h")
 size = Vector3(1.25, 2.5, 0.1)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fe2dl"]

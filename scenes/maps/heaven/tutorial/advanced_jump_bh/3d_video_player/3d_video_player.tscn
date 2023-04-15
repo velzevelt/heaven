@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://djsd4ameamd60"]
+
+[ext_resource type="Material" uid="uid://cn2sqwpw65l4n" path="res://scenes/maps/heaven/tutorial/advanced_jump_bh/3d_video_player/video_material.tres" id="1_ocg6t"]
+[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/advanced_jump_bh/3d_video_player/3d_video_player.gd" id="2_4n7so"]
+
+[node name="CSGBox3D3" type="CSGBox3D"]
+transform = Transform3D(0.652151, 0, 0.758089, 0, 1, 0, -0.758089, 0, 0.652151, -2.09721, -0.051374, -3.25079)
+use_collision = true
+size = Vector3(1.75672, 1.74823, 0.113874)
+material = ExtResource("1_ocg6t")
+script = ExtResource("2_4n7so")
+video_material = ExtResource("1_ocg6t")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+autoplay = true
+expand = true
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[connection signal="finished" from="SubViewport/VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://v8bowgjb3uhr"]
+
+[ext_resource type="PackedScene" uid="uid://c3j4bosemqpe" path="res://scenes/objects/map_template/map.tscn" id="1_42dgc"]
+[ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="2_t7r13"]
+[ext_resource type="Material" uid="uid://ys587ewu4f0m" path="res://textures/prototype_material_purple.tres" id="3_3c0t4"]
+[ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_b33kr"]
+[ext_resource type="Script" path="res://scenes/components/finish_platform_component.gd" id="5_plk52"]
+[ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="6_ajgom"]
+[ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material_orange.tres" id="7_tlesj"]
+[ext_resource type="PackedScene" uid="uid://ba5o022xgh4jo" path="res://scenes/maps/heaven/tutorial/advanced_jump_bh/3d_video_player.tscn" id="8_utchs"]
+
+[node name="Map" instance=ExtResource("1_42dgc")]
+
+[node name="Player" parent="." index="2" instance=ExtResource("2_t7r13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.175186, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0907, 0)
+material_override = ExtResource("3_3c0t4")
+use_collision = true
+size = Vector3(9.40971, 0.131024, 10.0318)
+
+[node name="Platform" parent="." index="4" instance=ExtResource("4_b33kr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.922728, -7.71123)
+
+[node name="Platform2" parent="." index="5" instance=ExtResource("4_b33kr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.922728, -12.9318)
+
+[node name="Platform3" parent="." index="6" instance=ExtResource("4_b33kr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.922728, -22.3275)
+
+[node name="Platform4" parent="." index="7" instance=ExtResource("4_b33kr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.922728, -33.2256)
+
+[node name="FinishPlatformComponent" type="Node" parent="Platform4" index="1" node_paths=PackedStringArray("platform_body")]
+script = ExtResource("5_plk52")
+platform_body = NodePath("../PlatformBody")
+
+[node name="KillingFloor" parent="." index="8" instance=ExtResource("6_ajgom")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.3482, 0)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." index="9"]
+transform = Transform3D(0.652151, 0, 0.758089, 0, 1, 0, -0.758089, 0, 0.652151, -2.12546, -0.051374, -3.27509)
+material_override = ExtResource("7_tlesj")
+use_collision = true
+size = Vector3(1.89738, 1.94894, 0.113874)
+
+[node name="CSGBox3D3" parent="." index="10" instance=ExtResource("8_utchs")]
+transform = Transform3D(0.652151, 0, 0.758089, 0, 1, 0, -0.758089, 0, 0.652151, -2.09683, -0.051374, -3.25046)
+
+[editable path="Platform4"]
