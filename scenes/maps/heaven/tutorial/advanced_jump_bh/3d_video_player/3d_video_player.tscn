@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://djsd4ameamd60"]
+[gd_scene load_steps=5 format=3 uid="uid://djsd4ameamd60"]
 
 [ext_resource type="Material" uid="uid://cn2sqwpw65l4n" path="res://scenes/maps/heaven/tutorial/advanced_jump_bh/3d_video_player/video_material.tres" id="1_ocg6t"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/advanced_jump_bh/3d_video_player/3d_video_player.gd" id="2_4n7so"]
+[ext_resource type="VideoStream" path="res://scenes/maps/heaven/tutorial/advanced_jump_bh/output.ogv" id="3_qkqrx"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yo74h"]
 material = ExtResource("1_ocg6t")
@@ -14,15 +15,15 @@ video_material = ExtResource("1_ocg6t")
 [node name="SubViewport" type="SubViewport" parent="."]
 disable_3d = true
 
-[node name="Camera2D" type="Camera2D" parent="SubViewport"]
-
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="SubViewport"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+stream = ExtResource("3_qkqrx")
 autoplay = true
+expand = true
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 
