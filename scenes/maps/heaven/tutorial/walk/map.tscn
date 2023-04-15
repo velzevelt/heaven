@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_trrbi"]
 [ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="4_04771"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/tutorial_layer.gd" id="5_0etkl"]
-[ext_resource type="PackedScene" uid="uid://dcdrhujj5xpth" path="res://scenes/maps/heaven/tutorial/walk/walk_container.tscn" id="6_a8f0d"]
+[ext_resource type="PackedScene" uid="uid://b02f2swa61iin" path="res://scenes/maps/heaven/tutorial/walk/actions.tscn" id="6_es5bn"]
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="7_mhwni"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/walk/finish.gd" id="9_1bkvt"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/walk/step_1.gd" id="10_ds47u"]
@@ -39,7 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28083, 0)
 process_mode = 3
 script = ExtResource("5_0etkl")
 
-[node name="VBoxContainer" parent="TutorialLayer" instance=ExtResource("6_a8f0d")]
+[node name="VBoxContainer" parent="TutorialLayer" instance=ExtResource("6_es5bn")]
 
 [node name="Finish" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.903898, 0.608106, -24.3874)

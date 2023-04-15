@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp2042n56bxw8"]
+
+[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/jump/crouch_hook.gd" id="1_q3uy8"]
+[ext_resource type="PackedScene" uid="uid://bcdqwr7wudsse" path="res://scenes/maps/heaven/tutorial/message_container.tscn" id="2_aq0g7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48wcy"]
+bg_color = Color(0, 0, 0, 0.52549)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="HBoxContainer2" type="HBoxContainer"]
+script = ExtResource("1_q3uy8")
+
+[node name="LabelC" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.3
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_48wcy")
+text = "CAPS"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label2" parent="." instance=ExtResource("2_aq0g7")]
+layout_mode = 2
+text = "Crouch"

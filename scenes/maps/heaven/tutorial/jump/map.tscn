@@ -1,23 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://bfovvy83almmm"]
+[gd_scene load_steps=10 format=3 uid="uid://bfovvy83almmm"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_3qy4q"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_2r0t7"]
 [ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_dsab2"]
 [ext_resource type="Script" path="res://scenes/components/finish_platform_component.gd" id="5_ms5rp"]
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="6_mcpiw"]
-[ext_resource type="PackedScene" path="res://scenes/maps/heaven/tutorial/tutorial_layer.tscn" id="7_1j02i"]
-[ext_resource type="PackedScene" uid="uid://bcdqwr7wudsse" path="res://scenes/maps/heaven/tutorial/message_container.tscn" id="8_rxtur"]
+[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/tutorial_layer.gd" id="8_6g0gv"]
 [ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="9_4rg3p"]
+[ext_resource type="PackedScene" uid="uid://ddjg8bsjj0mdk" path="res://scenes/maps/heaven/tutorial/jump/jump_action.tscn" id="9_ufr7u"]
 [ext_resource type="PackedScene" uid="uid://cmai6yuuktlww" path="res://scenes/objects/map_template/world_environment.tscn" id="12_cl61m"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xajhp"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ckwxc"]
-bg_color = Color(0.882353, 1, 0.760784, 0.266667)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
 
 [node name="JumpTutorial" type="Node3D"]
 script = ExtResource("1_3qy4q")
@@ -43,34 +34,13 @@ platform_body = NodePath("../PlatformBody")
 
 [node name="DirectionalLight3D" parent="." instance=ExtResource("6_mcpiw")]
 
-[node name="TutorialLayer" parent="." instance=ExtResource("7_1j02i")]
-highlight_style = SubResource("StyleBoxFlat_xajhp")
-
-[node name="VBoxContainer" parent="TutorialLayer" index="0"]
-offset_left = -388.0
-offset_top = -150.0
-offset_right = 0.0
-offset_bottom = 150.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 16
-
-[node name="Label" parent="TutorialLayer/VBoxContainer" index="0" instance=ExtResource("8_rxtur")]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 108
-text = "Jump"
-vertical_alignment = 1
-uppercase = false
-
-[node name="LookAround" parent="TutorialLayer/VBoxContainer" index="1"]
-visible = false
-
-[node name="Label" parent="TutorialLayer/VBoxContainer/HBoxContainer" index="0"]
-theme_override_font_sizes/font_size = 60
-theme_override_styles/normal = SubResource("StyleBoxFlat_ckwxc")
-
 [node name="WorldEnvironment" parent="." instance=ExtResource("12_cl61m")]
 
+[node name="TutorialLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("8_6g0gv")
+offset_value = 550
+
+[node name="VBoxContainer" parent="TutorialLayer" instance=ExtResource("9_ufr7u")]
+
 [editable path="Platform3"]
-[editable path="TutorialLayer"]

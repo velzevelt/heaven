@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddjg8bsjj0mdk"]
+
+[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/jump/jump_hook.gd" id="1_aibss"]
+[ext_resource type="PackedScene" uid="uid://bcdqwr7wudsse" path="res://scenes/maps/heaven/tutorial/message_container.tscn" id="2_k2rj0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pe5ks"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -531.0
+offset_top = -163.0
+offset_right = -4.0
+offset_bottom = 89.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+script = ExtResource("1_aibss")
+highlight_style = SubResource("StyleBoxFlat_pe5ks")
+
+[node name="LabelSpace" parent="HBoxContainer" instance=ExtResource("2_k2rj0")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+text = "Space"
+
+[node name="Label2" parent="HBoxContainer" instance=ExtResource("2_k2rj0")]
+layout_mode = 2
+text = "Jump"
+
+[editable path="HBoxContainer/LabelSpace"]

@@ -1,8 +1,11 @@
+class_name WalkHook
 extends Control
 
 @export var highlight_style: StyleBoxFlat
-@onready var _init_slyle = $%LabelS.get_theme_stylebox('normal').duplicate()
+var _init_slyle
 
+func _ready():
+	_init_slyle = $%LabelW.get_theme_stylebox('normal').duplicate()
 
 func _input(_event):
 	if Input.is_action_just_pressed('forward'):

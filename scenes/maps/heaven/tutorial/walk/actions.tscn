@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://b02f2swa61iin"]
+
+[ext_resource type="PackedScene" uid="uid://bcdqwr7wudsse" path="res://scenes/maps/heaven/tutorial/message_container.tscn" id="1_gwkmo"]
+[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/walk/walk_hook.gd" id="1_jcwp6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vy530"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -468.0
+offset_top = -163.0
+offset_bottom = 50.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_jcwp6")
+highlight_style = SubResource("StyleBoxFlat_vy530")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelW" parent="HBoxContainer" instance=ExtResource("1_gwkmo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+text = "W"
+
+[node name="Label2" parent="HBoxContainer" instance=ExtResource("1_gwkmo")]
+layout_mode = 2
+text = "Forward"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelS" parent="HBoxContainer2" instance=ExtResource("1_gwkmo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+text = "S"
+
+[node name="Label2" parent="HBoxContainer2" instance=ExtResource("1_gwkmo")]
+layout_mode = 2
+text = "Backward"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelD" parent="HBoxContainer3" instance=ExtResource("1_gwkmo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+text = "D"
+
+[node name="Label2" parent="HBoxContainer3" instance=ExtResource("1_gwkmo")]
+layout_mode = 2
+text = "Right"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelA" parent="HBoxContainer4" instance=ExtResource("1_gwkmo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+text = "A"
+
+[node name="Label2" parent="HBoxContainer4" instance=ExtResource("1_gwkmo")]
+layout_mode = 2
+text = "Left"
