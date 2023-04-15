@@ -83,6 +83,7 @@ velocity_component = NodePath("../PlayerMoveComponent/VelocityComponent")
 player_body = NodePath("..")
 
 [node name="DebugPanel" type="VBoxContainer" parent="."]
+process_mode = 3
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("10_81541")
