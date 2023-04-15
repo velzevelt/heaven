@@ -14,10 +14,3 @@ func _process(_delta):
 func _on_video_stream_player_finished():
 	video_player.play()
 
-
-func _on_visible_on_screen_notifier_3d_screen_entered():
-	visible = true
-
-
-func _on_visible_on_screen_notifier_3d_screen_exited():
-	visible = false

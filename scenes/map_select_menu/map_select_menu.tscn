@@ -1,17 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwej4bndf0fpi"]
+[gd_scene load_steps=5 format=3 uid="uid://bwej4bndf0fpi"]
 
 [ext_resource type="Script" path="res://scenes/map_select_menu/map_select_menu.gd" id="1_nmaak"]
 [ext_resource type="Script" path="res://scenes/map_select_menu/map_info.gd" id="2_25dl4"]
 [ext_resource type="Script" path="res://scenes/map_select_menu/maps.gd" id="2_wojaa"]
-
-[sub_resource type="GDScript" id="GDScript_4rxgb"]
-script/source = "extends Label
-
-var prefix := 'DIR: '
-
-func _on_maps_map_container_selected(map_collection):
-	text = prefix + map_collection.visible_name
-"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2nof"]
 
@@ -47,18 +38,6 @@ text = "Select Level"
 vertical_alignment = 1
 clip_text = true
 uppercase = true
-
-[node name="LevelDir" type="Label" parent="MapSelector/HBoxContainer/Top"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-size_flags_stretch_ratio = 7.45
-theme_override_font_sizes/font_size = 75
-text = "DIR: "
-vertical_alignment = 1
-clip_text = true
-uppercase = true
-script = SubResource("GDScript_4rxgb")
 
 [node name="Main" type="PanelContainer" parent="MapSelector/HBoxContainer"]
 layout_mode = 2
@@ -113,7 +92,6 @@ theme_override_font_sizes/font_size = 78
 text = "Play"
 
 [connection signal="pressed" from="MapSelector/HBoxContainer/Top/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="map_container_selected" from="MapSelector/HBoxContainer/Main/HBoxContainer/LeftSide/LevelScrollArea/Maps" to="MapSelector/HBoxContainer/Top/LevelDir" method="_on_maps_map_container_selected"]
 [connection signal="map_selected" from="MapSelector/HBoxContainer/Main/HBoxContainer/LeftSide/LevelScrollArea/Maps" to="." method="_on_map_container_map_selected"]
 [connection signal="map_selected" from="MapSelector/HBoxContainer/Main/HBoxContainer/LeftSide/LevelScrollArea/Maps" to="MapSelector/HBoxContainer/Main/HBoxContainer/RightSide/ScrollContainer/MapInfo" method="_on_map_container_map_selected"]
 [connection signal="pressed" from="MapSelector/HBoxContainer/Main/HBoxContainer/RightSide/PlayButton" to="." method="_on_play_button_pressed"]

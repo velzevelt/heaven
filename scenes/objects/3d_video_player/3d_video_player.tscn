@@ -1,13 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3xa8kylv3nh4"]
+[gd_scene load_steps=4 format=3 uid="uid://d3xa8kylv3nh4"]
 
 [ext_resource type="Material" uid="uid://cn2sqwpw65l4n" path="res://scenes/objects/3d_video_player/video_material.tres" id="1_va4xn"]
 [ext_resource type="Script" path="res://scenes/objects/3d_video_player/3d_video_player.gd" id="2_efmw0"]
-[ext_resource type="VideoStream" path="res://scenes/maps/heaven/tutorial/advanced_jump_bh/output.ogv" id="3_lynly"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yo74h"]
 material = ExtResource("1_va4xn")
 
 [node name="Plane" type="MeshInstance3D"]
+cast_shadow = 0
 mesh = SubResource("PlaneMesh_yo74h")
 script = ExtResource("2_efmw0")
 video_material = ExtResource("1_va4xn")
@@ -21,12 +21,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("3_lynly")
 autoplay = true
 expand = true
 
-[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 2.353, 0.216018)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.415074, 0.909788, 0, -0.909788, 0.415074, 0, 5.64094, 0)
 
 [connection signal="finished" from="SubViewport/VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
-[connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
-[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
