@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://vvmf5cdn2ljc"]
+
+[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/tutorial_layer.gd" id="1_8cgrk"]
+[ext_resource type="PackedScene" uid="uid://b02f2swa61iin" path="res://scenes/maps/heaven/tutorial/walk/actions.tscn" id="2_y0tet"]
+[ext_resource type="PackedScene" uid="uid://bt5jfl5gautos" path="res://scenes/maps/heaven/tutorial/look/look_around_guide.tscn" id="3_kqf0f"]
+[ext_resource type="PackedScene" uid="uid://ddjg8bsjj0mdk" path="res://scenes/maps/heaven/tutorial/jump/jump_action.tscn" id="4_ai7os"]
+[ext_resource type="PackedScene" uid="uid://bp2042n56bxw8" path="res://scenes/maps/heaven/tutorial/jump/crouch_action.tscn" id="5_r4o4h"]
+
+[node name="Hook" type="CanvasLayer"]
+script = ExtResource("1_8cgrk")
+offset_value = 550
+
+[node name="VBoxContainer" parent="." instance=ExtResource("2_y0tet")]
+
+[node name="LookAround" parent="." instance=ExtResource("3_kqf0f")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -174.0
+offset_top = 80.0
+offset_right = -16.0
+offset_bottom = 238.0
+grow_horizontal = 0
+
+[node name="VBoxContainer2" parent="." instance=ExtResource("4_ai7os")]
+offset_top = 102.0
+offset_bottom = 354.0
+
+[node name="HBoxContainer2" parent="." instance=ExtResource("5_r4o4h")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -531.0
+offset_top = -158.0
+offset_right = -128.0
+offset_bottom = -72.0
+grow_horizontal = 0
+grow_vertical = 0

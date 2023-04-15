@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://v8bowgjb3uhr"]
+[gd_scene load_steps=10 format=3 uid="uid://v8bowgjb3uhr"]
 
 [ext_resource type="PackedScene" uid="uid://c3j4bosemqpe" path="res://scenes/objects/map_template/map.tscn" id="1_42dgc"]
 [ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="2_t7r13"]
@@ -8,11 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="6_ajgom"]
 [ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material_orange.tres" id="7_tlesj"]
 [ext_resource type="PackedScene" uid="uid://d3xa8kylv3nh4" path="res://scenes/objects/3d_video_player/3d_video_player.tscn" id="8_6eid4"]
-[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/tutorial_layer.gd" id="9_dscbn"]
-[ext_resource type="PackedScene" uid="uid://b02f2swa61iin" path="res://scenes/maps/heaven/tutorial/walk/actions.tscn" id="10_m7afa"]
-[ext_resource type="PackedScene" uid="uid://bt5jfl5gautos" path="res://scenes/maps/heaven/tutorial/look/look_around_guide.tscn" id="11_aqvht"]
-[ext_resource type="PackedScene" uid="uid://ddjg8bsjj0mdk" path="res://scenes/maps/heaven/tutorial/jump/jump_action.tscn" id="12_uu0ta"]
-[ext_resource type="PackedScene" uid="uid://bp2042n56bxw8" path="res://scenes/maps/heaven/tutorial/jump/crouch_action.tscn" id="13_jiepu"]
+[ext_resource type="VideoStream" path="res://scenes/maps/heaven/tutorial/advanced_jump_bh/advanced_jumps.ogv" id="9_0m4nk"]
 
 [node name="Map" instance=ExtResource("1_42dgc")]
 
@@ -73,38 +69,8 @@ font_size = 20
 [node name="CSGBox3D3" parent="." index="11" instance=ExtResource("8_6eid4")]
 transform = Transform3D(0.464525, 0.766044, -2.09599e-08, 0, -4.37114e-08, -0.625951, -0.553599, 0.642788, -1.75874e-08, -2.07195, 0.0884902, -3.23796)
 
-[node name="Hook" type="CanvasLayer" parent="." index="12"]
-script = ExtResource("9_dscbn")
-offset_value = 550
-
-[node name="VBoxContainer" parent="Hook" index="0" instance=ExtResource("10_m7afa")]
-
-[node name="LookAround" parent="Hook" index="1" instance=ExtResource("11_aqvht")]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -174.0
-offset_top = 80.0
-offset_right = -16.0
-offset_bottom = 238.0
-grow_horizontal = 0
-
-[node name="VBoxContainer2" parent="Hook" index="2" instance=ExtResource("12_uu0ta")]
-offset_top = 102.0
-offset_bottom = 354.0
-
-[node name="HBoxContainer2" parent="Hook" index="3" instance=ExtResource("13_jiepu")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -531.0
-offset_top = -158.0
-offset_right = -128.0
-offset_bottom = -72.0
-grow_horizontal = 0
-grow_vertical = 0
+[node name="VideoStreamPlayer" parent="CSGBox3D3/SubViewport" index="0"]
+stream = ExtResource("9_0m4nk")
 
 [editable path="Platform4"]
 [editable path="CSGBox3D3"]
