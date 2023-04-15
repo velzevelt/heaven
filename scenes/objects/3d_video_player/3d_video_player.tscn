@@ -24,10 +24,4 @@ grow_vertical = 2
 autoplay = true
 expand = true
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 2.353, 0.216018)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.415074, 0.909788, 0, -0.909788, 0.415074, 0, 5.64094, 0)
-
 [connection signal="finished" from="SubViewport/VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
