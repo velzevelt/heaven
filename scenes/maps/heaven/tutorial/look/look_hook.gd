@@ -1,11 +1,11 @@
 extends Control
 
-@export var arrow_up: TextureRect
-@export var arrow_left: TextureRect
-@export var arrow_right: TextureRect
-@export var arrow_down: TextureRect
-
 @export var highlight_modulate: Color
+
+@onready var arrow_up: TextureRect = $%ArrowUp
+@onready var arrow_left: TextureRect = $%ArrowLeft
+@onready var arrow_right: TextureRect = $%ArrowRight
+@onready var arrow_down: TextureRect = $%ArrowDown
 @onready var _init_modulate = arrow_up.modulate
 
 var relative: Vector2 = Vector2()

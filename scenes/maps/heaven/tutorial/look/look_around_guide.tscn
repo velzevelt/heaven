@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt5jfl5gautos"]
+[gd_scene load_steps=6 format=3 uid="uid://bt5jfl5gautos"]
 
 [ext_resource type="Texture2D" uid="uid://bgcmd8hokqnoa" path="res://sprites/arrow-up.svg" id="1_44q41"]
 [ext_resource type="Texture2D" uid="uid://dw573872dhn0d" path="res://sprites/computer-mouse.svg" id="1_hx0i7"]
+[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/look/look_hook.gd" id="1_i2n58"]
 [ext_resource type="Texture2D" uid="uid://cxxhmf3sqirej" path="res://sprites/arrow-right.svg" id="2_ix44r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibsso"]
@@ -17,6 +18,8 @@ offset_bottom = 156.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_ibsso")
+script = ExtResource("1_i2n58")
+highlight_modulate = Color(0.968627, 0.890196, 0.286275, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -29,6 +32,7 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 
 [node name="ArrowUp" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_vertical = 3
@@ -40,6 +44,7 @@ stretch_mode = 5
 layout_mode = 2
 
 [node name="ArrowLeft" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -57,6 +62,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="ArrowRight" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -65,6 +71,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="ArrowDown" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_vertical = 3

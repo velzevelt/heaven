@@ -7,9 +7,6 @@ extends CanvasLayer
 @onready var init_offset = self.offset
 var appeared = false
 
-@export var highlight_style: StyleBoxFlat
-@onready var _label = $VBoxContainer/HBoxContainer/Label
-@onready var _init_slyle = _label.get_theme_stylebox('normal').duplicate()
 
 func _ready():
 	offset.x += offset_value
@@ -22,10 +19,3 @@ func animate(new_offset):
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, 'offset', new_offset, anim_duration)
 	return tween
-
-
-func _input(_event):
-	if Input.is_action_just_pressed("jump"):
-		_label.add_theme_stylebox_override('normal', highlight_style)
-	if Input.is_action_just_released("jump"):
-		_label.add_theme_stylebox_override('normal', _init_slyle)

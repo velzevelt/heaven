@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3]
+[gd_scene load_steps=13 format=3 uid="uid://ctlfgm26kdtjq"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_i88nr"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_kmd12"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://addons/debug_tools/info_label/info_label.gd" id="5_d35bj"]
 [ext_resource type="PackedScene" uid="uid://ciolk1i7pq42v" path="res://scenes/maps/heaven/tutorial/tutorial_layer.tscn" id="6_8usiu"]
 [ext_resource type="PackedScene" uid="uid://bcdqwr7wudsse" path="res://scenes/maps/heaven/tutorial/message_container.tscn" id="7_dyghv"]
-[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/look/look_hook.gd" id="7_ov8bw"]
 [ext_resource type="PackedScene" uid="uid://bt5jfl5gautos" path="res://scenes/maps/heaven/tutorial/look/look_around_guide.tscn" id="8_5a07s"]
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="8_d20ya"]
 [ext_resource type="PackedScene" uid="uid://ex464073xs62" path="res://scenes/maps/heaven/tutorial/look/look_target.tscn" id="11_3w7f1"]
@@ -42,13 +41,7 @@ script = ExtResource("5_d35bj")
 target_path = NodePath("../LookRaycast")
 desired_property = "target"
 
-[node name="TutorialLayer" parent="." node_paths=PackedStringArray("arrow_up", "arrow_left", "arrow_right", "arrow_down") instance=ExtResource("6_8usiu")]
-script = ExtResource("7_ov8bw")
-arrow_up = NodePath("VBoxContainer/LookAround/MarginContainer/VBoxContainer/ArrowUp")
-arrow_left = NodePath("VBoxContainer/LookAround/MarginContainer/VBoxContainer/HBoxContainer/ArrowLeft")
-arrow_right = NodePath("VBoxContainer/LookAround/MarginContainer/VBoxContainer/HBoxContainer/ArrowRight")
-arrow_down = NodePath("VBoxContainer/LookAround/MarginContainer/VBoxContainer/ArrowDown")
-highlight_modulate = Color(0.870588, 0.780392, 0.337255, 1)
+[node name="TutorialLayer" parent="." instance=ExtResource("6_8usiu")]
 
 [node name="VBoxContainer" parent="TutorialLayer" index="0"]
 offset_left = -215.0
