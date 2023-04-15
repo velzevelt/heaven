@@ -1,4 +1,4 @@
-extends "res://scenes/maps/heaven/tutorial/tutorial_layer.gd"
+extends Control
 
 @export var arrow_up: TextureRect
 @export var arrow_left: TextureRect

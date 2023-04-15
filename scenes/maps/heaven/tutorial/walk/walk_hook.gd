@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 @export_range(0.1, 4.0, 0.1) var anim_duration := 1.5
 @export_range(100, 5000, 50) var offset_value := 500

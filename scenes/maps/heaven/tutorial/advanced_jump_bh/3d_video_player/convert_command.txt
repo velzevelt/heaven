@@ -1,0 +1,3 @@
+ffmpeg -i input.mp4 -vf "scale=-1:720" -q:v 6 -q:a 6 output.ogv
+
+https://docs.godotengine.org/en/stable/tutorials/animation/playing_videos.html

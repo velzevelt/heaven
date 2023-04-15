@@ -1,12 +1,10 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://ciolk1i7pq42v"]
 
-[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/tutorial_layer.gd" id="1_dm2gf"]
-[ext_resource type="PackedScene" uid="uid://bt5jfl5gautos" path="res://scenes/maps/heaven/tutorial/look_around_guide.tscn" id="1_wwhen"]
-[ext_resource type="PackedScene" uid="uid://bcdqwr7wudsse" path="res://scenes/maps/heaven/tutorial/message_container.tscn" id="2_6cyep"]
+[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/jump/tutorial_layer.gd" id="1_wsqch"]
 
 [node name="TutorialLayer" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("1_dm2gf")
+script = ExtResource("1_wsqch")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 6
@@ -21,14 +19,3 @@ offset_bottom = 94.0
 grow_horizontal = 0
 grow_vertical = 2
 alignment = 2
-
-[node name="LookAround" parent="VBoxContainer" instance=ExtResource("1_wwhen")]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_6cyep")]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.901961, 0.729412, 0.223529, 1)
-text = "space"

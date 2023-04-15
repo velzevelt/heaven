@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcdrhujj5xpth"]
+
+[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/walk/walk_hook.gd" id="1_a4iby"]
+[ext_resource type="PackedScene" uid="uid://bcdqwr7wudsse" path="res://scenes/maps/heaven/tutorial/message_container.tscn" id="2_3ogt5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4su8w"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -588.0
+offset_top = -218.0
+offset_right = 136.0
+offset_bottom = 342.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+alignment = 2
+script = ExtResource("1_a4iby")
+highlight_style = SubResource("StyleBoxFlat_4su8w")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelW" parent="HBoxContainer2" instance=ExtResource("2_3ogt5")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(153, 137)
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+text = "W"
+
+[node name="Label" parent="HBoxContainer2" instance=ExtResource("2_3ogt5")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Forward"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelS" parent="HBoxContainer3" instance=ExtResource("2_3ogt5")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(153, 137)
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+text = "S"
+
+[node name="Label2" parent="HBoxContainer3" instance=ExtResource("2_3ogt5")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Backward"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelD" parent="HBoxContainer4" instance=ExtResource("2_3ogt5")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(153, 137)
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+text = "D"
+
+[node name="Label3" parent="HBoxContainer4" instance=ExtResource("2_3ogt5")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 11
+text = "Right"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelA" parent="HBoxContainer5" instance=ExtResource("2_3ogt5")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(153, 137)
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+text = "A"
+
+[node name="Label4" parent="HBoxContainer5" instance=ExtResource("2_3ogt5")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 11
+text = "Left"
