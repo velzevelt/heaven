@@ -1,7 +1,7 @@
 class_name WalkHook
 extends Control
 
-@export var highlight_style: StyleBoxFlat
+@export var highlight_style: StyleBoxFlat = StyleBoxFlat.new()
 var _init_slyle
 
 func _ready():

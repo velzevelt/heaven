@@ -1,16 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://djsd4ameamd60"]
+[gd_scene load_steps=5 format=3 uid="uid://d3xa8kylv3nh4"]
 
-[ext_resource type="Material" uid="uid://cn2sqwpw65l4n" path="res://scenes/maps/heaven/tutorial/advanced_jump_bh/3d_video_player/video_material.tres" id="1_ocg6t"]
-[ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/advanced_jump_bh/3d_video_player/3d_video_player.gd" id="2_4n7so"]
-[ext_resource type="VideoStream" path="res://scenes/maps/heaven/tutorial/advanced_jump_bh/output.ogv" id="3_qkqrx"]
+[ext_resource type="Material" uid="uid://cn2sqwpw65l4n" path="res://scenes/objects/3d_video_player/video_material.tres" id="1_va4xn"]
+[ext_resource type="Script" path="res://scenes/objects/3d_video_player/3d_video_player.gd" id="2_efmw0"]
+[ext_resource type="VideoStream" path="res://scenes/maps/heaven/tutorial/advanced_jump_bh/output.ogv" id="3_lynly"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yo74h"]
-material = ExtResource("1_ocg6t")
+material = ExtResource("1_va4xn")
 
 [node name="Plane" type="MeshInstance3D"]
 mesh = SubResource("PlaneMesh_yo74h")
-script = ExtResource("2_4n7so")
-video_material = ExtResource("1_ocg6t")
+script = ExtResource("2_efmw0")
+video_material = ExtResource("1_va4xn")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 disable_3d = true
@@ -21,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("3_qkqrx")
+stream = ExtResource("3_lynly")
 autoplay = true
 expand = true
 
