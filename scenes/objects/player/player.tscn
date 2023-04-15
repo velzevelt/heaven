@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://colma6wid3n1x"]
+[gd_scene load_steps=19 format=3 uid="uid://colma6wid3n1x"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_gwrkw"]
 [ext_resource type="PackedScene" uid="uid://0pjdi51ba3dw" path="res://scenes/objects/player/player_collision_shape.tscn" id="2_wt83f"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://addons/debug_tools/info_label/info_label.gd" id="7_tu7pf"]
 [ext_resource type="Script" path="res://scenes/objects/player/player_move_component.gd" id="9_7a22w"]
 [ext_resource type="Script" path="res://scenes/components/velocity_component.gd" id="9_ytpbk"]
+[ext_resource type="Script" path="res://scenes/objects/player/debug_panel.gd" id="10_81541"]
 [ext_resource type="Script" path="res://scenes/objects/player/dynamic_fov_change.gd" id="10_y34ym"]
 [ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer_label.gd" id="13_5krmr"]
 [ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer.gd" id="13_6lpoc"]
@@ -84,6 +85,7 @@ player_body = NodePath("..")
 [node name="DebugPanel" type="VBoxContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("10_81541")
 
 [node name="InfoLabel" type="Label" parent="DebugPanel"]
 layout_mode = 2

@@ -41,6 +41,9 @@ script = ExtResource("5_d35bj")
 target_path = NodePath("../LookRaycast")
 desired_property = "target"
 
+[node name="DebugPanel" parent="Player" index="6"]
+visible = false
+
 [node name="TutorialLayer" parent="." instance=ExtResource("6_8usiu")]
 
 [node name="VBoxContainer" parent="TutorialLayer" index="0"]
