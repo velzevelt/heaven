@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=3 format=3 uid="uid://bggk1m24qnn4p"]
+
+[ext_resource type="Script" path="res://scenes/map_data.gd" id="1_rialk"]
+[ext_resource type="Texture2D" uid="uid://cn5nhs2dyxodr" path="res://icon.svg" id="2_jjeii"]
+
+[resource]
+script = ExtResource("1_rialk")
+author = &"velz"
+thumbnail = ExtResource("2_jjeii")
+game_version = &"0.1.0-pre-alpha"
+engine_version = &"4.0.2-stable (official)"
+map_version = &"0.1.0"
+difficulty = 0.0
+description = ""
+hidden = false
+visible_name = "Unnamed level"
+next_map_path = ""
+show_order = 0
+tags = PackedStringArray()

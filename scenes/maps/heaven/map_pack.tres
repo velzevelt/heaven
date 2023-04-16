@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="MapPack" load_steps=5 format=3 uid="uid://bbcss6rfyksch"]
+[gd_resource type="Resource" script_class="MapPack" load_steps=6 format=3 uid="uid://bbcss6rfyksch"]
 
 [ext_resource type="Resource" uid="uid://clbov3g2xbdac" path="res://scenes/maps/heaven/tutorial/map_collection.tres" id="1_35ic8"]
 [ext_resource type="Script" path="res://scenes/map_pack.gd" id="1_hqtl8"]
-[ext_resource type="Resource" uid="uid://jh0vj16bollt" path="res://scenes/maps/heaven/chapter_1/map_collection.tres" id="2_5yo4t"]
+[ext_resource type="Resource" uid="uid://dlln8pb15bddp" path="res://scenes/maps/heaven/chapter_2/map_collection.tres" id="1_t38ub"]
+[ext_resource type="Resource" uid="uid://bf64od71s0d0j" path="res://scenes/maps/heaven/chapter_1/map_collection.tres" id="2_5yo4t"]
 [ext_resource type="Resource" uid="uid://bhvglshagp8i5" path="res://scenes/maps/heaven/dev/map_collection.tres" id="3_iemck"]
 
 [resource]
 script = ExtResource("1_hqtl8")
 visible_name = "Heaven"
 update_collections = false
-map_collections = [ExtResource("1_35ic8"), ExtResource("2_5yo4t"), ExtResource("3_iemck")]
+map_collections = [ExtResource("1_35ic8"), ExtResource("2_5yo4t"), ExtResource("1_t38ub"), ExtResource("3_iemck")]
 hidden = false
+tags = PackedStringArray()

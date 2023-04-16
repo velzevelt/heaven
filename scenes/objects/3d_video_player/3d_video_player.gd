@@ -1,6 +1,6 @@
 extends MeshInstance3D
 
-@export var video_material: BaseMaterial3D
+@onready var video_material: BaseMaterial3D = get_active_material(0)
 @onready var video_player: VideoStreamPlayer = $SubViewport/VideoStreamPlayer
 
 

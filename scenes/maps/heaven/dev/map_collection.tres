@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_u1wgg")
 visible_name = "Unnamed MapCollection"
-show_order = 10
+show_order = 50
 update_maps = false
 maps = [ExtResource("1_wvy42")]
 hidden = false
-tags = PackedStringArray()
+tags = PackedStringArray("dev")

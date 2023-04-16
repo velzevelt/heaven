@@ -75,3 +75,5 @@ var MAP_SCENE_FILE_NAME = SceneLoader.MAP_SCENE_FILE_NAME # unified name 'map.ts
 @export_range(0, 100, 1) var show_order := 0
 
 @export var tags: PackedStringArray
+
+@export var completed := false
