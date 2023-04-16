@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c42f6k8vrjsgb"]
+[gd_scene load_steps=3 format=3 uid="uid://c42f6k8vrjsgb"]
 
 [ext_resource type="Script" path="res://scenes/settings_menu/settings_menu.gd" id="1_2ui33"]
+[ext_resource type="Script" path="res://scenes/settings_menu/vsync.gd" id="2_c6fup"]
 
 [node name="SettingsMenu" type="CanvasLayer"]
 script = ExtResource("1_2ui33")
@@ -94,6 +95,7 @@ popup/item_1/text = "Off"
 popup/item_1/id = 1
 popup/item_2/text = "Adaptive"
 popup/item_2/id = 2
+script = ExtResource("2_c6fup")
 
 [node name="Label" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/VSync"]
 layout_mode = 2
@@ -198,8 +200,3 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [connection signal="pressed" from="Background/ExitButton" to="." method="_on_back_button_pressed"]
-[connection signal="item_selected" from="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/VSync/Options" to="." method="_on_vsync_options_item_selected"]
-[connection signal="item_selected" from="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/Language/Options" to="." method="_on_language_options_item_selected"]
-[connection signal="item_selected" from="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/TextureFiltering/Options" to="." method="_on_filtering_options_item_selected"]
-[connection signal="item_selected" from="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/ViewportMode/Options" to="." method="_on_viewport_scaling_options_item_selected"]
-[connection signal="pressed" from="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/FPS" to="." method="_on_fps_pressed"]
