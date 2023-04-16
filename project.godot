@@ -26,6 +26,7 @@ Globals="*res://scenes/autoload/globals.gd"
 Events="*res://scenes/autoload/events.gd"
 SceneLoader="*res://scenes/autoload/scene_loader.gd"
 DebugLayer="*res://addons/debug_tools/debug_layer.tscn"
+FPSCounterLayer="*res://addons/debug_tools/fps_counter/FPSCounterLayer.tscn"
 
 [display]
 

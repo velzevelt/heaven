@@ -33,3 +33,7 @@ func _input(_event):
 		var e: InputEventKey = _event as InputEventKey
 		if e.is_action_released('reload_scene'):
 			SceneLoader.reload_scene()
+
+
+func toggle_fps_counter_visibility():
+	FPSCounterLayer.fps_counter.visible = !FPSCounterLayer.fps_counter.visible

@@ -2,10 +2,9 @@ extends CanvasLayer
 
 @onready var draw: DebugVector3D = $%DebugVector3D as DebugVector3D
 
-
 func _ready():
 	if not OS.is_debug_build():
-		self.visible = false
+		visible = false
 
 
 func _input(event):

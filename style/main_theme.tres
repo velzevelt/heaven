@@ -1,3 +1,14 @@
-[gd_resource type="Theme" format=3 uid="uid://biif7cb2e2xcs"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://biif7cb2e2xcs"]
+
+[ext_resource type="Texture2D" uid="uid://ufc6enicgadh" path="res://sprites/red_boxCheckmark.png" id="1_h5tos"]
+[ext_resource type="Texture2D" uid="uid://bjuqw3pd1bhdb" path="res://sprites/red_boxCross.png" id="2_3tkgx"]
 
 [resource]
+CheckBox/icons/checked = ExtResource("1_h5tos")
+CheckBox/icons/checked_disabled = ExtResource("2_3tkgx")
+CheckBox/icons/radio_checked = ExtResource("1_h5tos")
+CheckBox/icons/radio_checked_disabled = ExtResource("2_3tkgx")
+CheckBox/icons/radio_unchecked = ExtResource("2_3tkgx")
+CheckBox/icons/radio_unchecked_disabled = ExtResource("2_3tkgx")
+CheckBox/icons/unchecked = ExtResource("2_3tkgx")
+CheckBox/icons/unchecked_disabled = ExtResource("2_3tkgx")
