@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/settings_menu/viewport_scaling.gd" id="4_l48jb"]
 
 [node name="SettingsMenu" type="CanvasLayer"]
+layer = 5
 script = ExtResource("1_2ui33")
 
 [node name="Background" type="Panel" parent="."]
