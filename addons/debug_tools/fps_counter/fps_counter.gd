@@ -13,4 +13,4 @@ func _process(_delta):
 	
 	if not Engine.is_editor_hint():
 		if Input.is_action_just_pressed('show_debug'):
-			visible = !visible
+			visible = DebugLayer.visible

@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c42f6k8vrjsgb"]
+[gd_scene load_steps=6 format=3 uid="uid://c42f6k8vrjsgb"]
 
 [ext_resource type="Script" path="res://scenes/settings_menu/settings_menu.gd" id="1_2ui33"]
 [ext_resource type="Script" path="res://scenes/settings_menu/vsync.gd" id="2_c6fup"]
+[ext_resource type="Script" path="res://scenes/settings_menu/language.gd" id="3_chof2"]
+[ext_resource type="Script" path="res://scenes/settings_menu/show_fps.gd" id="4_ktlyh"]
+[ext_resource type="Script" path="res://scenes/settings_menu/viewport_scaling.gd" id="4_l48jb"]
 
 [node name="SettingsMenu" type="CanvasLayer"]
 script = ExtResource("1_2ui33")
@@ -118,6 +121,7 @@ popup/item_0/text = "English"
 popup/item_0/id = 0
 popup/item_1/text = "Russian"
 popup/item_1/id = 1
+script = ExtResource("3_chof2")
 
 [node name="Label" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/Language"]
 layout_mode = 2
@@ -157,6 +161,7 @@ popup/item_0/text = "Fast"
 popup/item_0/id = 0
 popup/item_1/text = "High Quality"
 popup/item_1/id = 1
+script = ExtResource("4_l48jb")
 
 [node name="Label" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/ViewportMode"]
 layout_mode = 2
@@ -169,6 +174,7 @@ size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 29
 text = "Show FPS"
 expand_icon = true
+script = ExtResource("4_ktlyh")
 
 [node name="HSeparator" type="HSeparator" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General"]
 layout_mode = 2
