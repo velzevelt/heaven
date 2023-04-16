@@ -185,3 +185,7 @@ hook={
 3d_physics/layer_2="prop"
 3d_physics/layer_3="items"
 3d_physics/layer_4="doors"
+
+[rendering]
+
+textures/default_filters/anisotropic_filtering_level=4
