@@ -78,7 +78,16 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MapInfo" type="VBoxContainer" parent="MapSelector/HBoxContainer/Main/HBoxContainer/RightSide/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MapSelector/HBoxContainer/Main/HBoxContainer/RightSide/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="MapInfo" type="VBoxContainer" parent="MapSelector/HBoxContainer/Main/HBoxContainer/RightSide/ScrollContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -93,5 +102,5 @@ text = "Play"
 
 [connection signal="pressed" from="MapSelector/HBoxContainer/Top/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="map_selected" from="MapSelector/HBoxContainer/Main/HBoxContainer/LeftSide/LevelScrollArea/Maps" to="." method="_on_map_container_map_selected"]
-[connection signal="map_selected" from="MapSelector/HBoxContainer/Main/HBoxContainer/LeftSide/LevelScrollArea/Maps" to="MapSelector/HBoxContainer/Main/HBoxContainer/RightSide/ScrollContainer/MapInfo" method="_on_map_container_map_selected"]
+[connection signal="map_selected" from="MapSelector/HBoxContainer/Main/HBoxContainer/LeftSide/LevelScrollArea/Maps" to="MapSelector/HBoxContainer/Main/HBoxContainer/RightSide/ScrollContainer/MarginContainer/MapInfo" method="_on_map_container_map_selected"]
 [connection signal="pressed" from="MapSelector/HBoxContainer/Main/HBoxContainer/RightSide/PlayButton" to="." method="_on_play_button_pressed"]
