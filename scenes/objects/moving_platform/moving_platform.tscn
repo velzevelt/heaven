@@ -1,13 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://ckemuy5whwa3e"]
 
-[ext_resource type="PackedScene" uid="uid://dr2kdx3xlpchd" path="res://scenes/components/subcomponents/moving_platform_body.tscn" id="1_y0mgq"]
+[ext_resource type="PackedScene" uid="uid://51sgfh4nhl4t" path="res://scenes/components/subcomponents/moving_platform_body.tscn" id="1_y0mgq"]
 [ext_resource type="Script" path="res://scenes/components/moving_platform_component.gd" id="3_chyvh"]
 [ext_resource type="PackedScene" uid="uid://droywgubrul4i" path="res://scenes/components/subcomponents/path.tscn" id="3_ubrgq"]
 
 [node name="MovingPlatform" type="Node3D"]
 
 [node name="MovingPlatformBody" parent="." instance=ExtResource("1_y0mgq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
 
 [node name="MovingPlatformComponent" type="Node3D" parent="." node_paths=PackedStringArray("platform_body")]
 script = ExtResource("3_chyvh")

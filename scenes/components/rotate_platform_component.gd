@@ -13,7 +13,7 @@ extends PlatformComponent
 
 @export var angle: float = 0.01
 
-@export var preview_rotation := true:
+@export var preview_rotation := false:
 	set(value):
 		preview_rotation = value
 		if is_instance_valid(platform_body):

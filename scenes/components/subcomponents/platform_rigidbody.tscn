@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck8wu8m7l00ch"]
+
+[ext_resource type="BoxMesh" uid="uid://d1w1tt6v6rjjf" path="res://scenes/components/subcomponents/platform_body_mesh.tres" id="1_3cp5r"]
+[ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material_orange.tres" id="1_5wq8e"]
+[ext_resource type="Script" path="res://scenes/components/subcomponents/platform_collision_shape.gd" id="2_brsd5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wf28c"]
+size = Vector3(2, 0.3, 2)
+
+[node name="PlatformRigidBody3D" type="RigidBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_5wq8e")
+mesh = ExtResource("1_3cp5r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_wf28c")
+script = ExtResource("2_brsd5")

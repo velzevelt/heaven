@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhxmq6d5yviqi"]
+[gd_scene load_steps=9 format=3 uid="uid://dhxmq6d5yviqi"]
 
 [ext_resource type="PackedScene" uid="uid://c3j4bosemqpe" path="res://scenes/objects/map_template/map.tscn" id="1_8uda1"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_8pvwo"]
 [ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="3_218gr"]
 [ext_resource type="Material" uid="uid://ys587ewu4f0m" path="res://textures/prototype_material_purple.tres" id="4_xfnud"]
+[ext_resource type="Script" path="res://scenes/components/subcomponents/platform_body.gd" id="5_qghem"]
+[ext_resource type="PackedScene" uid="uid://bb063b6yo7mj4" path="res://scenes/objects/moving_platform/moving_platform_base.tscn" id="5_ud5w3"]
+[ext_resource type="Script" path="res://scenes/components/finish_platform_component.gd" id="6_f68gj"]
+[ext_resource type="Script" path="res://scenes/components/rotate_platform_component.gd" id="6_ma4sn"]
 
 [node name="Map" instance=ExtResource("1_8uda1")]
 
@@ -18,3 +22,93 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.64724, 0)
 material_override = ExtResource("4_xfnud")
 use_collision = true
 size = Vector3(18.4169, 0.257308, 14.7735)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.64724, -46.9113)
+material_override = ExtResource("4_xfnud")
+use_collision = true
+size = Vector3(5.22425, 0.257308, 10.7067)
+script = ExtResource("5_qghem")
+
+[node name="FinishPlatformComponent" type="Node" parent="CSGBox3D2" index="0" node_paths=PackedStringArray("platform_body")]
+script = ExtResource("6_f68gj")
+platform_body = NodePath("..")
+
+[node name="MovingPlatform" parent="." index="6" instance=ExtResource("5_ud5w3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.58533, -10.2122)
+
+[node name="MovingPlatformBody" parent="MovingPlatform" index="0"]
+transform = Transform3D(-0.937973, 0, 0.345752, 0, 0.999998, 0, -0.345754, 0, -0.937977, 0, 0, 0)
+
+[node name="RotatePlatformComponent" type="Node" parent="MovingPlatform" index="1" node_paths=PackedStringArray("platform_body")]
+script = ExtResource("6_ma4sn")
+rotate_direction = Vector3(0, 1, 0)
+preview_rotation = true
+platform_body = NodePath("../MovingPlatformBody")
+
+[node name="MovingPlatform2" parent="." index="7" instance=ExtResource("5_ud5w3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85682, -1.58533, -14.137)
+
+[node name="MovingPlatformBody" parent="MovingPlatform2" index="0"]
+transform = Transform3D(0.91946, 0, 0.39251, 0, 0.999998, 0, -0.392507, 0, 0.919464, 0, 0, 0)
+
+[node name="RotatePlatformComponent" type="Node" parent="MovingPlatform2" index="1" node_paths=PackedStringArray("platform_body")]
+script = ExtResource("6_ma4sn")
+rotate_direction = Vector3(0, 1, 0)
+preview_rotation = true
+platform_body = NodePath("../MovingPlatformBody")
+
+[node name="MovingPlatform3" parent="." index="8" instance=ExtResource("5_ud5w3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4858, -1.58533, -14.137)
+
+[node name="MovingPlatformBody" parent="MovingPlatform3" index="0"]
+transform = Transform3D(0.91946, 0, 0.39251, 0, 0.999998, 0, -0.392507, 0, 0.919464, 0, 0, 0)
+
+[node name="RotatePlatformComponent" type="Node" parent="MovingPlatform3" index="1" node_paths=PackedStringArray("platform_body")]
+script = ExtResource("6_ma4sn")
+rotate_direction = Vector3(0, 1, 0)
+preview_rotation = true
+platform_body = NodePath("../MovingPlatformBody")
+
+[node name="MovingPlatform4" parent="." index="9" instance=ExtResource("5_ud5w3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33618, -1.58533, -19.6669)
+
+[node name="MovingPlatformBody" parent="MovingPlatform4" index="0"]
+transform = Transform3D(0.362135, 0, 0.931473, 0, 0.999998, 0, -0.931468, 0, 0.362138, 0, 0, 0)
+
+[node name="RotatePlatformComponent" type="Node" parent="MovingPlatform4" index="1" node_paths=PackedStringArray("platform_body")]
+script = ExtResource("6_ma4sn")
+rotate_direction = Vector3(0, 1, 0)
+preview_rotation = true
+platform_body = NodePath("../MovingPlatformBody")
+
+[node name="MovingPlatform5" parent="." index="10" instance=ExtResource("5_ud5w3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.86299, -1.58533, -27.1288)
+
+[node name="MovingPlatformBody" parent="MovingPlatform5" index="0"]
+transform = Transform3D(0.903116, 0, 0.42918, 0, 0.999998, 0, -0.429181, 0, 0.903116, 0, 0, 0)
+
+[node name="RotatePlatformComponent" type="Node" parent="MovingPlatform5" index="1" node_paths=PackedStringArray("platform_body")]
+script = ExtResource("6_ma4sn")
+rotate_direction = Vector3(0, 1, 0)
+preview_rotation = true
+platform_body = NodePath("../MovingPlatformBody")
+
+[node name="MovingPlatform6" parent="." index="11" instance=ExtResource("5_ud5w3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79838, -1.58533, -35.4584)
+
+[node name="MovingPlatformBody" parent="MovingPlatform6" index="0"]
+transform = Transform3D(0.62156, 0, 0.783263, 0, 0.999998, 0, -0.783264, 0, 0.621559, 0, 0, 0)
+
+[node name="RotatePlatformComponent" type="Node" parent="MovingPlatform6" index="1" node_paths=PackedStringArray("platform_body")]
+script = ExtResource("6_ma4sn")
+rotate_direction = Vector3(0, 1, 0)
+preview_rotation = true
+platform_body = NodePath("../MovingPlatformBody")
+
+[editable path="MovingPlatform"]
+[editable path="MovingPlatform2"]
+[editable path="MovingPlatform3"]
+[editable path="MovingPlatform4"]
+[editable path="MovingPlatform5"]
+[editable path="MovingPlatform6"]
