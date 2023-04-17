@@ -103,7 +103,7 @@ loop = false
 curve = SubResource("Curve3D_g18fu")
 
 [node name="PathFollow3D" parent="MovingPlatform/Path3D" index="0"]
-transform = Transform3D(-4.37114e-08, -0.316228, 0.948683, 0, 0.948683, 0.316227, -1, 1.38228e-08, -4.14682e-08, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, -0.316228, 0.948683, 0, 0.948683, 0.316228, -1, 1.38228e-08, -4.14682e-08, 0, 0, 0)
 
 [node name="Coin" parent="MovingPlatform" index="3" instance=ExtResource("8_uqjor")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0399952, 1.24398, 0)

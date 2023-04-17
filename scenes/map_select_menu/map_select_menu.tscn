@@ -83,7 +83,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_25dl4")
-show_properties = PackedStringArray("author", "thumbnail", "game_version", "engine_version", "map_version", "map_difficulty", "map_description", "map_collection", "map_name", "map_path")
+show_properties = PackedStringArray("author", "thumbnail", "game_version", "engine_version", "map_version", "difficulty", "map_path")
 
 [node name="PlayButton" type="Button" parent="MapSelector/HBoxContainer/Main/HBoxContainer/RightSide"]
 layout_mode = 2
