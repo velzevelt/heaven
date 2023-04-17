@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://c42f6k8vrjsgb"]
+[gd_scene load_steps=7 format=3 uid="uid://c42f6k8vrjsgb"]
 
 [ext_resource type="Script" path="res://scenes/settings_menu/settings_menu.gd" id="1_2ui33"]
 [ext_resource type="Script" path="res://scenes/settings_menu/vsync.gd" id="2_c6fup"]
 [ext_resource type="Script" path="res://scenes/settings_menu/language.gd" id="3_chof2"]
 [ext_resource type="Script" path="res://scenes/settings_menu/show_fps.gd" id="4_ktlyh"]
 [ext_resource type="Script" path="res://scenes/settings_menu/viewport_scaling.gd" id="4_l48jb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ho2b4"]
+bg_color = Color(0.054902, 0.054902, 0.054902, 1)
 
 [node name="SettingsMenu" type="CanvasLayer"]
 layer = 5
@@ -56,6 +59,7 @@ theme_override_constants/margin_bottom = 150
 
 [node name="Panel" type="Panel" parent="Background/MarginContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ho2b4")
 
 [node name="MarginContainer" type="MarginContainer" parent="Background/MarginContainer"]
 layout_mode = 2

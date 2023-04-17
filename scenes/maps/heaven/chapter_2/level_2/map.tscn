@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2eu0acm0a2ru"]
+[gd_scene load_steps=15 format=3 uid="uid://c2eu0acm0a2ru"]
 
 [ext_resource type="PackedScene" uid="uid://c3j4bosemqpe" path="res://scenes/objects/map_template/map.tscn" id="1_4f2x8"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_6litu"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://scenes/components/prop.gd" id="5_vqysr"]
 [ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material_orange.tres" id="6_3a24n"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/chapter_2/level_2/reset_on_killing_floor.gd" id="9_0nq1q"]
+[ext_resource type="Script" path="res://scenes/objects/player/override_player_crosshair.gd" id="9_clpxw"]
+[ext_resource type="Script" path="res://scenes/objects/player/crosshair_style.gd" id="10_fjapd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l2q86"]
 size = Vector3(1.27337, 0.0614026, 1.34651)
@@ -15,6 +17,13 @@ size = Vector3(1.27337, 0.0614026, 1.34651)
 [sub_resource type="BoxMesh" id="BoxMesh_7x62o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a8cl3"]
+
+[sub_resource type="Resource" id="Resource_63fia"]
+script = ExtResource("10_fjapd")
+out_modulate = Color(0.745098, 0.745098, 0.745098, 1)
+out_size = Vector2(10, 10)
+in_modulate = Color(0.160784, 0.776471, 0.627451, 1)
+in_size = Vector2(15, 15)
 
 [node name="Map" instance=ExtResource("1_4f2x8")]
 
@@ -96,5 +105,9 @@ shape = SubResource("BoxShape3D_a8cl3")
 
 [node name="ResetOnKillingFloor" type="Node" parent="PropRigidBody3D" index="2"]
 script = ExtResource("9_0nq1q")
+
+[node name="OverridePlayerCrosshair" type="Node" parent="PropRigidBody3D" index="3"]
+script = ExtResource("9_clpxw")
+style = SubResource("Resource_63fia")
 
 [connection signal="floor_touched" from="KillingFloor" to="PropRigidBody3D/ResetOnKillingFloor" method="_on_killing_floor_floor_touched"]
