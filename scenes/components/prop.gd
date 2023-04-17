@@ -1,3 +1,4 @@
+class_name PropRigidBody3D
 extends RigidBody3D
 
 signal object_entered_strict(object)
@@ -14,10 +15,6 @@ var can_drag := true
 
 
 func _ready():
-#	if not is_instance_valid(interact_point):
-#		interact_point = self
-#		Logger.debug_log('Prop %s does not have interact_point, using center of mass instead' % self.name, MESSAGE_TYPE.WARNING)
-	
 	object_entered_strict.connect(_on_object_entered)
 	object_exited.connect(_on_object_exited)
 
@@ -32,14 +29,16 @@ func _on_object_exited(object):
 
 func _physics_process(_delta):
 	if is_dragging and can_drag:
-		if Input.is_action_just_released('interact') or not raycast_data.player.is_on_floor():
-			is_dragging = false
-			return
-		
 		if Input.is_action_just_pressed('right_click'):
 			apply_impulse(-raycast_data.prop_marker.global_transform.basis.z * push_force)
 			is_dragging = false
 			return
+		
+		
+		if Input.is_action_just_released('interact') or not raycast_data.player.is_on_floor():
+			is_dragging = false
+			return
+		
 		
 		if Input.is_action_pressed('interact'):
 			linear_velocity = (raycast_data.prop_marker.global_position - global_position) * pull_force

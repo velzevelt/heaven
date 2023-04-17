@@ -33,6 +33,7 @@ class RayCastData:
 	var player: Player
 	var door_marker: Marker3D
 	var prop_marker: Marker3D
+	var move_component: PlayerMoveComponent
 	
 	@warning_ignore("shadowed_variable")
 	func _init(from, player, door_marker, prop_marker):
@@ -40,3 +41,4 @@ class RayCastData:
 		self.player = player
 		self.door_marker = door_marker
 		self.prop_marker = prop_marker
+		self.move_component = player.get_node_or_null('PlayerMoveComponent')
