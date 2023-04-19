@@ -8,7 +8,7 @@
 script = ExtResource("2_waspo")
 author = &"velz"
 thumbnail = ExtResource("3_581jw")
-game_version = &"0.1.0-pre-alpha"
+game_version = &"0.1.0"
 engine_version = &"4.0.2-stable (official)"
 map_version = &"0.1.0"
 map_packed = ExtResource("1_v2dwc")
