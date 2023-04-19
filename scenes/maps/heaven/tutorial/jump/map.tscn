@@ -28,6 +28,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.735116, -3.98793)
 [node name="Platform3" parent="." instance=ExtResource("4_dsab2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.735116, -10.1238)
 
+[node name="PlatformBody" parent="Platform3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.39762)
+
 [node name="FinishPlatformComponent" type="Node" parent="Platform3" node_paths=PackedStringArray("platform_body")]
 script = ExtResource("5_ms5rp")
 platform_body = NodePath("../PlatformBody")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d3w4gtuaywvi6"]
+[gd_scene load_steps=16 format=3 uid="uid://d3w4gtuaywvi6"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_pgdll"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_trrbi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/tutorial_layer.gd" id="5_0etkl"]
 [ext_resource type="PackedScene" uid="uid://b02f2swa61iin" path="res://scenes/maps/heaven/tutorial/walk/actions.tscn" id="6_es5bn"]
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="7_mhwni"]
+[ext_resource type="Script" path="res://scenes/components/label3d.gd" id="8_r1eh2"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/walk/finish.gd" id="9_1bkvt"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/walk/step_1.gd" id="10_ds47u"]
 [ext_resource type="PackedScene" uid="uid://c0p0tbse1j7uk" path="res://scenes/objects/ground/ground.tscn" id="11_h5hds"]
@@ -55,6 +56,7 @@ shape = SubResource("SphereShape3D_uyn55")
 [node name="Label3D" type="Label3D" parent="Finish"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49721, 0)
 text = "Finish"
+script = ExtResource("8_r1eh2")
 
 [node name="Step1" type="Node3D" parent="." node_paths=PackedStringArray("finish", "message", "step_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.903898, 0.608106, -17.0338)
@@ -71,6 +73,7 @@ shape = SubResource("SphereShape3D_uyn55")
 [node name="Label3D" type="Label3D" parent="Step1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49721, 0)
 text = "Go Here"
+script = ExtResource("8_r1eh2")
 
 [node name="HelpLabel" type="Label" parent="Step1"]
 visible = false

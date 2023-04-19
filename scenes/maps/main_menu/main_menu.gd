@@ -11,6 +11,9 @@ func custom_exit():
 	if is_instance_valid(_map_select_menu_instance) or is_instance_valid(_settings_menu_instance):
 		return
 	else:
+		if OS.has_feature('JavaScript'):
+			return
+		
 		get_tree().quit()
 
 func _on_play_button_pressed():
