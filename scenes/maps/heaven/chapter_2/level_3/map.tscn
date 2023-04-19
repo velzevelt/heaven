@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqrbdeh7pfrmv"]
+[gd_scene load_steps=8 format=3 uid="uid://cqrbdeh7pfrmv"]
 
 [ext_resource type="PackedScene" uid="uid://c3j4bosemqpe" path="res://scenes/objects/map_template/map.tscn" id="1_mw7mg"]
 [ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="2_tdvtn"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="3_451um"]
 [ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_2eqt4"]
-[ext_resource type="Material" uid="uid://bm6134mi4goc8" path="res://textures/prototype_material_green.tres" id="5_rlvda"]
+[ext_resource type="Material" uid="uid://ys587ewu4f0m" path="res://textures/prototype_material_purple.tres" id="5_sfyhk"]
+[ext_resource type="Script" path="res://scenes/components/subcomponents/platform_body.gd" id="6_hdfvw"]
+[ext_resource type="Script" path="res://scenes/components/finish_platform_component.gd" id="7_f4gwl"]
 
 [node name="Map" instance=ExtResource("1_mw7mg")]
 
@@ -19,12 +21,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.27082, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." index="5"]
 transform = Transform3D(0.692993, -0.71915, 0.0508175, 0.664463, 0.664463, 0.34202, -0.27973, -0.203251, 0.938318, -0.810484, -8.45987, -12.3815)
-material_override = ExtResource("5_rlvda")
+material_override = ExtResource("5_sfyhk")
 use_collision = true
 size = Vector3(0.288429, 10.3843, 24.0931)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." index="6"]
-transform = Transform3D(0.874006, 0.48325, 0.0508175, -0.469846, 0.813797, 0.34202, 0.123926, -0.322804, 0.938318, 10.8843, -20.6331, -32.3451)
-material_override = ExtResource("5_rlvda")
+transform = Transform3D(0.874006, 0.48325, 0.0508175, -0.469846, 0.813797, 0.34202, 0.123926, -0.322804, 0.938318, 6.72364, -34.5898, -55.9166)
+material_override = ExtResource("5_sfyhk")
 use_collision = true
 size = Vector3(0.288429, 10.3843, 24.0931)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -51.1721, -110.551)
+material_override = ExtResource("5_sfyhk")
+use_collision = true
+size = Vector3(14.5413, 1.21375, 14.6247)
+script = ExtResource("6_hdfvw")
+
+[node name="FinishPlatformComponent" type="Node" parent="CSGBox3D3" index="0" node_paths=PackedStringArray("platform_body")]
+script = ExtResource("7_f4gwl")
+platform_body = NodePath("..")

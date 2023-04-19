@@ -351,4 +351,21 @@ theme_override_font_sizes/font_size = 25
 text = "Right Mouse Button"
 horizontal_alignment = 1
 
+[node name="HBoxContainer9" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Reload Scene"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "R"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="Background/ExitButton" to="." method="_on_back_button_pressed"]
