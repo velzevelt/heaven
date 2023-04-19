@@ -53,6 +53,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 
 [node name="About" type="MarginContainer" parent="AboutBlock/MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -80,6 +81,27 @@ theme_override_font_sizes/font_size = 30
 text = "Platform:"
 script = ExtResource("5_1np2q")
 
+[node name="Distribution" type="MarginContainer" parent="AboutBlock/MarginContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="AboutBlock/MarginContainer/TabContainer/Distribution"]
+layout_mode = 2
+
+[node name="Src" type="RichTextLabel" parent="AboutBlock/MarginContainer/TabContainer/Distribution/VBoxContainer2"]
+layout_mode = 2
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Itch.io: 
+Yandex.games: 
+VK.games:"
+fit_content = true
+selection_enabled = true
+
 [node name="Assets" type="MarginContainer" parent="AboutBlock/MarginContainer/TabContainer"]
 visible = false
 layout_mode = 2
@@ -100,7 +122,7 @@ text = "Prototype Textures: [url]https://www.kenney.nl/assets/prototype-textures
 fit_content = true
 selection_enabled = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="About" type="VBoxContainer" parent="."]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -111,14 +133,14 @@ offset_top = -87.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="About" type="Button" parent="VBoxContainer"]
+[node name="About" type="Button" parent="About"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 23
 text = "About"
 script = ExtResource("3_sf2ev")
 
-[node name="GameVersionLabel" parent="VBoxContainer" instance=ExtResource("3_bbyou")]
+[node name="GameVersionLabel" parent="About" instance=ExtResource("3_bbyou")]
 layout_mode = 2
 size_flags_vertical = 10
 text = "0.1.0-beta"
