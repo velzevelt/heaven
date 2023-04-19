@@ -48,7 +48,7 @@ func _create_labels(key, value):
 
 
 func _create_stars(difficulty):
-	var container = HBoxContainer.new()
+	var container = HFlowContainer.new()
 	call_deferred('add_child', container)
 	
 	var full_star_step = 1.0

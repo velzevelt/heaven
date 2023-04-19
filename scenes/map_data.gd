@@ -48,7 +48,7 @@ var MAP_SCENE_FILE_NAME = SceneLoader.MAP_SCENE_FILE_NAME # unified name 'map.ts
 		else:
 			return map_packed
 
-@export_range(0.5, 15.0, 0.5) var difficulty: float = 0.5
+@export_range(0.5, 100.0, 0.5) var difficulty: float = 0.5
 
 @export_multiline var description = ''
 
