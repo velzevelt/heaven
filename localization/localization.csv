@@ -1,4 +1,36 @@
 keys,en,ru
-KEY1,Test,Тест
 ,,
-SETTINGS,Settings,Настройки
+Play,Play,Играть
+Settings,Settings,Настройки
+Exit,Exit,Выход
+Back,Back,Назад
+,,
+,,
+About,About,О нас
+Language,Language,Язык
+English,English,Английский
+Russian,Russian,Русский
+,,
+,,
+General,General,Общее
+Viewport Scaling,Viewport Scaling,Масштабирование
+Performance,Performance,Производительность
+High Quality,High Quality,Качество
+On,On,Включено
+Off,Off,Выключено
+Adaptive,Adaptive,Адаптивно
+,,
+Controls,Controls,Управление
+Forward,Forward,Вперед
+Backward,Backward,Назад
+Right,Right,Вправо
+Left,Left,Влево
+Jump,Jump,Прыжок
+Crouch,Crouch,Присесть
+Interact,Interact,Взаимодействовать
+Side Interact,Side Interact,Доп. Действие
+Reload Scene,Reload Scene,Перезагрузка
+,,
+,,
+Select Level,Select Level,Выбор Уровня
+Tutorial,Tutorial,Обучение

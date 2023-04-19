@@ -179,6 +179,10 @@ hook={
 "events": []
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://localization/localization.en.translation", "res://localization/localization.ru.translation")
+
 [layer_names]
 
 3d_physics/layer_1="level"

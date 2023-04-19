@@ -1,11 +1,13 @@
 extends OptionButton
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	match Settings.locale:
+		'en':
+			select(0)
+		'ru':
+			select(1)
+		_:
+			select(0)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass

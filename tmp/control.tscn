@@ -1,4 +1,13 @@
-[gd_scene format=3 uid="uid://celhtto0e5qoi"]
+[gd_scene load_steps=2 format=3 uid="uid://celhtto0e5qoi"]
+
+[sub_resource type="GDScript" id="GDScript_7m47i"]
+script/source = "extends Label
+
+
+func _ready():
+	Logger.debug_log(tr(text))
+
+"
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -14,3 +23,4 @@ offset_right = 269.0
 offset_bottom = 120.0
 theme_override_font_sizes/font_size = 66
 text = "KEY1"
+script = SubResource("GDScript_7m47i")
