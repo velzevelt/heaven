@@ -54,3 +54,7 @@ func _input(_event):
 
 func toggle_fps_counter_visibility():
 	FPSCounterLayer.fps_counter.visible = !FPSCounterLayer.fps_counter.visible
+
+
+func change_mouse_sensitivity(value):
+	ProjectSettings.set_setting("display/mouse_cursor/sensitivity", value)

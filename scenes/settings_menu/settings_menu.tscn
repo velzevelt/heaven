@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c42f6k8vrjsgb"]
+[gd_scene load_steps=11 format=3 uid="uid://c42f6k8vrjsgb"]
 
 [ext_resource type="Script" path="res://scenes/settings_menu/settings_menu.gd" id="1_2ui33"]
 [ext_resource type="Script" path="res://scenes/settings_menu/vsync.gd" id="2_c6fup"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://scenes/settings_menu/viewport_scaling.gd" id="4_l48jb"]
 [ext_resource type="Script" path="res://scenes/settings_menu/fullscreen.gd" id="6_p5ixj"]
 [ext_resource type="StyleBox" uid="uid://dndgf62qgjuce" path="res://scenes/settings_menu/separator_style.tres" id="6_sgrq4"]
+[ext_resource type="Script" path="res://scenes/settings_menu/slider_label.gd" id="8_ekyah"]
+[ext_resource type="Script" path="res://scenes/settings_menu/mouse_sensitivity_slider.gd" id="9_ol1l6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ho2b4"]
 bg_color = Color(0.054902, 0.054902, 0.054902, 1)
@@ -225,6 +227,34 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_styles/separator = ExtResource("6_sgrq4")
 
+[node name="HBoxContainer10" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer10"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Mouse Sensitivity"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer10"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 25
+text = "50"
+script = ExtResource("8_ekyah")
+
+[node name="HSlider" type="HSlider" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer10"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 0.001
+max_value = 1.0
+step = 0.001
+value = 0.1
+script = ExtResource("9_ol1l6")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
 layout_mode = 2
 
@@ -379,3 +409,4 @@ text = "R"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="Background/ExitButton" to="." method="_on_back_button_pressed"]
+[connection signal="value_changed" from="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer10/HSlider" to="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer10/Label2" method="_on_h_slider_value_changed"]

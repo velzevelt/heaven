@@ -22,6 +22,7 @@ Russian,Russian,Русский
 General,General,Общее
 Viewport Scaling,Viewport Scaling,Масштабирование
 Fullscreen,Fullscreen,Полный экран
+Mouse Sensitivity,Mouse Sensitivity,Чувствительность Мыши
 Performance,Performance,Производительность
 High Quality,High Quality,Качество
 On,On,Включено
@@ -46,7 +47,7 @@ Look,Look,Осмотр
 Walk,Walk,Передвижение
 ,,
 Advanced Jumps,Advanced Jumps,Продвинутые Прыжки
-BHOP_TUTORIAL,1) Crouching while jumping allow you gain more speed \n 2) DO not press forward key,"1) Прыжок из положения сидя придает больше скорости \n 2) Не нажимате ""Вперед"""
+BHOP_TUTORIAL,1) Crouching while jumping allow you gain more speed \n 2) DO not press forward key,"1) Прыжок из положения сидя придает больше скорости \n 2) Не нажимайте ""Вперед"""
 ,,
 GOAL_COLLECT_COINS,Collect coins,Собрать монеты
 GOAL_COLLECT_COINS_DESCRIPTION,You need to collect all coins,Собрать все монеты
