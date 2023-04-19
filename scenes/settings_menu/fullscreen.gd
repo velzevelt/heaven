@@ -3,7 +3,7 @@ extends OptionButton
 
 func _ready():
 	match get_tree().root.mode:
-		Window.MODE_WINDOWED:
+		Window.MODE_WINDOWED, Window.MODE_MAXIMIZED:
 			select(1)
 		Window.MODE_FULLSCREEN, Window.MODE_EXCLUSIVE_FULLSCREEN:
 			select(0)
