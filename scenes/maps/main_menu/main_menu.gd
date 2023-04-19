@@ -11,7 +11,7 @@ func custom_exit():
 	if is_instance_valid(_map_select_menu_instance) or is_instance_valid(_settings_menu_instance):
 		return
 	else:
-		if OS.has_feature('JavaScript'):
+		if OS.get_name() == "Web":
 			return
 		
 		get_tree().quit()
