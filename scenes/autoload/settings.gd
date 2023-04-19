@@ -29,8 +29,16 @@ func hide_cursor():
 
 
 func toggle_fullscreen():
+	Logger.debug_log('fullscreen toggled')
 	_root.mode = Window.MODE_FULLSCREEN if _root.mode == _init_window_mode else _init_window_mode
 
+func enable_fullscreen():
+	Logger.debug_log('fullscreen on')
+	_root.mode = Window.MODE_FULLSCREEN
+
+func disable_fullscreen():
+	Logger.debug_log('fullscreen off')
+	_root.mode = _init_window_mode
 
 func _input(_event):
 	if Input.is_action_just_pressed('hide_cursor'):

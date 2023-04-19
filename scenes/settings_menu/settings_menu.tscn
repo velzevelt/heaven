@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c42f6k8vrjsgb"]
+[gd_scene load_steps=9 format=3 uid="uid://c42f6k8vrjsgb"]
 
 [ext_resource type="Script" path="res://scenes/settings_menu/settings_menu.gd" id="1_2ui33"]
 [ext_resource type="Script" path="res://scenes/settings_menu/vsync.gd" id="2_c6fup"]
 [ext_resource type="Script" path="res://scenes/settings_menu/language.gd" id="3_chof2"]
 [ext_resource type="Script" path="res://scenes/settings_menu/show_fps.gd" id="4_ktlyh"]
 [ext_resource type="Script" path="res://scenes/settings_menu/viewport_scaling.gd" id="4_l48jb"]
+[ext_resource type="Script" path="res://scenes/settings_menu/fullscreen.gd" id="6_p5ixj"]
 [ext_resource type="StyleBox" uid="uid://dndgf62qgjuce" path="res://scenes/settings_menu/separator_style.tres" id="6_sgrq4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ho2b4"]
@@ -161,6 +162,29 @@ script = ExtResource("4_l48jb")
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Viewport Scaling"
+
+[node name="ViewportMode2" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General"]
+layout_mode = 2
+theme_override_constants/separation = 19
+
+[node name="Options" type="OptionButton" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/ViewportMode2"]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 27
+expand_icon = true
+item_count = 2
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "On"
+popup/item_0/id = 0
+popup/item_1/text = "Off"
+popup/item_1/id = 1
+script = ExtResource("6_p5ixj")
+
+[node name="Label" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/ViewportMode2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Fullscreen"
 
 [node name="FPS" type="Button" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General"]
 custom_minimum_size = Vector2(220, 0)
