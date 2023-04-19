@@ -118,6 +118,7 @@ script = ExtResource("3_sf2ev")
 layout_mode = 2
 size_flags_vertical = 10
 text = "0.1.0-beta"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Buttons/SettingsButton" to="." method="_on_settings_button_pressed"]
