@@ -25,4 +25,6 @@ expand = true
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
+
 [connection signal="finished" from="SubViewport/VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
