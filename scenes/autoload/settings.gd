@@ -3,10 +3,9 @@ extends Node
 @onready var _root = get_tree().root as Window
 @onready var _init_window_mode = _root.mode
 
-var locale
 
 func _ready():
-	locale = OS.get_locale_language()
+	var locale = OS.get_locale_language()
 	if locale in TranslationServer.get_loaded_locales():
 		TranslationServer.set_locale(locale)
 	else:

@@ -2,7 +2,7 @@ extends OptionButton
 
 
 func _ready():
-	match Settings.locale:
+	match TranslationServer.get_locale():
 		'en':
 			select(0)
 		'ru':
