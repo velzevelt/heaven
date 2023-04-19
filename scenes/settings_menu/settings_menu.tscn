@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c42f6k8vrjsgb"]
+[gd_scene load_steps=8 format=3 uid="uid://c42f6k8vrjsgb"]
 
 [ext_resource type="Script" path="res://scenes/settings_menu/settings_menu.gd" id="1_2ui33"]
 [ext_resource type="Script" path="res://scenes/settings_menu/vsync.gd" id="2_c6fup"]
 [ext_resource type="Script" path="res://scenes/settings_menu/language.gd" id="3_chof2"]
 [ext_resource type="Script" path="res://scenes/settings_menu/show_fps.gd" id="4_ktlyh"]
 [ext_resource type="Script" path="res://scenes/settings_menu/viewport_scaling.gd" id="4_l48jb"]
+[ext_resource type="StyleBox" uid="uid://dndgf62qgjuce" path="res://scenes/settings_menu/separator_style.tres" id="6_sgrq4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ho2b4"]
 bg_color = Color(0.054902, 0.054902, 0.054902, 1)
@@ -183,8 +184,10 @@ script = ExtResource("4_ktlyh")
 
 [node name="HSeparator" type="HSeparator" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General"]
 layout_mode = 2
+theme_override_styles/separator = ExtResource("6_sgrq4")
 
 [node name="Audio" type="VBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 18
@@ -197,6 +200,7 @@ horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Audio"]
 layout_mode = 2
+theme_override_styles/separator = ExtResource("6_sgrq4")
 
 [node name="Controls" type="VBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2"]
 layout_mode = 2
@@ -209,5 +213,142 @@ horizontal_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
 layout_mode = 2
+theme_override_styles/separator = ExtResource("6_sgrq4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Forward"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "W"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Backward"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "S"
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Right"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "D"
+horizontal_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Left"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "A"
+horizontal_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Jump"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Space"
+horizontal_alignment = 1
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Crouch"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Caps Lock, Ctrl, C"
+horizontal_alignment = 1
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Interact"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Left Mouse Button"
+horizontal_alignment = 1
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Side Interact"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Right Mouse Button"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Background/ExitButton" to="." method="_on_back_button_pressed"]
