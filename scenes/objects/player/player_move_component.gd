@@ -83,7 +83,7 @@ func _physics_process(delta):
 		vertical_velocity -= velocity_component.gravity * delta * velocity_component.mass if vertical_velocity >= max_falling_speed else 0 # Stop adding to vertical velocity once terminal velocity is reached
 		var vel = player_body.velocity
 		if player_body.is_on_wall():
-			vel = vel.snapped(player_body.get_wall_normal())
+#			vel = vel.snapped(player_body.get_wall_normal())
 			vel = vel.slide(player_body.get_wall_normal())
 			vel = accelerate(wish_dir, vel, velocity_component.move_accel, velocity_component.max_speed, delta)
 			vertical_velocity = vel.y
