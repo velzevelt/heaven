@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c42f6k8vrjsgb"]
+[gd_scene load_steps=12 format=3 uid="uid://c42f6k8vrjsgb"]
 
 [ext_resource type="Script" path="res://scenes/settings_menu/settings_menu.gd" id="1_2ui33"]
 [ext_resource type="Script" path="res://scenes/settings_menu/vsync.gd" id="2_c6fup"]
 [ext_resource type="Script" path="res://scenes/settings_menu/language.gd" id="3_chof2"]
 [ext_resource type="Script" path="res://scenes/settings_menu/show_fps.gd" id="4_ktlyh"]
 [ext_resource type="Script" path="res://scenes/settings_menu/viewport_scaling.gd" id="4_l48jb"]
+[ext_resource type="Script" path="res://scenes/settings_menu/fullscreen_block.gd" id="6_m24q2"]
 [ext_resource type="Script" path="res://scenes/settings_menu/fullscreen.gd" id="6_p5ixj"]
 [ext_resource type="StyleBox" uid="uid://dndgf62qgjuce" path="res://scenes/settings_menu/separator_style.tres" id="6_sgrq4"]
 [ext_resource type="Script" path="res://scenes/settings_menu/slider_label.gd" id="8_ekyah"]
@@ -168,6 +169,7 @@ text = "Viewport Scaling"
 [node name="ViewportMode2" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General"]
 layout_mode = 2
 theme_override_constants/separation = 19
+script = ExtResource("6_m24q2")
 
 [node name="Options" type="OptionButton" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/ViewportMode2"]
 custom_minimum_size = Vector2(220, 50)
