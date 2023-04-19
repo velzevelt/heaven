@@ -175,6 +175,7 @@ theme_override_font_sizes/font_size = 25
 text = "Viewport Scaling"
 
 [node name="FPS" type="Button" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 29
