@@ -3,8 +3,14 @@ extends Resource
 
 signal goal_completed(goal_data)
 
-@export var visible_name: String = '' # e.g. Collect all coins
-@export_multiline var goal_description: String = '' # e.g. You need to collect %d coins from this level
+@export var visible_name: String = '': # e.g. Collect all coins
+	get:
+		return tr(visible_name)
+
+@export_multiline var goal_description: String = '':
+	get:
+		return tr(goal_description)
+
 @export var completed := false: 
 	set(value):
 		completed = value

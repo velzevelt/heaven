@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://d14ksx7g0fgg"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_vigc5"]
-[ext_resource type="PackedScene" uid="uid://chaf5uqx5ltj2" path="res://scenes/objects/player/player.tscn" id="2_kouom"]
+[ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="2_kouom"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="3_vd4a2"]
 [ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_svphb"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/chapter_1/enable_on_enter.gd" id="5_ddb06"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="6_p80ff"]
 [ext_resource type="Script" path="res://scenes/objects/player/override_player_crosshair.gd" id="6_qm46r"]
 [ext_resource type="Resource" uid="uid://cyeamk4lrqu56" path="res://scenes/objects/player/finish_crosshair_style.tres" id="7_fq03q"]
-[ext_resource type="PackedScene" path="res://scenes/objects/coin/coin.tscn" id="9_lqjxl"]
+[ext_resource type="PackedScene" uid="uid://bepjx2iwc10qi" path="res://scenes/objects/coin/coin.tscn" id="9_lqjxl"]
 [ext_resource type="Script" path="res://scenes/objects/map_goal_storage/map_goal_storage.gd" id="14_0a0ad"]
 [ext_resource type="Script" path="res://scenes/objects/map_goal/objective/collect.gd" id="14_asoeh"]
 [ext_resource type="Resource" uid="uid://d3sett5fwbgyy" path="res://scenes/objects/map_goal/collect_all_coins.tres" id="15_77d6a"]

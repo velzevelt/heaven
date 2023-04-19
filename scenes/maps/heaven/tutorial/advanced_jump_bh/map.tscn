@@ -63,11 +63,9 @@ script = ExtResource("8_edu34")
 
 [node name="Label3D2" type="Label3D" parent="CSGBox3D4" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.350723, 0.0570643)
-text = "1) Crouching while jumping
-allow you gain more speed
-2) DO not press forward key"
+text = "BHOP_TUTORIAL"
 font_size = 20
-width = 1000.0
+autowrap_mode = 3
 
 [node name="CSGBox3D3" parent="." index="11" instance=ExtResource("8_6eid4")]
 transform = Transform3D(0.464525, 0.766044, -2.09599e-08, 0, -4.37114e-08, -0.625951, -0.553599, 0.642788, -1.75874e-08, -2.07195, 0.0884902, -3.23796)

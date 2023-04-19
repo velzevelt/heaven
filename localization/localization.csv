@@ -43,4 +43,10 @@ Select Level,Select Level,Выбор Уровня
 Tutorial,Tutorial,Обучение
 Look,Look,Осмотр
 Walk,Walk,Передвижение
+,,
 Advanced Jumps,Advanced Jumps,Продвинутые Прыжки
+BHOP_TUTORIAL,1) Crouching while jumping allow you gain more speed \n 2) DO not press forward key,"1) Прыжок из положения сидя придает больше скорости \n 2) Не нажимате ""Вперед"""
+,,
+GOAL_COLLECT_COINS,Collect coins,Собрать монеты
+GOAL_COLLECT_COINS_DESCRIPTION,You need to collect all coins,Собрать все монеты
+Completed,Completed,Выполнено

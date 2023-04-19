@@ -41,7 +41,7 @@ func _ready():
 			label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			
 			if goal.completed:
-				label.text = "%s: %s" % [goal.visible_name, "Completed"]
+				label.text = "%s: %s" % [goal.visible_name, tr("Completed")]
 			else:
 				label.text = "%s: %s %s" % [goal.visible_name, goal.goal_description, goal.progress]
 			
