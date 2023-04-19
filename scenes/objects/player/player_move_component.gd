@@ -52,7 +52,7 @@ func _ready():
 		DebugLayer.draw.add_vector(self, "wish_dir", 1, 4, Color(0,1,0, 0.5)) # Green, WISHDIR
 		DebugLayer.draw.add_vector(self, "accelerate_return", 1, 4, Color(0,0,1, 0.25)) # Blue, ACCEL
 		DebugLayer.draw.add_vector(self, "debug_horizontal_velocity", 2, 4, Color(1,0,0, 1)) # Red, VELOCITY
-
+	
 
 func _update_wish_dir():
 	if can_move and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:

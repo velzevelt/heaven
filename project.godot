@@ -15,7 +15,7 @@ run/main_scene="res://scenes/maps/main_menu/map.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 config/duplicate_logger_output_to_debugger=true
-config/version="0.1.0-alpha"
+config/version="0.1.0-beta"
 
 [autoload]
 
