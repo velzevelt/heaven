@@ -75,6 +75,7 @@ func change_scene(scene: MapData):
 
 
 func reload_scene():
+	Logger.debug_log('Reloading current scene...')
 	get_tree().reload_current_scene()
 #	breakpoint
 

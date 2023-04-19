@@ -9,10 +9,10 @@ signal map_container_selected(map_collection: MapCollection)
 
 func _ready():
 	var map_packs = SceneLoader._map_packs
-	for map_pack in map_packs:
-		for collection in map_pack.map_collections:
-			for map in collection.maps:
-				Logger.debug_log(map.map_packed)
+#	for map_pack in map_packs:
+#		for collection in map_pack.map_collections:
+#			for map in collection.maps:
+#				Logger.debug_log(map.map_packed)
 
 	for map_pack in map_packs:
 		var pack = map_container_item.instantiate()
