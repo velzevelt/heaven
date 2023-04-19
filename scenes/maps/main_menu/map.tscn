@@ -76,7 +76,7 @@ theme_override_font_sizes/font_size = 30
 text = "Platform:"
 script = ExtResource("5_1np2q")
 
-[node name="Credentials" type="MarginContainer" parent="AboutBlock/MarginContainer/TabContainer"]
+[node name="Assets" type="MarginContainer" parent="AboutBlock/MarginContainer/TabContainer"]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
@@ -84,10 +84,10 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="AboutBlock/MarginContainer/TabContainer/Credentials"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="AboutBlock/MarginContainer/TabContainer/Assets"]
 layout_mode = 2
 
-[node name="Assets" type="RichTextLabel" parent="AboutBlock/MarginContainer/TabContainer/Credentials/VBoxContainer2"]
+[node name="Assets" type="RichTextLabel" parent="AboutBlock/MarginContainer/TabContainer/Assets/VBoxContainer2"]
 layout_mode = 2
 focus_mode = 2
 theme_override_font_sizes/normal_font_size = 30

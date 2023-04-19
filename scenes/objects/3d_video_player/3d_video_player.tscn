@@ -10,7 +10,6 @@ material = ExtResource("1_va4xn")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_yo74h")
 script = ExtResource("2_efmw0")
-video_material = ExtResource("1_va4xn")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 disable_3d = true
@@ -23,5 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 autoplay = true
 expand = true
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="finished" from="SubViewport/VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
