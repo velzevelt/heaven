@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://bkudt7mgs1llw"]
+
+[ext_resource type="PackedScene" uid="uid://c3j4bosemqpe" path="res://scenes/objects/map_template/map.tscn" id="1_5pa4p"]
+[ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_teinn"]
+[ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="3_h62fj"]
+[ext_resource type="PackedScene" uid="uid://bb063b6yo7mj4" path="res://scenes/objects/moving_platform/moving_platform_base.tscn" id="4_68ixg"]
+[ext_resource type="Script" path="res://scenes/components/rotate_platform_component.gd" id="5_uofwi"]
+[ext_resource type="Material" uid="uid://ys587ewu4f0m" path="res://textures/prototype_material_purple.tres" id="6_buifr"]
+[ext_resource type="Script" path="res://scenes/components/reparent_platform_component.gd" id="6_rmli4"]
+[ext_resource type="Script" path="res://scenes/components/subcomponents/platform_body.gd" id="7_jcx5i"]
+[ext_resource type="Script" path="res://scenes/components/finish_platform_component.gd" id="8_vevdg"]
+
+[node name="Map" instance=ExtResource("1_5pa4p")]
+
+[node name="Player" parent="." index="2" instance=ExtResource("3_h62fj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.281089, 0)
+
+[node name="KillingFloor" parent="." index="3" instance=ExtResource("2_teinn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.75382, 0)
+
+[node name="MovingPlatform" parent="." index="4" instance=ExtResource("4_68ixg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.64081, 0)
+
+[node name="MovingPlatformBody" parent="MovingPlatform" index="0"]
+transform = Transform3D(1.0001, 0, 0, 0, 1, 0, 0, 0, 1.0001, 0, 0, 0)
+sync_to_physics = false
+
+[node name="RotatePlatformComponent" type="Node" parent="MovingPlatform" index="1" node_paths=PackedStringArray("platform_body")]
+script = ExtResource("5_uofwi")
+rotate_direction = Vector3(0, 1, 0)
+angle = 0.08
+platform_body = NodePath("../MovingPlatformBody")
+
+[node name="ReparentPlatformComponent" type="Node" parent="MovingPlatform" index="2" node_paths=PackedStringArray("new_parent", "platform_body")]
+script = ExtResource("6_rmli4")
+new_parent = NodePath("../MovingPlatformBody")
+platform_body = NodePath("../MovingPlatformBody")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.80149, -8.15591)
+material_override = ExtResource("6_buifr")
+use_collision = true
+size = Vector3(6.11483, 0.437526, 5.2417)
+script = ExtResource("7_jcx5i")
+
+[node name="FinishPlatformComponent" type="Node" parent="CSGBox3D" index="0" node_paths=PackedStringArray("platform_body")]
+script = ExtResource("8_vevdg")
+platform_body = NodePath("..")
+
+[editable path="MovingPlatform"]

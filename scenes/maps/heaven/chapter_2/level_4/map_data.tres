@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=4 format=3 uid="uid://bepp5n3eyuqdu"]
+
+[ext_resource type="PackedScene" uid="uid://bkudt7mgs1llw" path="res://scenes/maps/heaven/chapter_2/level_4/map.tscn" id="1_0e3oe"]
+[ext_resource type="Script" path="res://scenes/map_data.gd" id="1_hvpgh"]
+[ext_resource type="Texture2D" uid="uid://cn5nhs2dyxodr" path="res://icon.svg" id="2_ls85j"]
+
+[resource]
+script = ExtResource("1_hvpgh")
+author = &"velz"
+thumbnail = ExtResource("2_ls85j")
+game_version = &"0.1.0-beta"
+engine_version = &"4.0.2-stable (official)"
+map_version = &"0.1.0"
+map_packed = ExtResource("1_0e3oe")
+difficulty = 1.5
+description = ""
+hidden = false
+visible_name = "Level 4"
+next_map_path = ""
+show_order = 4
+tags = PackedStringArray()
+completed = false

@@ -1,16 +1,17 @@
-[gd_resource type="Resource" script_class="MapCollection" load_steps=6 format=3 uid="uid://bf64od71s0d0j"]
+[gd_resource type="Resource" script_class="MapCollection" load_steps=7 format=3 uid="uid://bf64od71s0d0j"]
 
 [ext_resource type="Resource" uid="uid://dhbhdys8hwpav" path="res://scenes/maps/heaven/chapter_1/level_2/map_data.tres" id="1_hgim7"]
 [ext_resource type="Script" path="res://scenes/map_collection.gd" id="1_tpfi5"]
 [ext_resource type="Resource" uid="uid://b3uqxuwgbpw6e" path="res://scenes/maps/heaven/chapter_1/level_1/map_data.tres" id="1_xosv7"]
 [ext_resource type="Resource" uid="uid://cv1cjpbhm44ax" path="res://scenes/maps/heaven/chapter_1/level_3/map_data.tres" id="3_1lt55"]
 [ext_resource type="Resource" uid="uid://be4i2u80sfxof" path="res://scenes/maps/heaven/chapter_1/level_4/map_data.tres" id="4_6xgr2"]
+[ext_resource type="Resource" uid="uid://c73xfrfkj6q7y" path="res://scenes/maps/heaven/chapter_1/level_5/map_data.tres" id="5_j6ubw"]
 
 [resource]
 script = ExtResource("1_tpfi5")
 visible_name = "Chapter 1"
 show_order = 1
 update_maps = false
-maps = [ExtResource("1_xosv7"), ExtResource("1_hgim7"), ExtResource("3_1lt55"), ExtResource("4_6xgr2")]
+maps = [ExtResource("1_xosv7"), ExtResource("1_hgim7"), ExtResource("3_1lt55"), ExtResource("4_6xgr2"), ExtResource("5_j6ubw")]
 hidden = false
 tags = PackedStringArray()
