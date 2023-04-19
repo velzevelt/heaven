@@ -13,7 +13,7 @@ View,View,Осмотр
 Level Completed,Level Completed,Уровень Пройден
 Goals,Goals,Цели
 ,,
-About,About,О нас
+About,About,Проект
 Language,Language,Язык
 English,English,Английский
 Russian,Russian,Русский
@@ -73,3 +73,5 @@ Closed,Closed,Закрыто
 ,,
 Attention,Attention,Внимание
 WEB_WARNING,"The web version may be unstable, we recommend using the desktop version","Веб версия может быть нестабильна, рекомендуем использовать настольную версию"
+,,
+Difficulty,Difficulty,Сложность

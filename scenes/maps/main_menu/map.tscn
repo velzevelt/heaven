@@ -146,7 +146,7 @@ script = ExtResource("3_sf2ev")
 [node name="GameVersionLabel" parent="About" instance=ExtResource("3_bbyou")]
 layout_mode = 2
 size_flags_vertical = 10
-text = "0.1.0-beta"
+text = "0.1.0-linux"
 horizontal_alignment = 1
 
 [node name="Attention" type="Panel" parent="."]

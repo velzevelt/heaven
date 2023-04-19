@@ -49,8 +49,14 @@ func _create_labels(key, value):
 
 
 func _create_stars(difficulty):
+	
 	var container = HFlowContainer.new()
 	call_deferred('add_child', container)
+	
+	var label = Label.new()
+	label.add_theme_font_size_override('font_size', 45)
+	label.text = tr("Difficulty") + ": "
+	container.call_deferred('add_child', label)
 	
 	var full_star_step = 1.0
 	var half_star_step = 0.5

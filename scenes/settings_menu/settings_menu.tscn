@@ -255,6 +255,7 @@ min_value = 0.001
 max_value = 1.0
 step = 0.001
 value = 0.1
+scrollable = false
 script = ExtResource("9_ol1l6")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
