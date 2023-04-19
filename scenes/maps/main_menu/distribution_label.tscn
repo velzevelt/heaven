@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcfq7of066qa7"]
+
+[ext_resource type="Script" path="res://scenes/maps/main_menu/url_label.gd" id="1_11jaj"]
+
+[node name="LinkLabel" type="RichTextLabel"]
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Itch.io: "
+fit_content = true
+selection_enabled = true
+script = ExtResource("1_11jaj")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://eaixfghokf0e"]
+[gd_scene load_steps=12 format=3 uid="uid://eaixfghokf0e"]
 
 [ext_resource type="Script" path="res://scenes/maps/main_menu/main_menu.gd" id="1_axffq"]
 [ext_resource type="PackedScene" uid="uid://dwwwcmbjvlht7" path="res://scenes/components/subcomponents/menu_buttons.tscn" id="2_5vetg"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://scenes/maps/main_menu/about.gd" id="3_sf2ev"]
 [ext_resource type="Script" path="res://scenes/maps/main_menu/game_version.gd" id="4_e6ibd"]
 [ext_resource type="Script" path="res://scenes/maps/main_menu/platform.gd" id="5_1np2q"]
+[ext_resource type="PackedScene" uid="uid://bcfq7of066qa7" path="res://scenes/maps/main_menu/distribution_label.tscn" id="6_7je0a"]
+[ext_resource type="Script" path="res://scenes/maps/main_menu/url_label.gd" id="7_xnc3o"]
 [ext_resource type="Script" path="res://scenes/maps/main_menu/attention.gd" id="8_3kqsw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hkqfh"]
@@ -53,7 +55,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 
 [node name="About" type="MarginContainer" parent="AboutBlock/MarginContainer/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -82,6 +83,7 @@ text = "Platform:"
 script = ExtResource("5_1np2q")
 
 [node name="Distribution" type="MarginContainer" parent="AboutBlock/MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -91,32 +93,16 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer2" type="VBoxContainer" parent="AboutBlock/MarginContainer/TabContainer/Distribution"]
 layout_mode = 2
 
-[node name="Itch" type="RichTextLabel" parent="AboutBlock/MarginContainer/TabContainer/Distribution/VBoxContainer2"]
+[node name="Itch" parent="AboutBlock/MarginContainer/TabContainer/Distribution/VBoxContainer2" instance=ExtResource("6_7je0a")]
 layout_mode = 2
-focus_mode = 2
-theme_override_font_sizes/normal_font_size = 30
-bbcode_enabled = true
-text = "Itch.io: "
-fit_content = true
-selection_enabled = true
 
-[node name="Yandex" type="RichTextLabel" parent="AboutBlock/MarginContainer/TabContainer/Distribution/VBoxContainer2"]
+[node name="Yandex" parent="AboutBlock/MarginContainer/TabContainer/Distribution/VBoxContainer2" instance=ExtResource("6_7je0a")]
 layout_mode = 2
-focus_mode = 2
-theme_override_font_sizes/normal_font_size = 30
-bbcode_enabled = true
 text = "Yandex.games: "
-fit_content = true
-selection_enabled = true
 
-[node name="VK" type="RichTextLabel" parent="AboutBlock/MarginContainer/TabContainer/Distribution/VBoxContainer2"]
+[node name="VK" parent="AboutBlock/MarginContainer/TabContainer/Distribution/VBoxContainer2" instance=ExtResource("6_7je0a")]
 layout_mode = 2
-focus_mode = 2
-theme_override_font_sizes/normal_font_size = 30
-bbcode_enabled = true
 text = "VK: "
-fit_content = true
-selection_enabled = true
 
 [node name="Assets" type="MarginContainer" parent="AboutBlock/MarginContainer/TabContainer"]
 visible = false
@@ -137,6 +123,7 @@ bbcode_enabled = true
 text = "Prototype Textures: [url]https://www.kenney.nl/assets/prototype-textures"
 fit_content = true
 selection_enabled = true
+script = ExtResource("7_xnc3o")
 
 [node name="About" type="VBoxContainer" parent="."]
 anchors_preset = 3
