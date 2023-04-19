@@ -91,14 +91,30 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer2" type="VBoxContainer" parent="AboutBlock/MarginContainer/TabContainer/Distribution"]
 layout_mode = 2
 
-[node name="Src" type="RichTextLabel" parent="AboutBlock/MarginContainer/TabContainer/Distribution/VBoxContainer2"]
+[node name="Itch" type="RichTextLabel" parent="AboutBlock/MarginContainer/TabContainer/Distribution/VBoxContainer2"]
 layout_mode = 2
 focus_mode = 2
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "Itch.io: 
-Yandex.games: 
-VK.games:"
+text = "Itch.io: "
+fit_content = true
+selection_enabled = true
+
+[node name="Yandex" type="RichTextLabel" parent="AboutBlock/MarginContainer/TabContainer/Distribution/VBoxContainer2"]
+layout_mode = 2
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Yandex.games: "
+fit_content = true
+selection_enabled = true
+
+[node name="VK" type="RichTextLabel" parent="AboutBlock/MarginContainer/TabContainer/Distribution/VBoxContainer2"]
+layout_mode = 2
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "VK: "
 fit_content = true
 selection_enabled = true
 
