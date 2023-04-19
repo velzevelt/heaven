@@ -1,10 +1,17 @@
 keys,en,ru
 ,,
+Continue,Continue,Продолжить
 Play,Play,Играть
 Settings,Settings,Настройки
 Exit,Exit,Выход
 Back,Back,Назад
 ,,
+,,
+Next,Next,Дальше
+Replay,Replay,Заново
+View,View,Осмотр
+Level Completed,Level Completed,Уровень Пройден
+Goals,Goals,Цели
 ,,
 About,About,О нас
 Language,Language,Язык
@@ -34,3 +41,6 @@ Reload Scene,Reload Scene,Перезагрузка
 ,,
 Select Level,Select Level,Выбор Уровня
 Tutorial,Tutorial,Обучение
+Look,Look,Осмотр
+Walk,Walk,Передвижение
+Advanced Jumps,Advanced Jumps,Продвинутые Прыжки

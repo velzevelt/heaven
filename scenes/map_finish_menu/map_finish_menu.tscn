@@ -35,7 +35,7 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="HBoxContainer/MainPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
-text = "Level completed"
+text = "Level Completed"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="HBoxContainer/MainPanel/VBoxContainer"]
