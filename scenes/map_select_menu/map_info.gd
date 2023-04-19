@@ -43,6 +43,7 @@ func _create_labels(key, value):
 		label.add_theme_font_size_override('font_size', 45)
 		
 		key = key.capitalize()
+		key = tr(key)
 		label.text = "%s: %s" % [key, value]
 		call_deferred('add_child', label)
 

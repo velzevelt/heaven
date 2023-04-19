@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c2eu0acm0a2ru"]
+[gd_scene load_steps=16 format=3 uid="uid://c2eu0acm0a2ru"]
 
 [ext_resource type="PackedScene" uid="uid://c3j4bosemqpe" path="res://scenes/objects/map_template/map.tscn" id="1_4f2x8"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_6litu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/maps/heaven/chapter_2/level_2/finish.gd" id="5_2rfpa"]
 [ext_resource type="Script" path="res://scenes/components/prop.gd" id="5_vqysr"]
 [ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material_orange.tres" id="6_3a24n"]
+[ext_resource type="Script" path="res://scenes/components/label3d.gd" id="6_vredu"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/chapter_2/level_2/reset_on_killing_floor.gd" id="9_0nq1q"]
 [ext_resource type="Script" path="res://scenes/objects/player/override_player_crosshair.gd" id="9_clpxw"]
 [ext_resource type="Script" path="res://scenes/objects/player/crosshair_style.gd" id="10_fjapd"]
@@ -48,10 +49,10 @@ size = Vector3(0.939034, 1.26778, 0.0715593)
 
 [node name="Label3D" type="Label3D" parent="CSGBox3D7" index="0"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.0133776, 0.271622, -0.0381088)
-text = "Put your cube 
-here"
+text = "PUT_CUBE"
 autowrap_mode = 3
 width = 200.0
+script = ExtResource("6_vredu")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.02826, 62.5957)

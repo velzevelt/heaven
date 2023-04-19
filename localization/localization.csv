@@ -50,3 +50,15 @@ BHOP_TUTORIAL,1) Crouching while jumping allow you gain more speed \n 2) DO not 
 GOAL_COLLECT_COINS,Collect coins,Собрать монеты
 GOAL_COLLECT_COINS_DESCRIPTION,You need to collect all coins,Собрать все монеты
 Completed,Completed,Выполнено
+,,
+Engine Version:,Engine Version:,Версия движка:
+Game Version:,Game Version:,Версия игры:
+Platform:,Platform:,Платформа:
+,,
+Engine Version,Engine Version,Версия движка
+Map Version,Map Version,Версия карты
+Game Version,Game Version,Версия игры
+Platform,Platform,Платформа
+Author,Author,Автор
+,,
+PUT_CUBE,Put your cube here,Поставь свой кубик сюда
