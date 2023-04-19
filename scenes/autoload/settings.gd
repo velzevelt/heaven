@@ -7,8 +7,11 @@ var locale
 
 func _ready():
 	locale = OS.get_locale_language()
-	if locale in TranslationServer.get_loaded_locales():
-		TranslationServer.set_locale(locale)
+	for i in TranslationServer.get_loaded_locales():
+		Logger.debug_log(i)
+#	if locale in TranslationServer.get_loaded_locales():
+#		Logger.debug_log('1')
+#		TranslationServer.set_locale(locale)
 
 
 func toggle_cursor_visibility():

@@ -31,7 +31,6 @@ func _on_settings_button_pressed():
 @warning_ignore("unused_parameter")
 func create_settings_menu(bind_parent):
 	if settings_menu != null:
-		print(self)
 		if not is_instance_valid(_settings_menu_instance):
 			var settings_menu_instance = MenuComponent.create_menu(settings_menu)
 			return settings_menu_instance
