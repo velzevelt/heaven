@@ -21,7 +21,5 @@ var last_speed: float = 1.0:
 		return last_speed
 	set(value):
 		last_speed = value
-		if last_speed > max_speed:
-			last_speed = max_speed
 
 var last_velocity: Vector3 = Vector3()

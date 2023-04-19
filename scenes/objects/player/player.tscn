@@ -136,6 +136,22 @@ script = ExtResource("7_tu7pf")
 target_path = NodePath("../../FloorActivationComponent")
 desired_property = "current_floor"
 
+[node name="InfoLabel8" type="Label" parent="DebugPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "on_floor: "
+script = ExtResource("7_tu7pf")
+target_path = NodePath("../..")
+desired_property = "on_floor"
+
+[node name="InfoLabel9" type="Label" parent="DebugPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "on_wall: "
+script = ExtResource("7_tu7pf")
+target_path = NodePath("../..")
+desired_property = "on_wall"
+
 [node name="VelzTimerLabel" type="Label" parent="DebugPanel" node_paths=PackedStringArray("timer")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30

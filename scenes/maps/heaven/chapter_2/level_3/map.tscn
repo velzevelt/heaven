@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqrbdeh7pfrmv"]
+[gd_scene load_steps=6 format=3 uid="uid://cqrbdeh7pfrmv"]
 
 [ext_resource type="PackedScene" uid="uid://c3j4bosemqpe" path="res://scenes/objects/map_template/map.tscn" id="1_mw7mg"]
 [ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="2_tdvtn"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="3_451um"]
 [ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_2eqt4"]
+[ext_resource type="Material" uid="uid://bm6134mi4goc8" path="res://textures/prototype_material_green.tres" id="5_rlvda"]
 
 [node name="Map" instance=ExtResource("1_mw7mg")]
 
@@ -17,6 +18,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -76.2941, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.27082, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." index="5"]
-transform = Transform3D(0.830459, -0.55482, 0.0501132, 0.50766, 0.790761, 0.34202, -0.229387, -0.258593, 0.938355, -1.38374, -6.07815, -13.2186)
+transform = Transform3D(0.692993, -0.71915, 0.0508175, 0.664463, 0.664463, 0.34202, -0.27973, -0.203251, 0.938318, -0.810484, -8.45987, -12.3815)
+material_override = ExtResource("5_rlvda")
 use_collision = true
-size = Vector3(0.0928199, 2.42398, 24.0931)
+size = Vector3(0.288429, 10.3843, 24.0931)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." index="6"]
+transform = Transform3D(0.874006, 0.48325, 0.0508175, -0.469846, 0.813797, 0.34202, 0.123926, -0.322804, 0.938318, 10.8843, -20.6331, -32.3451)
+material_override = ExtResource("5_rlvda")
+use_collision = true
+size = Vector3(0.288429, 10.3843, 24.0931)

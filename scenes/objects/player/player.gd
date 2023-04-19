@@ -5,3 +5,6 @@ extends CharacterBody3D
 
 var on_floor: 
 	get: return is_on_floor()
+
+var on_wall:
+	get: return is_on_wall()

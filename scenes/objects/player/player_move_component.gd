@@ -18,7 +18,7 @@ extends Node3D # It inherits from Node3D only for easier debugging
 @export var can_move := true
 @export var can_jump := true
 @export var air_control := true
-@export var max_ramp_angle: float = 45 # Max angle that the player can go upwards at full speed
+#@export var wall_slide_angle: float = 46
 @export var auto_jump := false # Auto bunnyhopping
 
 @onready var max_falling_speed: float = velocity_component.gravity * -5 # When this is reached, we stop increasing falling speed
@@ -35,8 +35,8 @@ var jump_action := 'jump'
 var crouch_action := 'crouch'
 
 # The next two variables are used to display corresponding vectors in game world.
-var debug_horizontal_velocity: Vector3 = Vector3.ZERO
-var accelerate_return: Vector3 = Vector3.ZERO
+var debug_horizontal_velocity: Vector3
+var accelerate_return: Vector3
 
 enum States {
 	STANDING,
@@ -45,7 +45,6 @@ enum States {
 
 var current_state = States.STANDING
 
-
 func _ready():
 	# We tell our DebugLayer to draw those vectors in the game world.
 	if OS.is_debug_build():
@@ -53,6 +52,7 @@ func _ready():
 		DebugLayer.draw.add_vector(self, "accelerate_return", 1, 4, Color(0,0,1, 0.25)) # Blue, ACCEL
 		DebugLayer.draw.add_vector(self, "debug_horizontal_velocity", 2, 4, Color(1,0,0, 1)) # Red, VELOCITY
 	
+#	player_body.floor_block_on_wall = false # allow surfing on walls
 
 func _update_wish_dir():
 	if can_move and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -67,25 +67,34 @@ func _physics_process(delta):
 	queue_jump()
 	queue_crouch()
 	
-	if player_body.is_on_floor():
+	
+	
+	if player_body.is_on_floor(): 
 		if wish_jump: # If we're on the ground but wish_jump is still true, this means we've just landed
-			
 			vertical_velocity = velocity_component.jump_velocity # Jump
-			
-			move_air(wish_dir, player_body.velocity, delta) # Mimic Quake's way of treating first frame after landing as still in the air
+			player_body.velocity = move_air(wish_dir, player_body.velocity, delta) # Mimic Quake's way of treating first frame after landing as still in the air
 			wish_jump = false # We have jumped, the player needs to press jump key again
 			
 		else: # Player is on the ground. Move normally, apply friction
 			vertical_velocity = 0
-			move_ground(wish_dir, player_body.velocity, delta)
+			player_body.velocity = move_ground(wish_dir, player_body.velocity, delta)
 			
 	else: # We're in the air. Do not apply friction
 		vertical_velocity -= velocity_component.gravity * delta * velocity_component.mass if vertical_velocity >= max_falling_speed else 0 # Stop adding to vertical velocity once terminal velocity is reached
-		move_air(wish_dir, player_body.velocity, delta)
+		var vel = player_body.velocity
+		if player_body.is_on_wall():
+			vel = vel.snapped(player_body.get_wall_normal())
+			vel = vel.slide(player_body.get_wall_normal())
+			vel = accelerate(wish_dir, vel, velocity_component.move_accel, velocity_component.max_speed, delta)
+			vertical_velocity = vel.y
+		
+		
+		player_body.velocity = move_air(wish_dir, vel, delta)
 	
-	if player_body.is_on_ceiling(): #We've hit a ceiling, usually after a jump. Vertical velocity is reset to cancel any remaining jump momentum
+	if player_body.is_on_ceiling(): # We've hit a ceiling, usually after a jump. Vertical velocity is reset to cancel any remaining jump momentum
 		vertical_velocity = 0
 	
+	player_body.move_and_slide()
 	velocity_component.last_speed = player_body.velocity.length()
 	debug_horizontal_velocity = Vector3(player_body.velocity.x, 0, player_body.velocity.z) # Horizontal velocity to be displayed
 
@@ -159,7 +168,7 @@ func accelerate(wish_dir: Vector3, input_velocity: Vector3, accel: float, max_sp
 
 # Apply friction, then accelerate
 @warning_ignore("shadowed_variable")
-func move_ground(wish_dir: Vector3, input_velocity: Vector3, delta: float)-> void:
+func move_ground(wish_dir: Vector3, input_velocity: Vector3, delta: float) -> Vector3:
 	# We first work on only on the horizontal components of our current velocity
 	var next_velocity: Vector3 = Vector3.ZERO
 	next_velocity.x = input_velocity.x
@@ -169,18 +178,17 @@ func move_ground(wish_dir: Vector3, input_velocity: Vector3, delta: float)-> voi
 	
 	# Then get back our vertical component, and move the player
 	next_velocity.y = vertical_velocity
-	
 	player_body.velocity = next_velocity
 	player_body.up_direction = Vector3.UP
 	player_body.floor_stop_on_slope = true
-	player_body.floor_max_angle = deg_to_rad(max_ramp_angle)
 	
-	player_body.move_and_slide()
+	return next_velocity
+#	player_body.move_and_slide()
 
 
 # Accelerate without applying friction (with a lower allowed max_speed)
 @warning_ignore("shadowed_variable")
-func move_air(wish_dir: Vector3, input_velocity: Vector3, delta: float) -> void:
+func move_air(wish_dir: Vector3, input_velocity: Vector3, delta: float) -> Vector3:
 	# We first work on only on the horizontal components of our current velocity
 	var next_velocity: Vector3 = Vector3.ZERO
 	next_velocity.x = input_velocity.x
@@ -189,10 +197,10 @@ func move_air(wish_dir: Vector3, input_velocity: Vector3, delta: float) -> void:
 	
 	# Then get back our vertical component, and move the player
 	next_velocity.y = vertical_velocity
-	
-	
-	player_body.velocity = next_velocity
 	player_body.up_direction = Vector3.UP
 	player_body.floor_stop_on_slope = false
-	player_body.floor_max_angle = deg_to_rad(max_ramp_angle)
-	player_body.move_and_slide()
+	
+	return next_velocity
+#	player_body.velocity = next_velocity
+	
+#	player_body.move_and_slide()
