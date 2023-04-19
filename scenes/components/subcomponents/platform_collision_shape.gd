@@ -2,7 +2,7 @@
 extends CollisionShape3D
 
 @export var update_shape := false:
-	set(value):
+	set(_value):
 		var mesh_shape = $"../MeshInstance3D" as MeshInstance3D
 		shape.size = mesh_shape.mesh.size
 	get:
