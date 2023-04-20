@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://eaixfghokf0e"]
+[gd_scene load_steps=19 format=3 uid="uid://eaixfghokf0e"]
 
 [ext_resource type="Script" path="res://scenes/maps/main_menu/main_menu.gd" id="1_axffq"]
 [ext_resource type="PackedScene" uid="uid://dwwwcmbjvlht7" path="res://scenes/components/subcomponents/menu_buttons.tscn" id="2_5vetg"]
@@ -10,9 +10,59 @@
 [ext_resource type="PackedScene" uid="uid://bcfq7of066qa7" path="res://scenes/maps/main_menu/distribution_label.tscn" id="6_7je0a"]
 [ext_resource type="Script" path="res://scenes/maps/main_menu/url_label.gd" id="7_xnc3o"]
 [ext_resource type="Script" path="res://scenes/maps/main_menu/attention.gd" id="8_3kqsw"]
+[ext_resource type="PackedScene" uid="uid://cmai6yuuktlww" path="res://scenes/objects/map_template/world_environment.tscn" id="11_uue6q"]
+[ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="12_j7bxa"]
+[ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="12_jv04l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hkqfh"]
 bg_color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+
+[sub_resource type="Animation" id="Animation_5mtx7"]
+resource_name = "fade_in"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../KillingFloor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_j4qe4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../KillingFloor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nnsqg"]
+_data = {
+"RESET": SubResource("Animation_j4qe4"),
+"fade_in": SubResource("Animation_5mtx7")
+}
+
+[sub_resource type="GDScript" id="GDScript_22yli"]
+script/source = "extends AnimationPlayer
+
+
+func _ready():
+	play(\"fade_in\")
+
+"
 
 [node name="MainMenuLayer" type="CanvasLayer"]
 layer = 0
@@ -25,7 +75,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.388235, 0.388235, 0.388235, 1)
+color = Color(0.388235, 0.388235, 0.388235, 0.588235)
 metadata/_edit_lock_ = true
 
 [node name="Buttons" parent="." instance=ExtResource("2_5vetg")]
@@ -81,6 +131,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Platform:"
 script = ExtResource("5_1np2q")
+
+[node name="Contact" parent="AboutBlock/MarginContainer/TabContainer/About/VBoxContainer" instance=ExtResource("6_7je0a")]
+layout_mode = 2
+text = "Contact: [url]email@gmail.com[/url] "
 
 [node name="Distribution" type="MarginContainer" parent="AboutBlock/MarginContainer/TabContainer"]
 visible = false
@@ -146,7 +200,7 @@ script = ExtResource("3_sf2ev")
 [node name="GameVersionLabel" parent="About" instance=ExtResource("3_bbyou")]
 layout_mode = 2
 size_flags_vertical = 10
-text = "0.1.0-windows"
+text = "0.1.0-linux"
 horizontal_alignment = 1
 
 [node name="Attention" type="Panel" parent="."]
@@ -211,6 +265,21 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 40
 text = "OK"
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("11_uue6q")]
+
+[node name="DirectionalLight3D" parent="." instance=ExtResource("12_jv04l")]
+
+[node name="KillingFloor" parent="." instance=ExtResource("12_j7bxa")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.153584, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D"]
+libraries = {
+"": SubResource("AnimationLibrary_nnsqg")
+}
+script = SubResource("GDScript_22yli")
 
 [connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Buttons/SettingsButton" to="." method="_on_settings_button_pressed"]
