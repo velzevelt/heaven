@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyigcj7tm5psl"]
+
+[ext_resource type="PackedScene" uid="uid://c3j4bosemqpe" path="res://scenes/objects/map_template/map.tscn" id="1_tinwf"]
+[ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="2_2jbjt"]
+[ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="3_euct3"]
+[ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_6ln1y"]
+[ext_resource type="Material" uid="uid://ys587ewu4f0m" path="res://textures/prototype_material_purple.tres" id="5_8t6pm"]
+[ext_resource type="Script" path="res://scenes/components/subcomponents/platform_body.gd" id="6_t7ph8"]
+[ext_resource type="Script" path="res://scenes/components/rotate_platform_component.gd" id="7_50sqq"]
+
+[node name="Map" instance=ExtResource("1_tinwf")]
+
+[node name="Player" parent="." index="2" instance=ExtResource("2_2jbjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.270822, 0)
+
+[node name="KillingFloor" parent="." index="3" instance=ExtResource("3_euct3")]
+transform = Transform3D(4.36509, 0, 0, 0, 1, 0, 0, 0, 9.01214, 0, -286.181, 0)
+metadata/_edit_lock_ = true
+
+[node name="Platform" parent="." index="4" instance=ExtResource("4_6ln1y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.27082, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." index="5"]
+transform = Transform3D(0.692993, -0.71915, 0.0508175, 0.664463, 0.664463, 0.34202, -0.27973, -0.203251, 0.938318, -3.99922, -29.9212, -71.2598)
+material_override = ExtResource("5_8t6pm")
+use_collision = true
+size = Vector3(0.288429, 57.5283, 141.814)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." index="6"]
+transform = Transform3D(0.874006, 0.48325, 0.0508175, -0.469846, 0.813797, 0.34202, 0.123926, -0.322803, 0.938318, 23.6047, -72.6469, -199.625)
+material_override = ExtResource("5_8t6pm")
+use_collision = true
+size = Vector3(0.288429, 57.5283, 141.814)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." index="7"]
+transform = Transform3D(0.999997, 0, 0, 0, -4.37108e-08, -0.999984, 0, 0.999987, -4.37107e-08, 0, -97.0562, -405.322)
+material_override = ExtResource("5_8t6pm")
+use_collision = true
+radius = 49.9524
+height = 181.1
+sides = 16
+script = ExtResource("6_t7ph8")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCylinder3D" index="0"]
+operation = 2
+radius = 44.7368
+height = 190.439
+sides = 16
+
+[node name="RotatePlatformComponent" type="Node" parent="CSGCylinder3D" index="1" node_paths=PackedStringArray("platform_body")]
+script = ExtResource("7_50sqq")
+init_rotation = Vector3(90, 0, 0)
+rotate_direction = Vector3(0, 1, 0)
+platform_body = NodePath("..")

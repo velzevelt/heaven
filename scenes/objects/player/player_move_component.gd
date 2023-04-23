@@ -51,7 +51,7 @@ func _ready():
 		DebugLayer.draw.add_vector(self, "accelerate_return", 1, 4, Color(0,0,1, 0.25)) # Blue, ACCEL
 		DebugLayer.draw.add_vector(self, "debug_horizontal_velocity", 2, 4, Color(1,0,0, 1)) # Red, VELOCITY
 	
-	player_body.floor_block_on_wall = false # allow surfing on walls
+#	player_body.floor_block_on_wall = false # allow surfing on walls
 
 
 func _update_wish_dir():
@@ -88,11 +88,11 @@ func _physics_process(delta):
 			var wall_angle = wall_normal.angle_to(player_body.up_direction)
 			var is_sliding = wall_angle <= velocity_component.wall_max_slide_angle and wall_angle >= player_body.wall_min_slide_angle
 			if is_sliding:
+				print('sliding')
 				vel = vel.slide(wall_normal)
 				vel = vel.snapped(wall_normal)
 				vel = accelerate(wish_dir, vel, velocity_component.move_accel, velocity_component.max_speed, delta)
-				#vertical_velocity = vel.y
-#				vertical_velocity = 0
+				vertical_velocity = vel.y
 		
 		
 		player_body.velocity = move_air(wish_dir, vel, delta)

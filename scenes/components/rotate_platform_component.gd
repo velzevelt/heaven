@@ -2,6 +2,7 @@
 class_name RotatePlatformComponent
 extends PlatformComponent
 
+
 @export var rotate_direction: Vector3 = Vector3():
 	set(value):
 		rotate_direction = value
