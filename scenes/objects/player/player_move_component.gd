@@ -18,7 +18,6 @@ extends Node3D # It inherits from Node3D only for easier debugging
 @export var can_move := true
 @export var can_jump := true
 @export var air_control := true
-#@export var wall_slide_angle: float = 46
 @export var auto_jump := false # Auto bunnyhopping
 
 @onready var max_falling_speed: float = velocity_component.gravity * -5 # When this is reached, we stop increasing falling speed
@@ -52,7 +51,8 @@ func _ready():
 		DebugLayer.draw.add_vector(self, "accelerate_return", 1, 4, Color(0,0,1, 0.25)) # Blue, ACCEL
 		DebugLayer.draw.add_vector(self, "debug_horizontal_velocity", 2, 4, Color(1,0,0, 1)) # Red, VELOCITY
 	
-#	player_body.floor_block_on_wall = false # allow surfing on walls
+	player_body.floor_block_on_wall = false # allow surfing on walls
+
 
 func _update_wish_dir():
 	if can_move and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -61,6 +61,7 @@ func _update_wish_dir():
 		wish_dir = Vector3(strafe_input, 0, forward_input).rotated(Vector3.UP, player_body.global_transform.basis.get_euler().y).normalized()
 	else:
 		wish_dir = Vector3.ZERO
+
 
 func _physics_process(delta):
 	_update_wish_dir()
@@ -83,10 +84,15 @@ func _physics_process(delta):
 		vertical_velocity -= velocity_component.gravity * delta * velocity_component.mass if vertical_velocity >= max_falling_speed else 0 # Stop adding to vertical velocity once terminal velocity is reached
 		var vel = player_body.velocity
 		if player_body.is_on_wall():
-#			vel = vel.snapped(player_body.get_wall_normal())
-			vel = vel.slide(player_body.get_wall_normal())
-			vel = accelerate(wish_dir, vel, velocity_component.move_accel, velocity_component.max_speed, delta)
-			vertical_velocity = vel.y
+			var wall_normal = player_body.get_wall_normal()
+			var wall_angle = wall_normal.angle_to(player_body.up_direction)
+			var is_sliding = wall_angle <= velocity_component.wall_max_slide_angle and wall_angle >= player_body.wall_min_slide_angle
+			if is_sliding:
+				vel = vel.slide(wall_normal)
+				vel = vel.snapped(wall_normal)
+				vel = accelerate(wish_dir, vel, velocity_component.move_accel, velocity_component.max_speed, delta)
+				#vertical_velocity = vel.y
+#				vertical_velocity = 0
 		
 		
 		player_body.velocity = move_air(wish_dir, vel, delta)
@@ -183,7 +189,6 @@ func move_ground(wish_dir: Vector3, input_velocity: Vector3, delta: float) -> Ve
 	player_body.floor_stop_on_slope = true
 	
 	return next_velocity
-#	player_body.move_and_slide()
 
 
 # Accelerate without applying friction (with a lower allowed max_speed)
@@ -204,3 +209,5 @@ func move_air(wish_dir: Vector3, input_velocity: Vector3, delta: float) -> Vecto
 #	player_body.velocity = next_velocity
 	
 #	player_body.move_and_slide()
+
+

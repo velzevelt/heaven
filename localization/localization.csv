@@ -53,11 +53,13 @@ GOAL_COLLECT_COINS,Collect coins,Собрать монеты
 GOAL_COLLECT_COINS_DESCRIPTION,You need to collect all coins,Собрать все монеты
 Completed,Completed,Выполнено
 ,,
+Godot Version:,Godot Version:,Версия Годо:
 Engine Version:,Engine Version:,Версия движка:
 Game Version:,Game Version:,Версия игры:
 Platform:,Platform:,Платформа:
 ,,
 Engine Version,Engine Version,Версия движка
+Godot Version,Godot Version,Версия Годо
 Map Version,Map Version,Версия карты
 Game Version,Game Version,Версия игры
 Platform,Platform,Платформа
