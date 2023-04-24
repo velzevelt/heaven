@@ -94,9 +94,9 @@ func _physics_process(delta):
 		var vel = player_body.velocity
 		if player_body.is_on_wall():
 			var wall_normal = player_body.get_wall_normal()
-			var wall_angle = wall_normal.angle_to(player_body.transform.basis.y) # local up_direction
-			print(rad_to_deg(wall_angle))
+			var wall_angle = wall_normal.angle_to(player_body.global_transform.basis.y) # local up_direction
 #			var wall_angle = wall_normal.angle_to(player_body.up_direction) # global up_direction
+#			print(rad_to_deg(wall_angle))
 			is_sliding = wall_angle <= velocity_component.wall_max_slide_angle and wall_angle >= player_body.wall_min_slide_angle
 			
 			if is_sliding:
