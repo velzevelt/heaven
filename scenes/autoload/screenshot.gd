@@ -3,11 +3,19 @@ extends Node
 const DIR_PATH = 'user://screenshots/'
 
 
-func clear_screenshot_dir() -> void:
-	if DirAccess.remove_absolute(DIR_PATH) == OK:
-		Logger.debug_log('Screenshot directory was successfully deleted')
-	else:
-		Logger.debug_log('Cannot delete screenshot directory!', MESSAGE_TYPE.ERROR)
+func delete_screenshots() -> void:
+	var dir = DirAccess.open(DIR_PATH)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while not file_name.is_empty():
+			var file_path = DIR_PATH + "/" + file_name
+			if dir.current_is_dir():
+				continue
+			else:
+				dir.remove(file_name)
+			
+			file_name = dir.get_next()
 	
 
 
@@ -30,3 +38,6 @@ func take_screenshot() -> void:
 func _input(event):
 	if Input.is_action_just_pressed('take_screenshot'):
 		take_screenshot()
+	
+	if Input.is_action_just_pressed('delete_screenshots'):
+		delete_screenshots()
