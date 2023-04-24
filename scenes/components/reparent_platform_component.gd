@@ -3,6 +3,8 @@ extends PlatformComponent
 
 @export var target_groups: PackedStringArray = ['player']
 @export var new_parent: Node3D
+@export var enabled := true
+#@export var override_motion_mode := true
 
 var _player
 var _prev_parent
@@ -12,6 +14,9 @@ func _ready():
 	platform_body.object_entered_strict.connect(_on_object_entered_strict)
 
 func _on_object_entered_strict(obj):
+	if not enabled:
+		return
+	
 	if obj.get_groups().any(func(group): return group in target_groups) :
 		_player = obj
 		_prev_parent = _player.get_parent()
@@ -24,6 +29,9 @@ func _on_object_entered_strict(obj):
 
 
 func _on_object_exited(obj):
+	if not enabled:
+		return
+	
 	if obj == _player and is_instance_valid(_prev_parent):
 		_player.reparent(_prev_parent)
 		var tween_rotation = create_tween()

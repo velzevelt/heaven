@@ -19,6 +19,7 @@ extends Node3D # It inherits from Node3D only for easier debugging
 @export var can_jump := true
 @export var air_control := true
 @export var auto_jump := false # Auto bunnyhopping
+@export var stick_to_surface := true
 
 @onready var max_falling_speed: float = velocity_component.gravity * -5 # When this is reached, we stop increasing falling speed
 
@@ -43,6 +44,7 @@ enum States {
 }
 
 var current_state = States.STANDING
+var is_sliding := false
 
 func _ready():
 	# We tell our DebugLayer to draw those vectors in the game world.
@@ -81,18 +83,32 @@ func _physics_process(delta):
 			player_body.velocity = move_ground(wish_dir, player_body.velocity, delta)
 			
 	else: # We're in the air. Do not apply friction
-		vertical_velocity -= velocity_component.gravity * delta * velocity_component.mass if vertical_velocity >= max_falling_speed else 0 # Stop adding to vertical velocity once terminal velocity is reached
+#		var gravity_direction = clamp(, -1, 1)
+		vertical_velocity -= velocity_component.gravity * delta * velocity_component.mass 
+		
+		# Stop adding to vertical velocity once terminal velocity is reached
+		if vertical_velocity <= max_falling_speed:
+			vertical_velocity = max_falling_speed
+		
+		
 		var vel = player_body.velocity
 		if player_body.is_on_wall():
 			var wall_normal = player_body.get_wall_normal()
-			var wall_angle = wall_normal.angle_to(player_body.up_direction)
-			var is_sliding = wall_angle <= velocity_component.wall_max_slide_angle and wall_angle >= player_body.wall_min_slide_angle
+			var wall_angle = wall_normal.angle_to(player_body.transform.basis.y) # local up_direction
+			print(rad_to_deg(wall_angle))
+#			var wall_angle = wall_normal.angle_to(player_body.up_direction) # global up_direction
+			is_sliding = wall_angle <= velocity_component.wall_max_slide_angle and wall_angle >= player_body.wall_min_slide_angle
+			
 			if is_sliding:
-				print('sliding')
 				vel = vel.slide(wall_normal)
-				vel = vel.snapped(wall_normal)
+#				vel = vel.snapped(wall_normal)
 				vel = accelerate(wish_dir, vel, velocity_component.move_accel, velocity_component.max_speed, delta)
 				vertical_velocity = vel.y
+				
+#				if stick_to_surface:
+#					var dot = 
+		else:
+			is_sliding = false
 		
 		
 		player_body.velocity = move_air(wish_dir, vel, delta)

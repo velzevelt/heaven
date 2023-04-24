@@ -152,6 +152,14 @@ script = ExtResource("7_tu7pf")
 target_path = NodePath("../..")
 desired_property = "on_wall"
 
+[node name="InfoLabel10" type="Label" parent="DebugPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "is_sliding: "
+script = ExtResource("7_tu7pf")
+target_path = NodePath("../../PlayerMoveComponent")
+desired_property = "is_sliding"
+
 [node name="VelzTimerLabel" type="Label" parent="DebugPanel" node_paths=PackedStringArray("timer")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30

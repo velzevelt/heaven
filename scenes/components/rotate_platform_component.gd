@@ -20,6 +20,7 @@ extends PlatformComponent
 		if is_instance_valid(platform_body):
 			platform_body.rotation = Vector3()
 
+@export var enabled := true
 
 func _get_configuration_warnings():
 	if self.rotate_direction == Vector3.ZERO:
@@ -27,12 +28,18 @@ func _get_configuration_warnings():
 
 
 func _ready():
+	if not enabled:
+		return
+	
 	if not Engine.is_editor_hint() and is_instance_valid(platform_body):
 		platform_body.rotation = Vector3()
 		preview_rotation = true
 
 
 func _physics_process(_delta):
+	if not enabled:
+		return
+	
 	if is_instance_valid(platform_body) and rotate_direction != Vector3.ZERO and preview_rotation:
 		platform_body.rotate(rotate_direction.normalized(), angle)
 	elif Engine.is_editor_hint(): # Set platform body to export meta value
