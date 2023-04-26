@@ -9,13 +9,18 @@ func delete_screenshots() -> void:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while not file_name.is_empty():
-			var file_path = DIR_PATH + "/" + file_name
 			if dir.current_is_dir():
 				continue
 			else:
-				dir.remove(file_name)
+				if dir.remove(file_name) == OK:
+					Logger.debug_log(file_name + " screenshot deleted")
+				else:
+					Logger.debug_log("Delete operation failed", MESSAGE_TYPE.ERROR)
+				
 			
 			file_name = dir.get_next()
+	else:
+		Logger.debug_log('Screenshot delete skipped')
 	
 
 
