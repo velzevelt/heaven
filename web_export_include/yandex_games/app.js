@@ -6,5 +6,6 @@ YaGames
     });
 
 function showFullScreenAdv() {
-    YaGames.init().then(ysdk => ysdk.adv.showFullscreenAdv());
+    console.log('Ad shoud be showen')
+    YaGames.init().then(ysdk => ysdk.adv.showFullscreenAdv())
 }
