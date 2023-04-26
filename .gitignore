@@ -14,7 +14,10 @@ export_presets.cfg
 data_*/
 mono_crash.*.json
 
-# Project specific ignores
+# Project-specific ignores
 etc/private
+*.csv#
 
 build/debug
+
+
