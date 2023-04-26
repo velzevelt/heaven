@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c42f6k8vrjsgb"]
+[gd_scene load_steps=13 format=3 uid="uid://c42f6k8vrjsgb"]
 
 [ext_resource type="Script" path="res://scenes/settings_menu/settings_menu.gd" id="1_2ui33"]
 [ext_resource type="Script" path="res://scenes/settings_menu/vsync.gd" id="2_c6fup"]
@@ -10,6 +10,7 @@
 [ext_resource type="StyleBox" uid="uid://dndgf62qgjuce" path="res://scenes/settings_menu/separator_style.tres" id="6_sgrq4"]
 [ext_resource type="Script" path="res://scenes/settings_menu/slider_label.gd" id="8_ekyah"]
 [ext_resource type="Script" path="res://scenes/settings_menu/mouse_sensitivity_slider.gd" id="9_ol1l6"]
+[ext_resource type="PackedScene" uid="uid://boij7vlm115ha" path="res://scenes/settings_menu/action_button.tscn" id="11_yr7t5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ho2b4"]
 bg_color = Color(0.054902, 0.054902, 0.054902, 1)
@@ -268,12 +269,9 @@ theme_override_font_sizes/font_size = 25
 text = "Forward"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer"]
+[node name="Button" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer" instance=ExtResource("11_yr7t5")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 25
-text = "W"
-horizontal_alignment = 1
+linked_action = "forward"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
 layout_mode = 2
@@ -285,12 +283,9 @@ theme_override_font_sizes/font_size = 25
 text = "Backward"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer2"]
+[node name="Button" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer2" instance=ExtResource("11_yr7t5")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 25
-text = "S"
-horizontal_alignment = 1
+linked_action = "backward"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
 layout_mode = 2
@@ -302,12 +297,9 @@ theme_override_font_sizes/font_size = 25
 text = "Right"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer3"]
+[node name="Button2" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer3" instance=ExtResource("11_yr7t5")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 25
-text = "D"
-horizontal_alignment = 1
+linked_action = "right"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
 layout_mode = 2
@@ -319,12 +311,9 @@ theme_override_font_sizes/font_size = 25
 text = "Left"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer4"]
+[node name="Button3" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer4" instance=ExtResource("11_yr7t5")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 25
-text = "A"
-horizontal_alignment = 1
+linked_action = "left"
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
 layout_mode = 2
@@ -336,12 +325,9 @@ theme_override_font_sizes/font_size = 25
 text = "Jump"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer5"]
+[node name="Button3" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer5" instance=ExtResource("11_yr7t5")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 25
-text = "Space"
-horizontal_alignment = 1
+linked_action = "jump"
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
 layout_mode = 2
@@ -353,12 +339,9 @@ theme_override_font_sizes/font_size = 25
 text = "Crouch"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer6"]
+[node name="Button4" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer6" instance=ExtResource("11_yr7t5")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 25
-text = "Caps Lock, Ctrl, C"
-horizontal_alignment = 1
+linked_action = "crouch"
 
 [node name="HBoxContainer7" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
 layout_mode = 2
@@ -370,12 +353,9 @@ theme_override_font_sizes/font_size = 25
 text = "Interact"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer7"]
+[node name="Button5" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer7" instance=ExtResource("11_yr7t5")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 25
-text = "Left Mouse Button"
-horizontal_alignment = 1
+linked_action = "interact"
 
 [node name="HBoxContainer8" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
 layout_mode = 2
@@ -387,12 +367,8 @@ theme_override_font_sizes/font_size = 25
 text = "Side Interact"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer8"]
+[node name="Button6" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer8" instance=ExtResource("11_yr7t5")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 25
-text = "Right Mouse Button"
-horizontal_alignment = 1
 
 [node name="HBoxContainer9" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
 layout_mode = 2
@@ -404,12 +380,16 @@ theme_override_font_sizes/font_size = 25
 text = "Reload Scene"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer9"]
+[node name="Button7" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer9" instance=ExtResource("11_yr7t5")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 25
-text = "R"
-horizontal_alignment = 1
+linked_action = "reload_scene"
+
+[node name="RemapMenu" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="pressed" from="Background/ExitButton" to="." method="_on_back_button_pressed"]
 [connection signal="value_changed" from="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer10/HSlider" to="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer10/Label2" method="_on_h_slider_value_changed"]
