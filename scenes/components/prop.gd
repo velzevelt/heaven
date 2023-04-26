@@ -29,7 +29,7 @@ func _on_object_exited(object):
 
 func _physics_process(_delta):
 	if is_dragging and can_drag:
-		if Input.is_action_just_pressed('right_click'):
+		if Input.is_action_just_pressed('side_interact'):
 			apply_impulse(-raycast_data.prop_marker.global_transform.basis.z * push_force)
 			is_dragging = false
 			return

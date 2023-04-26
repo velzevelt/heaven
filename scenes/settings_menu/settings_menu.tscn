@@ -369,6 +369,7 @@ horizontal_alignment = 1
 
 [node name="Button6" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls/HBoxContainer8" instance=ExtResource("11_yr7t5")]
 layout_mode = 2
+linked_action = "side_interact"
 
 [node name="HBoxContainer9" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/Controls"]
 layout_mode = 2
