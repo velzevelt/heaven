@@ -77,3 +77,5 @@ Attention,Attention,Внимание
 WEB_WARNING,"The web version may be unstable, we recommend using the desktop version","Веб версия может быть нестабильна, рекомендуем использовать настольную версию"
 ,,
 Difficulty,Difficulty,Сложность
+,,
+WAITING_FOR_INPUT,Waiting for input…,Ожидание ввода…

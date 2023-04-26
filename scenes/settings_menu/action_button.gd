@@ -3,9 +3,9 @@ extends Button
 @export var linked_action := ''
 @onready var remap_menu: Control = $%RemapMenu
 
+var waiting_message = "WAITING_FOR_INPUT"
 var listen_event := false
 var new_event
-
 
 func _ready():
 	if InputMap.has_action(linked_action):
@@ -44,6 +44,7 @@ func _gui_input(event):
 	
 	if event is InputEventMouseButton:
 		if event.double_click:
+			text = tr(waiting_message)
 			await get_tree().create_timer(0.1).timeout
 			listen_event = true
 
