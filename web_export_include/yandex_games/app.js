@@ -6,5 +6,5 @@ YaGames
     });
 
 function showFullScreenAdv() {
-    ysdk.adv.showFullscreenAdv()
+    YaGames.init().then(ysdk => ysdk.adv.showFullscreenAdv());
 }
