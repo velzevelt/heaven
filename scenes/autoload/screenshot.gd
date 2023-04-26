@@ -15,7 +15,7 @@ func delete_screenshots() -> void:
 				if dir.remove(file_name) == OK:
 					Logger.debug_log(file_name + " screenshot deleted")
 				else:
-					Logger.debug_log("Delete operation failed", MESSAGE_TYPE.ERROR)
+					Logger.debug_log(file_name + " delete operation failed", MESSAGE_TYPE.ERROR)
 				
 			
 			file_name = dir.get_next()
@@ -36,7 +36,10 @@ func take_screenshot() -> void:
 	
 	var screenshot = get_tree().root.get_texture()
 	var screenshot_path = DIR_PATH + postfix
-	screenshot.get_image().save_png(screenshot_path)
+	if screenshot.get_image().save_png(screenshot_path) != OK:
+		if screenshot.get_image().save_png(screenshot_path + randi()) != OK:
+			Logger.debug_log('Cannot save image', MESSAGE_TYPE.ERROR)
+	
 	Logger.debug_log('Screenshot saved %s' % ProjectSettings.globalize_path(screenshot_path))
 
 
