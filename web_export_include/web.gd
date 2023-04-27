@@ -1,10 +1,11 @@
 extends Node
 
 enum SupportedSdk {
+	NoSdk,
 	Yandex
 }
 
-var sdk = SupportedSdk.Yandex
+var sdk = SupportedSdk.NoSdk
 
 
 func _ready():
@@ -14,5 +15,6 @@ func _ready():
 	match sdk:
 		SupportedSdk.Yandex:
 			sdk = YandexSdk.new()
-			sdk.show_fullscreen_adv()
+			# test ads
+			#sdk.show_fullscreen_adv()
 	

@@ -65,3 +65,6 @@ func _on_player_finished():
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed('ui_cancel') and not is_instance_valid(_map_escape_menu_instance):
 		_map_escape_menu_instance = MenuComponent.open_menu(map_escape_menu, self)
+	
+	if Input.is_action_just_released('reload_scene'):
+		SceneLoader.reload_scene()
