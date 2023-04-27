@@ -23,8 +23,8 @@ General,General,Общее
 Viewport Scaling,Viewport Scaling,Масштабирование
 Fullscreen,Fullscreen,Полный экран
 Mouse Sensitivity,Mouse Sensitivity,Чувствительность Мыши
-Performance,Performance,Производительность
-High Quality,High Quality,Качество
+SCALE_PERFORMANCE,Performance,Скорость
+SCALE_QUALITY,Quality,Качество
 On,On,Включено
 Off,Off,Выключено
 Adaptive,Adaptive,Адаптивно
@@ -79,3 +79,6 @@ WEB_WARNING,"The web version may be unstable, we recommend using the desktop ver
 Difficulty,Difficulty,Сложность
 ,,
 WAITING_FOR_INPUT,Waiting for input…,Ожидание ввода…
+,,
+,,
+DO_NOT_SHOW_AGAIN,Do not show again,Не показывать снова

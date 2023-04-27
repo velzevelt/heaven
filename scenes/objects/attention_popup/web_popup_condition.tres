@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PopUpCondition" load_steps=2 format=3 uid="uid://5ase17afcmh3"]
+
+[ext_resource type="Script" path="res://scenes/objects/attention_popup/popup_condition.gd" id="1_5bkqu"]
+
+[resource]
+script = ExtResource("1_5bkqu")
+enabled = true

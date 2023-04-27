@@ -21,10 +21,10 @@ func get_action_key() -> String:
 	
 	if actions.size() > 1:
 		for action in actions:
-			out += action.as_text() + ", "
+			out += action.as_text().replace('(Physical)', '') + ", "
 		out = out.rstrip(", ")
 	elif actions.size() == 1:
-		out = actions[0].as_text()
+		out = actions[0].as_text().replace('(Physical)', '')
 	
 	return out
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://eaixfghokf0e"]
+[gd_scene load_steps=18 format=3 uid="uid://eaixfghokf0e"]
 
 [ext_resource type="Script" path="res://scenes/maps/main_menu/main_menu.gd" id="1_axffq"]
 [ext_resource type="PackedScene" uid="uid://dwwwcmbjvlht7" path="res://scenes/components/subcomponents/menu_buttons.tscn" id="2_5vetg"]
@@ -9,13 +9,10 @@
 [ext_resource type="Script" path="res://scenes/maps/main_menu/platform.gd" id="5_1np2q"]
 [ext_resource type="PackedScene" uid="uid://bcfq7of066qa7" path="res://scenes/maps/main_menu/distribution_label.tscn" id="6_7je0a"]
 [ext_resource type="Script" path="res://scenes/maps/main_menu/url_label.gd" id="7_xnc3o"]
-[ext_resource type="Script" path="res://scenes/maps/main_menu/attention.gd" id="8_3kqsw"]
+[ext_resource type="PackedScene" uid="uid://dbah8v5vpr8st" path="res://scenes/objects/attention_popup/attention_popup.tscn" id="10_7gkkc"]
 [ext_resource type="PackedScene" uid="uid://cmai6yuuktlww" path="res://scenes/objects/map_template/world_environment.tscn" id="11_uue6q"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="12_j7bxa"]
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="12_jv04l"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hkqfh"]
-bg_color = Color(0.0509804, 0.0509804, 0.0509804, 1)
 
 [sub_resource type="Animation" id="Animation_j4qe4"]
 length = 0.001
@@ -203,68 +200,7 @@ size_flags_vertical = 10
 text = "0.1.0-linux"
 horizontal_alignment = 1
 
-[node name="Attention" type="Panel" parent="."]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -433.0
-offset_top = -183.0
-offset_right = 434.0
-offset_bottom = 211.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_hkqfh")
-script = ExtResource("8_3kqsw")
-
-[node name="Label" type="Label" parent="Attention"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 50
-text = "Attention"
-
-[node name="MarginContainer" type="MarginContainer" parent="Attention"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 72.0
-offset_bottom = -90.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 40
-
-[node name="Label" type="Label" parent="Attention/MarginContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "WEB_WARNING"
-autowrap_mode = 3
-
-[node name="Button" type="Button" parent="Attention"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -63.0
-offset_top = -83.0
-offset_right = 63.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 40
-text = "OK"
+[node name="Attention" parent="." instance=ExtResource("10_7gkkc")]
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("11_uue6q")]
 
@@ -284,7 +220,5 @@ script = SubResource("GDScript_22yli")
 [connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Buttons/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Buttons/ExitButton" to="." method="_on_back_button_pressed"]
-[connection signal="focus_entered" from="Attention" to="Attention" method="_on_focus_entered"]
-[connection signal="pressed" from="Attention/Button" to="Attention" method="_on_ok_button_pressed"]
 
 [editable path="Buttons"]

@@ -156,9 +156,9 @@ expand_icon = true
 item_count = 2
 selected = 0
 fit_to_longest_item = false
-popup/item_0/text = "Performance"
+popup/item_0/text = "SCALE_PERFORMANCE"
 popup/item_0/id = 0
-popup/item_1/text = "High Quality"
+popup/item_1/text = "SCALE_QUALITY"
 popup/item_1/id = 1
 script = ExtResource("4_l48jb")
 
