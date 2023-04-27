@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scenes/maps/main_menu/platform.gd" id="5_1np2q"]
 [ext_resource type="PackedScene" uid="uid://bcfq7of066qa7" path="res://scenes/maps/main_menu/distribution_label.tscn" id="6_7je0a"]
 [ext_resource type="Script" path="res://scenes/maps/main_menu/url_label.gd" id="7_xnc3o"]
-[ext_resource type="PackedScene" uid="uid://dbah8v5vpr8st" path="res://scenes/objects/attention_popup/attention_popup.tscn" id="10_7gkkc"]
+[ext_resource type="PackedScene" uid="uid://ck2tji3goteqx" path="res://scenes/objects/attention_popup/attention_popup.tscn" id="10_7gkkc"]
 [ext_resource type="PackedScene" uid="uid://cmai6yuuktlww" path="res://scenes/objects/map_template/world_environment.tscn" id="11_uue6q"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="12_j7bxa"]
 [ext_resource type="PackedScene" uid="uid://c1ra1j7wfgijj" path="res://scenes/components/subcomponents/directional_light_3d.tscn" id="12_jv04l"]

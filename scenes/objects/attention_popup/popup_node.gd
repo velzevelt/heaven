@@ -1,11 +1,10 @@
 extends Node
 
 @export var target_window: Control
-@export var condition: PopUpCondition
+@export var condition: Resource
 
 func _ready():
-	if not condition.enabled:
-		target_window.visible = false
+	target_window.visible = condition.enabled and condition.condition()
 
 
 func _on_do_not_show_button_toggled(button_pressed):

@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbah8v5vpr8st"]
+[gd_scene load_steps=5 format=3 uid="uid://ck2tji3goteqx"]
 
 [ext_resource type="Script" path="res://scenes/objects/attention_popup/ok_button.gd" id="2_nq2g6"]
+[ext_resource type="Resource" path="res://scenes/objects/attention_popup/conditions/web_popup_condition/web_popup_condition.tres" id="3_lbutx"]
 [ext_resource type="Script" path="res://scenes/objects/attention_popup/popup_node.gd" id="3_t4t4c"]
-[ext_resource type="Resource" uid="uid://5ase17afcmh3" path="res://scenes/objects/attention_popup/web_popup_condition.tres" id="3_x68j0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hkqfh"]
 bg_color = Color(0.0509804, 0.0509804, 0.0509804, 1)
@@ -69,7 +69,7 @@ grow_vertical = 0
 size_flags_horizontal = 2
 theme_override_font_sizes/font_size = 25
 toggle_mode = true
-text = "Do not show again"
+text = "DO_NOT_SHOW_AGAIN"
 
 [node name="OKButton" type="Button" parent="." node_paths=PackedStringArray("target_window")]
 custom_minimum_size = Vector2(150, 0)
@@ -93,7 +93,7 @@ target_window = NodePath("..")
 [node name="PopUpNode" type="Node" parent="." node_paths=PackedStringArray("target_window")]
 script = ExtResource("3_t4t4c")
 target_window = NodePath("..")
-condition = ExtResource("3_x68j0")
+condition = ExtResource("3_lbutx")
 
 [connection signal="toggled" from="DoNotShowButton" to="PopUpNode" method="_on_do_not_show_button_toggled"]
 [connection signal="pressed" from="OKButton" to="OKButton" method="_on_pressed"]
