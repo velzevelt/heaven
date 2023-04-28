@@ -28,7 +28,7 @@ SceneLoader="*res://scenes/autoload/scene_loader.gd"
 DebugLayer="*res://addons/debug_tools/debug_layer.tscn"
 FPSCounterLayer="*res://addons/debug_tools/fps_counter/FPSCounterLayer.tscn"
 Screenshot="*res://scenes/autoload/screenshot.gd"
-Web="*res://web_export_include/web.gd"
+YandexSdk="*res://web_export_include/yandex_games/yandex_sdk.gd"
 
 [display]
 
