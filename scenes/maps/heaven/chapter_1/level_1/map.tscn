@@ -1,6 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://d14ksx7g0fgg"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_vigc5"]
+[ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="2_kouom"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="3_vd4a2"]
 [ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_svphb"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/chapter_1/enable_on_enter.gd" id="5_ddb06"]
@@ -15,7 +16,6 @@
 [ext_resource type="Script" path="res://scenes/objects/map_goal/objective/pass_in_time.gd" id="16_o0m7a"]
 [ext_resource type="Resource" uid="uid://cmmj8p66ec3e0" path="res://scenes/objects/map_goal/pass_in_time.tres" id="17_mkm8t"]
 [ext_resource type="Script" path="res://addons/debug_tools/timer/velz_time.gd" id="18_5iyv8"]
-[ext_resource type="Script" path="res://addons/free_look_camera.gd" id="19_5lmau"]
 [ext_resource type="Script" path="res://addons/debug_tools/timer/velz_timer.gd" id="19_c1wk0"]
 [ext_resource type="PackedScene" uid="uid://cmai6yuuktlww" path="res://scenes/objects/map_template/world_environment.tscn" id="19_cn806"]
 
@@ -29,7 +29,7 @@ minutes = 0
 script = ExtResource("1_vigc5")
 goal_storage = NodePath("MapGoalStorage")
 
-[node name="Player" parent="." instance_placeholder="res://scenes/objects/player/player.tscn"]
+[node name="Player" parent="." instance=ExtResource("2_kouom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="KillingFloor" parent="." instance=ExtResource("3_vd4a2")]
@@ -91,11 +91,6 @@ required_time = SubResource("Resource_vuk4f")
 script = ExtResource("19_c1wk0")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("19_cn806")]
-
-[node name="ScreenshotCam" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2811, 3.74182, -4.1852)
-current = true
-script = ExtResource("19_5lmau")
 
 [editable path="Platform2"]
 [editable path="Platform6"]

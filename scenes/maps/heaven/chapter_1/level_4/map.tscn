@@ -55,6 +55,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.2263
 [node name="PhysicsDoor" parent="Door" index="0"]
 closed = true
 
+[node name="Area3D" parent="Door/PhysicsDoor" index="2"]
+priority = 2
+
 [node name="HingeJoint" parent="Door" index="2"]
 angular_limit/upper = 0.0
 
