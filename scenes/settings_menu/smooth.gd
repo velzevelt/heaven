@@ -23,13 +23,13 @@ func _on_item_selected(index):
 			Logger.debug_log('MSAA off')
 			get_viewport().msaa_3d = Viewport.MSAA_DISABLED
 		Viewport.MSAA_2X:
-			Logger.debug_log('MSAA 2x')
+			Logger.debug_log('MSAA 2X')
 			get_viewport().msaa_3d = Viewport.MSAA_2X
 		Viewport.MSAA_4X:
-			Logger.debug_log('MSAA 4x')
+			Logger.debug_log('MSAA 4X')
 			get_viewport().msaa_3d = Viewport.MSAA_4X
 		Viewport.MSAA_8X:
-			Logger.debug_log('MSAA 8x')
+			Logger.debug_log('MSAA 8X')
 			get_viewport().msaa_3d = Viewport.MSAA_8X
 		_:
 			Logger.debug_log('MSAA off')

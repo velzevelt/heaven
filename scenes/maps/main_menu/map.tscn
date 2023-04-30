@@ -85,7 +85,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -566.0
-offset_top = -439.0
+offset_top = -918.0
 offset_bottom = -120.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -146,12 +146,14 @@ layout_mode = 2
 
 [node name="Itch" parent="AboutBlock/MarginContainer/TabContainer/Distribution/VBoxContainer2" instance=ExtResource("6_7je0a")]
 layout_mode = 2
+text = "Itch.io: [url]https://velzevelt.itch.io/heaven"
 
 [node name="Yandex" parent="AboutBlock/MarginContainer/TabContainer/Distribution/VBoxContainer2" instance=ExtResource("6_7je0a")]
 layout_mode = 2
 text = "Yandex.games: "
 
 [node name="VK" parent="AboutBlock/MarginContainer/TabContainer/Distribution/VBoxContainer2" instance=ExtResource("6_7je0a")]
+visible = false
 layout_mode = 2
 text = "VK: "
 
@@ -201,6 +203,7 @@ text = "0.1.0-linux"
 horizontal_alignment = 1
 
 [node name="Attention" parent="." instance=ExtResource("10_7gkkc")]
+visible = false
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("11_uue6q")]
 
