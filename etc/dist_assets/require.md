@@ -1,5 +1,5 @@
-- [ ] 0/6 screenshots
+- [x] 6/7 screenshots
 - [ ] gameplay video
-- [ ] icon
+- [x] icon
 - [ ] feature/cover image
 - [x] [description](https://github.com/velzevelt/heaven/blob/main/README.md)

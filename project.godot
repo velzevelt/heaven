@@ -13,7 +13,7 @@ config_version=5
 config/name="Heaven"
 run/main_scene="res://scenes/maps/main_menu/map.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://heaven.png"
 config/duplicate_logger_output_to_debugger=true
 config/version="0.1.0"
 
