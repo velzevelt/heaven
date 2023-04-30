@@ -1,14 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://c42f6k8vrjsgb"]
+[gd_scene load_steps=14 format=3 uid="uid://dkdo2pci4fkon"]
 
 [ext_resource type="Script" path="res://scenes/settings_menu/settings_menu.gd" id="1_2ui33"]
 [ext_resource type="Script" path="res://scenes/settings_menu/vsync.gd" id="2_c6fup"]
 [ext_resource type="Script" path="res://scenes/settings_menu/language.gd" id="3_chof2"]
 [ext_resource type="Script" path="res://scenes/settings_menu/show_fps.gd" id="4_ktlyh"]
 [ext_resource type="Script" path="res://scenes/settings_menu/viewport_scaling.gd" id="4_l48jb"]
-[ext_resource type="Script" path="res://scenes/settings_menu/fullscreen_block.gd" id="6_m24q2"]
+[ext_resource type="Script" path="res://scenes/settings_menu/non_web_option.gd" id="6_0ttum"]
 [ext_resource type="Script" path="res://scenes/settings_menu/fullscreen.gd" id="6_p5ixj"]
 [ext_resource type="StyleBox" uid="uid://dndgf62qgjuce" path="res://scenes/settings_menu/separator_style.tres" id="6_sgrq4"]
 [ext_resource type="Script" path="res://scenes/settings_menu/slider_label.gd" id="8_ekyah"]
+[ext_resource type="Script" path="res://scenes/settings_menu/smooth.gd" id="8_ih4w5"]
 [ext_resource type="Script" path="res://scenes/settings_menu/mouse_sensitivity_slider.gd" id="9_ol1l6"]
 [ext_resource type="PackedScene" uid="uid://boij7vlm115ha" path="res://scenes/settings_menu/action_button.tscn" id="11_yr7t5"]
 
@@ -144,11 +145,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Language"
 
-[node name="ViewportMode" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General"]
+[node name="ViewportScaling" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General"]
 layout_mode = 2
 theme_override_constants/separation = 19
 
-[node name="Options" type="OptionButton" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/ViewportMode"]
+[node name="Options" type="OptionButton" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/ViewportScaling"]
 custom_minimum_size = Vector2(220, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 27
@@ -162,17 +163,17 @@ popup/item_1/text = "SCALE_QUALITY"
 popup/item_1/id = 1
 script = ExtResource("4_l48jb")
 
-[node name="Label" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/ViewportMode"]
+[node name="Label" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/ViewportScaling"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Viewport Scaling"
 
-[node name="ViewportMode2" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General"]
+[node name="Fullscreen" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General"]
 layout_mode = 2
 theme_override_constants/separation = 19
-script = ExtResource("6_m24q2")
+script = ExtResource("6_0ttum")
 
-[node name="Options" type="OptionButton" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/ViewportMode2"]
+[node name="Options" type="OptionButton" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/Fullscreen"]
 custom_minimum_size = Vector2(220, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 27
@@ -186,10 +187,38 @@ popup/item_1/text = "Off"
 popup/item_1/id = 1
 script = ExtResource("6_p5ixj")
 
-[node name="Label" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/ViewportMode2"]
+[node name="Label" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/Fullscreen"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Fullscreen"
+
+[node name="Smooth" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General"]
+layout_mode = 2
+theme_override_constants/separation = 19
+script = ExtResource("6_0ttum")
+
+[node name="Options" type="OptionButton" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/Smooth"]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 27
+expand_icon = true
+item_count = 4
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "MSAA 2x"
+popup/item_1/id = 1
+popup/item_2/text = "MSAA 4x"
+popup/item_2/id = 2
+popup/item_3/text = "MSAA 8x"
+popup/item_3/id = 3
+script = ExtResource("8_ih4w5")
+
+[node name="Label" type="Label" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General/Smooth"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Smooth"
 
 [node name="FPS" type="Button" parent="Background/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer2/General"]
 custom_minimum_size = Vector2(220, 0)
