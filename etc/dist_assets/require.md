@@ -1,5 +1,5 @@
 - [X] screenshots
 - [x] gameplay video
 - [x] icon
-- [ ] feature/cover image
+- [x] feature/cover image
 - [x] [description](https://github.com/velzevelt/heaven/blob/main/README.md)
