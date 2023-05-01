@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://c3j4bosemqpe" path="res://scenes/objects/map_template/map.tscn" id="1_m2jcb"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_r7y11"]
+[ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="3_an4a2"]
 [ext_resource type="Material" uid="uid://ys587ewu4f0m" path="res://textures/prototype_material_red.tres" id="4_ogtxb"]
 [ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="5_0r4lu"]
-[ext_resource type="Script" path="res://addons/free_look_camera.gd" id="6_p28qp"]
 [ext_resource type="Script" path="res://scenes/components/finish_platform_component.gd" id="7_lcm00"]
 
 [node name="Map" instance=ExtResource("1_m2jcb")]
@@ -12,7 +12,7 @@
 [node name="KillingFloor" parent="." index="0" instance=ExtResource("2_r7y11")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.98744, 0)
 
-[node name="Player" parent="." index="3" instance_placeholder="res://scenes/objects/player/player.tscn"]
+[node name="Player" parent="." index="3" instance=ExtResource("3_an4a2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." index="4"]
@@ -42,8 +42,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9052, 0, -72.1913)
 [node name="FinishPlatformComponent" type="Node" parent="Platform7" index="1" node_paths=PackedStringArray("platform_body")]
 script = ExtResource("7_lcm00")
 platform_body = NodePath("../PlatformBody")
-
-[node name="Camera3D" type="Camera3D" parent="." index="11"]
-script = ExtResource("6_p28qp")
 
 [editable path="Platform7"]

@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c3j4bosemqpe" path="res://scenes/objects/map_template/map.tscn" id="1_eqvbu"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_yf7o4"]
+[ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="3_mmmrx"]
 [ext_resource type="Material" uid="uid://ys587ewu4f0m" path="res://textures/prototype_material_red.tres" id="4_e24h0"]
 [ext_resource type="PackedScene" uid="uid://wbd0ynecsosi" path="res://scenes/objects/door/door.tscn" id="5_qtnvq"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/chapter_1/level_4/locked_door.gd" id="6_63s88"]
@@ -10,7 +11,6 @@
 [ext_resource type="Resource" uid="uid://bjufqcguyiri8" path="res://scenes/objects/coin/coin.tres" id="7_wqfx2"]
 [ext_resource type="PackedScene" uid="uid://bepjx2iwc10qi" path="res://scenes/objects/coin/coin.tscn" id="8_uqjor"]
 [ext_resource type="PackedScene" uid="uid://ckemuy5whwa3e" path="res://scenes/objects/moving_platform/moving_platform.tscn" id="10_cifil"]
-[ext_resource type="Script" path="res://addons/free_look_camera.gd" id="11_glpwa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ymno8"]
 size = Vector3(1, 1, 0.709217)
@@ -27,7 +27,7 @@ point_count = 2
 [node name="KillingFloor" parent="." index="2" instance=ExtResource("2_yf7o4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.56148, 0)
 
-[node name="Player" parent="." index="3" instance_placeholder="res://scenes/objects/player/player.tscn"]
+[node name="Player" parent="." index="3" instance=ExtResource("3_mmmrx")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1.12422, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." index="4"]
@@ -107,9 +107,6 @@ transform = Transform3D(-4.37114e-08, -0.316228, 0.948683, 0, 0.948683, 0.316228
 
 [node name="Coin" parent="MovingPlatform" index="3" instance=ExtResource("8_uqjor")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0399952, 1.24398, 0)
-
-[node name="Camera3D" type="Camera3D" parent="." index="10"]
-script = ExtResource("11_glpwa")
 
 [connection signal="interaction_begin" from="Door/PhysicsDoor" to="Door/LockedDoor" method="_on_physics_door_interaction_begin"]
 [connection signal="interaction_end" from="Door/PhysicsDoor" to="Door/LockedDoor" method="_on_physics_door_interaction_end"]
