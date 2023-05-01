@@ -39,6 +39,7 @@ func take_screenshot() -> void:
 	if screenshot.get_image().save_png(screenshot_path) != OK:
 		if screenshot.get_image().save_png(screenshot_path + str(randi()) ) != OK:
 			Logger.debug_log('Cannot save image', MESSAGE_TYPE.ERROR)
+			return
 	
 	Logger.debug_log('Screenshot saved %s' % ProjectSettings.globalize_path(screenshot_path))
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://d14ksx7g0fgg"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_vigc5"]
-[ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="2_kouom"]
+[ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="2_nhd20"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="3_vd4a2"]
 [ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_svphb"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/chapter_1/enable_on_enter.gd" id="5_ddb06"]
@@ -29,7 +29,7 @@ minutes = 0
 script = ExtResource("1_vigc5")
 goal_storage = NodePath("MapGoalStorage")
 
-[node name="Player" parent="." instance=ExtResource("2_kouom")]
+[node name="Player" parent="." instance=ExtResource("2_nhd20")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="KillingFloor" parent="." instance=ExtResource("3_vd4a2")]
