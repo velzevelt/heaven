@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/components/subcomponents/platform_body.gd" id="1_3vo1p"]
 [ext_resource type="Script" path="res://scenes/components/subcomponents/platform_collision_shape.gd" id="2_5hv81"]
-[ext_resource type="BoxMesh" uid="uid://d1w1tt6v6rjjf" path="res://scenes/components/subcomponents/platform_body_mesh.tres" id="3_kteox"]
+[ext_resource type="BoxMesh" uid="uid://b7txxstcuny8y" path="res://scenes/components/subcomponents/platform_body_mesh.tres" id="3_kteox"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pxphh"]
 size = Vector3(2, 0.3, 2)

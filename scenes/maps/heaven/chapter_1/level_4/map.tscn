@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://jhng3cnom2ob"]
+[gd_scene load_steps=14 format=3 uid="uid://hdve1lfg4sf6"]
 
 [ext_resource type="PackedScene" uid="uid://c3j4bosemqpe" path="res://scenes/objects/map_template/map.tscn" id="1_eqvbu"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_yf7o4"]
 [ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="3_n78v4"]
-[ext_resource type="Material" uid="uid://ys587ewu4f0m" path="res://textures/prototype_material_purple.tres" id="4_e24h0"]
+[ext_resource type="Material" uid="uid://ys587ewu4f0m" path="res://textures/prototype_material_red.tres" id="4_e24h0"]
 [ext_resource type="PackedScene" uid="uid://wbd0ynecsosi" path="res://scenes/objects/door/door.tscn" id="5_qtnvq"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/chapter_1/level_4/locked_door.gd" id="6_63s88"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/chapter_1/level_4/finish_area.gd" id="6_qjk4w"]
@@ -54,9 +54,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.2263
 
 [node name="PhysicsDoor" parent="Door" index="0"]
 closed = true
-
-[node name="Area3D" parent="Door/PhysicsDoor" index="2"]
-priority = 2
 
 [node name="HingeJoint" parent="Door" index="2"]
 angular_limit/upper = 0.0

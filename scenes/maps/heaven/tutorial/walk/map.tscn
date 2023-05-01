@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d3w4gtuaywvi6"]
+[gd_scene load_steps=15 format=3 uid="uid://d3w4gtuaywvi6"]
 
 [ext_resource type="Script" path="res://scenes/map.gd" id="1_pgdll"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_trrbi"]
@@ -10,19 +10,14 @@
 [ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/walk/finish.gd" id="9_1bkvt"]
 [ext_resource type="Script" path="res://scenes/maps/heaven/tutorial/walk/step_1.gd" id="10_ds47u"]
 [ext_resource type="PackedScene" uid="uid://c0p0tbse1j7uk" path="res://scenes/objects/ground/ground.tscn" id="11_h5hds"]
-[ext_resource type="Texture2D" uid="uid://mruxbi8dw30s" path="res://textures/kenney_prototypetextures/Orange/texture_02.png" id="12_xmpis"]
+[ext_resource type="Material" uid="uid://b8wk2ye3ojddm" path="res://textures/prototype_material_dark.tres" id="11_lf6oa"]
 [ext_resource type="PackedScene" uid="uid://cmai6yuuktlww" path="res://scenes/objects/map_template/world_environment.tscn" id="13_xuxlo"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uyn55"]
 radius = 1.01251
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tn38v"]
-albedo_texture = ExtResource("12_xmpis")
-uv1_triplanar = true
-texture_filter = 5
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_17oju"]
-material = SubResource("StandardMaterial3D_tn38v")
+material = ExtResource("11_lf6oa")
 size = Vector2(1000, 1000)
 
 [node name="WalkTutorial" type="Node3D"]

@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkudt7mgs1llw"]
+[gd_scene load_steps=10 format=3 uid="uid://c8eupgdkr8isi"]
 
 [ext_resource type="PackedScene" uid="uid://c3j4bosemqpe" path="res://scenes/objects/map_template/map.tscn" id="1_5pa4p"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="2_teinn"]
 [ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="3_h62fj"]
 [ext_resource type="PackedScene" uid="uid://bb063b6yo7mj4" path="res://scenes/objects/moving_platform/moving_platform_base.tscn" id="4_68ixg"]
 [ext_resource type="Script" path="res://scenes/components/rotate_platform_component.gd" id="5_uofwi"]
-[ext_resource type="Material" uid="uid://ys587ewu4f0m" path="res://textures/prototype_material_purple.tres" id="6_buifr"]
+[ext_resource type="Material" uid="uid://ys587ewu4f0m" path="res://textures/prototype_material_red.tres" id="6_buifr"]
 [ext_resource type="Script" path="res://scenes/components/reparent_platform_component.gd" id="6_rmli4"]
 [ext_resource type="Script" path="res://scenes/components/subcomponents/platform_body.gd" id="7_jcx5i"]
 [ext_resource type="Script" path="res://scenes/components/finish_platform_component.gd" id="8_vevdg"]

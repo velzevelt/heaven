@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqrbdeh7pfrmv"]
+[gd_scene load_steps=8 format=3 uid="uid://lafhm0vnpaw7"]
 
 [ext_resource type="PackedScene" uid="uid://c3j4bosemqpe" path="res://scenes/objects/map_template/map.tscn" id="1_mw7mg"]
 [ext_resource type="PackedScene" uid="uid://colma6wid3n1x" path="res://scenes/objects/player/player.tscn" id="2_tdvtn"]
 [ext_resource type="PackedScene" uid="uid://de5khtpdng4hp" path="res://scenes/objects/killing_floor/killing_floor.tscn" id="3_451um"]
 [ext_resource type="PackedScene" uid="uid://db3hveqp4cjry" path="res://scenes/objects/platform/platform.tscn" id="4_2eqt4"]
-[ext_resource type="Material" uid="uid://ys587ewu4f0m" path="res://textures/prototype_material_purple.tres" id="5_sfyhk"]
+[ext_resource type="Material" uid="uid://ys587ewu4f0m" path="res://textures/prototype_material_red.tres" id="5_sfyhk"]
 [ext_resource type="Script" path="res://scenes/components/subcomponents/platform_body.gd" id="6_hdfvw"]
 [ext_resource type="Script" path="res://scenes/components/finish_platform_component.gd" id="7_f4gwl"]
 

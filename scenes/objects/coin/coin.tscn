@@ -1,14 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bepjx2iwc10qi"]
+[gd_scene load_steps=6 format=3 uid="uid://bepjx2iwc10qi"]
 
 [ext_resource type="Script" path="res://scenes/objects/coin/coin.gd" id="1_jrmyy"]
-[ext_resource type="Texture2D" uid="uid://c2rpvnx5aenl2" path="res://textures/kenney_prototypetextures/Orange/texture_01.png" id="1_n0rmg"]
 [ext_resource type="Resource" uid="uid://bjufqcguyiri8" path="res://scenes/objects/coin/coin.tres" id="2_qs4ja"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6eqw3"]
-albedo_texture = ExtResource("1_n0rmg")
+[ext_resource type="Material" uid="uid://vxeny6igo7w5" path="res://textures/prototype_material_orange.tres" id="3_75f4x"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_crl44"]
-material = SubResource("StandardMaterial3D_6eqw3")
+material = ExtResource("3_75f4x")
 top_radius = 0.25
 bottom_radius = 0.25
 height = 0.5

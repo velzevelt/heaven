@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://51sgfh4nhl4t"]
 
 [ext_resource type="Script" path="res://scenes/components/subcomponents/platform_body.gd" id="1_74yuj"]
-[ext_resource type="BoxMesh" uid="uid://d1w1tt6v6rjjf" path="res://scenes/components/subcomponents/platform_body_mesh.tres" id="2_jfsgs"]
+[ext_resource type="BoxMesh" uid="uid://b7txxstcuny8y" path="res://scenes/components/subcomponents/platform_body_mesh.tres" id="2_jfsgs"]
 [ext_resource type="Script" path="res://scenes/components/portal/shape_update.gd" id="3_725i1"]
 [ext_resource type="Material" uid="uid://bm6134mi4goc8" path="res://textures/prototype_material_green.tres" id="3_asgmc"]
 
