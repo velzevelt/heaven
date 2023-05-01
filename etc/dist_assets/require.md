@@ -1,4 +1,4 @@
-- [x] 6/7 screenshots
+- [ ] 0/7 screenshots
 - [ ] gameplay video
 - [x] icon
 - [ ] feature/cover image
