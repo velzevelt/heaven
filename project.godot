@@ -210,3 +210,22 @@ locale/translations=PackedStringArray("res://localization/localization.en.transl
 
 renderer/rendering_method.web="mobile"
 textures/default_filters/anisotropic_filtering_level=4
+
+[shader_globals]
+
+specular_smoothness={
+"type": "float",
+"value": 0.05
+}
+fresnel_smoothness={
+"type": "float",
+"value": 0.05
+}
+outline_width={
+"type": "float",
+"value": 4.0
+}
+outline_color={
+"type": "color",
+"value": Color(0, 0, 0, 1)
+}

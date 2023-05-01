@@ -1,8 +1,6 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://vxeny6igo7w5"]
-
-[ext_resource type="Texture2D" uid="uid://c2rpvnx5aenl2" path="res://textures/kenney_prototypetextures/Orange/texture_01.png" id="1_sc0ao"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://vxeny6igo7w5"]
 
 [resource]
-albedo_texture = ExtResource("1_sc0ao")
+albedo_color = Color(1, 0.796078, 0, 1)
 uv1_triplanar = true
 texture_filter = 5

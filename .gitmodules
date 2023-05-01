@@ -1,0 +1,3 @@
+[submodule "addons/godot4-cel-shader"]
+	path = addons/godot4-cel-shader
+	url = https://github.com/eldskald/godot4-cel-shader
